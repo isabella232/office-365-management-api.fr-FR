@@ -1,0 +1,8 @@
+# [API de gestion d’Office 365](index.md)
+## [Vue d’ensemble des API de gestion](office-365-management-apis-overview.md)
+## [Prise en main des API de gestion](get-started-with-office-365-management-apis.md)
+## [API de communications de service (préversion)](office-365-service-communications-api-reference.md)
+## [Référence de l’API Activité de gestion](office-365-management-activity-api-reference.md)
+## [Schéma de l’API Activité de gestion](office-365-management-activity-api-schema.md)
+## [Résolution des problèmes d’API d’activités de gestion](troubleshooting-the-office-365-management-activity-api.md)
+## [API Activité de gestion - Questions fréquemment posées](office-365-management-activity-api-faq.md)
