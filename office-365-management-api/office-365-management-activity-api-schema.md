@@ -4,13 +4,13 @@ title: Schéma de l’API Activité de gestion Office 365
 description: 'Le schéma de l’API Activité de gestion Office 365 est fourni en tant que service de données en deux couches : le schéma commun et le schéma propre au produit.'
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
-ms.date: 09/05/2018
-ms.openlocfilehash: fae8089a35e2917bc7ac3e17b2e9c1b3716aae95
-ms.sourcegitcommit: 7275a216044ec620974ffb45eec86fdf465deb39
+ms.date: ''
+ms.openlocfilehash: 13d964eb7665c70719b9310c880974b7eea6c530
+ms.sourcegitcommit: 0d3abd151e8970b84735eea975792ae930de6995
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "25846422"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "26215301"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -94,12 +94,16 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |15|AzureActiveDirectoryStsLogon|Événements de connexion STS (Secure Token Service) dans Azure Active Directory.|
 |18|SecurityComplianceCenterEOPCmdlet|Actions d’administration à partir du Centre de sécurité et conformité.|
 |20|PowerBIAudit|Événements Power BI.|
+|22|Yammer|Événements Yammer.|
 |24|Discovery|Événements pour les activités eDiscovery effectuées en exécutant des recherches de contenu et en gérant les cas d’eDiscovery dans le Centre de sécurité et conformité.|
 |25|MicrosoftTeams|Événements de Microsoft Teams.|
 |26|MicrosoftTeamsAddOns|Événements à partir des compléments Microsoft Teams.|
 |27|MicrosoftTeamsSettingsOperation|Modifications de paramètres dans Microsoft Teams.|
+|28|ThreatIntelligence|Événements Office 365 Threat Intelligence et Protection avancée contre les menaces|
+|30|MicrosoftFlow|Événements Microsoft Flow.|
+|32|MicrosoftStream|Événements Microsoft Stream.|
+|35|Project|Événements Microsoft Project.|
 |40|SecurityComplianceAlerts|Signaux d’alerte de sécurité et conformité.|
-
 
 ### <a name="enum-user-type---type-edmint32"></a>Énumération : User Type - Type : Edm.Int32
 
@@ -694,16 +698,17 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |Client|Edm.String|Non|Informations sur le périphérique client, fournies par le navigateur exécutant la connexion.|
 |LogonError|Edm.String|Non|En cas d’échec de connexion, la raison de l’échec est indiquée dans ce paramètre.|
 
-
-
-
 ## <a name="dlp-schema"></a>Schéma DLP
-Les événements DLP sont disponibles pour Exchange Online, SharePoint Online et OneDrive Entreprise. Les événements DLP dans Exchange sont disponibles uniquement pour les événements en fonction de la stratégie DLP unifiée (par exemple, configuration via le Centre de sécurité et conformité). Les événements DLP basés sur les règles de transport Exchange ne sont pas pris en charge.
+
+Les événements DLP sont disponibles pour Exchange Online, SharePoint Online et OneDrive Entreprise. Les événements DLP dans Exchange sont disponibles uniquement pour les événements reposant sur la stratégie DLP unifiée (par exemple, configuration via le Centre de sécurité et de conformité). Les événements DLP reposant sur les règles de transport Exchange ne sont pas pris en charge.
 
 Les événements DLP (protection contre la perte de données) ont toujours UserKey="DlpAgent" dans le schéma commun. Il existe trois types d’événements DLP qui sont stockés en tant que valeur de la propriété Operation du schéma commun :
-- « DlpRuleMatch » : indique qu’une règle a été satisfaite. Ces événements existent dans Exchange, SharePoint Online et OneDrive Entreprise. Pour Exchange, cela inclut les informations de remplacement et sur les faux positifs. Pour SharePoint Online et OneDrive Entreprise, les faux positifs et les remplacements génèrent des événements distincts.
-- « DlpRuleUndo » : ces événements existent uniquement dans SharePoint Online et OneDrive Entreprise. Ils indiquent qu’une action de stratégie appliquée précédemment a été « annulée » en raison de la désignation d’un faux positif/remplacement par l’utilisateur, ou car le document n’est plus soumis à la stratégie (en raison d’une modification de la stratégie ou d’une modification du contenu d’un document).
-- « DlpInfo » : ces événements existent uniquement dans SharePoint Online et OneDrive Entreprise. Ils indiquent la désignation d’un faux positif, mais aucune action n’a été « annulée ».
+
+- DlpRuleMatch : indique qu’une règle a été satisfaite. Ces événements existent dans Exchange, SharePoint Online et OneDrive Entreprise. Pour Exchange, cela inclut les informations de remplacement et sur les faux positifs. Pour SharePoint Online et OneDrive Entreprise, les faux positifs et les remplacements génèrent des événements distincts.
+
+- DlpRuleUndo : ces événements existent uniquement dans SharePoint Online et OneDrive Entreprise. Ils indiquent qu’une action de stratégie précédemment appliquée a été « annulée » en raison de la désignation d’un faux positif/remplacement par l’utilisateur, ou car le document n’est plus soumis à la stratégie (en raison d’une modification de la stratégie ou du contenu d’un document).
+
+- DlpInfo : ces événements existent uniquement dans SharePoint Online et OneDrive Entreprise. Ils indiquent la désignation d’un faux positif, mais aucune action n’a été « annulée ».
 
 
 
@@ -803,11 +808,7 @@ Les données sensibles DLP sont disponibles uniquement dans l’API de flux d’
 |Justification|Edm.String|Non|Si l’utilisateur a choisi de remplacer la stratégie, toute justification spécifiée par l’utilisateur est capturée ici.|
 |Rules|Collection(Edm.Guid)|Non|Ensemble de GUID pour chaque règle désignée comme un faux positif ou un remplacement, ou pour laquelle une action a été annulée.|
 
-
-
 ## <a name="security-and-compliance-center-schema"></a>Schéma du Centre de sécurité et conformité
-
-
 
 |**Paramètres**|**Type**|**Obligatoire**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -819,6 +820,34 @@ Les données sensibles DLP sont disponibles uniquement dans l’API de flux d’
 |ClientApplication|Edm.String|Non|Si la cmdlet a été exécutée par une application, contrairement à Powershell à distance, ce champ contient le nom de cette application.|
 |Parameters|Edm.String|Non|Nom et valeur des paramètres qui ont été utilisés avec la cmdlet qui n’incluent pas d’informations d’identification personnelle.|
 |NonPiiParameters|Edm.String|Non|Nom et valeur des paramètres qui ont été utilisés avec la cmdlet qui incluent des informations d’identification personnelle. (Déconseillé : ce champ cessera d’apparaître à l’avenir et son contenu sera fusionné avec le champ Paramètres.)|
+
+## <a name="security-and-compliance-alerts-schema"></a>Schéma d’alertes de sécurité et conformité
+
+Les signaux d’alerte sont les suivants :
+
+- toutes les alertes générées en fonction des [stratégies d’alerte dans le Centre de sécurité et de conformité](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies) ;
+- les alertes liées à Office 365 générées dans [Sécurité des applications cloud Office 365](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) et [Microsoft Cloud App Security](https://docs.microsoft.com/fr-FR/cloud-app-security/what-is-cloud-app-security).
+
+Les paramètres UserId et UserKey de ces événements sont toujours des alertes SecurityComplianceAlerts. Il existe deux types de signaux d’alerte stockés en tant que valeurs de la propriété Operation du schéma commun :
+
+- AlertTriggered : une nouvelle alerte est générée en raison d’une correspondance de stratégie.
+
+- AlertEntityGenerated : une nouvelle entité est ajoutée à une alerte. Cet événement s’applique uniquement aux alertes générées en fonction des stratégies d’alerte dans le Centre de sécurité et conformité Office 365. Chaque alerte générée peut être associée à un ou à plusieurs de ces événements. Par exemple, une stratégie d’alerte est définie pour déclencher une alerte si un utilisateur supprime plus de 100 fichiers en 5 minutes. Si deux utilisateurs dépassent le seuil au même moment, il existera deux événements AlertEntityGenerated, mais un seul événement AlertTriggered.
+
+|**Paramètres**|**Type**|**Obligatoire**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AlertId|Edm.Guid|Oui|GUID de l’alerte.|
+|AlertType|Self.String|Oui|Type de l’alerte. Les types d’alertes sont les suivants : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Système</p></li><li><p>Personnalisé</p></li>|
+|Name|Edm.String|Oui|Nom de l’alerte.|
+|PolicyId|Edm.Guid|Non|GUID de la stratégie qui a déclenché l’alerte.|
+|Status|Edm.String|Non|Statut de l’alerte. Les statuts sont les suivants : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Actif</p></li><li><p>Examen en cours</p></li><li><p>Résolu</p></li><li><p>Fermé</p></li></ul>|
+|Severity|Edm.String|Non|Gravité de l’alerte. Les niveaux de gravité sont les suivants : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Faible</p></li><li><p>Moyen</p></li><li><p>Élevé</p></li></ul>|
+|Catégorie|Edm.String|Non|Catégorie de l’alerte. Les catégories sont les suivantes : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>DataLossPrevention</p></li><li><p>ThreatManagement</p></li><li><p>DataGovernance</p></li><li><p>AccessGovernance</p></li><li><p>MailFlow</p></li><li><p>Other</p></li></ul>|
+|Source|Edm.String|Non|Source de l’alerte. Les sources sont les suivantes : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Conformité et sécurité dans Office 365</p></li><li><p>Cloud App Security</p></li></ul>|
+|Comments|Edm.String|Non|Commentaires laissés par les utilisateurs qui ont vu l’alerte. Il s’agit d’une « nouvelle alerte » par défaut.|
+|Data|Edm.String|Non|BLOB des données de détail de l’alerte ou de l’entité de l’alerte.|
+|AlertEntityId|Edm.String|Non|Identificateur pour l’entité de l’alerte. Ce paramètre s’applique uniquement aux événements AlertEntityGenerated.|
+|EntityType|Edm.String|Non|Type de l’alerte ou de l’entité de l’alerte. Les types d’entités sont les suivants : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Utilisateur</p></li><li><p>Destinataires</p></li><li><p>Expéditeur</p></li><li><p>MalwareFamily</p></li></ul>Ce paramètre s’applique uniquement aux événements AlertEntityGenerated.|
 
 ## <a name="yammer-schema"></a>Schéma Yammer
 
