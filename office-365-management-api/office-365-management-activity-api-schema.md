@@ -5,12 +5,12 @@ description: 'Le schéma de l’API Activité de gestion Office 365 est fourni 
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
-ms.openlocfilehash: 13d964eb7665c70719b9310c880974b7eea6c530
-ms.sourcegitcommit: 0d3abd151e8970b84735eea975792ae930de6995
+ms.openlocfilehash: e9a7c47f10c3926f7fd681db6a11bb74cc034226
+ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "26215301"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "27240651"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -46,12 +46,13 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma d’alertes de sécurité et conformité](#security-and-compliance-alerts-schema)|Étend le schéma commun avec les propriétés spécifiques de toutes les alertes de sécurité et conformité d’Office 365.|
 |[Schéma Yammer](#yammer-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Yammer.|
 |[Schéma Sway](#sway-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Sway.|
-|[Schéma de base de sécurité du centre de données](#data-center-security-base-schema)|Étend le schéma commun avec les propriétés spécifiques de toutes les données d’audit de sécurité du centre de données.|
+|[Schéma de base de sécurité du centre de données](#data-center-security-base-schema)|Étend le Schéma commun avec les propriétés spécifiques de toutes les données d’audit de sécurité du centre de données.|
 |[Schéma de cmdlet de sécurité du centre de données](#data-center-security-cmdlet-schema)|Étend le schéma de base de sécurité du centre de données avec les propriétés spécifiques de toutes les données d’audit de cmdlet de sécurité du centre de données.|
 |[Schéma Microsoft Teams](#microsoft-teams-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Teams.|
 |[Schéma de compléments Microsoft Teams](#microsoft-teams-add-ons-schema)|Étend le schéma Microsoft Teams avec les propriétés spécifiques des compléments Microsoft Teams.|
 |[Schéma de paramètres Microsoft Teams](#microsoft-teams-settings-schema)|Étend le schéma Microsoft Teams avec les propriétés spécifiques des événements de modification de paramètres de Microsoft Teams.|
-|[Schéma Office 365 Threat Intelligence et Protection avancée contre les menaces](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Étend le schéma commun avec les propriétés spécifiques des données relatives à Office 365 Threat Intelligence et Protection avancée contre les menaces.|
+|[Schéma Office 365 Threat Intelligence et Protection avancée contre les menaces](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Étend le Schéma commun avec les propriétés spécifiques des données relatives à Office 365 Threat Intelligence et Protection avancée contre les menaces.|
+|[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
 
 ## <a name="common-schema"></a>Schéma commun
 
@@ -94,16 +95,21 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |15|AzureActiveDirectoryStsLogon|Événements de connexion STS (Secure Token Service) dans Azure Active Directory.|
 |18|SecurityComplianceCenterEOPCmdlet|Actions d’administration à partir du Centre de sécurité et conformité.|
 |20|PowerBIAudit|Événements Power BI.|
+|21|CRM|Événements Microsoft CRM.|
 |22|Yammer|Événements Yammer.|
+|23|SkypeForBusinessCmdlets|Événements Skype Entreprise.|
 |24|Discovery|Événements pour les activités eDiscovery effectuées en exécutant des recherches de contenu et en gérant les cas d’eDiscovery dans le Centre de sécurité et conformité.|
 |25|MicrosoftTeams|Événements de Microsoft Teams.|
 |26|MicrosoftTeamsAddOns|Événements à partir des compléments Microsoft Teams.|
 |27|MicrosoftTeamsSettingsOperation|Modifications de paramètres dans Microsoft Teams.|
-|28|ThreatIntelligence|Événements Office 365 Threat Intelligence et Protection avancée contre les menaces|
+|28|ThreatIntelligence|Événements d’hameçonnage et de programmes malveillants depuis Exchange Online Protection et Office 365 Advanced Threat Protection.|
 |30|MicrosoftFlow|Événements Microsoft Flow.|
 |32|MicrosoftStream|Événements Microsoft Stream.|
 |35|Project|Événements Microsoft Project.|
+|36|SharepointListOperation|Événements de liste SharePoint.|
 |40|SecurityComplianceAlerts|Signaux d’alerte de sécurité et conformité.|
+|41|ThreatIntelligenceUrl|Événements de liens approuvés de bloc horaire et bloc de remplacement à partir d’Office 365 Advanced Threat Protection.|
+|47|ThreatIntelligenceAtpContent|Événements d’hameçonnage et programmes malveillants pour les fichiers dans SharePoint, OneDrive Entreprise et Microsoft Teams dans Office 365 Advanced Threat Protection .|
 
 ### <a name="enum-user-type---type-edmint32"></a>Énumération : User Type - Type : Edm.Int32
 
@@ -702,7 +708,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 
 Les événements DLP sont disponibles pour Exchange Online, SharePoint Online et OneDrive Entreprise. Les événements DLP dans Exchange sont disponibles uniquement pour les événements reposant sur la stratégie DLP unifiée (par exemple, configuration via le Centre de sécurité et de conformité). Les événements DLP reposant sur les règles de transport Exchange ne sont pas pris en charge.
 
-Les événements DLP (protection contre la perte de données) ont toujours UserKey="DlpAgent" dans le schéma commun. Il existe trois types d’événements DLP qui sont stockés en tant que valeur de la propriété Operation du schéma commun :
+Les événements DLP (prévention contre la perte de données) ont toujours UserKey="DlpAgent" dans le schéma commun. Il existe trois types d’événements DLP qui sont stockés en tant que valeur de la propriété Operation du schéma commun :
 
 - DlpRuleMatch : indique qu’une règle a été satisfaite. Ces événements existent dans Exchange, SharePoint Online et OneDrive Entreprise. Pour Exchange, cela inclut les informations de remplacement et sur les faux positifs. Pour SharePoint Online et OneDrive Entreprise, les faux positifs et les remplacements génèrent des événements distincts.
 
@@ -1114,11 +1120,36 @@ Les événements Office 365 Threat Intelligence et ATP (Protection avancée con
 |SourceId|Edm.String|Oui|Identificateur du service Office 365 à partir duquel un utilisateur a cliqué sur l’URL (par exemple, pour la Boîte de messagerie, il s’agit de l’ID de message réseau Exchange Online).|
 |TimeOfClick|Edm.Date|Oui|Date et heure à l’heure UTC (temps universel coordonné) au moment où l’utilisateur a cliqué sur l’URL.|
 |URL|Edm.String|Oui|URL sur laquelle l’utilisateur a cliqué.|
-|UserIp|Edm.String|Oui|Adresse IP de l’utilisateur qui a cliqué sur l’URL. L’adresse IP apparaît au format IPv4 ou IPv6.|
+|UserIp|Edm.String|Oui|Adresse IP de l’utilisateur qui a cliqué sur l’URL. L’adresse IP apparaît au format d’adresse IPv4 ou IPv6.|
 
+## <a name="power-bi-schema"></a>Schéma Power BI
 
+Les événements Power BI répertoriés dans l’article relatif à la [Recherche dans le journal d’audit dans le Centre de sécurité d’Office 365](/power-bi/service-admin-auditing#activities-audited-by-power-bi) utilisent ce schéma.
 
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| AppName               | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | Nom de l’application dans laquelle l’événement s’est produit. |
+| DashboardName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | Le nom du tableau de bord dans lequel l’événement s’est produit. |
+| DataClassification    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | La [classification des données](/power-bi/service-data-classification), le cas échéant, pour le tableau de bord dans lequel l’événement s’est produit. |
+| DatasetName           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | Le nom du tableau de l’ensemble de données dans lequel l’événement s’est produit. |
+| MembershipInformation | Collection([MembershipInformationType](#MembershipInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | Informations d’appartenance au groupe. |
+| OrgAppPermission      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | Liste des autorisations pour une application d’organisation (organisation entière, utilisateurs spécifiques ou groupes spécifiques). |
+| ReportName            | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | Le nom du tableau du rapport dans lequel l’événement s’est produit. |
+| SharingInformation    | Collection([SharingInformationType](#SharingInformationType))   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"    |  Non  | Informations sur la personne à laquelle est envoyée une invitation de partage. |
+| SwitchState           | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | Informations sur l’état des différents commutateurs au niveau client. |
+| WorkSpaceName         | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true"                            |  Non  | Le nom du tableau de l’espace de travail dans lequel l’événement s’est produit. |
 
+### <a name="membershipinformationtype-complex-type"></a>Type complexe MembershipInformationType
 
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| MemberEmail | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | Adresse de messagerie du groupe. |
+| Statut      | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | Actuellement non rempli. |
 
+### <a name="sharinginformationtype-complex-type"></a>Type complexe SharingInformationType
 
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+| RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | Adresse de messagerie du destinataire de l’invitation de partage. |
+| RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | Nom du destinataire de l’invitation de partage. |
+| ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | L’autorisation accordée au destinataire. |
