@@ -5,12 +5,12 @@ description: Questions fréquemment posées sur l’utilisation de l’API Activ
 ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: 09/21/2018
-ms.openlocfilehash: 612aac60ab421d79a1c866a4a79157ee255d167d
-ms.sourcegitcommit: 525c0d0e78cc44ea8cb6a4bdce1858cb4ef91d57
+ms.openlocfilehash: 8118f44b04beedf33e98edd5ebc63c85b8c0fbc5
+ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2018
-ms.locfileid: "25834824"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "27240623"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>API Activité de gestion Office 365- Questions fréquemment posées
 
@@ -46,6 +46,11 @@ Non. Les notifications webhook ne sont pas fondées sur les événements au sens
 
 Parfois, il existe des instances d’une panne temporaire ou d’autres problèmes dans le service Office 365. Dans ce cas, des enregistrements d’audit sont annulés et le service tente de les renvoyer. Bien que cela se produise pour 5 à 10 % des enregistrements environ, voici les enregistrements qui peuvent être retardés dans certaines situations. Si le retard dépasse 5 jours, consultez le tableau de bord de l’état des services dans le centre d’administration Office 365. Si nécessaire, vous pouvez aussi ouvrir un ticket avec le [support Microsoft](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online).
 
-#### <a name="i-am-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>Je rencontre une erreur de limitation dans l’API Activité de gestion. Que dois-je faire ?
+#### <a name="im-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>Je rencontre une erreur de limitation dans l’API Activité de gestion. Que dois-je faire ?
 
 Ouvrez un ticket avec le [support Microsoft](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online) et demandez un nouveau seuil de limitation et incluez une justification professionnelle pour augmenter le seuil. Nous évaluerons la demande et si nous l’acceptons, nous augmenterons le seuil de limitation.
+
+#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activty-api"></a>Que se passe-t-il si je désactive l’audit pour mon organisation Office 365 ? Est-ce que je recevrai toujours des événements via l’API Activité de gestion ?
+
+Non. L’audit doit être activé pour votre organisation afin que les enregistrements puissent être collectés via l’API Activité de gestion.
+
