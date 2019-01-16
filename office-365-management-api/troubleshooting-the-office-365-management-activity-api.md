@@ -5,12 +5,13 @@ description: Cet article présente les questions les plus fréquemment posées a
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: 09/05/2018
-ms.openlocfilehash: 9267bd9e55be7605af72d9c77cf5ed415dcc5c9d
-ms.sourcegitcommit: 525c0d0e78cc44ea8cb6a4bdce1858cb4ef91d57
+localization_priority: Priority
+ms.openlocfilehash: ed84984dc3009d03e0bb7cacba16eafb687c93e0
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2018
-ms.locfileid: "25834831"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014293"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -222,7 +223,7 @@ Quand ils tentent de récupérer les blobs de contenu disponibles, de nombreux c
 Response Code 403: {'error':{'code':'AF429','message':'Too many requests. Method=GetBlob, PublisherId=00000000-0000-0000-0000-000000000000'}}
 ```
 
-Cette erreur est probablement due à la limitation des requêtes. Notez que la valeur du paramètre Publisherid indique probablement que le client n’a pas spécifié *PublisherIdentifier* dans la requête. Par ailleurs, n’oubliez pas que le nom correct du paramètre est *PublisherIdentifier* même si *PublisherId* est répertorié dans les réponses de l’erreur 403.
+Cette erreur est probablement due à la limitation des requêtes. Notez que la valeur du paramètre PublisherId indique probablement que le client n’a pas spécifié *PublisherIdentifier* dans la requête. Par ailleurs, n’oubliez pas que le nom correct du paramètre est *PublisherIdentifier* même si *PublisherId* est répertorié dans les réponses de l’erreur 403.
 
 > [!NOTE] 
 > Dans la référence de l’API, le paramètre *PublisherIdentifier* figure dans chaque opération de l’API, mais il doit également être inclus dans la requête GET envoyée à l’URL contentUri pendant la récupération du blob de contenu.
@@ -231,7 +232,7 @@ Si vous effectuez des appels d’API simples pour résoudre des problèmes (par 
 
 Si vous implémentez un client pour le locataire de votre entreprise, le paramètre *PublisherIdentifier* est le GUID client. Si vous créez une application ou un complément tiers pour plusieurs clients, le paramètre *PublisherIdentifier* doit être le GUID client de l’éditeur de logiciels indépendant, et non le GUID client de l’entreprise de l’utilisateur final.
 
-Si vous incluez le paramètre *PublisherIdentifier* valide, votre application sera dans un pool qui reçoit 60 000 requêtes par minute par locataire. Il s’agit d’un nombre incroyablement élevé de requêtes. Toutefois, si vous n’incluez pas le paramètre *PublishisherIdentifier*, votre application sera dans le pool général qui reçoit 60 000 requêtes par minute pour tous les locataires. Dans ce cas, vous trouverez certainement que vos appels sont limités. Pour éviter cela, voici comment vous pouvez demander un blob de contenu à l’aide du paramètre *PublisherIdentifier* :
+Si vous incluez le paramètre *PublisherIdentifier* valide, votre application sera dans un pool qui reçoit 60 000 requêtes par minute par locataire. Il s’agit d’un nombre incroyablement élevé de requêtes. Toutefois, si vous n’incluez pas le paramètre *PublisherIdentifier*, votre application sera dans le pool général qui reçoit 60 000 requêtes par minute pour tous les locataires. Dans ce cas, vous trouverez certainement que vos appels sont limités. Pour éviter cela, voici comment vous pouvez demander un blob de contenu à l’aide du paramètre *PublisherIdentifier* :
 
 ```powershell
 $contentUri = ($response.Content | ConvertFrom-Json).contentUri[0]
@@ -239,7 +240,7 @@ $uri = $contentUri + '?PublisherIdentifier=82b24b6d-0591-4604-827b-705d55d0992f'
 $contents = Invoke-WebRequest -Method GET -Headers $headerParams -Uri $uri
 ```
 
-L’exemple précédent part du principe que la variable *$response* a été remplie avec la réponse d’une requête envoyée au point de terminaison /content et que la variable *$hearderParams* inclut un jeton d’accès valide. Le script prend le premier élément de la matrice des URI de contenu dans la réponse, puis invoque la méthode GET pour télécharger ce blob et le placer dans la variable *$contents*. Votre code va probablement exécuter des boucles dans la collection contentUri, en émettant la méthode GET pour chaque *contentUri*.
+L’exemple précédent part du principe que la variable *$response* a été remplie avec la réponse d’une requête envoyée au point de terminaison /content et que la variable *$headerParams* inclut un jeton d’accès valide. Le script prend le premier élément de la matrice des URI de contenu dans la réponse, puis invoque la méthode GET pour télécharger ce blob et le placer dans la variable *$contents*. Votre code va probablement exécuter des boucles dans la collection contentUri, en émettant la méthode GET pour chaque *contentUri*.
 
 ## <a name="frequently-asked-questions-about-the-office-365-management-api"></a>Questions fréquemment posées sur l’API Gestion Office 365.
 
