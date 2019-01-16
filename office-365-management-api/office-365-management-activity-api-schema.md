@@ -5,12 +5,13 @@ description: 'Le schéma de l’API Activité de gestion Office 365 est fourni 
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
-ms.openlocfilehash: e9a7c47f10c3926f7fd681db6a11bb74cc034226
-ms.sourcegitcommit: a5a60b603acd9a17d7717420e377d5760e08c7da
+localization_priority: Priority
+ms.openlocfilehash: a8e8fdab103bcee6a5ea8de56dc91c45c1c20b43
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "27240651"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014335"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -71,7 +72,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |ResultStatus|Edm.String|Non|Indique si l’action (indiquée dans la propriété Operation) a réussi ou non. Valeurs possibles : **Succeeded**, **PartiallySucceded** ou **Failed**. Pour une activité d’administration Exchange, la valeur peut être **True** ou **False**.|
 |ObjectId|Edm.string|Non|Pour l’activité SharePoint et OneDrive Entreprise, il s’agit du nom du chemin d’accès complet au fichier ou au dossier consulté par l’utilisateur. Pour la journalisation d’audit d’administration Exchange, il s’agit du nom de l’objet modifié par la cmdlet.|
 |UserId|Edm.string|Oui|L’UPN (nom d’utilisateur principal) de l’utilisateur ayant effectué l’action (indiquée dans la propriété Operation) qui a entraîné la journalisation de l’enregistrement. Par exemple, `my_name@my_domain_name`. L’enregistrement d’une activité exécutée par un compte système (comme SHAREPOINT\system ou NT AUTHORITY\SYSTEM) est également inclus.|
-|ClientIp|Edm.String|Oui|Adresse IP du périphérique utilisé lors de la journalisation de l’activité. L’adresse IP apparaît au format IPv4 ou IPv6.|
+|ClientIP|Edm.String|Oui|Adresse IP du périphérique utilisé lors de la journalisation de l’activité. L’adresse IP apparaît au format IPv4 ou IPv6.|
 |Portée|Self.[AuditLogScope](#auditlogscope)|Non|Cet événement a-t-il été créé par un service Office 365 hébergé ou un serveur local ? Valeurs possibles : **online** et **onprem**. SharePoint est la seule charge de travail qui envoie actuellement des événements d’un serveur local à Office 365.|
 
 ### <a name="enum-auditlogrecordtype---type-edmint32"></a>Énumération : AuditLogRecordType - Type : Edm.Int32
@@ -540,7 +541,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |SendAsUserSmtp|Edm.String|Non|Adresse SMTP de l’utilisateur qui est empruntée.|
 |SendAsUserMailboxGuid|Edm.Guid|Non|GUID Exchange de la boîte aux lettres consultée pour envoyer un message électronique.|
 |SendOnBehalfOfUserSmtp|Edm.String|Non|Adresse SMTP de l’utilisateur au nom duquel le message électronique est envoyé.|
-|SendonBehalfOfUserMailboxGuid|Edm.Guid|Non|GUID Exchange de la boîte aux lettres consultée pour le compte duquel envoyer un message électronique.|
+|SendOnBehalfOfUserMailboxGuid|Edm.Guid|Non|GUID Exchange de la boîte aux lettres consultée pour le compte duquel envoyer un message électronique.|
 
 
 ### <a name="exchangeitem-complex-type"></a>Type complexe ExchangeItem
