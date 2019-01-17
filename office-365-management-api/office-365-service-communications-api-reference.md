@@ -5,12 +5,13 @@ description: 'Utilisez cette API pour accéder aux données suivantes : Obtenir
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: 09/05/2018
-ms.openlocfilehash: cde34da7377c5d4820d6ca62dd3affe806eda229
-ms.sourcegitcommit: 525c0d0e78cc44ea8cb6a4bdce1858cb4ef91d57
+localization_priority: Priority
+ms.openlocfilehash: dc231a4fb19be7ac0e9248d5f4d709681ff0abfa
+ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/27/2018
-ms.locfileid: "25834825"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "28014307"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Référence de l’API Office 365 Service Communications (préversion)
 
@@ -380,7 +381,7 @@ Renvoie les messages sur le service sur un intervalle de temps donné. Utilisez 
 |**Query-option**|$select|Sélectionnez un sous-ensemble de propriétés.|
 ||$top|Sélectionnez le nombre de résultats le plus élevé (valeur par défaut et max $top=100).|
 ||$skip|Ignorez le nombre de résultats (valeur par défaut : $skip = 0).|
-|**Response**|Liste des entités « Message ».|L’entité « Message » contient « Id » (chaîne), « StartTime » (DateTimeOffset), « EndTime » (DateTimeOffset), « Status » (chaîne), « Messages » (liste des entités « MessagHistory »), « LastUpdatedTime » (DateTimeOffset), « Workload » (chaîne), « WorkloadDisplayName » (chaîne), « Feature » (chaîne), « FeatureDisplayName » (chaîne), « MessageType » (Enum, valeur par défaut : all).<br/><br/>L’entité « MessageHistory » contient « PublishedTime » (DateTimeOffset) et « MessageText » (chaîne).|
+|**Response**|Liste des entités « Message ».|L’entité « Message » contient « Id » (chaîne), « StartTime » (DateTimeOffset), « EndTime » (DateTimeOffset), « Status » (chaîne), « Messages » (liste des entités « MessageHistory »), « LastUpdatedTime » (DateTimeOffset), « Workload » (chaîne), « WorkloadDisplayName » (chaîne), « Feature » (chaîne), « FeatureDisplayName » (chaîne), « MessageType » (Enum, valeur par défaut : all).<br/><br/>L’entité « MessageHistory » contient « PublishedTime » (DateTimeOffset) et « MessageText » (chaîne).|
 
 #### <a name="sample-request"></a>Exemple de demande
 
