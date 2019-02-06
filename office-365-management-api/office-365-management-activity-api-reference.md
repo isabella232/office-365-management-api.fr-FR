@@ -6,12 +6,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: 01/10/2018
 localization_priority: Priority
-ms.openlocfilehash: f9c4a79a882da31b85847bf60237e813c7cdb71c
-ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
+ms.openlocfilehash: 76907cf9f22078a232cc20e65ba5fdc12c7f5d7e
+ms.sourcegitcommit: 55264094d1ebc2f9968b2d29d5982b1ba4e29118
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "28014321"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "29735228"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
 
