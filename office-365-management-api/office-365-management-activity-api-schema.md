@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 6fa95b7134bd5bb8ac6a8f07c87df747ae086a81
-ms.sourcegitcommit: 55264094d1ebc2f9968b2d29d5982b1ba4e29118
+ms.openlocfilehash: 72392671dccec43b70684bbde6f53ac926b8d06e
+ms.sourcegitcommit: 95a3313d95b79a2164008d32c4a4f03bf873a23c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "29735242"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "30379194"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -108,9 +108,13 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |32|MicrosoftStream|Événements Microsoft Stream.|
 |35|Project|Événements Microsoft Project.|
 |36|SharepointListOperation|Événements de liste SharePoint.|
+|38|DataGovernance|Événements liés aux stratégies de rétention et étiquettes rétention dans le centre de sécurité et conformité|
 |40|SecurityComplianceAlerts|Signaux d’alerte de sécurité et conformité.|
 |41|ThreatIntelligenceUrl|Événements de liens approuvés de bloc horaire et bloc de remplacement à partir d’Office 365 Advanced Threat Protection.|
+|44|WorkplaceAnalytics|Événements Workplace Analytics.|
+|45|PowerAppsApp|Événements application PowerApps.|
 |47|ThreatIntelligenceAtpContent|Événements d’hameçonnage et programmes malveillants pour les fichiers dans SharePoint, OneDrive Entreprise et Microsoft Teams dans Office 365 Advanced Threat Protection .|
+||||
 
 ### <a name="enum-user-type---type-edmint32"></a>Énumération : User Type - Type : Edm.Int32
 
