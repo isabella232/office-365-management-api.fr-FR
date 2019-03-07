@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 72392671dccec43b70684bbde6f53ac926b8d06e
-ms.sourcegitcommit: 95a3313d95b79a2164008d32c4a4f03bf873a23c
+ms.openlocfilehash: de6a841339690c483ed58e38e0b691b00fadab4d
+ms.sourcegitcommit: b030dc1b7ca46280191dd2f54c8179795657d792
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "30379194"
+ms.locfileid: "30409077"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -187,7 +187,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |:-----|:-----|
 |AccessInvitationAccepted*|Le destinataire d’une invitation à afficher ou à modifier un fichier (ou dossier) partagé a accédé au fichier partagé en cliquant sur le lien dans l’invitation.|
 |AccessInvitationCreated*|L’utilisateur envoie une invitation à une autre personne (interne ou externe à son organisation) pour afficher ou modifier un fichier ou dossier partagé sur un site SharePoint ou OneDrive Entreprise. Les détails de l’entrée d’événement identifient le nom du fichier qui a été partagé, l’utilisateur auquel l’invitation a été envoyée et le type d’autorisation de partage sélectionnée par la personne qui a envoyé l’invitation.|
-|AccessInvitationExpired*|Une invitation envoyée à un utilisateur externe arrive à expiration. Par défaut, une invitation envoyée à un utilisateur en dehors de votre organisation expire au bout de 7 jours si l’invitation n’est pas acceptée.|
+|AccessInvitationExpired*|Une invitation envoyée à un utilisateur externe expire. Par défaut, une invitation envoyée à un utilisateur extérieur à votre organisation expire au bout de 7 jours si elle n’est pas acceptée.|
 |AccessInvitationRevoked*|L’administrateur de site ou le propriétaire d’un site ou d’un document dans SharePoint ou OneDrive Entreprise retire une invitation qui a été envoyée à un utilisateur en dehors de votre organisation. Une invitation peut être retirée uniquement avant d’être acceptée.|
 |AccessInvitationUpdated*|L’utilisateur qui a créé et envoyé une invitation à une autre personne pour afficher ou modifier un fichier (ou dossier) partagé sur un site SharePoint ou OneDrive Entreprise renvoie l’invitation.|
 |AccessRequestApproved|L’administrateur ou le propriétaire d’un site ou d’un document dans SharePoint ou OneDrive Entreprise approuve la demande d’accès au site ou au document.|
@@ -223,7 +223,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |EntityForceCheckedIn|Un utilisateur force l’archivage d’un calendrier, d’un champ personnalisé ou d’une table de choix dans Project Web App.|
 |ExemptUserAgentSet*|L’administrateur général ajoute un agent utilisateur à la liste des agents utilisateurs exemptés dans le Centre d’administration SharePoint.|
 |FileAccessed|Un compte d’utilisateur ou système accède à un fichier sur un site SharePoint ou OneDrive Entreprise. Les comptes système peuvent également générer des événements FileAccessed.|
-|FileCheckOutDiscarded*|Un utilisateur ignore (ou annule) un fichier extrait. Cela signifie que les modifications qui ont été apportées au fichier lorsqu’il a été extrait sont ignorées et ne sont pas enregistrées dans la version du document disponible dans la bibliothèque de documents.|
+|FileCheckOutDiscarded*|Un utilisateur ignore (ou annule) un fichier extrait. Les modifications qu’il a apportées au fichier le temps de son extraction sont ignorées et ne sont pas enregistrées dans la version du document dans la bibliothèque de documents.|
 |FileCheckedIn*|Un utilisateur archive un document qu’il a extrait à partir d’une bibliothèque de documents SharePoint ou OneDrive Entreprise.|
 |FileCheckedOut*|Un utilisateur extrait un document situé dans une bibliothèque de documents SharePoint ou OneDrive Entreprise. Les utilisateurs peuvent extraire et apporter des modifications aux documents partagés avec eux.|
 |FileCopied|Un utilisateur copie un document à partir d’un site SharePoint ou OneDrive Entreprise. Le fichier copié peut être enregistré dans un autre dossier sur le site.|
@@ -312,7 +312,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |SharedLinkCreated|Un utilisateur crée un lien vers un fichier partagé sur un site SharePoint ou OneDrive Entreprise. Ce lien peut être envoyé à d’autres personnes pour leur donner accès au fichier. Un utilisateur peut créer deux types de liens : un lien qui permet à la personne d’afficher et de modifier le fichier partagé, ou un lien qui permet à la personne d’afficher le fichier uniquement.|
 |SharedLinkDisabled*|Un utilisateur désactive (définitivement) un lien qui a été créé pour partager un fichier.|
 |SharingInvitationAccepted *|Un utilisateur accepte une invitation à partager un fichier ou un dossier. Cet événement est enregistré lorsqu’un utilisateur partage un fichier avec d’autres utilisateurs.|
-|SharingRevoked*|Un utilisateur annule le partage d’un fichier ou d’un dossier précédemment partagé avec d’autres utilisateurs. Cet événement est enregistré lorsqu’un utilisateur arrête le partage d’un fichier avec d’autres utilisateurs.|
+|SharingRevoked*|L’utilisateur annule le partage d’un fichier ou d’un dossier qui a été précédemment partagé avec d’autres utilisateurs. Cet événement est enregistré lorsqu’un utilisateur arrête le partage d’un fichier avec d’autres utilisateurs.|
 |SharingSet|Un utilisateur partage un fichier ou un dossier situé dans SharePoint ou OneDrive Entreprise avec un autre utilisateur au sein de son organisation.|
 |SiteAdminChangeRequest*|Un utilisateur demande à être ajouté en tant qu’administrateur de collection de sites pour une collection de sites SharePoint. Les administrateurs de collection de sites disposent du niveau d’autorisation Contrôle total sur la collection de sites et tous les sous-sites.|
 |SiteCollectionAdminAdded*|Le propriétaire ou l’administrateur de collection de sites ajoute une personne en tant qu’administrateur de collection de sites pour un site SharePoint ou OneDrive Entreprise. Les administrateurs de collection de sites disposent du niveau d’autorisation Contrôle total sur la collection de sites et tous les sous-sites.|
@@ -1069,7 +1069,7 @@ Les événements Office 365 ATP (Protection avancée contre les menaces) et Thr
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|AttachmentData|Collection(Self.[AttachmentData](#AttachmentData))|Non|Données sur les pièces jointes dans le message électronique ayant déclenché l’événement.|
+|AttachmentData|Collection(Self.[AttachmentData](#attachmentdata))|Non|Données sur les pièces jointes dans le message électronique ayant déclenché l’événement.|
 |DetectionType|Edm.String|Oui|Le type de détection (par exemple, **En ligne** | détection au moment de la remise ; **Différée** | détection après remise ; **ZAP** | messages supprimés par [purge automatique heure Zero](https://support.office.com/fr-FR/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15)). Les événements avec le type de détection ZAP sont généralement précédés d’un message avec le type de détection **Différé**.|
 |DetectionMethod|Edm.String|Oui|Méthode ou technologie utilisée par ATP Office 365 pour la détection.|
 |InternetMessageId|Edm.String|Oui|ID de message Internet.|
@@ -1091,7 +1091,7 @@ Les événements Office 365 ATP (Protection avancée contre les menaces) et Thr
 |:-----|:-----|:-----|:-----|
 |FileName|Edm.String|Oui|Nom de fichier de la pièce jointe.|
 |FileType|Edm.String|Oui|Type de fichier de la pièce jointe.|
-|FileVerdict|Self.[FileVerdict](#FileVerdict)|Oui|Verdict de programme malveillant dans le fichier.|
+|FileVerdict|Self.[FileVerdict](#fileverdict)|Oui|Verdict de programme malveillant dans le fichier.|
 |MalwareFamily|Edm.String|Non|Famille de programme malveillant de fichier.|
 |SHA256|Edm.String|Oui|Hachage SHA256 du fichier.|
 
@@ -1113,8 +1113,7 @@ Les événements Office 365 ATP (Protection avancée contre les menaces) et Thr
 |:-----|:-----|:-----|:-----|
 |UserId|Edm.String|Oui|Identificateur (par exemple, une adresse électronique) de l’utilisateur qui a cliqué sur l’URL.|
 |AppName|Edm.String|Oui|Service Office 365 à partir duquel un utilisateur a cliqué sur l’URL (par exemple, Courrier Outlook).|
-|Blocked|Edm.Boolean|Oui|La valeur est « true » si le clic d’URL est bloqué par la protection de [liens fiables dans ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
-|ClickedThrough|Edm.Boolean|Oui|La valeur est True si l’utilisateur clique sur (remplace) le blocage d’URL dans les stratégies de l’organisation pour la protection liée aux [liens fiables dans ATP Office 36](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|URLClickAction|Self.[URLClickAction](#urlclickaction)|Oui|Cliquez sur action pour l’URL en fonction des stratégies de l’organisation pour [liens fiables Office 365 la fonctionnalité](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |SourceId|Edm.String|Oui|Identificateur du service Office 365 à partir duquel un utilisateur a cliqué sur l’URL (par exemple, pour la messagerie, il s’agit de l’ID de message réseau Exchange Online).|
 |TimeOfClick|Edm.Date|Oui|Date et heure à l’heure UTC (temps universel coordonné) au moment où l’utilisateur a cliqué sur l’URL.|
 |URL|Edm.String|Oui|URL sur laquelle l’utilisateur a cliqué.|
@@ -1138,8 +1137,8 @@ Les événements Office 365 ATP (Protection avancée contre les menaces) et Thr
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|FileData|Self.[FileData](#FileData)|Oui|Données sur le fichier ayant déclenché l’événement.|
-|SourceWorkload|Self.[SourceWorkload](#SourceWorkload)|Oui|Charge de travail ou service dans lequel le fichier a été trouvé (par exemple, SharePoint Online, OneDrive Entreprise ou Microsoft Teams)
+|FileData|Self.[FileData](#filedata)|Oui|Données sur le fichier ayant déclenché l’événement.|
+|SourceWorkload|Self.[SourceWorkload](#sourceworkload)|Oui|Charge de travail ou service dans lequel le fichier a été trouvé (par exemple, SharePoint Online, OneDrive Entreprise ou Microsoft Teams)
 |DetectionMethod|Edm.String|Oui|Méthode ou technologie utilisée par ATP Office 365 pour la détection.|
 |LastModifiedDate|Edm.Date|Oui|Date et heure à l’heure UTC (temps universel coordonné) e création ou de dernière modification du fichier.|
 |LastModifiedBy|Edm.String|Oui|Identificateur (par exemple, une adresse de messagerie) de l’utilisateur qui a créé ou modifié en dernier le fichier.|
@@ -1154,7 +1153,7 @@ Les événements Office 365 ATP (Protection avancée contre les menaces) et Thr
 |DocumentId|Edm.String|Oui|Identificateur unique pour le fichier dans SharePoint, OneDrive ou Microsoft Teams.|
 |FileName|Edm.String|Oui|Nom du fichier ayant déclenché l’événement.|
 |FilePath|Edm.String|Oui|Chemin (emplacement) pour le fichier dans SharePoint, OneDrive ou Microsoft Teams.|
-|FileVerdict||Self.[FileVerdict](#FileVerdict)|Oui|Verdict de programme malveillant dans le fichier.|
+|FileVerdict|Self.[FileVerdict](#fileverdict)|Oui|Verdict de programme malveillant dans le fichier.|
 |MalwareFamily|Edm.String|Non|Famille de programme malveillant de fichier.|
 |SHA256|Edm.String|Oui|Hachage SHA256 du fichier.|
 |FileSize|Edm.String|Oui|Taille du fichier, en octets.|
