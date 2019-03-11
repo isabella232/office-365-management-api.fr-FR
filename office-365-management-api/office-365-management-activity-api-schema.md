@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: de6a841339690c483ed58e38e0b691b00fadab4d
-ms.sourcegitcommit: b030dc1b7ca46280191dd2f54c8179795657d792
+ms.openlocfilehash: 41018718dd5890c5c628672828a2dd365a6bebe3
+ms.sourcegitcommit: c6a3d440a1ecc8f8f0b00b3fdd8e41127514a6f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "30409077"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "30458527"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -54,6 +54,8 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma de paramètres Microsoft Teams](#microsoft-teams-settings-schema)|Étend le schéma Microsoft Teams avec les propriétés spécifiques des événements de modification de paramètres de Microsoft Teams.|
 |[Schéma Office 365 Threat Intelligence et Protection avancée contre les menaces](#office-365-advanced-threat-protection-and-threat-intelligence-schema)|Étend le Schéma commun avec les propriétés spécifiques des données relatives à Office 365 Threat Intelligence et Protection avancée contre les menaces.|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
+|[Analyse du temps de travail](#workplace-analytics-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Analyse du temps de travail Microsoft.|
+|||
 
 ## <a name="common-schema"></a>Schéma commun
 
@@ -963,8 +965,6 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 
 ## <a name="data-center-security-base-schema"></a>Schéma de base de sécurité du centre de données
 
-
-
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |DataCenterSecurityEventType|Self.[DataCenterSecurityEventType ](#datacentersecurityeventtype)|Oui|Type d’événement de cmdlet dans la zone de verrouillage.|
@@ -1199,3 +1199,14 @@ Les événements Power BI répertoriés dans l’article relatif à la [Recherch
 | RecipientEmail    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | Adresse de messagerie du destinataire de l’invitation de partage. |
 | RecipientName    | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | Nom du destinataire de l’invitation de partage. |
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | L’autorisation accordée au destinataire. |
+
+## <a name="workplace-analytics-schema"></a>Schéma Analyse du temps de travail
+
+Les événements Analyse du temps de travail répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) utilisent ce schéma.
+
+| **Paramètres**     | **Type**            | **Obligatoire ?** | **Description**|
+|:------------------ | :------------------ | :--------------|:--------------|
+| WpaUserRole        | Edm.String | Non     | Rôle Analyse du temps de travail de l’utilisateur ayant exécuté l’action.                                                                                            |
+| ModifiedProperties | Collection (Common.ModifiedProperty) | Non | Cette propriété inclut le nom de la propriété modifiée, la nouvelle valeur de la propriété modifiée et la valeur précédente de la propriété modifiée.|
+| OperationDetails   | Collection (Common.NameValuePair)    | Non | Liste des propriétés étendues pour le paramètre ayant été modifié. Chaque propriété a un **nom** et une **valeur**.|
+||||
