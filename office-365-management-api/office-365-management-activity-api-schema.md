@@ -7,11 +7,11 @@ ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
 ms.openlocfilehash: 4604bd0aec3856b377a24d758a0961e8da1d9bf6
-ms.sourcegitcommit: 338c5c61687bc15ade48ecbae80d7f477640b68f
+ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "30575976"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "32223916"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
