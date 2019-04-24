@@ -7,11 +7,11 @@ ms.topic: reference (API)
 ms.date: 01/10/2018
 localization_priority: Priority
 ms.openlocfilehash: e6675628a384ab4b2dac3342875332b50586526f
-ms.sourcegitcommit: 95a3313d95b79a2164008d32c4a4f03bf873a23c
+ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "30379180"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "32223979"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
 

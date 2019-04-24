@@ -7,11 +7,11 @@ ms.topic: reference (API)
 ms.date: 09/05/2018
 localization_priority: Priority
 ms.openlocfilehash: ed84984dc3009d03e0bb7cacba16eafb687c93e0
-ms.sourcegitcommit: 358bfe9553eabbe837fda1d73cd1d1a83bcb427e
+ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "28014293"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "32223951"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 

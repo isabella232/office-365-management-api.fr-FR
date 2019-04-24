@@ -7,11 +7,11 @@ ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
 ms.openlocfilehash: 8954be1b9076eb2a6f640ee96cc2b612addcabc0
-ms.sourcegitcommit: c6a3d440a1ecc8f8f0b00b3fdd8e41127514a6f6
+ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "30458513"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "32223944"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>API Activité de gestion Office 365- Questions fréquemment posées
 
