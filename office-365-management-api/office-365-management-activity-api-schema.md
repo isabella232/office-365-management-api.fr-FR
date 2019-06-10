@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 567e17ca3dc701be6cb499f3bf36bcaba8912146
-ms.sourcegitcommit: 2a256e01834388711ba8c438a891c228877588a4
+ms.openlocfilehash: c42f22fa1c4d07c25ed15bad7225f35c298075ff
+ms.sourcegitcommit: efa2f49c46a4dc2a296d0ecc510a8153f51c535b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "34106165"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "34741219"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -1124,8 +1124,6 @@ Les événements Office 365 - Protection avancée contre les menaces (ATP) et
 
 |**Valeur**|**Nom du membre**|**Description**|
 |:-----|:-----|:-----|
-|0|Aucun|Aucun clic détecté.|
-|1|Autorisé|L’utilisateur est autorisé à accéder à l’URL (car l’URL considérés comme fiable par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links)).|
 |2|Blockpage|Utilisateur est bloqué et ne peut pas accéder à l’URL par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |3|PendingDetonationPage|La page de détonation en attente est affichée pour l’utilisateur par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |4|BlockPageOverride|L’utilisateur est bloqué et ne peut pas accéder à l’URL par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
