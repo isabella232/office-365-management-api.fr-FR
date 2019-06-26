@@ -6,12 +6,12 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 728cf632baa1f4a45b626677b1da862438562d90
-ms.sourcegitcommit: 490310e2718a7f9d827c945a78e940d936d15386
+ms.openlocfilehash: 1790baa6c941900a18488f338b02fc83a9b29a8b
+ms.sourcegitcommit: efd3dcdb3d190ca7b0f22a671867f0aede5d46c2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "34102310"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "35226964"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Référence de l’API Office 365 Service Communications (préversion)
 
@@ -144,7 +144,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 Renvoie l’état du service au cours des 24 heures précédentes.
 
 > [!NOTE] 
-> La réponse concernant le service contient l’état au cours des dernières 24 heures précédant l’envoi de la requête. La valeur StatusDate ou StatusTime renvoyée sera exactement 24 heures dans le passé. 
+> La réponse du service contient l’état et les éventuels incidents au cours des 24 heures précédentes. La valeur StatusDate ou StatusTime renvoyée sera exactement 24 heures dans le passé. 
 
 ||Service|Description|
 |:-----|:-----|:-----|
