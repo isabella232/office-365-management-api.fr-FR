@@ -6,12 +6,12 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 1790baa6c941900a18488f338b02fc83a9b29a8b
-ms.sourcegitcommit: efd3dcdb3d190ca7b0f22a671867f0aede5d46c2
+ms.openlocfilehash: 6b42efe72931875592c87e78aa9c9cdce11a339b
+ms.sourcegitcommit: f823233a1ab116bc83d7ca8cd8ad7c7ea59439fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "35226964"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "35688171"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Référence de l’API Office 365 Service Communications (préversion)
 
@@ -77,6 +77,7 @@ Voici les en-têtes de réponse renvoyés pour toutes les opérations de l’API
 |**Serveur**|Serveur utilisé pour générer la réponse (à des fins de débogage).|
 |**X-ASPNET-Version**|Version d’ASP.Net utilisée par le serveur ayant généré la réponse (à des fins de débogage).|
 |**X-Powered-By**|Technologies utilisées dans le serveur ayant généré la réponse (à des fins de débogage).|
+|||
 
 <br/>
 
@@ -92,6 +93,7 @@ Renvoie la liste des services abonnés.
 |**Path**| `/Services`||
 |**Query-option**|$select|Sélectionnez un sous-ensemble de propriétés.|
 |**Response**|Liste des entités « Service »|L’entité « Service » contient « Id » (chaîne), « DisplayName » (chaîne) et « FeatureNames » (liste de chaînes).|
+||||
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -135,7 +137,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
 ```
 
 
@@ -144,7 +145,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 Renvoie l’état du service au cours des 24 heures précédentes.
 
 > [!NOTE] 
-> La réponse du service contient l’état et les éventuels incidents au cours des 24 heures précédentes. La valeur StatusDate ou StatusTime renvoyée sera exactement 24 heures dans le passé. 
+> La réponse du service contient l’état et les éventuels incidents au cours des 24 heures précédentes. La valeur StatusDate ou StatusTime renvoyée correspondra exactement à celle en vigueur 24 heures plus tôt, sauf si un état plus récent est disponible. Si un service a reçu une mise à jour d’état au cours des dernières 24 heures, l’heure de la dernière mise à jour est renvoyée à la place.
 
 ||Service|Description|
 |:-----|:-----|:-----|
@@ -152,6 +153,7 @@ Renvoie l’état du service au cours des 24 heures précédentes.
 |**Filter**|Charge de travail|Filtrez par charge de travail (chaîne, valeur par défaut : all).|
 |**Query-option**|$select|Sélectionnez un sous-ensemble de propriétés.|
 |**Response**|Liste des entités « WorkloadStatus ».|L’entité « WorkloadStatus » contient « Id » (chaîne), « Workload » (chaîne), « StatusTime »(DateTimeOffset), « WorkloadDisplayName » (chaîne), « Status » (chaîne), « IncidentIds » (liste de chaînes) et FeatureGroupStatusCollection (liste des « FeatureStatus »).<br/><br/>L’entité « FeatureStatus » contient « Feature » (chaîne), « FeatureGroupDisplayName » (chaîne) et « FeatureStatus » (chaîne).|
+||||
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -262,9 +264,23 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
 ```
+#### <a name="status-definitions"></a>Définitions des états
 
+|**Status**|**Définition**|
+|:-----|:-----|
+|**Examen en cours** | Nous sommes conscients d’un problème potentiel et recueillons des informations sur ce problème et son impact. |
+|**ServiceDegradation** | Nous avons identifié un problème susceptible d'affecter l'utilisation d'un service ou d'une fonctionnalité. Cet état peut s'afficher si un service s'avère plus lent qu'habituellement, s'il présente des interruptions intermittentes ou si une fonctionnalité est défaillante, par exemple. |
+|**ServiceInterruption** | Cet état s'affiche si nous identifions un problème qui affecte la capacité des utilisateurs à accéder au service. Dans ce cas, le problème est significatif et peut se répéter. |
+|**RestoringService** | La cause du problème a été identifiée, nous connaissons l’action corrective à appliquer et le service est en cours de restauration. |
+|**ExtendedRecovery** | Cet état indique qu’une action corrective est en cours afin de restaurer le service pour la plupart des utilisateurs, mais qu’il faudra un certain temps pour qu’elle s’applique à tous les systèmes concernés. Cet état peut également s’afficher si nous proposons un correctif temporaire visant à réduire l’impact du problème en attendant un correctif définitif. |
+|**InvestigationSuspended** | Cet état s'affiche si l'examen détaillé d'un problème potentiel implique plus d'informations de la part des clients afin de nous permettre de mieux l'étudier. Dans ce cas, nous vous indiquerons les données ou journaux dont nous avons besoin. |
+|**ServiceRestored** | L'action corrective a permis de résoudre le problème sous-jacent et le service a été restauré. Pour en savoir plus, consultez les détails relatifs au problème. |
+|**PostIncidentReportPublished** | Nous avons publié un rapport post-incident concernant un problème spécifique. Le rapport comprend les informations relatives aux causes premières de l’incident et aux étapes à mettre en œuvre pour s’assurer qu’il ne se reproduise plus. |
+|||
+
+> [!NOTE] 
+> Pour plus d’informations sur l’intégrité du service Office 365, consultez la page [Vérifier l’intégrité du service Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health).
 
 ## <a name="get-historical-status"></a>Obtenir l’état de l’historique
 
@@ -277,6 +293,7 @@ Renvoie l’état historique du service, par jour, sur un intervalle de temps do
 ||StatusTime|Filtrez par jour supérieur à StatusTime (DateTimeOffset, valeur par défaut : ge CurrentTime - 7 jours).|
 |**Query-option**|$select|Sélectionnez un sous-ensemble de propriétés.|
 |**Response**|Liste des entités « WorkloadStatus ».|L’entité « WorkloadStatus » contient « Id » (chaîne), « Workload » (chaîne), « StatusTime »(DateTimeOffset), « WorkloadDisplayName » (chaîne), « Status » (chaîne), « IncidentIds » (liste de chaînes) et FeatureGroupStatusCollection (liste des « FeatureStatus »).<br/><br/>L’entité « FeatureStatus » contient « Feature » (chaîne), « FeatureGroupDisplayName » (chaîne) et « FeatureStatus » (chaîne).|
+||||
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -364,8 +381,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
-
 ```
 
 
@@ -385,6 +400,7 @@ Renvoie les messages sur le service sur un intervalle de temps donné. Utilisez 
 ||$top|Sélectionnez le nombre de résultats le plus élevé (valeur par défaut et max $top=100).|
 ||$skip|Ignorez le nombre de résultats (valeur par défaut : $skip = 0).|
 |**Response**|Liste des entités « Message ».|L’entité « Message » contient « Id » (chaîne), « StartTime » (DateTimeOffset), « EndTime » (DateTimeOffset), « Status » (chaîne), « Messages » (liste des entités « MessageHistory »), « LastUpdatedTime » (DateTimeOffset), « Workload » (chaîne), « WorkloadDisplayName » (chaîne), « Feature » (chaîne), « FeatureDisplayName » (chaîne), « MessageType » (Enum, valeur par défaut : all).<br/><br/>L’entité « MessageHistory » contient « PublishedTime » (DateTimeOffset) et « MessageText » (chaîne).|
+||||
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -451,7 +467,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
         }
     ]
 }
-
 ```
 
 
@@ -468,6 +483,5 @@ Lorsque le service rencontre une erreur, il signale le code de la réponse d’e
         "message": "Retry the request." 
     } 
 }
-
 ```
 
