@@ -6,18 +6,18 @@ ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 8954be1b9076eb2a6f640ee96cc2b612addcabc0
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 2abcdd71c75cab011fa8e711832b06d398e3a6ab
+ms.sourcegitcommit: 289cf45903a045630f4b3efba6f03494bf08ab4a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223944"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "35772113"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>API Activité de gestion Office 365- Questions fréquemment posées
 
 #### <a name="what-events-are-audited-for-a-specific-office-365-service"></a>Quels événements sont audités pour un service Office 365 spécifique ?
 
-La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, reportez-vous à [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md).
+La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, reportez-vous à [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md). Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/fr-FR/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
 
 #### <a name="how-do-i-onboard-to-the-management-activity-api"></a>Comment intégrer à l’API Activité de gestion ?
 
@@ -33,7 +33,7 @@ Vous pouvez utiliser l’API Activité de gestion d’Office 365. Par ailleurs,
 
 #### <a name="is-it-true-that-mailbox-auditing-in-exchange-online-can-only-be-enabled-by-using-powershell"></a>Est-il vrai que l’audit de boîte aux lettres dans Exchange Online peut uniquement être activé à l’aide de PowerShell ?
 
-Oui. Toutefois, nous étudions une solution pour activer l’audit de boîte aux lettres par défaut pour toutes les boîtes aux lettres dans une organisation Office 365. Pour plus d’informations, reportez-vous à la rubrique relative au message « L’audit de boîte aux lettres Exchange sera activé par défaut » dans le [blog sur la sécurité, confidentialité et conformité de Microsoft](https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Exchange-Mailbox-Auditing-will-be-enabled-by-default/ba-p/215171).
+C’était le cas, mais depuis janvier 2019, l’audit des boîtes aux lettres est activé par défaut pour toutes les organisations Office 365. Pour plus d’informations, voir [Gérer l’audit de boîte aux lettres](https://docs.microsoft.com/office365/securitycompliance/enable-mailbox-auditing).
 
 #### <a name="are-there-any-differences-in-the-records-that-are-fetched-by-the-management-activity-api-versus-the-records-that-are-returned-by-using-the-audit-log-search-tool-in-the-office-365-security--compliance-center"></a>Existe-t-il des différences entre les enregistrements récupérés par l’API Activité de gestion et les enregistrements renvoyés à l’aide de l’outil de recherche de journal d’audit dans le Centre de sécurité et conformité Office 365 ?
 
@@ -57,4 +57,4 @@ Non. L’audit doit être activé pour votre organisation afin que les enregistr
 
 #### <a name="why-are-targetupdatedproperties-no-longer-in-extendedproperties-in-the-audit-logs-for-azure-active-directory-activities"></a>Pourquoi les propriétés TargetUpdatedProperties n’apparaissent plus dans ExtendedProperties dans les journaux d’audit associés aux activités d’Azure Active Directory ?
 
-Les propriétés TargetUpdatedProperties figuraient dans ExtendedProperties. Toutefois, elles ont été supprimées de ExtendedProperties et apparaîtront désormais dans ModifiedProperties.
+Les propriétés TargetUpdatedProperties figuraient dans ExtendedProperties. Toutefois, elles ont été supprimées de ExtendedProperties et apparaissent désormais dans ModifiedProperties.
