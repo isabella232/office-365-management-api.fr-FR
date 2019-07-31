@@ -6,12 +6,12 @@ ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 2abcdd71c75cab011fa8e711832b06d398e3a6ab
-ms.sourcegitcommit: 289cf45903a045630f4b3efba6f03494bf08ab4a
+ms.openlocfilehash: 9083127d1fd3ecf82e5fe778ba1727d22d91017c
+ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "35772113"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "35924776"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>API Activité de gestion Office 365- Questions fréquemment posées
 
@@ -38,7 +38,11 @@ C’était le cas, mais depuis janvier 2019, l’audit des boîtes aux lettres 
 #### <a name="are-there-any-differences-in-the-records-that-are-fetched-by-the-management-activity-api-versus-the-records-that-are-returned-by-using-the-audit-log-search-tool-in-the-office-365-security--compliance-center"></a>Existe-t-il des différences entre les enregistrements récupérés par l’API Activité de gestion et les enregistrements renvoyés à l’aide de l’outil de recherche de journal d’audit dans le Centre de sécurité et conformité Office 365 ?
 
 Les données renvoyées par les deux méthodes sont identiques. Aucun filtre n’est utilisé. La seule différence est qu’avec l’API, vous pouvez obtenir en une fois les données des 7 derniers jours. Lors de la recherche du journal d’audit dans le Centre de sécurité et conformité (ou à l’aide de la cmdlet [Search-UnifiedAuditLog](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/search-unifiedauditlog) correspondante dans Exchange Online), vous pouvez obtenir les données des 90 derniers jours. 
- 
+
+#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activity-api"></a>Que se passe-t-il si je désactive l’audit pour mon organisation Office 365 ? Est-ce que je recevrai toujours des événements via l’API Activité de gestion ?
+
+Non. L’audit unifié d’Office 365 doit être activé pour votre organisation pour que les enregistrements puissent être collectés via l’API Activité de gestion. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+
 #### <a name="arent-webhook-notifications-more-immediate-after-all-arent-they-event-driven"></a>Les notifications webhook ne sont-elles pas plus immédiates ? Après tout, ne sont-elles pas fondées sur les événements ?
 
 Non. Les notifications webhook ne sont pas fondées sur les événements au sens où l’événement déclencherait la notification. Le contenu blob doit toujours être créé et la création du contenu blob déclenche l’envoi de la notification. Récemment, les temps d’attente des notifications ont été plus longs lors de l’utilisation d’un webhook par rapport à l’interrogation de l’API directement avec l’opération */content*. Par conséquent, l’API Activité de gestion ne doit pas être considérée comme un système d’alerte de sécurité en temps réel. Microsoft propose d’autres produits pour cela. En ce qui concerne la sécurité, les notifications d’événements de l’API Activité de gestion peuvent être utilisées de façon plus appropriée pour déterminer les modèles d’utilisation sur de longues périodes de temps.
@@ -50,10 +54,6 @@ Parfois, il existe des instances d’une panne temporaire ou d’autres problèm
 #### <a name="im-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>Je rencontre une erreur de limitation dans l’API Activité de gestion. Que dois-je faire ?
 
 Ouvrez un ticket avec le [support Microsoft](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online) et demandez un nouveau seuil de limitation et incluez une justification professionnelle pour augmenter le seuil. Nous évaluerons la demande et si nous l’acceptons, nous augmenterons le seuil de limitation.
-
-#### <a name="what-happens-if-i-disable-auditing-for-my-office-365-organization-will-i-still-get-events-via-the-management-activity-api"></a>Que se passe-t-il si je désactive l’audit pour mon organisation Office 365 ? Est-ce que je recevrai toujours des événements via l’API Activité de gestion ?
-
-Non. L’audit doit être activé pour votre organisation afin que les enregistrements puissent être collectés via l’API Activité de gestion.
 
 #### <a name="why-are-targetupdatedproperties-no-longer-in-extendedproperties-in-the-audit-logs-for-azure-active-directory-activities"></a>Pourquoi les propriétés TargetUpdatedProperties n’apparaissent plus dans ExtendedProperties dans les journaux d’audit associés aux activités d’Azure Active Directory ?
 

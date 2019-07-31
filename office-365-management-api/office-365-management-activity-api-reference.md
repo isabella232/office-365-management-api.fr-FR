@@ -4,14 +4,14 @@ title: Référence de l’API Activité de gestion Office 365
 description: Cet article explique comment utiliser l’API Activité de gestion Office 365 pour récupérer des informations sur les actions et les événements des utilisateurs, des administrateurs, du système et des stratégies à partir des journaux d’activité Office 365 et Azure AD.
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
-ms.date: 01/10/2018
+ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 727d4e0d58e11887c15188b62d7642be90c1ebc3
-ms.sourcegitcommit: efd3dcdb3d190ca7b0f22a671867f0aede5d46c2
+ms.openlocfilehash: b4aea4da9a63e298fa154a7d0cbb0da976c7fe88
+ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "35226978"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "35936217"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
 
@@ -21,8 +21,10 @@ Vous pouvez utiliser les actions et les événements à partir des journaux d’
 
 L’API Activité de gestion Office 365 est un service web REST qui vous permet de développer des solutions à l’aide de n’importe quel langage et environnement d’hébergement qui prend en charge les certificats X.509 et HTTPS. L’API s’appuie sur Azure AD et le protocole OAuth2 pour l’authentification et l’autorisation. Pour accéder à l’API depuis votre application, inscrivez-la d’abord dans Azure AD et configurez-la avec les autorisations appropriées. Ainsi, votre application pourra demander les jetons d’accès OAuth2 dont elle a besoin pour appeler l’API. Pour en savoir plus, consultez l’article relatif à la [prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md).
 
-> [!NOTE] 
-> Pour obtenir des informations sur le schéma de données renvoyé par l’API Activité de gestion Office 365 ainsi que sur les problèmes connus et les modifications à venir risquant d’affecter votre implémentation, consultez l’article relatif au [schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md).
+Pour obtenir des informations sur les données renvoyées par l’API Activité de gestion Office 365 ainsi que sur les problèmes connus et les modifications à venir risquant d’affecter votre implémentation, consultez l’article relatif au [schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md).
+
+> [!IMPORTANT]
+> Avant de pouvoir accéder aux données via l’API Activité de gestion Office 365, vous devez activer la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
 
 
 ## <a name="working-with-the-office-365-management-activity-api"></a>Utilisation de l’API Activité de gestion Office 365

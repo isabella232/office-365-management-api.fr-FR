@@ -6,12 +6,12 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 6b42efe72931875592c87e78aa9c9cdce11a339b
-ms.sourcegitcommit: f823233a1ab116bc83d7ca8cd8ad7c7ea59439fc
+ms.openlocfilehash: 986298b87e2583788dca9b11f288743ce5f96b60
+ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "35688171"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "35924811"
 ---
 # <a name="office-365-service-communications-api-reference-preview"></a>Référence de l’API Office 365 Service Communications (préversion)
 
@@ -46,7 +46,7 @@ Toutes les demandes API nécessitent un en-tête HTTP d’autorisation contenant
 Authorization: Bearer {OAuth2 token}
 ```
 
-**En-têtes de demande**
+### <a name="request-headers"></a>En-têtes de demande
 
 Voici les en-têtes de demande pris en charge pour toutes les opérations de l’API Office 365 Service Communications.
 
@@ -58,7 +58,7 @@ Voici les en-têtes de demande pris en charge pour toutes les opérations de l�
 
 <br/>
 
-**En-têtes de réponse**
+### <a name="response-headers"></a>En-têtes de réponse
 
 Voici les en-têtes de réponse renvoyés pour toutes les opérations de l’API Office 365 Service Communications :
 
@@ -95,7 +95,7 @@ Renvoie la liste des services abonnés.
 |**Response**|Liste des entités « Service »|L’entité « Service » contient « Id » (chaîne), « DisplayName » (chaîne) et « FeatureNames » (liste de chaînes).|
 ||||
 
-#### <a name="sample-request"></a>Exemple de demande
+### <a name="sample-request"></a>Exemple de demande
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/Services 
@@ -103,7 +103,7 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ```
 
-#### <a name="sample-response"></a>Exemple de réponse
+### <a name="sample-response"></a>Exemple de réponse
 
 ```json
 {
@@ -145,7 +145,9 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 Renvoie l’état du service au cours des 24 heures précédentes.
 
 > [!NOTE] 
-> La réponse du service contient l’état et les éventuels incidents au cours des 24 heures précédentes. La valeur StatusDate ou StatusTime renvoyée correspondra exactement à celle en vigueur 24 heures plus tôt, sauf si un état plus récent est disponible. Si un service a reçu une mise à jour d’état au cours des dernières 24 heures, l’heure de la dernière mise à jour est renvoyée à la place.
+> La réponse du service contient l’état et les éventuels incidents au cours des 24 heures précédentes. La valeur StatusDate ou StatusTime renvoyée sera exactement 24 heures dans le passé. Pour obtenir la dernière mise à jour d’un incident particulier, utilisez la fonctionnalité Obtenir les messages et lisez la valeur LastUpdatedTime de l’enregistrement de la réponse qui correspond à votre ID d’incident. <br/>
+
+<br/>
 
 ||Service|Description|
 |:-----|:-----|:-----|
@@ -155,14 +157,14 @@ Renvoie l’état du service au cours des 24 heures précédentes.
 |**Response**|Liste des entités « WorkloadStatus ».|L’entité « WorkloadStatus » contient « Id » (chaîne), « Workload » (chaîne), « StatusTime »(DateTimeOffset), « WorkloadDisplayName » (chaîne), « Status » (chaîne), « IncidentIds » (liste de chaînes) et FeatureGroupStatusCollection (liste des « FeatureStatus »).<br/><br/>L’entité « FeatureStatus » contient « Feature » (chaîne), « FeatureGroupDisplayName » (chaîne) et « FeatureStatus » (chaîne).|
 ||||
 
-#### <a name="sample-request"></a>Exemple de demande
+### <a name="sample-request"></a>Exemple de demande
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/CurrentStatus
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### <a name="sample-response"></a>Exemple de réponse
+### <a name="sample-response"></a>Exemple de réponse
 
 ```json
 {
@@ -265,22 +267,23 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     ]
 }
 ```
-#### <a name="status-definitions"></a>Définitions des états
 
-|**Status**|**Définition**|
-|:-----|:-----|
-|**Examen en cours** | Nous sommes conscients d’un problème potentiel et recueillons des informations sur ce problème et son impact. |
-|**ServiceDegradation** | Nous avons identifié un problème susceptible d'affecter l'utilisation d'un service ou d'une fonctionnalité. Cet état peut s'afficher si un service s'avère plus lent qu'habituellement, s'il présente des interruptions intermittentes ou si une fonctionnalité est défaillante, par exemple. |
-|**ServiceInterruption** | Cet état s'affiche si nous identifions un problème qui affecte la capacité des utilisateurs à accéder au service. Dans ce cas, le problème est significatif et peut se répéter. |
-|**RestoringService** | La cause du problème a été identifiée, nous connaissons l’action corrective à appliquer et le service est en cours de restauration. |
-|**ExtendedRecovery** | Cet état indique qu’une action corrective est en cours afin de restaurer le service pour la plupart des utilisateurs, mais qu’il faudra un certain temps pour qu’elle s’applique à tous les systèmes concernés. Cet état peut également s’afficher si nous proposons un correctif temporaire visant à réduire l’impact du problème en attendant un correctif définitif. |
-|**InvestigationSuspended** | Cet état s'affiche si l'examen détaillé d'un problème potentiel implique plus d'informations de la part des clients afin de nous permettre de mieux l'étudier. Dans ce cas, nous vous indiquerons les données ou journaux dont nous avons besoin. |
-|**ServiceRestored** | L'action corrective a permis de résoudre le problème sous-jacent et le service a été restauré. Pour en savoir plus, consultez les détails relatifs au problème. |
-|**PostIncidentReportPublished** | Nous avons publié un rapport post-incident concernant un problème spécifique. Le rapport comprend les informations relatives aux causes premières de l’incident et aux étapes à mettre en œuvre pour s’assurer qu’il ne se reproduise plus. |
-|||
+### <a name="status-definitions"></a>Définitions des états
 
-> [!NOTE] 
-> Pour plus d’informations sur l’intégrité du service Office 365, consultez la page [Vérifier l’intégrité du service Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health).
+Les définitions d’état englobent les valeurs suivantes : 
+
+- Investigating
+- ServiceDegradation
+- ServiceInterruption 
+- RestoringService
+- ExtendedRecovery
+- ServiceRestored
+- PostIncidentReportPublished 
+- VerifyingService
+- ServiceOperational
+
+Pour obtenir une liste et une description à jour de ces définitions d’état, voir [Vérifier l’état du service Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions).
+
 
 ## <a name="get-historical-status"></a>Obtenir l’état de l’historique
 
@@ -295,14 +298,14 @@ Renvoie l’état historique du service, par jour, sur un intervalle de temps do
 |**Response**|Liste des entités « WorkloadStatus ».|L’entité « WorkloadStatus » contient « Id » (chaîne), « Workload » (chaîne), « StatusTime »(DateTimeOffset), « WorkloadDisplayName » (chaîne), « Status » (chaîne), « IncidentIds » (liste de chaînes) et FeatureGroupStatusCollection (liste des « FeatureStatus »).<br/><br/>L’entité « FeatureStatus » contient « Feature » (chaîne), « FeatureGroupDisplayName » (chaîne) et « FeatureStatus » (chaîne).|
 ||||
 
-#### <a name="sample-request"></a>Exemple de demande
+### <a name="sample-request"></a>Exemple de demande
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/HistoricalStatus
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### <a name="sample-response"></a>Exemple de réponse
+### <a name="sample-response"></a>Exemple de réponse
 
 ```json
 {
@@ -383,7 +386,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 }
 ```
 
-
 ## <a name="get-messages"></a>Obtenir les messages
 
 Renvoie les messages sur le service sur un intervalle de temps donné. Utilisez le filtre de type pour filtrer les messages « Incident de service », « Maintenance planifiée » ou « Centre de messages ».
@@ -402,14 +404,14 @@ Renvoie les messages sur le service sur un intervalle de temps donné. Utilisez 
 |**Response**|Liste des entités « Message ».|L’entité « Message » contient « Id » (chaîne), « StartTime » (DateTimeOffset), « EndTime » (DateTimeOffset), « Status » (chaîne), « Messages » (liste des entités « MessageHistory »), « LastUpdatedTime » (DateTimeOffset), « Workload » (chaîne), « WorkloadDisplayName » (chaîne), « Feature » (chaîne), « FeatureDisplayName » (chaîne), « MessageType » (Enum, valeur par défaut : all).<br/><br/>L’entité « MessageHistory » contient « PublishedTime » (DateTimeOffset) et « MessageText » (chaîne).|
 ||||
 
-#### <a name="sample-request"></a>Exemple de demande
+### <a name="sample-request"></a>Exemple de demande
 
 ```json
 GET https://manage.office.com/api/v1.0/contoso.com/ServiceComms/Messages
 Authorization: Bearer {AAD_Bearer_JWT_Token}
 ```
 
-#### <a name="sample-response"></a>Exemple de réponse
+### <a name="sample-response"></a>Exemple de réponse
 
 ```json
 {
@@ -476,7 +478,6 @@ Lorsque le service rencontre une erreur, il signale le code de la réponse d’e
 
 
 ```json
-
 { 
     "error":{ 
         "code":"AF5000.  An internal server error occurred.",

@@ -6,12 +6,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: 09/05/2018
 localization_priority: Priority
-ms.openlocfilehash: ed84984dc3009d03e0bb7cacba16eafb687c93e0
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 35d90859056225a5ebcf547d88c05640699c5295
+ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223951"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "35924818"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -25,6 +25,10 @@ L’API Activité de gestion ne doit pas être confondue avec l’API Communicat
 Même si elle comporte relativement peu d’opérations et une interface REST simple, les utilisateurs ne savent pas toujours très bien comment utiliser l’API Activité de gestion et comment les données sont récupérées.  Tout d’abord, les personnes qui utilisent pour la première fois l’API Activité de gestion doivent savoir que les charges de travail ne peuvent être interrogées en fonction des spécificités d’un événement (par exemple la date à laquelle l’événement s’est produit, la collection de sites à partir de laquelle l’événement a été déclenché ou le type d’événement).  En effet, vous devez créer des abonnements à des charges de travail spécifiques (par exemple, SharePoint ou Azure AD), chaque abonnement correspondant à un seul locataire.
 
 Cet article présente les questions les plus fréquemment posées au Support Microsoft concernant cette API.  Nous allons vous proposer une sélection de scripts PowerShell simples pour vous aider à répondre aux questions les plus fréquemment posées par les clients ou à implémenter une solution personnalisée en montrant les principales opérations à réaliser.  Seules quelques opérations sont expliquées dans cet article. Vous pouvez toutes les retrouver dans la [référence de l’API Activité de gestion Office 365](office-365-management-activity-api-reference.md).
+
+## <a name="enabling-unified-audit-logging-in-office-365"></a>Activation de la journalisation d’audit unifié dans Office 365
+
+Si vous venez de configurer une application qui tente sans succès d’utiliser l’API d’activités de gestion, vérifiez que vous avez activé la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
 
 ## <a name="questions-about-third-party-tools-and-clients"></a>Questions sur les clients et les outils tiers
 
