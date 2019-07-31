@@ -4,14 +4,14 @@ title: Bienvenue dans les API de gestion d’Office 365
 description: Les API de gestion d’Office 365 fournissent une plateforme d’extensibilité unique pour toutes les tâches de gestion des clients et des partenaires d’Office 365, y compris les communications de service, la sécurité, la conformité, le compte-rendu et l’audit.
 ms.ContentId: a11a6d30-f6b7-3629-28b6-cbab527d8a5e
 ms.topic: reference (API)
-ms.date: 07/10/2018
+ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 0444b343a28f89a56a45f639d3f2374bb82a33d6
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: c809fd5d86dcd04c075eae27790991340c3460eb
+ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223930"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "35936216"
 ---
 # <a name="welcome-to-office-365-management-apis"></a>Bienvenue dans les API de gestion d’Office 365
 
@@ -29,4 +29,5 @@ Les API de gestion d’Office 365 fournissent une plateforme d’extensibilité 
 
 ## <a name="see-also"></a>Voir aussi
 
-- [API REST Office 365](https://docs.microsoft.com/fr-FR/previous-versions/office/office-365-api/how-to/platform-development-overview)
+- 
+  [API REST Office 365](https://docs.microsoft.com/fr-FR/previous-versions/office/office-365-api/how-to/platform-development-overview)
