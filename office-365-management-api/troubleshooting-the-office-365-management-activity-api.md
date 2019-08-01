@@ -4,14 +4,14 @@ title: Résolution des problèmes de l’API Activité de gestion Office 365
 description: Cet article présente les questions les plus fréquemment posées au Support Microsoft concernant cette API.
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
-ms.date: 09/05/2018
+ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 35d90859056225a5ebcf547d88c05640699c5295
-ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
+ms.openlocfilehash: f02088f557a10414539952c78542e09b2dc2d90b
+ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "35924818"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "35936228"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -26,15 +26,17 @@ Même si elle comporte relativement peu d’opérations et une interface REST s
 
 Cet article présente les questions les plus fréquemment posées au Support Microsoft concernant cette API.  Nous allons vous proposer une sélection de scripts PowerShell simples pour vous aider à répondre aux questions les plus fréquemment posées par les clients ou à implémenter une solution personnalisée en montrant les principales opérations à réaliser.  Seules quelques opérations sont expliquées dans cet article. Vous pouvez toutes les retrouver dans la [référence de l’API Activité de gestion Office 365](office-365-management-activity-api-reference.md).
 
-## <a name="enabling-unified-audit-logging-in-office-365"></a>Activation de la journalisation d’audit unifié dans Office 365
-
-Si vous venez de configurer une application qui tente sans succès d’utiliser l’API d’activités de gestion, vérifiez que vous avez activé la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
-
 ## <a name="questions-about-third-party-tools-and-clients"></a>Questions sur les clients et les outils tiers
 
 Les questions les plus courantes auxquelles nous répondons sont posées par des clients qui utilisent des produits tiers pour télécharger et agréger des données d’audit. Selon le produit tiers, les clients peuvent éprouver des difficultés pendant la configuration ou rencontrer une interruption ou une incohérence dans les données figurant dans ces produits. En premier lieu, ces clients doivent contacter l’équipe de support de leur fournisseur. Parmi toutes les demandes de service reçues par le support, un seul incident était dû à un problème lié au service du locataire.
 
 Néanmoins, certaines questions des clients peuvent être restées sans réponse. Peut-être que leur fournisseur a insisté sur le fait qu’il s’agit d’un problème lié au service, ou peut-être n’ont-ils pas voulu procéder à certaines vérifications avant de contacter leur fournisseur. 
+
+## <a name="enabling-unified-audit-logging-in-office-365"></a>Activation de la journalisation d’audit unifié dans Office 365
+
+Si vous venez de configurer une application qui tente sans succès d’utiliser l’API d’activités de gestion, vérifiez que vous avez activé la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+
+Si l’audit unifié n’est pas activé, un message d’erreur contenant la chaîne suivante s’affiche généralement : `Microsoft.Office.Compliance.Audit.DataServiceException: Tenant <tenantID> does not exist.`
 
 ## <a name="connecting-to-the-api"></a>Connexion à l’API
 
@@ -43,6 +45,7 @@ La plupart des applications se connectent à l’API à l’aide d’un simple f
 ### <a name="azure-application-permissions"></a>Autorisations de l’application Azure
 
 Les trois autorisations actuellement utilisées pour l’API Activité de gestion Office 365 sont les suivantes :
+
 1. Lire les données d’activité de votre organisation
 2. Lire les informations d’état du service de votre organisation
 3. Lire les événements de la politique Protection contre la perte de données (DLP), y compris les informations sensibles détectées 
