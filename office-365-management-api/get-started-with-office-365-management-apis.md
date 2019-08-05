@@ -4,14 +4,14 @@ title: Prise en main des API de gestion d’Office 365
 description: Les API utilisent Azure AD pour fournir des services d’authentification que vous pouvez utiliser pour octroyer des droits à votre application pour y accéder.
 ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
-ms.date: 09/05/2018
+ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9732b5a838bdf4c14a6a13af8196704c89dec63d
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 08f510302c1d19cf3e3e2385f1baab6133153f07
+ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32224030"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "35936235"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Prise en main des API de gestion d’Office 365
 
@@ -32,6 +32,8 @@ Le diagramme suivant illustre la séquence des demandes de consentement et de je
 
 ![Flux d’autorisation de mise en route des API de gestion](images/authorization-flow.png)
 
+> [!IMPORTANT]
+> Avant de pouvoir accéder aux données via l’API Activité de gestion Office 365, vous devez activer la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off). <br/><br/>L’activation de la journalisation d’audit unifié n’est pas requise si vous utilisez uniquement l’API de communications de service Office 365.
 
 ## <a name="register-your-application-in-azure-ad"></a>Inscrire votre application dans Azure AD
 
@@ -113,7 +115,7 @@ Les clés, également appelées clés secrètes client, sont utilisées lors de 
 
 Une application qui est en cours d’exécution en arrière-plan, comme un démon ou un service, peut utiliser les informations d’identification client pour demander des jetons d’accès d’application uniquement sans demander plusieurs fois le consentement à l’administrateur client une fois que le consentement initial a été donné. 
 
-Pour plus d’informations, consultez la rubrique relative aux [appels de service à service à l’aide des informations d’identification client](https://msdn.microsoft.com/fr-FR/library/azure/dn645543.aspx).
+Pour plus d’informations, consultez la rubrique relative aux [appels de service à service à l’aide des informations d’identification client](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx).
 
 Vous devez configurer un certificat X.509 avec votre application à utiliser comme informations d’identification client lorsque vous demandez des jetons d’accès d’application uniquement à Azure AD. Le processus se déroule en deux étapes :
 
@@ -249,7 +251,7 @@ Vous disposez de deux méthodes pour demander des jetons d’accès à Azure AD
 
 - Le [flux d’octroi de code d’autorisation](https://msdn.microsoft.com/en-us/library/azure/dn645542.aspx) implique qu’un administrateur client donne son consentement explicite, ce qui renvoie un code d’autorisation à votre application. Votre application échange ensuite le code d’autorisation contre un jeton d’accès. Cette méthode est nécessaire pour obtenir le consentement initial requis par votre application pour accéder aux données client à l’aide de l’API. Ce premier jeton d’accès est nécessaire pour obtenir et stocker l’ID client.
     
-- Le [flux d’octroi d’informations d’identification du client](https://msdn.microsoft.com/fr-FR/library/azure/dn645543.aspx) permet à votre application de demander d’autres jetons d’accès lorsque les anciens expirent, sans que l’administrateur client doive se connecter et donner explicitement son consentement. Cette méthode doit être utilisée pour les applications qui s’exécutent en continu en arrière-plan appelant les API une fois que le consentement initial de l’administrateur client a été donné.
+- Le [flux d’octroi d’informations d’identification du client](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx) permet à votre application de demander d’autres jetons d’accès lorsque les anciens expirent, sans que l’administrateur client doive se connecter et donner explicitement son consentement. Cette méthode doit être utilisée pour les applications qui s’exécutent en continu en arrière-plan appelant les API une fois que le consentement initial de l’administrateur client a été donné.
     
 
 ### <a name="request-an-access-token-using-the-authorization-code"></a>Demander un jeton d’accès à l’aide du code d’autorisation
