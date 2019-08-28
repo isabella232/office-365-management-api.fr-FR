@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 49ffb697575a63bce7a7eee8e539a30c733772a5
-ms.sourcegitcommit: c4674653f99c77b64115f8547f9e410dea3408f9
+ms.openlocfilehash: 175d18dad57bff0939250cd4ae27c02129d7c0ed
+ms.sourcegitcommit: b9439635542de9db8f9fb8e056b8359d4653aa21
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "35613584"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "36643042"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -1094,6 +1094,9 @@ Les événements Office 365 - Protection avancée contre les menaces (ATP) et
 |NetworkMessageId|Edm.String|Oui|ID de message réseau Exchange Online.|
 |P1Sender|Edm.String|Oui|Chemin de retour de l’expéditeur du message électronique.|
 |P2Sender|Edm.String|Oui|Expéditeur du message électronique.|
+|Stratégie|Self.[Policy](#policy-type-and-action-type)|Oui|Type de stratégie de filtrage (par exemple, **anti-courrier indésirable** ou **anti-hameçonnage**) et type d'action associé (par exemple,** courrier indésirable à niveau de confiance élevé**, **courrier indésirable** ouhameçonnage) pertinents pour le message électronique.|
+|Stratégie|Self.[PolicyAction](#policy-action)|Oui|L’action configurée dans la stratégie de filtrage (par exemple, **Déplacer vers le dossier courrier indésirable** ou **Mise en quarantaine**) pertinente pour le message électronique.|
+|P2Sender|Edm.String|Oui|L’expéditeur **De :** du message électronique.|
 |Recipients|Collection(Edm.String)|Oui|Tableau des destinataires du message électronique.|
 |SenderIp|Edm.String|Oui|Adresse IP ayant envoyé le message électronique d’Office 365. L’adresse IP apparaît au format IPv4 ou IPv6.|
 |Subject|Edm.String|Oui|Ligne d’objet du message.|
@@ -1127,6 +1130,37 @@ Les événements Office 365 - Protection avancée contre les menaces (ATP) et
 |-2|Timeout|Expiration de l’analyse.|
 |-3|Pending|Analyse non terminée.|
 |||||
+
+### <a name="enum-policy---type-edmint32"></a>Énumération : Stratégie – Type : Edm.Int32
+
+#### <a name="policy-type-and-action-type"></a>Type de stratégie et type d’action
+
+|**Valeur**|**Nom du membre**|**Description**|
+|:-----|:-----|:-----|
+|1|Anti-courrier indésirable, HSPM|Action contre le courrier indésirable à niveau de confiance élevé (HSPM) dans la stratégie anti-courrier indésirable.|
+|2|Anti-courrier indésirable, SPM|Action contre le courrier indésirable (SPM) dans la stratégie anti-courrier indésirable.|
+|3|Anti-courrier indésirable, Bloc|Action en bloc dans la stratégie anti-courrier indésirable.|
+|4|Anti-courrier indésirable, PHSH|Action contre l’hameçonnage dans la stratégie anti-courrier indésirable.|
+|5|Anti-hameçonnage, DIMP|Action contre l’emprunt d’identité de domaine (DIMP) dans la stratégie anti-hameçonnage.|
+|6|Anti-hameçonnage, UIMP|Action contre l’emprunt d’identité de l’utilisateur (UIMP) dans la stratégie anti-hameçonnage.|
+|7|Anti-hameçonnage, SPOOF|Action contre l’usurpation dans la stratégie anti-hameçonnage.|
+
+
+### <a name="enum-policyaction---type-edmint32"></a>Énumération : PolicyAction – Type : Edm.Int32
+
+#### <a name="policy-action"></a>Action de stratégie
+
+|**Valeur**|**Nom du membre**|**Description**|
+|:-----|:-----|:-----|
+|0|MoveToJMF|L’action de stratégie consiste à déplacer vers le dossier courrier indésirable.|
+|1|AddXHeader|L’action de stratégie consiste à ajouter un en-tête X au message électronique.|
+|2|ModifySubject|L’action de stratégie consiste à modifier l’objet du message électronique avec les informations spécifiées par la stratégie de filtrage.|
+|3|Rediriger|L’action de stratégie consiste à rediriger le courrier électronique vers une adresse de messagerie spécifique de la stratégie de filtrage.|
+|4|Supprimer|L’action de stratégie consiste à supprimer (abandonner) le message électronique.|
+|5|Quarantaine|L’action de stratégie consiste à mettre en quarantaine le message électronique.|
+|6|NoAction| La stratégie est configurée de manière à ne prendre aucune mesure sur le message électronique.|
+|7|BccMessage|L’action de stratégie consiste à mettre le message électronique en copie carbone invisible à l'adresse électronique spécifiée par la politique de filtrage.|
+
 
 ### <a name="url-time-of-click-events"></a>Événements d’heure de clic d’URL
 
