@@ -1,34 +1,31 @@
 ---
-ms.TocTitle: Office 365 Service Communications API reference (Preview)
-title: Référence de l’API Office 365 Service Communications (préversion)
+ms.TocTitle: Office 365 Service Communications API reference
+title: Référence de l’API Office 365 Service Communications
 description: 'Utilisez cette API pour accéder aux données suivantes : Obtenir les services, Obtenir l’état actuel, Obtenir l’état de l’historique et Obtenir les messages.'
 ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 986298b87e2583788dca9b11f288743ce5f96b60
-ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
+ms.openlocfilehash: 427c741f623f46962c3cd6818adbb64bfc0f1e7a
+ms.sourcegitcommit: 0e6d71ad2375e5d1fc72d6893724511c08840c27
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "35924811"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "37131423"
 ---
-# <a name="office-365-service-communications-api-reference-preview"></a>Référence de l’API Office 365 Service Communications (préversion)
-
-> [!NOTE] 
-> Cette documentation décrit les fonctionnalités qui sont actuellement en préversion.
+# <a name="office-365-service-communications-api-reference"></a>Référence de l’API Office 365 Service Communications
 
 Vous pouvez utiliser l’API V2 Office 365 Service Communications pour accéder aux données suivantes :
 
 - **Obtenir les services** : obtenez la liste des services abonnés.
     
-- **Obtenir l’état actuel** : obtenez une vue en temps réel des incidents de service des événements de maintenance en cours.
+- **Obtenir l’état actuel** : obtenez une vue en temps réel des incidents de service des événements en cours.
     
-- **Obtenir l’état de l’historique**: obtenez une vue historique de l’état du service, y compris les incidents de service et les événements de maintenance.
+- **Obtenir l’état de l’historique** : obtenez une vue historique des incidents de service.
     
-- **Obtenir les messages** : communications Rechercher un incident, Maintenance planifiée et Centre de messages.
+- **Obtenir les messages** : communications Rechercher un incident et Centre de messages.
     
-Pour l’instant, l’API Office 365 Service Communications contient des données pour les services suivants : Dynamics CRM, Dynamics Marketing, Exchange Online, Exchange Online Protection, Service d’identité, Gestion des périphériques mobiles, Centre d’administration des partenaires Office 365, OneDrive Entreprise, Parature, OneDrive Entreprise, Power BI pour Office 365, Service Gestion des droits, SharePoint Online, Administration de SHD, Skype Entreprise, Social Engagement, et Yammer Entreprise.
+Actuellement, l’API Office 365 Service Communications contient des données pour Office 365, Yammer, Dynamics CRM et les services Cloud de Microsoft Intune.
 
 ## <a name="the-fundamentals"></a>Les principes de base
 

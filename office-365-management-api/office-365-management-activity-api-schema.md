@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 2e2ca6440a0f1ba10eb3d63e889a85efdaa334a0
-ms.sourcegitcommit: 78b79bd215433512fad7437220c7d5ebc1987862
+ms.openlocfilehash: bd37eb32c07e5b8c1feafad39c765d81342b5150
+ms.sourcegitcommit: 0e6d71ad2375e5d1fc72d6893724511c08840c27
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "36766851"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "37131437"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -708,7 +708,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|Non|GUID représentant l’application qui demande la connexion. Le nom d’affichage peut être recherché via l’API Graph Azure Active Directory.|
 |Client|Edm.String|Non|Informations sur le périphérique client, fournies par le navigateur exécutant la connexion.|
-|LogonError|Edm.String|Non|En cas d’échec de connexion, la raison de l’échec est indiquée dans ce paramètre.|
+|LogonError|Edm.String|Non|En cas d’échec de connexion, la raison de l’échec est indiquée dans ce paramètre. Pour obtenir une description complète des erreurs LogonError, voir la liste des [codes d’erreur d’authentification et d’autorisation](https://docs.microsoft.com/fr-FR/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes).
 |||||
 
 ## <a name="dlp-schema"></a>Schéma DLP
