@@ -17,7 +17,7 @@ ms.locfileid: "35924776"
 
 #### <a name="what-events-are-audited-for-a-specific-office-365-service"></a>Quels événements sont audités pour un service Office 365 spécifique ?
 
-La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, reportez-vous à [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md). Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/fr-FR/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
+La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, reportez-vous à [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md). Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/en-us/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
 
 #### <a name="how-do-i-onboard-to-the-management-activity-api"></a>Comment intégrer à l’API Activité de gestion ?
 
