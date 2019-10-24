@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f03ce58c1d953b1db66bc5327c8dc4156b02efe4
-ms.sourcegitcommit: d7c91b326681544518edecb94d71f4ce68cd4ff3
+ms.openlocfilehash: 85e9a62a029a905204d0091d3f0d58824d3c1d9a
+ms.sourcegitcommit: 0db48c00c956935a4a52aa2c2686f160a3efc8f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "37437682"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "37636283"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -72,7 +72,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |ResultStatus|Edm.String|Non|Indique si l’action (indiquée dans la propriété Operation) a réussi ou non. Valeurs possibles : **Succeeded**, **PartiallySucceded** ou **Failed**. Pour une activité d’administration Exchange, la valeur peut être **True** ou **False**.<br/><br/>**Important** : plusieurs charges de travail peuvent remplacer la valeur de la propriété ResultStatus. Par exemple, pour les événements d’ouverture de session STS d’Azure Active Directory, la valeur **Succedded** pour ResultStatus indique uniquement que l’opération HTTP a réussi. Cela ne signifie pas que la connexion a réussi. Pour déterminer si l’ouverture de session elle-même a réussi ou non, examinez la propriété LogonError dans le [schéma de connexion STS Azure Active Directory](#azure-active-directory-secure-token-service-sts-logon-schema). Si la connexion a échoué, la valeur de cette propriété indique la raison de l’échec de la tentative de connexion. |
 |ObjectId|Edm.string|Non|Pour l’activité SharePoint et OneDrive Entreprise, il s’agit du nom du chemin d’accès complet au fichier ou au dossier consulté par l’utilisateur. Pour la journalisation d’audit d’administration Exchange, il s’agit du nom de l’objet modifié par la cmdlet.|
 |UserId|Edm.string|Oui|L’UPN (nom d’utilisateur principal) de l’utilisateur ayant effectué l’action (indiquée dans la propriété Operation) qui a entraîné la journalisation de l’enregistrement. Par exemple, `my_name@my_domain_name`. L’enregistrement d’une activité exécutée par un compte système (comme SHAREPOINT\system ou NT AUTHORITY\SYSTEM) est également inclus.|
-|ClientIP|Edm.String|Oui|Adresse IP du périphérique utilisé lors de la journalisation de l’activité. L’adresse IP apparaît au format d’adresse IPv4 ou IPv6.<br/><br/>Notez que l’activité d’administration pour les événements relatifs à Azure Active Directory, l’adresse IP n’est pas enregistrée et la valeur de la propriété ClientIP est `null`.|
+|ClientIP|Edm.String|Oui|Adresse IP du périphérique utilisé lors de la journalisation de l’activité. L’adresse IP apparaît au format d’adresse IPv4 ou IPv6.<br/><br/>Pour certains services, la valeur affichée dans cette propriété peut être l'adresse IP d'une application sécurisée (par exemple, Office sur les applications Web) qui appelle le service au nom d'un utilisateur et non l'adresse IP de l'appareil utilisé par la personne ayant effectué l'activité. <br/><br/>Aussi, pour les événements relatifs à Azure Active Directory, l’adresse IP n’est pas enregistrée et la valeur de la propriété ClientIP est `null`.|
 |Portée|Self.[AuditLogScope](#auditlogscope)|Non|Cet événement a-t-il été créé par un service Office 365 hébergé ou un serveur local ? Valeurs possibles : **online** et **onprem**. SharePoint est la seule charge de travail qui envoie actuellement des événements d’un serveur local à Office 365.|
 |||||
 
