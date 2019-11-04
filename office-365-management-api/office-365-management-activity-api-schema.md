@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 85e9a62a029a905204d0091d3f0d58824d3c1d9a
-ms.sourcegitcommit: 0db48c00c956935a4a52aa2c2686f160a3efc8f3
+ms.openlocfilehash: ee002772f5d35fefb758d32b6cb015993add0319
+ms.sourcegitcommit: d0bf43ff238f4647dd049672f68b4e1171083203
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "37636283"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "37774889"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -1146,6 +1146,13 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |5|Anti-hameçonnage, DIMP|Action contre l’emprunt d’identité de domaine (DIMP) dans la stratégie anti-hameçonnage.|
 |6|Anti-hameçonnage, UIMP|Action contre l’emprunt d’identité de l’utilisateur (UIMP) dans la stratégie anti-hameçonnage.|
 |7|Anti-hameçonnage, SPOOF|Action contre l’usurpation dans la stratégie anti-hameçonnage.|
+|8|Anti-hameçonnage, GIMP|Action de veille des boîtes aux lettres dans la stratégie anti-hameçonnage.|
+|9|Anti-programme malveillant, AMP| Action de stratégie de anti-programme malveillant dans la stratégie anti-programme malveillant.|
+|10|Pièce jointe fiable, SAP| Action de stratégie dans la stratégie de pièces jointes fiables ATP Office 365.|
+|11|Règle de transport Exchange, ETR| Action de stratégie dans la règle de transport Exchange.|
+|12|Anti-programme malveillant, ZAPM| Action de stratégie anti-programme malveillant dans la stratégie anti-programme malveillant appliquée à la purge automatique zéro heure (ZAP).|
+|13|Anti-hameçonnage, PAZH| Action de stratégie anti-hameçonnage dans la stratégie anti-hameçonnage appliquée à la PAZH.|
+|14|Anti-hameçonnage, PAZH| Action de stratégie anti-courrier indésirable dans la stratégie anti-courrier indésirable appliquée à la PAZH.|
 
 
 ### <a name="enum-policyaction---type-edmint32"></a>Énumération : PolicyAction – Type : Edm.Int32
