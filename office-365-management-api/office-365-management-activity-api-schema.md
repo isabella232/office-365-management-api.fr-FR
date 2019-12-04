@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c97325687967b85b589f4e7b94196ed1a406ef5d
-ms.sourcegitcommit: 3ff573d31612ca08819a37bfc98d43926a4a60e2
+ms.openlocfilehash: 1762bed1a970215b3fc8c45f3ef807caaf93ace8
+ms.sourcegitcommit: e45b168705f36e12ceae02c77244d17d5ce01310
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "39631990"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "39665463"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -51,6 +51,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma de cmdlet de sécurité du centre de données](#data-center-security-cmdlet-schema)|Étend le schéma de base de sécurité du centre de données avec les propriétés spécifiques de toutes les données d’audit de cmdlet de sécurité du centre de données.|
 |[Schéma Microsoft Teams](#microsoft-teams-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Teams.|
 |[Schéma Office 365 - Protection avancée contre les menaces et Threat Investigation and Response](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Étend le schéma commun avec les propriétés spécifiques des données relatives à Office 365 - Protection avancée contre les menaces et Threat Investigation and Response.|
+|[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365.|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
 |[Analyse du temps de travail](#workplace-analytics-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Analyse du temps de travail Microsoft.|
 |[Schéma Microsoft Forms](#microsoft-forms-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Forms.|
@@ -117,6 +118,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |47|ThreatIntelligenceAtpContent|Événements d’hameçonnage et programmes malveillants pour les fichiers dans SharePoint, OneDrive Entreprise et Microsoft Teams dans Office 365 Advanced Threat Protection .|
 |54|SharePointListItemOperation|Événements de liste SharePoint.|
 |55|SharePointContentTypeOperation|Événements de type de contenu de liste SharePoint.|
+|64|AirInvestigation|Événements de réponse aux incidents automatisée (AIR).|
 |66|MicrosoftForms|Événements Microsoft Forms.|
 ||||
 
@@ -1238,9 +1240,9 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |2|Microsoft Teams|
 |||||
 
-### <a name="automated-investigation-and-response-events"></a>Événements d’investigation et de réponse automatisés
+## <a name="automated-investigation-and-response-events-in-office-365"></a>Événements d’investigation et de réponse automatisés dans Office 365
 
-Les événements [Office 365 Automated investigation and Response (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) sont disponibles pour les clients Office 365 disposant d’un abonnement incluant Office 365 – Protection avancée contre les menaces (plan 2) ou Office 365 E5. Les événements d’investigation sont enregistrés sur la base d’un changement d’état d’investigation. Par exemple, lorsqu’un administrateur effectue une action qui fait passer l’état d’une investigation d’Actions en attente à Terminé, un événement est consigné. 
+Les événements [d’investigation et de réponse automatisés (AIR) d’Office 365](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) sont disponibles pour les clients Office 365 disposant d’un abonnement incluant Office 365 – Protection avancée contre les menaces (plan 2) ou Office 365 E5. Les événements d’investigation sont enregistrés sur la base d’un changement d’état d’investigation. Par exemple, lorsqu’un administrateur effectue une action qui fait passer l’état d’une investigation d’Actions en attente à Terminé, un événement est consigné. 
 
 Pour l’instant, seules les investigations automatiques sont enregistrées. (Les événements pour les investigations générées manuellement seront disponibles prochainement). Les valeurs de statut suivantes sont consignées :
 
@@ -1255,7 +1257,7 @@ Pour l’instant, seules les investigations automatiques sont enregistrées. (Le
 - Interrompu par l’utilisateur
 - En cours d’exécution
 
-#### <a name="main-investigation-schema"></a>Schéma d’investigation principal 
+### <a name="main-investigation-schema"></a>Schéma d’investigation principal 
 
 |Nom   |Type   |Description  |
 |----|----|----|
@@ -1270,7 +1272,7 @@ Pour l’instant, seules les investigations automatiques sont enregistrées. (Le
 |Données   |Edm.String |Chaîne de données qui contient des détails supplémentaires sur les entités d’investigation, ainsi que des informations sur les alertes relatives à l’investigation. Les entités sont disponibles dans un nœud séparé dans l’objet BLOB. |
 ||||
 
-#### <a name="actions"></a>Actions
+### <a name="actions"></a>Actions
 
 |Champ  |Type   |Description |
 |----|----|----|
@@ -1289,9 +1291,9 @@ Pour l’instant, seules les investigations automatiques sont enregistrées. (Le
 |Identifiants d’alerte associée  |Edm.String |Alerte liée à une investigation |
 ||||
 
-#### <a name="entities"></a>Entités
+### <a name="entities"></a>Entités
 
-##### <a name="mailmessage-email"></a>MailMessage (e-mail) 
+#### <a name="mailmessage-email"></a>MailMessage (e-mail) 
 
 |Champ  |Type   |Description  |
 |----|----|----|
