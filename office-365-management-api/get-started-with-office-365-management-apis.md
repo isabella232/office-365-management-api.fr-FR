@@ -6,12 +6,12 @@ ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 08f510302c1d19cf3e3e2385f1baab6133153f07
-ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
+ms.openlocfilehash: f444aa9411e0520be42ce68b2f618efe5228ac75
+ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "35936235"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "41263239"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Prise en main des API de gestion d’Office 365
 
@@ -42,7 +42,7 @@ Les API de gestion d’Office 365 utilisent Azure AD pour fournir une authenti
 
 ### <a name="prerequisites"></a>Conditions préalables
 
-Pour inscrire votre application dans Azure AD, vous devez avoir un abonnement à Office 365 et un abonnement à Azure qui a été associé à votre abonnement Office 365. Vous pouvez utiliser des abonnements à la version d’évaluation d’Office 365 et Azure pour commencer. Pour plus d’informations, consultez [Bienvenue dans le programme pour les développeurs Office 365](https://docs.microsoft.com/fr-FR/office/developer-program/office-365-developer-program).
+Pour inscrire votre application dans Azure AD, vous devez avoir un abonnement à Office 365 et un abonnement à Azure qui a été associé à votre abonnement Office 365. Vous pouvez utiliser des abonnements à la version d’évaluation d’Office 365 et Azure pour commencer. Pour plus d’informations, consultez [Bienvenue dans le programme pour les développeurs Office 365](https://docs.microsoft.com/office/developer-program/office-365-developer-program).
 
 
 ### <a name="use-the-azure-management-portal-to-register-your-application-in-azure-ad"></a>Inscrire votre application dans Azure AD à l’aide du portail de gestion Azure
@@ -80,7 +80,7 @@ Une fois que vous disposez d’un client Microsoft avec les abonnements appropri
 
 Maintenant que votre application est inscrite, vous devez spécifier plusieurs propriétés importantes qui déterminent comment fonctionne votre application dans Azure AD et comment les administrateurs clients donnent leur consentement pour permettre à votre application d’accéder à leurs données à l’aide des API de gestion d’Office 365.
 
-Pour plus d’informations sur la configuration de l’application Azure AD en général, reportez-vous à [Objets application et principal du service dans Azure Active Directory](https://docs.microsoft.com/fr-FR/azure/active-directory/develop/active-directory-application-objects).
+Pour plus d’informations sur la configuration de l’application Azure AD en général, reportez-vous à [Objets application et principal du service dans Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects).
 
 
 1. **ID CLIENT**. Cette valeur est générée automatiquement par Azure AD. Votre application utilisera cette valeur lors de la demande de consentement aux administrateurs clients et de la demande de jetons d’application uniquement à Azure AD.
@@ -115,7 +115,7 @@ Les clés, également appelées clés secrètes client, sont utilisées lors de 
 
 Une application qui est en cours d’exécution en arrière-plan, comme un démon ou un service, peut utiliser les informations d’identification client pour demander des jetons d’accès d’application uniquement sans demander plusieurs fois le consentement à l’administrateur client une fois que le consentement initial a été donné. 
 
-Pour plus d’informations, consultez la rubrique relative aux [appels de service à service à l’aide des informations d’identification client](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx).
+Pour plus d’informations, consultez la rubrique relative aux [appels de service à service à l’aide des informations d’identification client](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
 Vous devez configurer un certificat X.509 avec votre application à utiliser comme informations d’identification client lorsque vous demandez des jetons d’accès d’application uniquement à Azure AD. Le processus se déroule en deux étapes :
 
@@ -249,9 +249,9 @@ Votre application utilise ce code d’autorisation pour obtenir un jeton d’acc
 
 Vous disposez de deux méthodes pour demander des jetons d’accès à Azure AD :
 
-- Le [flux d’octroi de code d’autorisation](https://msdn.microsoft.com/en-us/library/azure/dn645542.aspx) implique qu’un administrateur client donne son consentement explicite, ce qui renvoie un code d’autorisation à votre application. Votre application échange ensuite le code d’autorisation contre un jeton d’accès. Cette méthode est nécessaire pour obtenir le consentement initial requis par votre application pour accéder aux données client à l’aide de l’API. Ce premier jeton d’accès est nécessaire pour obtenir et stocker l’ID client.
+- Le [flux d’octroi de code d’autorisation](https://msdn.microsoft.com/library/azure/dn645542.aspx) implique qu’un administrateur client donne son consentement explicite, ce qui renvoie un code d’autorisation à votre application. Votre application échange ensuite le code d’autorisation contre un jeton d’accès. Cette méthode est nécessaire pour obtenir le consentement initial requis par votre application pour accéder aux données client à l’aide de l’API. Ce premier jeton d’accès est nécessaire pour obtenir et stocker l’ID client.
     
-- Le [flux d’octroi d’informations d’identification du client](https://msdn.microsoft.com/en-us/library/azure/dn645543.aspx) permet à votre application de demander d’autres jetons d’accès lorsque les anciens expirent, sans que l’administrateur client doive se connecter et donner explicitement son consentement. Cette méthode doit être utilisée pour les applications qui s’exécutent en continu en arrière-plan appelant les API une fois que le consentement initial de l’administrateur client a été donné.
+- Le [flux d’octroi d’informations d’identification du client](https://msdn.microsoft.com/library/azure/dn645543.aspx) permet à votre application de demander d’autres jetons d’accès lorsque les anciens expirent, sans que l’administrateur client doive se connecter et donner explicitement son consentement. Cette méthode doit être utilisée pour les applications qui s’exécutent en continu en arrière-plan appelant les API une fois que le consentement initial de l’administrateur client a été donné.
     
 
 ### <a name="request-an-access-token-using-the-authorization-code"></a>Demander un jeton d’accès à l’aide du code d’autorisation
@@ -335,7 +335,7 @@ Le jeton d’accès renvoyé est un jeton JWT qui inclut des informations sur l�
 
 Une fois que l’ID client est connu, votre application peut effectuer des appels de service à service à Azure AD pour demander d’autres jetons d’accès lorsqu’ils expirent. Ces jetons incluent des informations sur l’application qui demande l’accès uniquement et non sur l’administrateur qui a donné son consentement à l’origine. Les appels de service à service exigent que votre application utilise un certificat X.509 pour créer une assertion client sous la forme d’un jeton de porteur JWT signé SHA256 et codé en base 64.
 
-Lorsque vous développez votre application dans .NET, vous pouvez utiliser la [bibliothèque d’authentification Azure AD (ADAL)](https://docs.microsoft.com/fr-FR/azure/active-directory/develop/active-directory-authentication-libraries) pour créer des assertions client. Les autres plateformes de développement doivent avoir des bibliothèques similaires.
+Lorsque vous développez votre application dans .NET, vous pouvez utiliser la [bibliothèque d’authentification Azure AD (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) pour créer des assertions client. Les autres plateformes de développement doivent avoir des bibliothèques similaires.
 
 Un jeton JWT non codé se compose d’un en-tête et d’une charge utile ayant les propriétés suivantes.
 

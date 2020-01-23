@@ -6,12 +6,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f02088f557a10414539952c78542e09b2dc2d90b
-ms.sourcegitcommit: 37737b849f1b2d0484e626002978b1d4ece2c742
+ms.openlocfilehash: b751c89194407e57c8654a9317b8070ab2918b03
+ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "35936228"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "41263288"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -40,7 +40,7 @@ Si l’audit unifié n’est pas activé, un message d’erreur contenant la cha
 
 ## <a name="connecting-to-the-api"></a>Connexion à l’API
 
-La plupart des applications se connectent à l’API à l’aide d’un simple flux OAuth2 d’informations d’identification du client. Par conséquent, la première étape consiste à créer une application Azure AD ayant les autorisations nécessaires pour accéder aux données de l’API Activité de gestion. Nous ne pouvons pas vous expliquer dans cet article comment créer une inscription d’application Azure AD. Pour en savoir plus, consultez l’article relatif à l’[inscription d’une application avec le locataire Azure Active Directory](https://docs.microsoft.com/fr-FR/azure/active-directory/develop/active-directory-integrating-applications).
+La plupart des applications se connectent à l’API à l’aide d’un simple flux OAuth2 d’informations d’identification du client. Par conséquent, la première étape consiste à créer une application Azure AD ayant les autorisations nécessaires pour accéder aux données de l’API Activité de gestion. Nous ne pouvons pas vous expliquer dans cet article comment créer une inscription d’application Azure AD. Pour en savoir plus, consultez l’article relatif à l’[inscription d’une application avec le locataire Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 
 ### <a name="azure-application-permissions"></a>Autorisations de l’application Azure
 
