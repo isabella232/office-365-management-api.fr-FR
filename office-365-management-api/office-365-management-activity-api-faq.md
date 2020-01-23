@@ -6,18 +6,18 @@ ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9083127d1fd3ecf82e5fe778ba1727d22d91017c
-ms.sourcegitcommit: 784b581a699c6d0ab7939ea621d5ecbea71925ea
+ms.openlocfilehash: 19603e9f22d65c51ee01c9b410c61cb46ca97434
+ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "35924776"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "41263232"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>API Activité de gestion Office 365- Questions fréquemment posées
 
 #### <a name="what-events-are-audited-for-a-specific-office-365-service"></a>Quels événements sont audités pour un service Office 365 spécifique ?
 
-La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, reportez-vous à [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md). Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/en-us/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
+La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, reportez-vous à [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md). Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
 
 #### <a name="how-do-i-onboard-to-the-management-activity-api"></a>Comment intégrer à l’API Activité de gestion ?
 

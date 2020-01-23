@@ -6,12 +6,12 @@ ms.ContentId: 4fca85f9-efa6-3b4b-b10d-a07cb31f803f
 ms.topic: reference (API)
 ms.date: 09/28/2016
 localization_priority: Priority
-ms.openlocfilehash: c8d6172649e5f3e901ba5944d72f8c7d0a506975
-ms.sourcegitcommit: 5b1eaeb7f262b7b9f7ab30ccb9f10878814153ac
+ms.openlocfilehash: 88b7e590d769699ed186d7cecaf80e162d79a095
+ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "32223937"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "41263281"
 ---
 # <a name="office-365-management-apis-overview"></a>Vue d’ensemble des API de gestion d’Office 365
 
@@ -39,5 +39,5 @@ Pour la référence des opérations, consultez la rubrique [Référence de l’A
 - [Prise en main des API de gestion d’Office 365](get-started-with-office-365-management-apis.md)
 - [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md)
 - [Résolution des problèmes d’API d’activités de gestion d’Office 365](troubleshooting-the-office-365-management-activity-api.md)
-- [API REST Office 365](https://docs.microsoft.com/fr-FR/previous-versions/office/office-365-api/how-to/platform-development-overview)
+- [API REST Office 365](https://docs.microsoft.com/previous-versions/office/office-365-api/how-to/platform-development-overview)
 
