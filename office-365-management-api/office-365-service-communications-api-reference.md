@@ -6,12 +6,12 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 427c741f623f46962c3cd6818adbb64bfc0f1e7a
-ms.sourcegitcommit: 0e6d71ad2375e5d1fc72d6893724511c08840c27
+ms.openlocfilehash: 36ef8e548b535fc97f2b1b6d4347184fa18d6ceb
+ms.sourcegitcommit: 78e76d5d1c3e40907ea0936a7c3f016eed4ebd3c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "37131423"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "41650849"
 ---
 # <a name="office-365-service-communications-api-reference"></a>Référence de l’API Office 365 Service Communications
 
@@ -278,6 +278,7 @@ Les définitions d’état englobent les valeurs suivantes :
 - PostIncidentReportPublished 
 - VerifyingService
 - ServiceOperational
+- FalsePositive
 
 Pour obtenir une liste et une description à jour de ces définitions d’état, voir [Vérifier l’état du service Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions).
 
