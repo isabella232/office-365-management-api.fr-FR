@@ -6,12 +6,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: cd08108108db55008d21301bdcce783f79f424b0
-ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
+ms.openlocfilehash: 858829d304c85e3c6658b3f6a1215d923871283a
+ms.sourcegitcommit: 967a95b214c620ca58875af6b5a96e28482c85aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "41263267"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "41857285"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
 
@@ -576,16 +576,16 @@ HTTP/1.1 200 OK
 
 ## <a name="api-throttling"></a>Limitation des requêtes de l’API
 
-Chaque éditeur qui code l’API reçoit un quota dédié qui limite le nombre de requêtes envoyées à 60 000 requêtes par minute. Pour obtenir le quota dédié, renseignez le paramètre PublisherIdentifier dans toutes vos requêtes. Les requêtes contenant le même PublisherIdentifier auront le même quota. Toutes les requêtes ne contenant aucun PublisherIdentifier auront le même quota que le GUID 00000000-0000-0000-0000-000000000000.
+Les organisations accédant à des journaux d’audit via l’API Activité de gestion d’Office 365 étaient restreintes par des seuils de limitation au niveau de l’éditeur. Cela signifie que pour un éditeur faisant une extraction de données pour le compte de plusieurs clients, la limite était partagée par tous les clients.
 
-Si Office 365 doit vous contacter pour vous faire part d’un problème, vérifiez que l’abonnement du locataire dont le GUID sert de PublisherIdentifier contient des informations exactes et à jour sur le contact. Aucun abonnement ne doit être souscrit pour ce locataire.
+Nous allons passer d’une limite au niveau éditeur à une limite au niveau du client. Chaque organisation obtient ainsi son propre quota de bande passante entièrement allouée pour accéder à leurs données d’audit. Les organisations reçoivent une ligne de base de 2 000 demandes par minute. Il ne s’agit pas d’une limite statique prédéfinie, mais elle est modelée sur la combinaison de facteurs, tels que le nombre de sièges au sein de l’organisation, et les organisations Office 365 et Microsoft 365 E5 obtiennent une bande passante à peu près deux fois plus importante que les organisations non E5. La bande passante aura également un plafond maximal pour protéger l’état d’intégrité du service.
 
-Pour les clients qui développent leurs solutions à l’aide de cette API, nous leur recommandons d’utiliser leur propre GUID de locataire pour éviter toute concurrence due à un quota partagé limité.
+Pour plus d’informations, voir la section « Accès à large bande passante à l'API Activité de gestionOffice 365 » dans l'[Audit avancé de Microsoft 365](https://docs.microsoft.com/microsoft-365/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api).
 
 > [!NOTE] 
-> Même si chaque éditeur peut envoyer 60 000 requêtes par minute, Microsoft ne peut garantir le taux de réponse. Le taux de réponse dépend de différents facteurs, tels que les performances du système client, la capacité réseau et la vitesse du réseau.  Un éditeur peut soumettre 60 000 requêtes par minute, mais ne vous attendez pas à recevoir des réponses pour les 60 000 requêtes au cours de cette minute. Si un éditeur souhaite effectuer un test d’évaluation sur une application cliente, il doit le faire dans tous les environnements dans lesquels il prévoit d’exécuter l’application cliente, car les résultats peuvent varier d’un environnement à l’autre.
+> Même si chaque client peut initialement envoyer 2 000 requêtes par minute, Microsoft ne peut garantir le taux de réponse. Le taux de réponse dépend de différents facteurs, tels que les performances du système client, la capacité et la vitesse du réseau. 
 
-## <a name="errors"></a>Erreurs
+## <a name="errors"></a>Errors
 
 Quand le service rencontre une erreur, il signale le code de la réponse d’erreur à l’appelant en utilisant la syntaxe du code d’erreur HTTP standard. . Des informations complémentaires sont incluses dans le corps de l’appel ayant échoué en tant qu’objet JSON unique. Voici un exemple du corps complet de l’erreur JSON : 
 
