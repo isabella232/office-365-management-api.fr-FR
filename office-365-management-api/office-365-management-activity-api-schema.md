@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 7a12fc60894742ebdcc41457930225a4dd9bfc02
-ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
+ms.openlocfilehash: 38905a88f8be1924d0df02f10362caa624b34bd8
+ms.sourcegitcommit: 8aa0be26e0e69dd7908b3bcece3a71eafb973705
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "41263274"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "42586302"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
  
@@ -73,7 +73,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |Charge de travail|Edm.String|Non|Service Office 365 dans lequel l’activité s’est produite. 
 |ResultStatus|Edm.String|Non|Indique si l’action (indiquée dans la propriété Operation) a réussi ou non. Valeurs possibles : **Succeeded**, **PartiallySucceded** ou **Failed**. Pour une activité d’administration Exchange, la valeur peut être **True** ou **False**.<br/><br/>**Important** : plusieurs charges de travail peuvent remplacer la valeur de la propriété ResultStatus. Par exemple, pour les événements d’ouverture de session STS d’Azure Active Directory, la valeur **Succedded** pour ResultStatus indique uniquement que l’opération HTTP a réussi. Cela ne signifie pas que la connexion a réussi. Pour déterminer si l’ouverture de session elle-même a réussi ou non, examinez la propriété LogonError dans le [schéma de connexion STS Azure Active Directory](#azure-active-directory-secure-token-service-sts-logon-schema). Si la connexion a échoué, la valeur de cette propriété indique la raison de l’échec de la tentative de connexion. |
 |ObjectId|Edm.string|Non|Pour l’activité SharePoint et OneDrive Entreprise, il s’agit du nom du chemin d’accès complet au fichier ou au dossier consulté par l’utilisateur. Pour la journalisation d’audit d’administration Exchange, il s’agit du nom de l’objet modifié par la cmdlet.|
-|UserId|Edm.string|Oui|L’UPN (nom d’utilisateur principal) de l’utilisateur ayant effectué l’action (indiquée dans la propriété Operation) qui a entraîné la journalisation de l’enregistrement. Par exemple, `my_name@my_domain_name`. L’enregistrement d’une activité exécutée par un compte système (comme SHAREPOINT\system ou NT AUTHORITY\SYSTEM) est également inclus.|
+|UserId|Edm.string|Oui|L’UPN (nom d’utilisateur principal) de l’utilisateur ayant effectué l’action (indiquée dans la propriété Operation) qui a entraîné la journalisation de l’enregistrement. Par exemple, `my_name@my_domain_name`. L’enregistrement d’une activité exécutée par un compte système (comme SHAREPOINT\system ou NT AUTHORITY\SYSTEM) est également inclus. Un autre affichage de valeur dans la propriété Userld de SharePoint se nomme app@sharepoint. Ceci indique que l'«utilisateur » qui a effectué l'activité était une application ayant obtenu les autorisations nécessaires dans SharePoint pour effectuer des actions à l’échelle de l’organisation (par exemple, effectuer une recherche de site SharePoint ou de compte OneDrive) au nom d’un utilisateur, d’un administrateur ou d’un service. Pour obtenir plus d'informations, consultez l'[Utilisateur app@sharepoint dans les enregistrements d'audits](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Oui|Adresse IP du périphérique utilisé lors de la journalisation de l’activité. L’adresse IP apparaît au format d’adresse IPv4 ou IPv6.<br/><br/>Pour certains services, la valeur affichée dans cette propriété peut être l'adresse IP d'une application sécurisée (par exemple, Office sur les applications Web) qui appelle le service au nom d'un utilisateur et non l'adresse IP de l'appareil utilisé par la personne ayant effectué l'activité. <br/><br/>Aussi, pour les événements relatifs à Azure Active Directory, l’adresse IP n’est pas enregistrée et la valeur de la propriété ClientIP est `null`.|
 |Portée|Self.[AuditLogScope](#auditlogscope)|Non|Cet événement a-t-il été créé par un service Office 365 hébergé ou un serveur local ? Valeurs possibles : **online** et **onprem**. SharePoint est la seule charge de travail qui envoie actuellement des événements d’un serveur local à Office 365.|
 |||||
@@ -105,6 +105,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |24|Discovery|Événements pour les activités eDiscovery effectuées en exécutant des recherches de contenu et en gérant les cas d’eDiscovery dans le Centre de sécurité et conformité.|
 |25|MicrosoftTeams|Événements de Microsoft Teams.|
 |28|ThreatIntelligence|Événements d’hameçonnage et de programmes malveillants depuis Exchange Online Protection et Office 365 Advanced Threat Protection.|
+|29|MailSubmission|Événements de soumission à partir de Exchange Online Protection et Office 365 – Protection avancée contre les menaces.|
 |30|MicrosoftFlow|Événements Microsoft Power Automate (autrefois appelés Microsoft Flow).|
 |31|AeD|Événements eDiscovery (découverte électronique) avancée.|
 |32|MicrosoftStream|Événements Microsoft Stream.|
@@ -124,6 +125,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |55|SharePointContentTypeOperation|Événements de type de contenu de liste SharePoint.|
 |56|SharePointFieldOperation|Éléments de champs de liste SharePoint.|
 |64|AirInvestigation|Événements de réponse aux incidents automatisée (AIR).|
+|65|Quarantaine|Évènements mis en quarantaine.|
 |66|MicrosoftForms|Événements Microsoft Forms.|
 ||||
 
@@ -815,7 +817,7 @@ Les événements DLP (prévention contre la perte de données) ont toujours User
 |||||
 
 ### <a name="sensitiveinformationdetections-complex-type"></a>Type complexe SensitiveInformationDetections 
-Les données sensibles DLP sont disponibles uniquement dans l’API de flux d’activité pour les utilisateurs qui ont reçu l’autorisation d’accès en lecture aux données sensibles DLP. 
+Les données sensibles DLP sont disponibles uniquement dans l’API de flux d’activité pour les utilisateurs qui ont reçu l’autorisation d’accès en lecture des données sensibles DLP. 
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -842,8 +844,8 @@ Les données sensibles DLP sont disponibles uniquement dans l’API de flux d’
 |CmdletVersion|Edm.String|Non|Version de build de la cmdlet lorsqu’elle a été exécutée.|
 |EffectiveOrganization|Edm.String|Non|GUID de l’organisation affecté par la cmdlet. (Déconseillé : ce paramètre cessera d’apparaître à l’avenir.)|
 |UserServicePlan|Edm.String|Non|Plan de service Exchange Online Protection affecté à l’utilisateur qui a exécuté la cmdlet.|
-|ClientApplication|Edm.String|Non|Si la cmdlet a été exécutée par une application, contrairement à Powershell à distance, ce champ contient le nom de cette application.|
-|Parameters|Edm.String|Non|Nom et valeur des paramètres qui ont été utilisés avec la cmdlet qui n’incluent pas d’informations d’identification personnelle.|
+|ClientApplication|Edm.String|Non|Si l'applet de commande a été exécutée par une application, contrairement à Powershell à distance, ce champ contient le nom de cette application.|
+|Paramètres|Edm.String|Non|Nom et valeur des paramètres qui ont été utilisés avec la cmdlet qui n’incluent pas d’informations d’identification personnelle.|
 |NonPiiParameters|Edm.String|Non|Nom et valeur des paramètres qui ont été utilisés avec la cmdlet qui incluent des informations d’identification personnelle. (Déconseillé : ce champ cessera d’apparaître à l’avenir et son contenu sera fusionné avec le champ Paramètres.)|
 |||||
 
@@ -1264,113 +1266,113 @@ Pour l’instant, seules les investigations automatiques sont enregistrées. (Le
 
 ### <a name="main-investigation-schema"></a>Schéma d’investigation principal 
 
-|Nom   |Type   |Description  |
+|Nom    |Type    |Description  |
 |----|----|----|
-|InvestigationId    |Edm.String |ID d’investigation/GUID |
-|InvestigationName  |Edm.String |Nom de l’investigation |
-|InvestigationType  |Edm.String |Type d’investigation. Peut prendre l’une des valeurs suivantes :<br/>- Messages signalés par l’utilisateur<br/>- Programme malveillant purgé<br/>- Hameçonnage purgé<br/>- Modification du verdict concernant l’URL<p>(Les investigations manuelles, actuellement indisponibles, le seront bientôt.) |
-|LastUpdateTimeUtc  |Edm.Date   |Heure UTC de la dernière mise à jour pour une investigation |
-|StartTimeUtc   |Edm.Date   |Heure de début d’une investigation |
+|InvestigationId    |Edm.String    |ID d’investigation/GUID |
+|InvestigationName    |Edm.String    |Nom de l’investigation |
+|InvestigationType    |Edm.String    |Type d’investigation. Peut prendre l’une des valeurs suivantes :<br/>- Messages signalés par l’utilisateur<br/>- Programme malveillant purgé<br/>- Hameçonnage purgé<br/>- Modification du verdict concernant l’URL<p>(Les investigations manuelles, actuellement indisponibles, le seront bientôt.) |
+|LastUpdateTimeUtc    |Edm.Date    |Heure UTC de la dernière mise à jour pour une investigation |
+|StartTimeUtc    |Edm.Date    |Heure de début d’une investigation |
 |État     |Edm.String     |État d’investigation, d’exécution, d’actions en attente, etc. |
-|DeeplinkURL    |Edm.String |URL de lien profond vers un examen dans le Centre de sécurité et conformité Office 365 |
-|Actions |Collection (Edm.String)   |Ensemble d’actions recommandées par une investigation |
-|Données   |Edm.String |Chaîne de données qui contient des détails supplémentaires sur les entités d’investigation, ainsi que des informations sur les alertes relatives à l’investigation. Les entités sont disponibles dans un nœud séparé dans l’objet BLOB. |
+|DeeplinkURL    |Edm.String    |URL de lien profond vers un examen dans le Centre de sécurité et conformité Office 365 |
+|Actions |Collection (Edm.String)    |Ensemble d’actions recommandées par une investigation |
+|Données    |Edm.String    |Chaîne de données qui contient des détails supplémentaires sur les entités d’investigation, ainsi que des informations sur les alertes relatives à l’investigation. Les entités sont disponibles dans un nœud séparé dans l’objet BLOB. |
 ||||
 
 ### <a name="actions"></a>Actions
 
-|Champ  |Type   |Description |
+|Champ    |Type    |Description |
 |----|----|----|
-|ID     |Edm.String |ID d’action|
-|ActionType |Edm.String |Type de l’action (par exemple, mise à jour de courrier électronique) |
-|ActionStatus   |Edm.String |Les valeurs sont les suivantes : <br/>– En attente<br/>– En cours d’exécution<br/>- En attente de ressources<br/>– Terminé<br/>– Échec |
-|ApprovedBy |Edm.String |Null si approuvée automatiquement; sinon, nom d’utilisateur/ID (prochainement disponible) |
-|TimestampUtc   |Edm.DateTime   |Horodatage de la modification de l’état de l’action |
-|ActionId   |Edm.String |Identificateur unique de l’action |
-|InvestigationId    |Edm.String |Identificateur unique de l’examen |
-|RelatedAlertIds    |Collection(Edm.String) |Alertes liées à une investigation |
-|StartTimeUtc   |Edm.DateTime   |Horodatage de la création d’action |
-|EndTimeUtc |Edm.DateTime   |Horodatage de la mise à jour de l’état final de l’action |
-|Identificateurs de ressources   |Edm.String  |Correspond à l'identifiant du client Azure Active Directory.|
-|Entités   |Collection(Edm.String) |Liste d’une ou plusieurs entités affectées par action |
-|Identifiants d’alerte associée  |Edm.String |Alerte liée à une investigation |
+|ID     |Edm.String    |ID d’action|
+|ActionType    |Edm.String    |Type de l’action (par exemple, mise à jour de courrier électronique) |
+|ActionStatus    |Edm.String    |Les valeurs sont les suivantes : <br/>– En attente<br/>– En cours d’exécution<br/>- En attente de ressources<br/>– Terminé<br/>– Échec |
+|ApprovedBy    |Edm.String    |Null si approuvée automatiquement; sinon, nom d’utilisateur/ID (prochainement disponible) |
+|TimestampUtc    |Edm.DateTime    |Horodatage de la modification de l’état de l’action |
+|ActionId    |Edm.String    |Identificateur unique de l’action |
+|InvestigationId    |Edm.String    |Identificateur unique de l’examen |
+|RelatedAlertIds    |Collection(Edm.String)    |Alertes liées à une investigation |
+|StartTimeUtc    |Edm.DateTime    |Horodatage de la création d’action |
+|EndTimeUtc    |Edm.DateTime    |Horodatage de la mise à jour de l’état final de l’action |
+|Identificateurs de ressources     |Edm.String     |Correspond à l'identifiant du client Azure Active Directory.|
+|Entités    |Collection(Edm.String)    |Liste d’une ou plusieurs entités affectées par action |
+|Identifiants d’alerte associée    |Edm.String    |Alerte liée à une investigation |
 ||||
 
 ### <a name="entities"></a>Entités
 
 #### <a name="mailmessage-email"></a>MailMessage (e-mail) 
 
-|Champ  |Type   |Description  |
+|Champ    |Type    |Description  |
 |----|----|----|
-|Type   |Edm.String |"mail-message"  |
-|Fichiers  |Collection (self. file) |Détails sur les fichiers des pièces jointes de ce message |
-|Destinataire  |Edm.String |Le destinataire de ce message électronique |
-|URL   |Collection (self. URL) |Les URL contenues dans ce message électronique  |
-|Expéditeur |Edm.String |Adresse e-mail de l’expéditeur  |
-|SenderIP   |Edm.String |Adresse IP de l’expéditeur  |
-|ReceivedDate   |Edm.DateTime   |Date de réception de ce message  |
-|NetworkMessageId   |Edm.Guid   |ID de message réseau de ce message électronique  |
-|InternetMessageId  |Edm.String  |ID de message internet de ce message électronique |
-|Subject    |Edm.String |L’objet de ce message électronique  |
+|Type    |Edm.String    |"mail-message"  |
+|Fichiers    |Collection (self. file) |Détails sur les fichiers des pièces jointes de ce message |
+|Destinataire    |Edm.String    |Le destinataire de ce message électronique |
+|URL    |Collection (self. URL) |Les URL contenues dans ce message électronique  |
+|Expéditeur    |Edm.String    |Adresse e-mail de l’expéditeur  |
+|SenderIP    |Edm.String    |Adresse IP de l’expéditeur  |
+|ReceivedDate    |Edm.DateTime    |Date de réception de ce message  |
+|NetworkMessageId    |Edm.Guid     |ID de message réseau de ce message électronique  |
+|InternetMessageId    |Edm.String  |ID de message internet de ce message électronique |
+|Subject    |Edm.String    |L’objet de ce message électronique  |
 ||||
 
 #### <a name="ip"></a>IP
 
-|Champ  |Type   |Description  |
+|Champ    |Type    |Description  |
 |----|----|----|
-|Type   |Edm.String |"IP" |
-|Adresse    |Edm.String |Adresse IP sous la forme d’une chaîne, par exemple `127.0.0.1`
+|Type    |Edm.String    |"IP" |
+|Adresse    |Edm.String    |Adresse IP sous la forme d’une chaîne, par exemple `127.0.0.1`
 ||||
 
 #### <a name="url"></a>URL
 
-|Champ  |Type   |Description  |
+|Champ    |Type    |Description  |
 |----|----|----|
-|Type   |Edm.String |« URL » |
-|Url    |Edm.String |URL complète vers laquelle pointe une entité  |
+|Type    |Edm.String    |« URL » |
+|Url    |Edm.String    |URL complète vers laquelle pointe une entité  |
 ||||
 
 #### <a name="mailbox-also-equivalent-to-the-user"></a>Boîte aux lettres (également équivalente à l’utilisateur) 
 
-|Champ  |Type   |Description |
+|Champ    |Type    |Description |
 |----|----|----|
-|Type   |Edm.String |« boîte aux lettres »  |
-|MailboxPrimaryAddress  |Edm.String |Adresse principale de la boîte aux lettres  |
-|DisplayName    |Edm.String |Nom d’affichage de la boite aux lettres |
-|UPN    |Edm.String |L’UPN de la boîte aux lettres  |
+|Type    |Edm.String    |« boîte aux lettres »  |
+|MailboxPrimaryAddress    |Edm.String    |Adresse principale de la boîte aux lettres  |
+|DisplayName    |Edm.String    |Nom d’affichage de la boite aux lettres |
+|UPN    |Edm.String    |L’UPN de la boîte aux lettres  |
 ||||
 
 #### <a name="file"></a>File
 
-|Champ  |Type   |Description  |
+|Champ    |Type    |Description  |
 |----|----|----|
-|Type   |Edm.String |« fichier » |
-|Nom   |Edm.String |Nom de fichier sans chemin d’accès |
-FileHashes |Collection (Edm.String) |Fichiers à hacher associés au fichier |
+|Type    |Edm.String    |« fichier » |
+|Nom    |Edm.String    |Nom de fichier sans chemin d’accès |
+FileHashes |Collection (Edm.String)    |Fichiers à hacher associés au fichier |
 ||||
 
 #### <a name="filehash"></a>FileHash
 
-|Champ  |Type   |Description |
+|Champ    |Type    |Description |
 |----|----|----|
-|Type   |Edm.String |« filehash » |
-|Algorithme  |Edm.String |Le type d’algorithme de hachage, qui peut être l’une des valeurs suivantes :<br/>– Inconnu<br/>– MD5<br/>– SHA1<br/>- SHA256<br/>- SHA256AC
-|Valeur  |Edm.String |Valeur de hachage  |
+|Type    |Edm.String    |« filehash » |
+|Algorithme    |Edm.String    |Le type d’algorithme de hachage, qui peut être l’une des valeurs suivantes :<br/>– Inconnu<br/>– MD5<br/>– SHA1<br/>- SHA256<br/>- SHA256AC
+|Valeur    |Edm.String    |Valeur de hachage  |
 ||||
 
 #### <a name="mailcluster"></a>MailCluster
 
-|Champ  |Type   |Description   |
+|Champ    |Type    |Description   |
 |----|----|----|
-|Type   |Edm.String |"MailCluster" <br/>Détermine le type d’entité examinée |
-|NetworkMessageIds  |Collection (Edm.String)    |Liste des ID de courrier qui font partie du cluster de courriers |
-|CountByDeliveryStatus  |Collections (Edm.String)   |Nombre de messages électroniques par DeliveryStatus, représentation sous forme de chaîne |
-|CountByThreatType  |Collections (Edm.String) |Nombre de messages électroniques par ThreatType, représentation sous forme de chaîne |
-|Menaces    |Collections (Edm.String)   |Les menaces relatives aux messages électroniques qui font partie du cluster de courriers. Les menaces incluent des valeurs telles que le hameçonnage et les programmes malveillants. |
-|Requête  |Edm.String |Requête utilisée pour identifier les messages du cluster de courriers  |
-|QueryTime  |Edm.DateTime   |Heure de la requête  |
-|MailCount  |Edm.int    |Nombre de messages électroniques qui font partie du cluster de courriers.  |
-|Source |String |Source du cluster de courriers ; valeur de la source de cluster. |
+|Type    |Edm.String    |"MailCluster" <br/>Détermine le type d’entité examinée |
+|NetworkMessageIds    |Collection (Edm.String)    |Liste des ID de courrier qui font partie du cluster de courriers |
+|CountByDeliveryStatus    |Collections (Edm.String)    |Nombre de messages électroniques par DeliveryStatus, représentation sous forme de chaîne |
+|CountByThreatType    |Collections (Edm.String) |Nombre de messages électroniques par ThreatType, représentation sous forme de chaîne |
+|Menaces    |Collections (Edm.String)    |Les menaces relatives aux messages électroniques qui font partie du cluster de courriers. Les menaces incluent des valeurs telles que le hameçonnage et les programmes malveillants. |
+|Requête    |Edm.String    |Requête utilisée pour identifier les messages du cluster de courriers  |
+|QueryTime    |Edm.DateTime    |Heure de la requête  |
+|MailCount    |Edm.int    |Nombre de messages électroniques qui font partie du cluster de courriers.  |
+|Source    |String    |Source du cluster de courriers ; valeur de la source de cluster. |
 ||||
 
 ## <a name="power-bi-schema"></a>Schéma Power BI
