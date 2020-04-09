@@ -6,21 +6,21 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 38905a88f8be1924d0df02f10362caa624b34bd8
-ms.sourcegitcommit: 8aa0be26e0e69dd7908b3bcece3a71eafb973705
+ms.openlocfilehash: 2ce104849e7aeafcb12bf25720548a84a5ea73f4
+ms.sourcegitcommit: 2c592abf7005b4c73311ea9a4d1804994084bca4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "42586302"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "42941473"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
- 
+
 Le schéma de l’API Activité de gestion Office 365 est fourni en tant que service de données en deux couches :
 
 - **Schéma commun**. L’interface permettant d’accéder aux principaux concepts d’audit d’Office 365, comme le type d’enregistrement, l’heure de création, le type d’utilisateur et l’action, ainsi que d’obtenir les dimensions principales (par exemple, l’ID utilisateur), les informations sur l’emplacement (par exemple, l’adresse IP du client) et les propriétés propres au produit (par exemple, l’ID d’objet). Elle présente des affichages uniformes et cohérents pour les utilisateurs afin d’extraire toutes les données d’audit d’Office 365 dans un nombre réduit d’affichages de niveau supérieur avec les paramètres appropriés. Elle fournit un schéma fixe pour toutes les sources de données, ce qui réduit considérablement le coût d’apprentissage. Le schéma commun est issu des données de produit appartenant à chaque équipe de produit, comme Exchange, SharePoint, Azure Active Directory, Yammer et OneDrive Entreprise. Le champ ID d’objet peut être étendu par les équipes de produit pour ajouter des propriétés propres au produit.
-    
+
 - **Schéma propre au produit**. Conçu en complément du schéma commun pour fournir un ensemble d’attributs spécifiques du produit. Par exemple : schéma Sway, schéma SharePoint, schéma OneDrive Entreprise et schéma d’administration Exchange.
-    
+
 **Quelle couche devez-vous utiliser dans votre scénario ?**
 En général, si les données sont disponibles dans une couche supérieure, ne revenez pas à une couche inférieure. En d’autres termes, si l’exigence de données peut s’adapter au schéma propre au produit, vous n’avez pas besoin de revenir au schéma commun. 
 
@@ -53,7 +53,8 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma Office 365 - Protection avancée contre les menaces et Threat Investigation and Response](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Étend le schéma commun avec les propriétés spécifiques des données relatives à Office 365 - Protection avancée contre les menaces et Threat Investigation and Response.|
 |[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365.|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
-|[Analyse du temps de travail](#workplace-analytics-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Analyse du temps de travail Microsoft.|
+|[Schéma de l’Analyse du temps de travail](#workplace-analytics-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Analyse du temps de travail Microsoft.|
+|[Schéma de la mise en quarantaine](#quarantine-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements de mise en quarantaine.|
 |[Schéma Microsoft Forms](#microsoft-forms-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Forms.|
 |||
 
@@ -972,7 +973,7 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |1|Create|L’utilisateur crée une instance Sway.|
 |2|Delete|L’utilisateur supprime une instance Sway.|
 |3|View|L’utilisateur affiche une instance Sway.|
-|4|Edit|L’utilisateur modifie une instance Sway.|
+|4|Modifier|L’utilisateur modifie une instance Sway.|
 |5|Duplicate|L’utilisateur duplique une instance Sway.|
 |7|Share|L’utilisateur établit le partage d’une instance Sway. Cet événement capture l’action utilisateur consistant à cliquer sur une destination de partage spécifique dans le menu de partage Sway. L’événement n’indique pas si l’utilisateur effectue réellement l’action de partage et la termine.|
 |8|ChangeShareLevel|L’utilisateur modifie le niveau de partage d’une instance Sway. Cet événement capture la modification par l’utilisateur de l’étendue du partage associé à une instance Sway. Par exemple, niveaux public ou interne à l’organisation.|
@@ -1421,6 +1422,38 @@ Les événements Analyse du temps de travail répertoriés dans l’article rela
 | OperationDetails   | Collection (Common.NameValuePair)    | Non | Liste des propriétés étendues pour le paramètre ayant été modifié. Chaque propriété a un **nom** et une **valeur**.|
 ||||
 
+## <a name="quarantine-schema"></a>Schéma de la mise en quarantaine
+
+Les événements de mise en quarantaine répertoriés dans l’article [Rechercher le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) utilisent ce schéma. Si vous souhaitez en savoir plus sur la mise en quarantaine, consultez l’article [Mettre les e-mails en quarantaine dans Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/quarantine-email-messages).
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|Non|Type de demande de quarantaine exécutée par un utilisateur.|
+|RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|Non|La source d’une demande de mise en quarantaine peut provenir du centre de sécurité & conformité (SCC), d’une cmdlet ou d’un URLlink.|
+|NetworkMessageId|Edm.String|Non|L’ID de message réseau du message électronique mis en quarantaine.|
+|ReleaseTo|Edm.String|Non|Le destinataire du message électronique.|
+|||||
+
+### <a name="enum-requesttype---type-edmint32"></a>Enum: RequestType - Type: Edm.Int32
+
+|**Valeur**|**Nom du membre**|**Description**|
+|:-----|:-----|:-----|
+|0|Aperçu|Il s’agit de la demande d’un utilisateur qui permet d’afficher un aperçu de l’e-mail considéré comme dangereux.|
+|1|Supprimer|Il s’agit de la demande d’un utilisateur qui permet de supprimer l’e-mail considéré comme dangereux.|
+|2|Débloquer|Il s’agit de la demande d’un utilisateur qui permet de débloquer l’e-mail considéré comme dangereux.|
+|3|Exporter|Il s’agit de la demande d’un utilisateur qui permet d’exporter l’e-mail considéré comme dangereux.|
+|4|ViewHeader|Il s’agit de la demande d’un utilisateur qui permet d’afficher l’en-tête de l’e-mail considéré comme dangereux.|
+||||
+
+### <a name="enum-requestsource---type-edmint32"></a>Enum: RequestSource - Type: Edm.Int32
+
+|**Valeur**|**Nom du membre**|**Description**|
+|:-----|:-----|:-----|
+|0|SCC|Le centre de sécurité et de conformité (SCC) est la source d’où peut provenir la demande d’un utilisateur pour afficher un aperçu, supprimer, débloquer, exporter ou afficher l’en-tête d’un e-mail potentiellement dangereux. |
+|1|Cmdlet|Une cmdlet est la source d’où peut provenir la demande d’un utilisateur pour afficher un aperçu, supprimer, débloquer, exporter ou afficher l’en-tête d’un e-mail potentiellement dangereux.|
+|2|URLlink|Il s’agit d’une source d’où peut provenir la demande d’un utilisateur pour afficher un aperçu, supprimer, débloquer, exporter ou afficher l’en-tête d’un e-mail potentiellement dangereux.|
+||||
+
 ## <a name="microsoft-forms-schema"></a>Schéma Microsoft Forms
 
 Les événements Microsoft Forms répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) utilisent ce schéma.
@@ -1457,3 +1490,4 @@ Les événements Microsoft Forms répertoriés dans l’article relatif à la [r
 |1|Quiz|Questionnaires créés à l’aide de l’option nouveau questionnaire.  Un questionnaire est un type de formulaire spécial qui inclut des fonctionnalités supplémentaires, telles que des valeurs de points, des notations automatiques et manuelles, ainsi que des commentaires.|
 |2|Enquête|Enquêtes créées à l’aide de l’option nouveau formulaire.  Une enquête est un type de formulaire spécial qui inclut des fonctionnalités supplémentaires, telles que l’intégration et la prise en charge de CMS pour les règles de flux.|
 ||||
+
