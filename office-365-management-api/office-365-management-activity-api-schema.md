@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 2ce104849e7aeafcb12bf25720548a84a5ea73f4
-ms.sourcegitcommit: 2c592abf7005b4c73311ea9a4d1804994084bca4
+ms.openlocfilehash: 7a636bcdf86dd4513d7ea7809066b5becb68de83
+ms.sourcegitcommit: 9d32000d9b9af3f008d93745379697bc74e4703c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "42941473"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "43785564"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -120,7 +120,9 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |44|WorkplaceAnalytics|Événements Workplace Analytics.|
 |45|PowerAppsApp|Événements Power Apps.|
 |47|ThreatIntelligenceAtpContent|Événements d’hameçonnage et programmes malveillants pour les fichiers dans SharePoint, OneDrive Entreprise et Microsoft Teams dans Office 365 Advanced Threat Protection .|
+|48|LabelContentExplorer|Événements liés à l’[explorateur de contenu de la classification des données](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer).|
 |49|TeamsHealthcare|Événements liés à l’[application patients](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) dans Microsoft Teams pour la santé.|
+|51|HygieneEvent|Événements liés à l’hygiène de la messagerie et à la stratégie anti-courrier indésirable.|
 |52|DataInsightsRestApiAudit|Informations données sur les événements de l’API REST.|
 |54|SharePointListItemOperation|Éléments de liste SharePoint.|
 |55|SharePointContentTypeOperation|Événements de type de contenu de liste SharePoint.|
@@ -156,7 +158,6 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |0|Online|Cet événement a été créé par un service Office 365 hébergé.|
 |1|Onprem|Cet événement a été créé par un serveur local.|
 ||||
-
 
 ## <a name="sharepoint-base-schema"></a>Schéma de base SharePoint
 
@@ -971,7 +972,7 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |**Valeur**|**Nom du membre**|**Description**|
 |:-----|:-----|:-----|
 |1|Create|L’utilisateur crée une instance Sway.|
-|2|Delete|L’utilisateur supprime une instance Sway.|
+|2|Supprimer|L’utilisateur supprime une instance Sway.|
 |3|View|L’utilisateur affiche une instance Sway.|
 |4|Modifier|L’utilisateur modifie une instance Sway.|
 |5|Duplicate|L’utilisateur duplique une instance Sway.|
@@ -1158,14 +1159,16 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |5|Anti-hameçonnage, DIMP|Action contre l’emprunt d’identité de domaine (DIMP) dans la stratégie anti-hameçonnage.|
 |6|Anti-hameçonnage, UIMP|Action contre l’emprunt d’identité de l’utilisateur (UIMP) dans la stratégie anti-hameçonnage.|
 |7|Anti-hameçonnage, SPOOF|Action contre l’usurpation dans la stratégie anti-hameçonnage.|
-|8|Anti-hameçonnage, GIMP|Action de veille des boîtes aux lettres dans la stratégie anti-hameçonnage.|
+|8|Anti-hameçonnage, GIMP|Action de veille sur les boîtes aux lettres dans le cadre de la stratégie anti-hameçonnage.|
 |9|Anti-programme malveillant, AMP| Action de stratégie de anti-programme malveillant dans la stratégie anti-programme malveillant.|
 |10|Pièce jointe fiable, SAP| Action de stratégie dans la stratégie de pièces jointes fiables ATP Office 365.|
 |11|Règle de transport Exchange, ETR| Action de stratégie dans la règle de transport Exchange.|
 |12|Anti-programme malveillant, ZAPM| Action de stratégie anti-programme malveillant dans la stratégie anti-programme malveillant appliquée à la purge automatique zéro heure (ZAP).|
 |13|Anti-hameçonnage, PAZH| Action de stratégie anti-hameçonnage dans la stratégie anti-hameçonnage appliquée à la PAZH.|
 |14|Anti-hameçonnage, PAZH| Action de stratégie anti-courrier indésirable dans la stratégie anti-courrier indésirable appliquée à la PAZH.|
-
+|15|Anti-courrier indésirable, e-mail de hameçonnage haute confiance (HPHISH)|Action de stratégie HPHISH dans le cadre de la stratégie anti-courrier indésirable.|
+|17|Anti-courrier indésirable, courrier indésirable sortant (OSPM)|Action de stratégie de filtrage du courrier indésirable sortant dans le cadre de la stratégie anti-courrier indésirable.|
+||||
 
 ### <a name="enum-policyaction---type-edmint32"></a>Énumération : PolicyAction – Type : Edm.Int32
 
