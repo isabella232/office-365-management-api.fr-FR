@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 7a636bcdf86dd4513d7ea7809066b5becb68de83
-ms.sourcegitcommit: 9d32000d9b9af3f008d93745379697bc74e4703c
+ms.openlocfilehash: 8f44ae4d9f4b1eff3ab6de195392458aab6ee2ce
+ms.sourcegitcommit: ebf6973abd2f4c9b88e4297cd08d06dd2a62976f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "43785564"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "43939108"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -56,6 +56,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma de l’Analyse du temps de travail](#workplace-analytics-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Analyse du temps de travail Microsoft.|
 |[Schéma de la mise en quarantaine](#quarantine-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements de mise en quarantaine.|
 |[Schéma Microsoft Forms](#microsoft-forms-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Forms.|
+|[Schéma d’étiquette Microsoft Information Protection](#mip-label-schema)|Développe le schéma commun avec les propriétés spécifiques aux étiquettes de confidentialité, appliquées de façon manuelle ou automatique aux courriers électroniques.|
 |||
 
 ## <a name="common-schema"></a>Schéma commun
@@ -117,6 +118,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |40|SecurityComplianceAlerts|Signaux d’alerte de sécurité et conformité.|
 |41|ThreatIntelligenceUrl|Événements de liens approuvés de bloc horaire et bloc de remplacement à partir d’Office 365 Advanced Threat Protection.|
 |42|SecurityComplianceInsights|Événements relatifs à des informations et rapports dans le centre de sécurité et conformité Office 365.|
+|43|MIPLabel|Événements liés à la détection dans le pipeline de transport de courriers électroniques marqués (de façon manuelle ou automatique) avec des étiquettes de confidentialité. |
 |44|WorkplaceAnalytics|Événements Workplace Analytics.|
 |45|PowerAppsApp|Événements Power Apps.|
 |47|ThreatIntelligenceAtpContent|Événements d’hameçonnage et programmes malveillants pour les fichiers dans SharePoint, OneDrive Entreprise et Microsoft Teams dans Office 365 Advanced Threat Protection .|
@@ -1494,3 +1496,24 @@ Les événements Microsoft Forms répertoriés dans l’article relatif à la [r
 |2|Enquête|Enquêtes créées à l’aide de l’option nouveau formulaire.  Une enquête est un type de formulaire spécial qui inclut des fonctionnalités supplémentaires, telles que l’intégration et la prise en charge de CMS pour les règles de flux.|
 ||||
 
+## <a name="mip-label-schema"></a>Schéma d’étiquette Microsoft Information Protection
+
+Les événements figurant dans le schéma d’étiquette Microsoft Information Protection (MIP) sont déclenchés lorsque Microsoft 365 détecte un message électronique traité par des agents dans le pipeline de transport auquel une étiquette de confidentialité est appliquée. L’étiquette de confidentialité a peut-être été appliquée de façon manuelle ou automatique ou elle a peut-être été appliquée à l’intérieur ou à l’extérieur du pipeline de transport. Les étiquettes de confidentialité peuvent être automatiquement appliquées aux courriers électroniques via l’application automatique des stratégies d’étiquettes.
+
+L’objectif de ce schéma d’audit est de représenter toutes les activités de courrier électronique impliquant des étiquettes de confidentialité. En d’autres termes, une activité d’audit doit être redéfinie pour chaque message électronique, envoyé ou provenant des utilisateurs de l’organisation, sur lequel une étiquette de confidentialité est appliquée, quel que soit l’emplacement ou la façon dont l’étiquette de confidentialité a été appliquée. Pour plus d’informations sur les étiquettes de confidentialité, voir :
+
+- [En savoir plus sur les étiquettes de niveau de confidentialité](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
+
+- [Appliquer automatiquement une étiquette de confidentialité à du contenu](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically)
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Expéditeur|Edm.String|Non|L’adresse de messagerie dans le champ De du message électronique.|
+|Récepteurs|Collection(Edm.String)|Non|Toutes les adresses de messagerie figurant dans les champs à, CC et CCI de l’e-mail.|
+|IitemName|Edm.String|Non|Chaîne dans le champ Objet du message électronique.|
+|LabelId|Edm.Guid|Non|GUID de l’étiquette de confidentialité appliquée au message électronique.|
+|LabelName|Edm.String|Non|Nom de l’étiquette de confidentialité appliquée au courrier électronique.|
+|LabelAction|Edm.String|Non|Les actions spécifiées par l’étiquette de confidentialité qui ont été appliquées au courrier électronique avant que le message ne soit entré dans le pipeline de transport du courrier.|
+|LabelAppliedDateTime|Edm.Date|Non|Date d’application de l’étiquette de confidentialité au courrier électronique.|
+|ApplicationMode|Edm.String|Non|Indique la manière dont l’étiquette de confidentialité a été appliquée au courrier électronique. La valeur **Privilégié** indique que l’étiquette a été appliquée manuellement par un utilisateur. La valeur **Standard** indique que l’étiquette a été appliquée automatiquement par un processus d’étiquetage côté client ou service.|
+|||||
