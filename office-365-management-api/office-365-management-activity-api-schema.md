@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 8f44ae4d9f4b1eff3ab6de195392458aab6ee2ce
-ms.sourcegitcommit: ebf6973abd2f4c9b88e4297cd08d06dd2a62976f
+ms.openlocfilehash: b30664fd9937f3a0eee3d1c35d9b7bf297c89dbe
+ms.sourcegitcommit: 12b8771c3d2bca8eeb6a66d6f22b60f45b8f7a89
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "43939108"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "44049487"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -52,6 +52,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma Microsoft Teams](#microsoft-teams-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Teams.|
 |[Schéma Office 365 - Protection avancée contre les menaces et Threat Investigation and Response](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Étend le schéma commun avec les propriétés spécifiques des données relatives à Office 365 - Protection avancée contre les menaces et Threat Investigation and Response.|
 |[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365.|
+|[Schéma des événements d’hygiène](#hygiene-events-schema)|Étend le Schéma commun avec les propriétés spécifiques aux événements dans Exchange Online Protection et Protection avancé contre les menaces..|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
 |[Schéma de l’Analyse du temps de travail](#workplace-analytics-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Analyse du temps de travail Microsoft.|
 |[Schéma de la mise en quarantaine](#quarantine-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements de mise en quarantaine.|
@@ -124,7 +125,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |47|ThreatIntelligenceAtpContent|Événements d’hameçonnage et programmes malveillants pour les fichiers dans SharePoint, OneDrive Entreprise et Microsoft Teams dans Office 365 Advanced Threat Protection .|
 |48|LabelContentExplorer|Événements liés à l’[explorateur de contenu de la classification des données](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer).|
 |49|TeamsHealthcare|Événements liés à l’[application patients](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) dans Microsoft Teams pour la santé.|
-|51|HygieneEvent|Événements liés à l’hygiène de la messagerie et à la stratégie anti-courrier indésirable.|
+|51|HygieneEvent|Événements liés à la protection contre le courrier indésirable sortant. |
 |52|DataInsightsRestApiAudit|Informations données sur les événements de l’API REST.|
 |54|SharePointListItemOperation|Éléments de liste SharePoint.|
 |55|SharePointContentTypeOperation|Événements de type de contenu de liste SharePoint.|
@@ -199,7 +200,6 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |0|SharePoint|La source de l’événement est SharePoint.|
 |1|ObjectModel|La source de l’événement est ObjectModel.|
 ||||
-
 
 ### <a name="enum-sharepointauditoperation---type-edmint32"></a>Énumération : SharePointAuditOperation - Type : Edm.Int32
 
@@ -1187,7 +1187,7 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |6|NoAction| La stratégie est configurée de manière à ne prendre aucune mesure sur le message électronique.|
 |7|BccMessage|L’action de stratégie consiste à mettre le message électronique en copie carbone invisible à l'adresse électronique spécifiée par la politique de filtrage.|
 |8|ReplaceAttachment|L’action de stratégie consiste à remplacer la pièce jointe à l’e-mail comme spécifié par la stratégie de filtrage.|
-
+||||
 
 ### <a name="url-time-of-click-events"></a>Événements d’heure de clic d’URL
 
@@ -1380,6 +1380,23 @@ FileHashes |Collection (Edm.String)    |Fichiers à hacher associés au fichier 
 |MailCount    |Edm.int    |Nombre de messages électroniques qui font partie du cluster de courriers.  |
 |Source    |String    |Source du cluster de courriers ; valeur de la source de cluster. |
 ||||
+
+## <a name="hygiene-events-schema"></a>Schéma des événements d’hygiène
+
+Les événements d’hygiène sont liés à la protection contre le courrier indésirable sortant. Ces événements sont liés aux utilisateurs qui ne sont pas autorisés à envoyer des messages électroniques. Pour plus d’informations, reportez-vous aux rubriques suivantes :
+
+- [Protection contre le courrier indésirable sortant](https://docs.microsoft.com/microsoft-365/security/office-365-security/outbound-spam-controls)
+
+- [Retirer les utilisateurs bloqués du portail Utilisateurs restreints dans Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/removing-user-from-restricted-users-portal-after-spam)
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Audit|Edm.String|Non|Informations système liées à l’événement d’hygiène.|
+|Événement|Edm.String|Non|Type d’événement d’hygiène. Les valeurs de ce paramètre sont **Répertoriées** ou **Supprimées**.|
+|EventId|Edm.Int64|Non|ID du type d’événement d’hygiène.|
+|EventValue|Edm.String|Non|L'utilisateur ayant été impacté.|
+|Reason|Edm.String|Non|Détails sur l’événement d’hygiène.|
+|||||
 
 ## <a name="power-bi-schema"></a>Schéma Power BI
 
