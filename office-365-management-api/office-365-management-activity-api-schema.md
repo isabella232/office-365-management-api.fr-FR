@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f46e1c80f13d3001335ee37a9564a5ae06700ff0
-ms.sourcegitcommit: 99d7c8709a35c33a30b3784da2662712b001fcfe
+ms.openlocfilehash: 882967c45d8cee813ec1abb6064258e49a98a1e0
+ms.sourcegitcommit: 91db29fbd6695c92ca5e5647b336d8f10ca267bb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "44275569"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "44407440"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -54,6 +54,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365.|
 |[Schéma des événements d’hygiène](#hygiene-events-schema)|Étend le Schéma commun avec les propriétés spécifiques aux événements dans Exchange Online Protection et Protection avancé contre les menaces..|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
+|[Schéma Dynamics 365](#dynamics-365-schema)|Étend le schéma commun avec les propriétés spécifiques aux événements Dynamics 365.|
 |[Schéma de l’Analyse du temps de travail](#workplace-analytics-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Analyse du temps de travail Microsoft.|
 |[Schéma de la mise en quarantaine](#quarantine-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements de mise en quarantaine.|
 |[Schéma Microsoft Forms](#microsoft-forms-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Forms.|
@@ -89,7 +90,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |Valeur|Nom du membre|Description|
 |:-----|:-----|:-----|
 |1 |ExchangeAdmin|Événements du journal d’audit de d’administration Exchange.|
-|2 |ExchangeItem|Événements d’un enregistrement d’audit de boîte aux lettres Exchange pour les actions effectuées sur un seul élément, comme la création ou la réception d’un message électronique.|
+|n°2|ExchangeItem|Événements d’un enregistrement d’audit de boîte aux lettres Exchange pour les actions effectuées sur un seul élément, comme la création ou la réception d’un message électronique.|
 |3|ExchangeItemGroup|Événements d’un événement d’audit de boîte aux lettres Exchange pour les actions qui peuvent être effectuées sur plusieurs éléments, comme le déplacement ou la suppression d’un ou de plusieurs messages électroniques.|
 |4 |SharePoint|Événements SharePoint.|
 |6 |SharePointFileOperation|Événements d’opération de fichier SharePoint.|
@@ -103,7 +104,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |0,15|AzureActiveDirectoryStsLogon|Événements de connexion STS (Secure Token Service) dans Azure Active Directory.|
 |18 |SecurityComplianceCenterEOPCmdlet|Actions d’administration à partir du Centre de sécurité et conformité.|
 |vingtaine|PowerBIAudit|Événements Power BI.|
-| 21|CRM|Événements Microsoft CRM.|
+| 21|CRM|Événements Dynamics 365.|
 |22,5|Yammer|Événements Yammer.|
 |23|SkypeForBusinessCmdlets|Événements Skype Entreprise.|
 |heures/24|Discovery|Événements pour les activités eDiscovery effectuées en exécutant des recherches de contenu et en gérant les cas d’eDiscovery dans le Centre de sécurité et conformité.|
@@ -145,7 +146,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |:-----|:-----|:-----|
 |0|Regular|Utilisateur standard.|
 |1 |Reserved|Utilisateur réservé.|
-|2 |Admin|Administrateur.|
+|n°2|Admin|Administrateur.|
 |3|DcAdmin|Opérateur du centre de données Microsoft.|
 |4 |System|Compte système.|
 |5 |Application|Application.|
@@ -363,8 +364,6 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 > [!NOTE] 
 > *Cette opération est en version d’évaluation.
 
-
-
 ## <a name="sharepoint-file-operations"></a>Opérations de fichier SharePoint
 
 Les événements SharePoint relatifs aux fichiers répertoriés dans la section « Activités de fichiers et de dossiers » dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) utilisent ce schéma.
@@ -534,7 +533,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |:-----|:-----|:-----|
 |0|Owner|Propriétaire de la boîte aux lettres.|
 |1 |Admin|Personne disposant des privilèges d’administration pour la boîte aux lettres d’un utilisateur.|
-|2 |Delegated|Personne disposant des privilèges de délégué pour la boîte aux lettres d’un utilisateur.|
+|n°2|Delegated|Personne disposant des privilèges de délégué pour la boîte aux lettres d’un utilisateur.|
 |3|Transport|Service de transport dans le centre de données Microsoft.|
 |4 |SystemService|Compte de service dans le centre de données Microsoft|
 |5 |BestAccess|Réservé à une utilisation interne.|
@@ -632,7 +631,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |-1|Other|Autre authentification.|
 |0|Password|Les informations d’identification utilisateur sont le nom d’utilisateur et le mot de passe.|
 |1 |MobilePhone|Les informations d’identification utilisateur correspondent à un téléphone mobile.|
-|2 |SecretQuestion|Les informations d’identification utilisateur correspondent à une question secrète.|
+|n°2|SecretQuestion|Les informations d’identification utilisateur correspondent à une question secrète.|
 |3|SecurePin|Les informations d’identification utilisateur correspondent à un code confidentiel sécurisé.|
 |4 |SecurePinReset|Les informations d’identification utilisateur correspondent à une réinitialisation du code confidentiel sécurisé.|
 |a4|EasyID|Les informations d’identification utilisateur correspondent à EasyID.|
@@ -648,7 +647,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |:-----|:-----|:-----|
 |-1|Other|Autre type i.|
 |1 |InitialAuth|Connexion avec l’authentification initiale|
-|2 |CookieCopy|Connectez-vous avec le cookie.|
+|n°2|CookieCopy|Connectez-vous avec le cookie.|
 |3|SilentReAuth|Connectez-vous avec une authentification multiple en mode silencieux.|
 |||||
 
@@ -659,7 +658,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |:-----|:-----|:-----|
 |0|Min|La méthode d’authentification est Min.|
 |1 |Password|La méthode d’authentification est un mot de passe.|
-|2 |Digest|La méthode d’authentification est Digest.|
+|n°2|Digest|La méthode d’authentification est Digest.|
 |3|ProxyAuth|La méthode d’authentification ProxyAuth.|
 |4 |InfoCard|La méthode d’authentification est InfoCard.|
 |5 |DAToken|La méthode d’authentification est DAToken.|
@@ -928,7 +927,7 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |:-----|:-----|:-----|
 |0|Sway|L’événement a été déclenché à partir d’une instance Sway.|
 |1 |SwayEmbedded|L’événement a été déclenché à partir d’une instance Sway incorporée dans un hôte.|
-|2 |SwayAdminPortal|L’événement a été déclenché à partir des paramètres de service Sway dans le portail d’administration Office 365.|
+|n°2|SwayAdminPortal|L’événement a été déclenché à partir des paramètres de service Sway dans le portail d’administration Office 365.|
 |||||
 
 
@@ -951,7 +950,7 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |:-----|:-----|:-----|
 |0|SwayWeb|L’événement a été déclenché à l’aide du client web de Sway.|
 |1 |SwayIOS|L’événement a été déclenché à l’aide du client iOS de Sway.|
-|2 |SwayWindows|L’événement a été déclenché à l’aide du client Windows de Sway.|
+|n°2|SwayWindows|L’événement a été déclenché à l’aide du client Windows de Sway.|
 |3|SwayAndroid|L’événement a été déclenché à l’aide du client Android de Sway.|
 |||||
 
@@ -964,10 +963,8 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |:-----|:-----|:-----|
 |0|Desktop|L’événement a été déclenché à partir d’un ordinateur de bureau.|
 |1 |Mobile|L’événement a été déclenché à partir d’un appareil mobile.|
-|2 |Tablet|L’événement a été déclenché à partir d’une tablette.|
+|n°2|Tablet|L’événement a été déclenché à partir d’une tablette.|
 |||||
-
-
 
 ### <a name="enum-swayauditoperation---type-edmint32"></a>Énumération : SwayAuditOperation - Type : Edm.Int32
 
@@ -976,7 +973,7 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |**Valeur**|**Nom du membre**|**Description**|
 |:-----|:-----|:-----|
 |0,1|Create|L’utilisateur crée une instance Sway.|
-|2 |Supprimer|L’utilisateur supprime une instance Sway.|
+|n°2|Supprimer|L’utilisateur supprime une instance Sway.|
 |3|View|L’utilisateur affiche une instance Sway.|
 |4 |Modifier|L’utilisateur modifie une instance Sway.|
 |5 |Duplicate|L’utilisateur duplique une instance Sway.|
@@ -1064,7 +1061,7 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |:-----|:-----|:-----|
 |0|Member|Utilisateur membre de l’équipe.|
 |1 |Owner|Utilisateur propriétaire de l’équipe.|
-|2 |Guest|Utilisateur qui n’est pas membre de l’équipe.|
+|n°2|Guest|Utilisateur qui n’est pas membre de l’équipe.|
 ||||
 
 ### <a name="keyvaluepair-complex-type"></a>Type complexe KeyValuePair
@@ -1083,7 +1080,7 @@ Les événements Sway répertoriés dans l’article relatif à la [recherche da
 |**Valeur**|**Nom du membre**|**Description**|
 |:-----|:-----|:-----|
 |0,1|Bot|Bot Microsoft Teams.|
-|2 |Connector|Connecteur Microsoft Teams.|
+|n°2|Connector|Connecteur Microsoft Teams.|
 |3|Tab|Onglet Microsoft Teams.|
 ||||
 
@@ -1157,7 +1154,7 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |**Valeur**|**Nom du membre**|**Description**|
 |:-----|:-----|:-----|
 |1 |Anti-courrier indésirable, HSPM|Action contre le courrier indésirable à niveau de confiance élevé (HSPM) dans la stratégie anti-courrier indésirable.|
-|2 |Anti-courrier indésirable, SPM|Action contre le courrier indésirable (SPM) dans la stratégie anti-courrier indésirable.|
+|n°2|Anti-courrier indésirable, SPM|Action contre le courrier indésirable (SPM) dans la stratégie anti-courrier indésirable.|
 |3|Anti-courrier indésirable, Bloc|Action en bloc dans la stratégie anti-courrier indésirable.|
 |4 |Anti-courrier indésirable, PHSH|Action contre l’hameçonnage dans la stratégie anti-courrier indésirable.|
 |5 |Anti-hameçonnage, DIMP|Action contre l’emprunt d’identité de domaine (DIMP) dans la stratégie anti-hameçonnage.|
@@ -1182,7 +1179,7 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |:-----|:-----|:-----|
 |0|MoveToJMF|L’action de stratégie consiste à déplacer vers le dossier courrier indésirable.|
 |1 |AddXHeader|L’action de stratégie consiste à ajouter un en-tête X au message électronique.|
-|2 |ModifySubject|L’action de stratégie consiste à modifier l’objet du message électronique avec les informations spécifiées par la stratégie de filtrage.|
+|n°2|ModifySubject|L’action de stratégie consiste à modifier l’objet du message électronique avec les informations spécifiées par la stratégie de filtrage.|
 |3|Rediriger|L’action de stratégie consiste à rediriger le courrier électronique vers une adresse de messagerie spécifique de la stratégie de filtrage.|
 |4 |Supprimer|L’action de stratégie consiste à supprimer (abandonner) le message électronique.|
 |5 |Quarantaine|L’action de stratégie consiste à mettre en quarantaine le message électronique.|
@@ -1210,7 +1207,7 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 
 |**Valeur**|**Nom du membre**|**Description**|
 |:-----|:-----|:-----|
-|2 |Blockpage|Utilisateur est bloqué et ne peut pas accéder à l’URL par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|n°2|Blockpage|Utilisateur est bloqué et ne peut pas accéder à l’URL par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |3|PendingDetonationPage|La page de détonation en attente est affichée pour l’utilisateur par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
 |4 |BlockPageOverride|L’utilisateur est bloqué et ne peut pas accéder à l’URL par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links); cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
 |5 |PendingDetonationPageOverride|La page détonation a été affichée pour l’utilisateur par [Liens fiables ATP Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
@@ -1252,7 +1249,7 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |:-----|:-----|
 |0|SharePoint Online|
 |1 |OneDrive Entreprise|
-|2 |Microsoft Teams|
+|n°2|Microsoft Teams|
 |||||
 
 ## <a name="automated-investigation-and-response-events-in-office-365"></a>Événements d’investigation et de réponse automatisés dans Office 365
@@ -1435,13 +1432,42 @@ Les événements Power BI répertoriés dans l’article relatif à la [Recherch
 | ResharePermission | Edm.String   Term="Microsoft.Office.Audit.Schema.PIIFlag" Bool="true" |  Non  | L’autorisation accordée au destinataire. |
 |||||
 
+## <a name="dynamics-365-schema"></a>Schéma Dynamics 365
+
+Les enregistrements d’audit pour les événements liés aux applications basées sur un modèle dans les événements Dynamics 365 utilisent un schéma d’opérations de base et d’entité. Pour plus d’informations, consultez la rubrique [activer et utiliser la journalisation des activités](https://docs.microsoft.com/power-platform/admin/enable-use-comprehensive-auditing#model-driven-apps-in-dynamics-365-schema).
+
+### <a name="dynamics-365-base-schema"></a>Schéma de base Dynamics 365
+
+| **Paramètres**     | **Type**            | **Obligatoire ?** | **Description**|
+|:------------------ | :------------------ | :--------------|:--------------|
+|CrmOrganizationUniqueName|Edm.String|Oui|Nom unique de l’organisation.|
+|InstanceUrl|Edm.String|Oui|URL de l’instance.|
+|ItemUrl|Edm.String|Non|URL de l’enregistrement qui émet le journal.|
+|ItemType|Edm.String|Non|Naame de l’entité.|
+|UserAgent|Edm.String|Non|Identificateur unique du GUID de l’utilisateur dans l’organisation.|
+|Champs|Collection(Common.NameValuePair)|Non|Objet JSON qui contient les paires clé-valeur de propriété qui ont été créées ou mises à jour.|
+|||||
+
+### <a name="dynamics-365-entity-operation-schema"></a>Schéma d’opération de l’entité Dynamics 365
+
+Les événements d’entité provenant d’applications basées sur un modèle dans Dynamics 365 utilisent ce schéma pour construire le schéma de base Dynamics 365. Ce schéma inclut des informations sur l’entité qui a déclenché l’événement audité.
+
+| **Paramètres**     | **Type**            | **Obligatoire ?** | **Description**|
+|:------------------ | :------------------ | :--------------|:--------------|
+|EntityId|Edm.Guid|Non|Identificateur unique de l’entité.|
+|Menti|Edm.String|Oui|Nom de l’entité dans l’organisation. Exemple d’entités : `contact` ou `authentication` .|
+|Message|Edm.String|Oui|Ce paramètre contient l’opération exécutée sur l’entité. Par exemple, si un nouveau contact a été créé, la valeur de la propriété message est `Create` et la valeur correspondante de la propriété EntityName est `contact` .|
+|Requête|Edm.String|Non|Paramètres de la requête de filtre utilisée lors de l’exécution de l’opération FetchXML.|
+|PrimaryFieldValue|Edm.String|Non|Indique la valeur de l’attribut qui est le champ principal pour l’entité.|
+|||||
+
 ## <a name="workplace-analytics-schema"></a>Schéma Analyse du temps de travail
 
 Les événements Analyse du temps de travail répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) utilisent ce schéma.
 
 | **Paramètres**     | **Type**            | **Obligatoire ?** | **Description**|
 |:------------------ | :------------------ | :--------------|:--------------|
-| WpaUserRole        | Edm.String | Non     | Rôle Analyse du temps de travail de l’utilisateur ayant exécuté l’action.                                                                                            |
+| WpaUserRole        | Edm.String | Non     | Rôle Analyse du temps de travail de l’utilisateur ayant exécuté l’action.|
 | ModifiedProperties | Collection (Common.ModifiedProperty) | Non | Cette propriété inclut le nom de la propriété modifiée, la nouvelle valeur de la propriété modifiée et la valeur précédente de la propriété modifiée.|
 | OperationDetails   | Collection (Common.NameValuePair)    | Non | Liste des propriétés étendues pour le paramètre ayant été modifié. Chaque propriété a un **nom** et une **valeur**.|
 ||||
@@ -1464,7 +1490,7 @@ Les événements de mise en quarantaine répertoriés dans l’article [Recherch
 |:-----|:-----|:-----|
 |0|Aperçu|Il s’agit de la demande d’un utilisateur qui permet d’afficher un aperçu de l’e-mail considéré comme dangereux.|
 |1 |Supprimer|Il s’agit de la demande d’un utilisateur qui permet de supprimer l’e-mail considéré comme dangereux.|
-|2 |Débloquer|Il s’agit de la demande d’un utilisateur qui permet de débloquer l’e-mail considéré comme dangereux.|
+|n°2|Débloquer|Il s’agit de la demande d’un utilisateur qui permet de débloquer l’e-mail considéré comme dangereux.|
 |3|Exporter|Il s’agit de la demande d’un utilisateur qui permet d’exporter l’e-mail considéré comme dangereux.|
 |4 |ViewHeader|Il s’agit de la demande d’un utilisateur qui permet d’afficher l’en-tête de l’e-mail considéré comme dangereux.|
 ||||
@@ -1475,7 +1501,7 @@ Les événements de mise en quarantaine répertoriés dans l’article [Recherch
 |:-----|:-----|:-----|
 |0|SCC|Le centre de sécurité et de conformité (SCC) est la source d’où peut provenir la demande d’un utilisateur pour afficher un aperçu, supprimer, débloquer, exporter ou afficher l’en-tête d’un e-mail potentiellement dangereux. |
 |1 |Cmdlet|Une cmdlet est la source d’où peut provenir la demande d’un utilisateur pour afficher un aperçu, supprimer, débloquer, exporter ou afficher l’en-tête d’un e-mail potentiellement dangereux.|
-|2 |URLlink|Il s’agit d’une source d’où peut provenir la demande d’un utilisateur pour afficher un aperçu, supprimer, débloquer, exporter ou afficher l’en-tête d’un e-mail potentiellement dangereux.|
+|n°2|URLlink|Il s’agit d’une source d’où peut provenir la demande d’un utilisateur pour afficher un aperçu, supprimer, débloquer, exporter ou afficher l’en-tête d’un e-mail potentiellement dangereux.|
 ||||
 
 ## <a name="microsoft-forms-schema"></a>Schéma Microsoft Forms
@@ -1500,7 +1526,7 @@ Les événements Microsoft Forms répertoriés dans l’article relatif à la [r
 |:-----|:-----|:-----|
 |0|Administrateur|Un administrateur ayant accès au formulaire.|
 |1 |Propriétaire|Utilisateur propriétaire du formulaire.|
-|2 |Répondant|Utilisateur ayant soumis une réponse à un formulaire.|
+|n°2|Répondant|Utilisateur ayant soumis une réponse à un formulaire.|
 |3|Coauteur|Utilisateur ayant utilisé un lien de collaboration fourni par le propriétaire du formulaire pour se connecter et modifier un formulaire.|
 ||||
 
@@ -1512,7 +1538,7 @@ Les événements Microsoft Forms répertoriés dans l’article relatif à la [r
 |:-----|:-----|:-----|
 |0|Formulaire|Formulaires créés à l’aide de l’option nouveau formulaire.|
 |1 |Quiz|Questionnaires créés à l’aide de l’option nouveau questionnaire.  Un questionnaire est un type de formulaire spécial qui inclut des fonctionnalités supplémentaires, telles que des valeurs de points, des notations automatiques et manuelles, ainsi que des commentaires.|
-|2 |Enquête|Enquêtes créées à l’aide de l’option nouveau formulaire.  Une enquête est un type de formulaire spécial qui inclut des fonctionnalités supplémentaires, telles que l’intégration et la prise en charge de CMS pour les règles de flux.|
+|n°2|Enquête|Enquêtes créées à l’aide de l’option nouveau formulaire.  Une enquête est un type de formulaire spécial qui inclut des fonctionnalités supplémentaires, telles que l’intégration et la prise en charge de CMS pour les règles de flux.|
 ||||
 
 ## <a name="mip-label-schema"></a>Schéma d’étiquette Microsoft Information Protection
