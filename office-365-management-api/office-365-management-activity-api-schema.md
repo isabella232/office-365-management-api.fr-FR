@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 882967c45d8cee813ec1abb6064258e49a98a1e0
-ms.sourcegitcommit: 91db29fbd6695c92ca5e5647b336d8f10ca267bb
+ms.openlocfilehash: 311fbfedbef52c12f40bc275b66acd5f791e1b47
+ms.sourcegitcommit: 18a48948fb8973efd51e29a1287c1b130bcff44b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "44407440"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "44803450"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -210,7 +210,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |:-----|:-----|
 |AccessInvitationAccepted*|Le destinataire d’une invitation à afficher ou à modifier un fichier (ou dossier) partagé a accédé au fichier partagé en cliquant sur le lien dans l’invitation.|
 |AccessInvitationCreated*|L’utilisateur envoie une invitation à une autre personne (interne ou externe à son organisation) pour afficher ou modifier un fichier ou dossier partagé sur un site SharePoint ou OneDrive Entreprise. Les détails de l’entrée d’événement identifient le nom du fichier qui a été partagé, l’utilisateur auquel l’invitation a été envoyée et le type d’autorisation de partage sélectionnée par la personne qui a envoyé l’invitation.|
-|AccessInvitationExpired*|Une invitation envoyée à un utilisateur externe expire. Par défaut, une invitation envoyée à un utilisateur extérieur à votre organisation expire au bout de 7 jours si elle n’est pas acceptée.|
+|AccessInvitationExpired*|An invitation sent to an external user expires. By default, an invitation sent to a user outside of your organization expires after 7 days if the invitation isn't accepted.|
 |AccessInvitationRevoked*|L’administrateur de site ou le propriétaire d’un site ou d’un document dans SharePoint ou OneDrive Entreprise retire une invitation qui a été envoyée à un utilisateur en dehors de votre organisation. Une invitation peut être retirée uniquement avant d’être acceptée.|
 |AccessInvitationUpdated*|L’utilisateur qui a créé et envoyé une invitation à une autre personne pour afficher ou modifier un fichier (ou dossier) partagé sur un site SharePoint ou OneDrive Entreprise renvoie l’invitation.|
 |AccessRequestApproved|L’administrateur ou le propriétaire d’un site ou d’un document dans SharePoint ou OneDrive Entreprise approuve la demande d’accès au site ou au document.|
@@ -246,7 +246,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |EntityForceCheckedIn|Un utilisateur force l’archivage d’un calendrier, d’un champ personnalisé ou d’une table de choix dans Project Web App.|
 |ExemptUserAgentSet*|L’administrateur général ajoute un agent utilisateur à la liste des agents utilisateurs exemptés dans le Centre d’administration SharePoint.|
 |FileAccessed|Un compte d’utilisateur ou système accède à un fichier sur un site SharePoint ou OneDrive Entreprise. Les comptes système peuvent également générer des événements FileAccessed.|
-|FileCheckOutDiscarded*|Un utilisateur ignore (ou annule) un fichier extrait. Les modifications qu’il a apportées au fichier le temps de son extraction sont ignorées et ne sont pas enregistrées dans la version du document dans la bibliothèque de documents.|
+|FileCheckOutDiscarded*|User discards (or undos) a checked out file. That means any changes they made to the file when it was checked out are discarded, and not saved to the version of the document in the document library.|
 |FileCheckedIn*|Un utilisateur archive un document qu’il a extrait à partir d’une bibliothèque de documents SharePoint ou OneDrive Entreprise.|
 |FileCheckedOut*|Un utilisateur extrait un document situé dans une bibliothèque de documents SharePoint ou OneDrive Entreprise. Les utilisateurs peuvent extraire et apporter des modifications aux documents partagés avec eux.|
 |FileCopied|Un utilisateur copie un document à partir d’un site SharePoint ou OneDrive Entreprise. Le fichier copié peut être enregistré dans un autre dossier sur le site.|
@@ -335,7 +335,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |SharedLinkCreated|Un utilisateur crée un lien vers un fichier partagé sur un site SharePoint ou OneDrive Entreprise. Ce lien peut être envoyé à d’autres personnes pour leur donner accès au fichier. Un utilisateur peut créer deux types de liens : un lien qui permet à la personne d’afficher et de modifier le fichier partagé, ou un lien qui permet à la personne d’afficher le fichier uniquement.|
 |SharedLinkDisabled*|Un utilisateur désactive (définitivement) un lien qui a été créé pour partager un fichier.|
 |SharingInvitationAccepted *|Un utilisateur accepte une invitation à partager un fichier ou un dossier. Cet événement est enregistré lorsqu’un utilisateur partage un fichier avec d’autres utilisateurs.|
-|SharingRevoked*|L’utilisateur annule le partage d’un fichier ou d’un dossier qui a été précédemment partagé avec d’autres utilisateurs. Cet événement est enregistré lorsqu’un utilisateur arrête le partage d’un fichier avec d’autres utilisateurs.|
+|SharingRevoked*|User unshares a file or folder that was previously shared with other users. This event is logged when a user stops sharing a file with other users.|
 |SharingSet|Un utilisateur partage un fichier ou un dossier situé dans SharePoint ou OneDrive Entreprise avec un autre utilisateur au sein de son organisation.|
 |SiteAdminChangeRequest*|Un utilisateur demande à être ajouté en tant qu’administrateur de collection de sites pour une collection de sites SharePoint. Les administrateurs de collection de sites disposent du niveau d’autorisation Contrôle total sur la collection de sites et tous les sous-sites.|
 |SiteCollectionAdminAdded*|Le propriétaire ou l’administrateur de collection de sites ajoute une personne en tant qu’administrateur de collection de sites pour un site SharePoint ou OneDrive Entreprise. Les administrateurs de collection de sites disposent du niveau d’autorisation Contrôle total sur la collection de sites et tous les sous-sites.|
@@ -861,11 +861,13 @@ Les signaux d’alerte sont les suivants :
 - toutes les alertes générées en fonction des [stratégies d’alerte dans le Centre de sécurité et de conformité](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies) ;
 - les alertes liées à Office 365 générées dans [Sécurité des applications cloud Office 365](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) et [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security).
 
-Les paramètres UserId et UserKey de ces événements sont toujours des alertes SecurityComplianceAlerts. Il existe deux types de signaux d’alerte stockés en tant que valeurs de la propriété Operation du schéma commun :
+Les paramètres UserId et UserKey de ces événements sont toujours des alertes SecurityComplianceAlerts. Il existe trois types d’événements d’alerte stockés en tant que valeur de la propriété Operation du schéma commun :
 
 - AlertTriggered : une nouvelle alerte est générée en raison d’une correspondance de stratégie.
 
-- AlertEntityGenerated : une nouvelle entité est ajoutée à une alerte. Cet événement s’applique uniquement aux alertes générées en fonction des stratégies d’alerte dans le Centre de sécurité et conformité Office 365. Chaque alerte générée peut être associée à un ou à plusieurs de ces événements. Par exemple, une stratégie d’alerte est définie pour déclencher une alerte si un utilisateur supprime plus de 100 fichiers en 5 minutes. Si deux utilisateurs dépassent le seuil au même moment, il existera deux événements AlertEntityGenerated, mais un seul événement AlertTriggered.
+- AlertEntityGenerated : une nouvelle entité est ajoutée à une alerte. Cet événement est uniquement applicable aux alertes générées en fonction des stratégies d’alerte dans le centre de sécurité et de conformité. Chaque alerte générée peut être associée à un ou à plusieurs de ces événements. Par exemple, une stratégie d’alerte est définie pour déclencher une alerte si un utilisateur supprime plus de 100 fichiers en 5 minutes. Si deux utilisateurs dépassent le seuil au même moment, il existera deux événements AlertEntityGenerated, mais un seul événement AlertTriggered.
+
+- AlertUpdated-une mise à jour a été effectuée sur les métadonnées d’une alerte. Cet événement est enregistré lorsque l’état d’une alerte est modifié (par exemple, de « actif » à « résolu ») et lorsqu’un utilisateur ajoute un commentaire à l’alerte.
 
 |**Paramètres**|**Type**|**Obligatoire**|**Description**|
 |:-----|:-----|:-----|:-----|
