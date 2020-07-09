@@ -6,12 +6,12 @@ ms.ContentId: ''
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 19603e9f22d65c51ee01c9b410c61cb46ca97434
-ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
+ms.openlocfilehash: 4ceec751e72bc5bec3d8c0412d48aafa38d40596
+ms.sourcegitcommit: 745a6e43dc3a9849897a5b57eadb3e7c57511c6f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "41263232"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "45083693"
 ---
 # <a name="office-365-management-activity-api-frequently-asked-questions"></a>API Activité de gestion Office 365- Questions fréquemment posées
 
@@ -46,10 +46,6 @@ Non. L’audit unifié d’Office 365 doit être activé pour votre organisatio
 #### <a name="arent-webhook-notifications-more-immediate-after-all-arent-they-event-driven"></a>Les notifications webhook ne sont-elles pas plus immédiates ? Après tout, ne sont-elles pas fondées sur les événements ?
 
 Non. Les notifications webhook ne sont pas fondées sur les événements au sens où l’événement déclencherait la notification. Le contenu blob doit toujours être créé et la création du contenu blob déclenche l’envoi de la notification. Récemment, les temps d’attente des notifications ont été plus longs lors de l’utilisation d’un webhook par rapport à l’interrogation de l’API directement avec l’opération */content*. Par conséquent, l’API Activité de gestion ne doit pas être considérée comme un système d’alerte de sécurité en temps réel. Microsoft propose d’autres produits pour cela. En ce qui concerne la sécurité, les notifications d’événements de l’API Activité de gestion peuvent être utilisées de façon plus appropriée pour déterminer les modèles d’utilisation sur de longues périodes de temps.
-
-#### <a name="when-pulling-the-data-from-the-management-activity-api-there-is-sometimes-a-delay-of-more-than-3-to-5-days-why-is-this"></a>Lors de l’extraction des données de l’API Activité de gestion, il y a parfois un retard de plus de 3 à 5 jours. Pourquoi ?
-
-Parfois, il existe des instances d’une panne temporaire ou d’autres problèmes dans le service Office 365. Dans ce cas, des enregistrements d’audit sont annulés et le service tente de les renvoyer. Bien que cela se produise pour 5 à 10 % des enregistrements environ, voici les enregistrements qui peuvent être retardés dans certaines situations. Si le retard dépasse 5 jours, consultez le tableau de bord de l’état des services dans le centre d’administration Office 365. Si nécessaire, vous pouvez aussi ouvrir un ticket avec le [support Microsoft](https://support.office.com/article/contact-support-for-business-products-admin-help-32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b#ID0EAADAAA=online).
 
 #### <a name="im-encountering-a-throttling-error-in-the-management-activity-api-what-should-i-do"></a>Je rencontre une erreur de limitation dans l’API Activité de gestion. Que dois-je faire ?
 

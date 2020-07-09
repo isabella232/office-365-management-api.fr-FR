@@ -6,12 +6,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 0552456c2340ad170355953e274a455ff681e2c9
-ms.sourcegitcommit: d55928a0d535090fa2dbe94f38c7316d0e52e9a9
+ms.openlocfilehash: 459143049732df246edf4877551ca2dd8f7cbafe
+ms.sourcegitcommit: 745a6e43dc3a9849897a5b57eadb3e7c57511c6f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "44173133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "45083714"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -288,15 +288,3 @@ Les blobs de contenu sont disponibles pendant 7 jours après l’envoi de la n
 #### <a name="if-there-is-a-24-hour-delay-in-getting-a-notification-doesnt-that-mean-i-will-have-only-6-days-to-retrieve-the-content-blob"></a>Si l’envoi de la notification est retardé de 24 heures, me restera-t-il seulement 6 jours pour récupérer le blob de contenu ?
 
 Non. Même si la notification est retardée pendant un certain temps (par exemple, dans le cas d’une interruption de service), il vous reste 7 jours après la date d’envoi initial de la notification pour télécharger le blob de contenu lié à l’événement d’origine.
-
-
-
-
-
-
-
-
-
-
-
-
