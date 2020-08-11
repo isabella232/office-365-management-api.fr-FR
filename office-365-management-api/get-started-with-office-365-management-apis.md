@@ -6,12 +6,12 @@ ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f444aa9411e0520be42ce68b2f618efe5228ac75
-ms.sourcegitcommit: 36d0167805d24bbb3e2cf1a02d0f011270cc31cb
+ms.openlocfilehash: c0c7f69fcb879879244b5e51768f91ea2472faad
+ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "41263239"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "46612294"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Prise en main des API de gestion d’Office 365
 
@@ -28,7 +28,6 @@ Vous devez suivre quatre étapes principales :
 4. **Appeler les API de gestion d’Office 365**. Les jetons d’accès d’application uniquement sont transmis aux API de gestion d’Office 365 pour authentifier et autoriser votre application.
     
 Le diagramme suivant illustre la séquence des demandes de consentement et de jetons d’accès.
-
 
 ![Flux d’autorisation de mise en route des API de gestion](images/authorization-flow.png)
 
@@ -329,7 +328,6 @@ Le jeton d’accès renvoyé est un jeton JWT qui inclut des informations sur l�
   "acr": "1"
 }
 ```
-
 
 ### <a name="request-an-access-token-by-using-client-credentials"></a>Demander un jeton d’accès à l’aide des informations d’identification client
 
