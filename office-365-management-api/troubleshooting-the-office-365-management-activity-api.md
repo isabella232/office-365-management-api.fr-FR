@@ -6,12 +6,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 459143049732df246edf4877551ca2dd8f7cbafe
-ms.sourcegitcommit: 745a6e43dc3a9849897a5b57eadb3e7c57511c6f
+ms.openlocfilehash: 84a24a2f803a95d2cadaf804f35a358f10ba49be
+ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "45083714"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "46612308"
 ---
 # <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -57,7 +57,9 @@ Les trois autorisations actuellement utilisées pour l’API Activité de gestio
 
 Le script PowerShell suivant utilise l’ID de l’application et une clé secrète client pour obtenir le jeton OAuth2 auprès du point de terminaison d’authentification de l’API Activité de gestion. Il place ensuite le jeton d’accès dans la variable `$headerParams` de la matrice, que vous joindrez à votre requête HTTP. Pour la valeur du point de terminaison de l’API (dans la variable $resource), utilisez l’une des valeurs suivantes basées sur le plan d’abonnement Microsoft 365 ou Office 365 de votre organisation :
 
-- Plan entreprise et secteur public GCC : `manage.office.com`
+- Plan Entreprise : `manage.office.com`
+
+- Plan pour le secteur public GCC : `manage-gcc.office.com`
 
 - Plan pour le secteur public GCC : `manage.office365.us`
 
@@ -69,7 +71,7 @@ $ClientID = "<YOUR_APPLICATION_ID"
 $ClientSecret = "<YOUR_CLIENT_SECRET>"
 $loginURL = "https://login.microsoftonline.com/"
 $tenantdomain = "<YOUR_DOMAIN>.onmicrosoft.com"
-# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise and GCC - manage.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
+# Get the tenant GUID from Properties | Directory ID under the Azure Active Directory section. For $resource, use one of these endpoint values based on your subscription plan: Enterprise - manage.office.com; GCC - manage-gcc.office.com; GCC High: manage.office365.us; DoD: manage.protection.apps.mil
 $TenantGUID = "<YOUR_TENANT_GUID>"
 $resource = "https://<YOUR_API_ENDPOINT>"
 # auth
@@ -127,7 +129,9 @@ Cette réponse indique que les abonnements Audit.Exchange et Audit.SharePoint so
 
 Pour créer un abonnement, utilisez l’opération /start. Pour le point de terminaison de l’API, utilisez l’une de ces valeurs base sur votre plan d’abonnement :
 
-- Plan entreprise et secteur public GCC : `manage.office.com`
+- Plan Entreprise : `manage.office.com`
+
+- Plan pour le secteur public GCC : `manage-gcc.office.com`
 
 - Plan pour le secteur public GCC : `manage.office365.us`
 
@@ -137,7 +141,7 @@ Pour créer un abonnement, utilisez l’opération /start. Pour le point de term
 Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > N’oubliez pas que la variable `$headerParams` a été remplie dans la première partie du script présentée à la section [Connexion à l’API](#connecting-to-the-api) de cet article.
 
 Le code précédent crée un abonnement au type de contenu Audit.AzureActiveDirectory, avec un webhook null. Vous pouvez ensuite vérifier vos abonnements en utilisant le code indiqué dans la section [Vérification de vos abonnements](#checking-your-subscriptions) de cet article.
@@ -225,7 +229,7 @@ Il est important de faire la distinction entre l’opération /notifications et 
 
 ## <a name="requesting-content-blobs-and-throttling"></a>Requête de blobs de contenu et limitation de requêtes
 
-Dès que vous avez obtenu la liste des URI de contenu, demandez les blobs spécifiés par les URI. Voici un exemple de demande d’un blob de contenu (à l’aide du point de terminaison de l’API manage.office.com pour les organisations d’entreprise ou de GCC) à l’aide de PowerShell. Cet exemple part du principe que vous avez déjà utilisé l’exemple précédent de la section [Obtention d’un jeton d’accès](#getting-an-access-token) de cet article pour obtenir un jeton d’accès et remplir la variable `$headerParams` comme il se doit.
+Dès que vous avez obtenu la liste des URI de contenu, demandez les blobs spécifiés par les URI. Voici un exemple de demande d’un blob de contenu (à l’aide du point de terminaison de l’API manage.office.com pour les organisations d’entreprise) à l’aide de PowerShell. Cet exemple part du principe que vous avez déjà utilisé l’exemple précédent de la section [Obtention d’un jeton d’accès](#getting-an-access-token) de cet article pour obtenir un jeton d’accès et remplir la variable `$headerParams` comme il se doit.
 
 ```powershell
 # Get a content blob
