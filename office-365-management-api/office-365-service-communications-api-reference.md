@@ -6,25 +6,25 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 36ef8e548b535fc97f2b1b6d4347184fa18d6ceb
-ms.sourcegitcommit: 78e76d5d1c3e40907ea0936a7c3f016eed4ebd3c
+ms.openlocfilehash: e6024c19457796fb6f3fb94a62a013cc86a95072
+ms.sourcegitcommit: a4ba198b7417e49880905e49a38d0bd1f4ad8802
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "41650849"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "47334887"
 ---
 # <a name="office-365-service-communications-api-reference"></a>Référence de l’API Office 365 Service Communications
 
 Vous pouvez utiliser l’API V2 Office 365 Service Communications pour accéder aux données suivantes :
 
 - **Obtenir les services** : obtenez la liste des services abonnés.
-    
+
 - **Obtenir l’état actuel** : obtenez une vue en temps réel des incidents de service des événements en cours.
-    
+
 - **Obtenir l’état de l’historique** : obtenez une vue historique des incidents de service.
-    
+
 - **Obtenir les messages** : communications Rechercher un incident et Centre de messages.
-    
+
 Actuellement, l’API Office 365 Service Communications contient des données pour Office 365, Yammer, Dynamics CRM et les services Cloud de Microsoft Intune.
 
 ## <a name="the-fundamentals"></a>Les principes de base
@@ -52,7 +52,6 @@ Voici les en-têtes de demande pris en charge pour toutes les opérations de l�
 |**Accept (facultatif)**|Voici les représentations acceptables pour la réponse :<br/>**application/json;odata.metadata=full**<br/>**application/json;odata.metadata=minimal**<br/>[La valeur par défaut si l’en-tête n’est pas spécifié] **application/json;odata.metadata=none**|
 |**Authorization (obligatoire)**|Jeton d’autorisation (jeton Azure AD JWT du porteur) de la demande.|
 
-
 <br/>
 
 ### <a name="response-headers"></a>En-têtes de réponse
@@ -79,7 +78,6 @@ Voici les en-têtes de réponse renvoyés pour toutes les opérations de l’API
 <br/>
 
 Voici les opérations de l’API Office 365 Service Communications.
-
 
 ## <a name="get-services"></a>Obtenir les services
 
@@ -135,7 +133,6 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
     ]
 }
 ```
-
 
 ## <a name="get-current-status"></a>Obtenir l’état actuel
 
@@ -267,21 +264,21 @@ Authorization: Bearer {AAD_Bearer_JWT_Token}
 
 ### <a name="status-definitions"></a>Définitions des états
 
-Les définitions d’état englobent les valeurs suivantes : 
+Les définitions d’état englobent les valeurs suivantes :
 
 - Investigating
 - ServiceDegradation
-- ServiceInterruption 
+- ServiceInterruption
 - RestoringService
 - ExtendedRecovery
+- InvestigationSuspended
 - ServiceRestored
-- PostIncidentReportPublished 
+- FalsePositive
+- PostIncidentReportPublished
 - VerifyingService
 - ServiceOperational
-- FalsePositive
 
 Pour obtenir une liste et une description à jour de ces définitions d’état, voir [Vérifier l’état du service Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health#status-definitions).
-
 
 ## <a name="get-historical-status"></a>Obtenir l’état de l’historique
 
@@ -483,4 +480,3 @@ Lorsque le service rencontre une erreur, il signale le code de la réponse d’e
     } 
 }
 ```
-

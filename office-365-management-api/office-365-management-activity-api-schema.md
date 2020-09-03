@@ -6,12 +6,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: f4c35fc343593c0d61ae29b43a58db66ebf2185f
-ms.sourcegitcommit: 1047f1e1d17d873918790ff1fc6d7adcc75ab2bc
+ms.openlocfilehash: 01ca346835edc94007d90db0a85d20a9bc5b945e
+ms.sourcegitcommit: a4ba198b7417e49880905e49a38d0bd1f4ad8802
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "46672891"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "47334880"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -49,8 +49,8 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma de base de sécurité du centre de données](#data-center-security-base-schema)|Étend le Schéma commun avec les propriétés spécifiques de toutes les données d’audit de sécurité du centre de données.|
 |[Schéma de cmdlet de sécurité du centre de données](#data-center-security-cmdlet-schema)|Étend le schéma de base de sécurité du centre de données avec les propriétés spécifiques de toutes les données d’audit de cmdlet de sécurité du centre de données.|
 |[Schéma Microsoft Teams](#microsoft-teams-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Teams.|
-|[Schéma Office 365 - Protection avancée contre les menaces et Threat Investigation and Response](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Étend le schéma commun avec les propriétés spécifiques des données relatives à Office 365 - Protection avancée contre les menaces et Threat Investigation and Response.|
-|[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365.|
+|[Schéma Office 365 - Protection avancée contre les menaces et Threat Investigation and Response](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Étend le schéma commun avec les propriétés spécifiques des données relatives à Office 365 – Protection avancée contre les menaces et Examen des menaces et données de réponse.|
+|[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365. Pour voir un exemple, consultez [Blog de la communauté technique : améliorer l’efficacité de votre SOC avec Office 365 – Protection avancée contre les menaces et l’API de gestion Office 365](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
 |[Schéma des événements d’hygiène](#hygiene-events-schema)|Étend le Schéma commun avec les propriétés spécifiques aux événements dans Exchange Online Protection et Protection avancé contre les menaces..|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
 |[Schéma Dynamics 365](#dynamics-365-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Dynamics 365.|
