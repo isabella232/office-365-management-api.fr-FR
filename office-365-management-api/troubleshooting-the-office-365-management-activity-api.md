@@ -55,15 +55,15 @@ Les trois autorisations actuellement utilisées pour l’API Activité de gestio
 
 ### <a name="getting-an-access-token"></a>Obtention d’un jeton d’accès
 
-Le script PowerShell suivant utilise l’ID de l’application et une clé secrète client pour obtenir le jeton OAuth2 auprès du point de terminaison d’authentification de l’API Activité de gestion. Il place ensuite le jeton d’accès dans la variable `$headerParams` de la matrice, que vous joindrez à votre requête HTTP. Pour la valeur du point de terminaison de l’API (dans la variable $resource), utilisez l’une des valeurs suivantes basées sur le plan d’abonnement Microsoft 365 ou Office 365 de votre organisation :
+Le script PowerShell suivant utilise l’ID de l’application et une clé secrète client pour obtenir le jeton OAuth2 auprès du point de terminaison d’authentification de l’API Activité de gestion. Il place ensuite le jeton d’accès dans la variable `$headerParams` de la matrice, que vous joindrez à votre requête HTTP. Pour la valeur du point de terminaison de l’API (dans la variable $resource), utilisez l’une des valeurs suivantes, selon l’offre d’abonnement Microsoft 365 ou Office 365 de votre organisation :
 
-- Plan Entreprise : `manage.office.com`
+- Offre pour le secteur privé : `manage.office.com`
 
-- Plan pour le secteur public GCC : `manage-gcc.office.com`
+- Offre pour le secteur public (Cloud de la communauté du secteur public) : `manage-gcc.office.com`
 
-- Plan pour le secteur public GCC : `manage.office365.us`
+- Offre pour le secteur public (Cloud de la communauté du secteur public à haute disponibilité, ou « GCC High  ») : `manage.office365.us`
 
-- Plan pour le secteur public DoD : `manage.protection.apps.mil`
+- Offre pour le secteur public (Département de la Défense) : `manage.protection.apps.mil`
 
 ```powershell
 # Create app of type Web app / API in Azure AD, generate a Client Secret, and update the client id and client secret here
@@ -127,11 +127,11 @@ Cette réponse indique que les abonnements Audit.Exchange et Audit.SharePoint so
 
 ## <a name="creating-a-new-subscription"></a>Création d’un abonnement
 
-Pour créer un abonnement, utilisez l’opération /start. Pour le point de terminaison de l’API, utilisez l’une de ces valeurs base sur votre plan d’abonnement :
+Pour créer un abonnement, utilisez l’opération /start. Pour le point de terminaison de l’API, utilisez l’une de ces valeurs selon votre type d’abonnement :
 
-- Plan Entreprise : `manage.office.com`
+- Offre pour le secteur privé : `manage.office.com`
 
-- Plan pour le secteur public GCC : `manage-gcc.office.com`
+- Offre pour le secteur public (Cloud de la communauté du secteur public) : `manage-gcc.office.com`
 
 - Plan pour le secteur public GCC : `manage.office365.us`
 
@@ -229,7 +229,7 @@ Il est important de faire la distinction entre l’opération /notifications et 
 
 ## <a name="requesting-content-blobs-and-throttling"></a>Requête de blobs de contenu et limitation de requêtes
 
-Dès que vous avez obtenu la liste des URI de contenu, demandez les blobs spécifiés par les URI. Voici un exemple de demande d’un blob de contenu (à l’aide du point de terminaison de l’API manage.office.com pour les organisations d’entreprise) à l’aide de PowerShell. Cet exemple part du principe que vous avez déjà utilisé l’exemple précédent de la section [Obtention d’un jeton d’accès](#getting-an-access-token) de cet article pour obtenir un jeton d’accès et remplir la variable `$headerParams` comme il se doit.
+Dès que vous avez obtenu la liste des URI de contenu, demandez les blobs spécifiés par les URI. Voici un exemple de requête d’un blob de contenu (en utilisant le point de terminaison de l’API manage.office.com pour les organisations d’entreprise) avec PowerShell. Cet exemple part du principe que vous avez déjà utilisé l’exemple précédent de la section [Obtention d’un jeton d’accès](#getting-an-access-token) de cet article pour obtenir un jeton d’accès et remplir la variable `$headerParams` comme il se doit.
 
 ```powershell
 # Get a content blob
