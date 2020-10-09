@@ -1,4 +1,5 @@
 ---
+ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Management Activity API reference
 title: Référence de l’API Activité de gestion Office 365
 description: Cet article explique comment utiliser l’API Activité de gestion Office 365 pour récupérer des informations sur les actions et les événements des utilisateurs, des administrateurs, du système et des stratégies à partir des journaux d’activité Office 365 et Azure AD.
@@ -6,12 +7,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 892dff36a9a7320bdfda4ba908581cb1e000c2b0
-ms.sourcegitcommit: a85b79e8586ae83ecbf30de808c4df90e839536b
+ms.openlocfilehash: 94879a2634396868248d3df6a6eb76b9931d9f65
+ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "46612301"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "48397425"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
 
