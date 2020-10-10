@@ -4,5 +4,4 @@
 ## [API de communications de service](office-365-service-communications-api-reference.md)
 ## [Référence de l’API Activité de gestion](office-365-management-activity-api-reference.md)
 ## [Schéma de l’API Activité de gestion](office-365-management-activity-api-schema.md)
-## [Résolution des problèmes d’API d’activités de gestion](troubleshooting-the-office-365-management-activity-api.md)
-## [API Activité de gestion - Questions fréquemment posées](office-365-management-activity-api-faq.md)
+## [Forum aux questions sur l’API de gestion des activités et résolution des problèmes](troubleshooting-the-office-365-management-activity-api.md)
