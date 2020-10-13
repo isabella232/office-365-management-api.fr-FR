@@ -7,12 +7,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 323407799cefe74b331dec01bb746971c41b5adf
-ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
+ms.openlocfilehash: 218c0517697f1d71b1557f3b55a4c184fb52ec54
+ms.sourcegitcommit: c9cb078e6c94bcf0bb28cb0fffef39302ec8c197
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "48397432"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "48425618"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>FAQ sur l'API de l'activité de gestion d'Office 365 et résolution des problèmes
 
@@ -26,53 +26,45 @@ L’API Activité de gestion ne doit pas être confondue avec l’API Communicat
 
 ## <a name="frequently-asked-questions-about-the-office-365-management-activity-api"></a>Questions fréquemment posées sur l'API de l'activité de gestion de l'Office 365
 
-**Quel est le délai maximum d'attente avant l'envoi d'une notification concernant un événement donné d'Office 365 ?**
-
-Il n'y a pas de délai maximal garanti pour la livraison des notifications (en d'autres termes, pas d'ANS). D’après les observations faites par le Support Microsoft, la plupart des notifications sont envoyées dans l’heure qui suit l’événement. Souvent, le délai est beaucoup plus court, mais il est aussi souvent plus long. Il varie légèrement d’une charge de travail à l’autre, mais, en règle générale, la plupart des notifications sont remises dans les 24 heures suivant l’événement d’origine.
-
-**Les notifications de Webhook ne sont-elles pas plus immédiates ? Après tout, ne sont-elles pas déclenchées par des événements ?**
-
-Non.Les notifications webhook ne sont pas fondées sur les événements au sens où l’événement déclencherait la notification. Le blob de contenu doit quand même être créé. Par ailleurs, la création du blob de contenu déclenche l’envoi de la notification. Récemment, les délais des notifications étaient plus longs avec un webhook qu’en interrogeant directement l’API à l’aide de l’opération /contenu. Par conséquent, l’API Activité de gestion ne doit pas être considérée comme un système d’alerte de sécurité en temps réel. Microsoft propose d’autres produits pour cela. Concernant la sécurité, les notifications d’événements de l’API Activité de gestion peuvent être utilisées de façon plus appropriée pour déterminer les modes d’utilisation sur des périodes prolongées.
-
-**Puis-je interroger l'API d'activité de gestion pour un ID d'événement ou un RecordType particulier ou d'autres propriétés dans le blob de contenu ?**
-
-Non.Ne considérez pas les données disponibles via l'API de gestion des activités comme un « journal » au sens traditionnel du terme. Considérez-les plutôt comme une image mémoire des détails de l’événement. C’est à vous de réunir tous les détails de l’événement, de les stocker et de les indexer localement, puis d’implémenter votre propre logique de requête, en utilisant une application personnalisée ou un outil tiers.
-
-**Comment savoir si les données provenant de ma solution d’audit existante, qui collecte des données auprès de l’API Activité de gestion, sont précises et complètes ?**
-
-En bref, Microsoft ne fournit aucun type de journal qui vous permet de vérifier une application donnée ou une application tierce (ISV). Il existe d'autres produits de sécurité Microsoft qui tirent leurs données du même pipeline, mais ces produits n'entrent pas dans le cadre de cette discussion et ne peuvent pas être utilisés pour recouper directement l'API Activité de gestion. Si vous vous préoccupez des différences pouvant exister entre ce que votre solution vous fournit et ce dont vous en attendez, nous vous recommandons d’implémenter les opérations illustrées ci-dessus. Cette démarche peut être difficile à réaliser selon la méthode employée par votre outil ou votre solution pour lister et indexer les données. Si votre solution existante ne présente que des données triées par heure de création de l'événement réel, il n'y a aucun moyen d'interroger l'API par heure de création de l'événement afin de pouvoir comparer les ensembles de résultats. Dans ce cas, il faudrait collecter les blobs de contenu notifiés pendant plusieurs jours, les indexer ou les trier manuellement, puis faire une comparaison approximative.
-
-**Combien de temps les blobs de contenu sont-ils disponibles ?**
-
-Les blobs de contenu sont disponibles pendant 7 jours après l’envoi de la notification de disponibilité du blob de contenu. Autrement dit, si la création du blob de contenu est retardée de façon significative, le blob reste disponible plus longtemps (délai plus 7 jours) après la date de création réelle de l’événement.
-
-**Si l’envoi de la notification est retardé de 24 heures, me restera-t-il seulement 6 jours pour récupérer le blob de contenu ?**
-
-Non.Même si la notification est retardée pendant un certain temps (par exemple, dans le cas d’une interruption de service), il vous reste 7 jours après la date d’envoi initial de la notification pour télécharger le blob de contenu lié à l’événement d’origine.
-
-**Quels événements sont audités pour un service Office 365 spécifique ?**
-
-La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, voir le Schéma de l’API Activité de gestion Office 365. Consultez également la section « Activités auditées » dans Recherche dans le journal d'audit dans le Centre de sécurité et conformité pour obtenir la liste des événements de la plupart des services Office 365 audités.
-
 **Comment intégrer à l’API Activité de gestion ?**
 
-Pour commencer à utiliser l’API Activité de gestion Office 365, voir Prise en main des API de gestion Office 365.
-
-**Nous voulons saisir par programme tous les événements dans toutes les charges de travail. Quel est le moyen le plus fiable pour y parvenir ?**
-
-Vous pouvez utiliser l’API Activité de gestion d’Office 365. Par ailleurs, nous vous conseillons d’utiliser le **modèle pull** en raison des problèmes avec l’utilisation des webhooks. Pour plus d’informations, voir la section « Utilisation des webhooks » dans la rubrique relative à la résolution des problèmes de l’API Activité de gestion d’Office 365.
-
-**Existe-t-il des différences entre les enregistrements récupérés par l’API Activité de gestion et les enregistrements renvoyés à l’aide de l’outil de recherche de journal d’audit dans le Centre de sécurité et conformité Microsoft 365 ?**
-
-Les données renvoyées par les deux méthodes sont identiques. Aucun filtre n’est utilisé. La seule différence est qu’avec l’API, vous pouvez obtenir en une fois les données des 7 derniers jours. Lors de la recherche du journal d’audit dans le Centre de sécurité et conformité (ou à l’aide de la cmdlet Search-UnifiedAuditLog correspondante dans Exchange Online), vous pouvez obtenir les données des 90 derniers jours.
+Pour commencer à utiliser l’API Activité de gestion Office 365, reportez-vous à [Prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md).
 
 **Que se passe-t-il si je désactive l’audit pour mon organisation Office 365 ? Est-ce que je reçois encore des événements via l’API Activité de gestion ?**
 
-Non.L’audit unifié d’Office 365 doit être activé pour votre organisation pour que les enregistrements puissent être collectés via l’API Activité de gestion. Pour obtenir des instructions, voir Activer ou Désactiver la recherche dans le journal d'audit d'Office 365.
+Non.L’audit unifié d’Office 365 doit être activé pour votre organisation pour que les enregistrements puissent être collectés via l’API Activité de gestion. Pour obtenir des instructions, voir [Activer ou désactiver la recherche dans le journal d'audit](https://docs.microsoft.com/microsoft-365/compliance/turn-audit-log-search-on-or-off).
+
+**Quels événements sont audités pour un service Office 365 spécifique ?**
+
+La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, voir le Schéma de l’API Activité de gestion Office 365. Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
+
+**Existe-t-il des différences entre les enregistrements récupérés par l’API Activité de gestion et les enregistrements renvoyés à l’aide de l’outil de recherche de journal d’audit dans le Centre de sécurité et conformité Microsoft 365 ?**
+
+Les données renvoyées par les deux méthodes sont identiques. La seule différence réside dans le fait que, avec l’API, vous pouvez obtenir des données pour les 7 derniers jours uniquement (plus de détails dans les questions ci-dessous). Lors de la recherche du journal d’audit dans le Centre de sécurité et conformité (ou à l’aide de la cmdlet **Search-UnifiedAuditLog** correspondante dans Exchange Online PowerShell), vous pouvez obtenir les données de la période de rétention en vigueur lorsque les données sont générées (par exemple, 90 jours ou un an).
+
+**Quel est le délai maximum d'attente avant l'envoi d'une notification concernant un événement donné d'Office 365 ?**
+
+Il n'y a pas de délai maximal garanti pour la livraison des notifications (en d'autres termes, pas de contrat de niveau de service). En règle générale, la plupart des notifications sont envoyées dans l’heure suivant l’événement. Le délai est souvent beaucoup plus court, mais il peut être plus long, car il peut varier en fonction de la charge de travail.
+
+**Les notifications webhook ne sont-elles pas plus immédiates ?**
+
+Non. Dernièrement, les délais des notifications sont plus longs avec un webhook qu’en interrogeant directement l’API à l’aide de l’opération `/content`.
+
+**Pendant combien de temps le contenu restera-t-il disponible pour récupération via l’API ?**
+
+Le contenu est disponible pour récupération via l’API pendant 7 jours après l’envoi de la notification de disponibilité. Même si la notification est retardée pendant un certain temps (par exemple, dans le cas d’une interruption de service), il vous reste 7 jours après la date d’envoi initial de la notification pour télécharger le blob de contenu lié à l’événement d’origine.
+
+**Puis-je interroger l'API d'activité de gestion pour un ID d'événement ou un RecordType particulier ou d'autres propriétés dans le blob de contenu ?**
+
+Non. L’API de gestion des activités fournit tous les détails de l’événement pour un journal particulier. Elle peut être utilisée pour télécharger les détails complets, puis vous pouvez implémenter votre propre logique de requête sur les données téléchargées. Par exemple, à l’aide d’une application personnalisée ou d’un outil tiers.
+
+**Comment savoir si les données provenant de ma solution d’audit existante, qui collecte des données auprès de l’API Activité de gestion, sont précises et complètes ?**
+
+En bref, Microsoft ne fournit aucun type de journal qui vous permet de vérifier une application donnée ou tierce (ISV). Il existe d'autres produits de sécurité Microsoft qui obtiennent leurs données à partir du même pipeline, mais ils n'entrent pas dans le cadre de cette discussion et ne peuvent pas être utilisés pour recouper directement l'API Activité de gestion. Si vous vous préoccupez des différences pouvant exister entre ce que votre solution vous fournit et ce dont vous en attendez, nous vous recommandons d’implémenter les opérations illustrées ci-dessus. Cette démarche peut être difficile à réaliser selon la méthode employée par votre outil ou votre solution pour lister et indexer les données. Si votre solution existante ne présente que des données triées par heure de création de l'événement, il n'y a aucun moyen d'interroger l'API par heure de création de l'événement afin de comparer les ensembles de résultats. Dans ce cas, il faudrait collecter les blobs de contenu notifiés pendant plusieurs jours, les indexer ou les trier manuellement, puis faire une comparaison manuelle.
 
 **Quel est le seuil de limitation pour l’API Activité de gestion ?**
 
-Les organisations reçoivent une ligne de base de 2 000 demandes par minute. Il ne s’agit pas d’une limite statique prédéfinie, mais elle est modelée sur la combinaison de facteurs, tels que le nombre de sièges au sein de l’organisation, et les organisations Office 365 E5 and Microsoft 365 E5 obtiennent une bande passante à peu près deux fois plus importante que les organisations non E5. La bande passante aura également un plafond maximal pour protéger l’état d’intégrité du service.
+Les organisations reçoivent une ligne de base de 2 000 demandes par minute. La limite de limitation est ensuite ajustée sur la base d’une combinaison de facteurs, notamment le nombre de sièges au sein de l’organisation. En outre, les organisations Office 365 E5 et Microsoft 365 E5 disposeront d’environ deux fois plus de bande passante que les organisations autres que E5. La bande passante aura également un plafond maximal pour protéger l’état d’intégrité du service.
 
 > [!NOTE]
 > Même si chaque client peut initialement envoyer 2 000 requêtes par minute, Microsoft ne peut garantir le taux de réponse. Le taux de réponse dépend de différents facteurs, tels que les performances du système client, la capacité et la vitesse du réseau.
