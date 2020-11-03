@@ -7,24 +7,24 @@ ms.ContentId: d0b9341a-b205-5442-1c20-8fb56407351d
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9845fb5f422160a658b45bd7dd9a5bc6d4635914
-ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
+ms.openlocfilehash: 7cd91d9a43090b4731a11df701e0bf1aa340800e
+ms.sourcegitcommit: e7f345710dc63003704399419f784c4a9b5fc529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "48397439"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "48830468"
 ---
 # <a name="office-365-service-communications-api-reference"></a>Référence de l’API Office 365 Service Communications
 
 Vous pouvez utiliser l’API V2 Office 365 Service Communications pour accéder aux données suivantes :
 
-- **Obtenir les services** : obtenez la liste des services abonnés.
+- **Obtenir les services**  : obtenez la liste des services abonnés.
 
-- **Obtenir l’état actuel** : obtenez une vue en temps réel des incidents de service des événements en cours.
+- **Obtenir l’état actuel**  : obtenez une vue en temps réel des incidents de service des événements en cours.
 
-- **Obtenir l’état de l’historique** : obtenez une vue historique des incidents de service.
+- **Obtenir l’état de l’historique**  : obtenez une vue historique des incidents de service.
 
-- **Obtenir les messages** : communications Rechercher un incident et Centre de messages.
+- **Obtenir les messages**  : communications Rechercher un incident et Centre de messages.
 
 Actuellement, l’API Office 365 Service Communications contient des données pour Office 365, Yammer, Dynamics CRM et les services Cloud de Microsoft Intune.
 
@@ -36,9 +36,9 @@ L’URL racine de l’API inclut un identificateur client qui étend les opérat
 https://manage.office.com/api/v1.0/{tenant_identifier}/ServiceComms/{operation}
 ```
 
-L’**API Office 365 Service Communications** est un service REST qui vous permet de développer des solutions à l’aide de n’importe quel langage web et environnement d’hébergement qui prend en charge les certificats X.509 et HTTPS. L’API se base sur **Microsoft Azure Active Directory** et le protocole **OAuth2** pour l’authentification et l’autorisation. Pour accéder à l’API depuis votre application, vous devez d’abord l’enregistrer dans Azure AD et la configurer avec les autorisations appropriées. Cela permettra à votre application de demander les jetons d’accès OAuth2 nécessaires pour appeler l’API. Vous trouverez plus d’informations sur l’enregistrement et la configuration d’une application dans Azure AD dans la rubrique relative à la [prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md).
+L’ **API Office 365 Service Communications** est un service REST qui vous permet de développer des solutions à l’aide de n’importe quel langage web et environnement d’hébergement qui prend en charge les certificats X.509 et HTTPS. L’API se base sur **Microsoft Azure Active Directory** et le protocole **OAuth2** pour l’authentification et l’autorisation. Pour accéder à l’API depuis votre application, vous devez d’abord l’enregistrer dans Azure AD et la configurer avec les autorisations appropriées. Cela permettra à votre application de demander les jetons d’accès OAuth2 nécessaires pour appeler l’API. Vous trouverez plus d’informations sur l’enregistrement et la configuration d’une application dans Azure AD dans la rubrique relative à la [prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md).
 
-Toutes les demandes API nécessitent un en-tête HTTP d’autorisation contenant un jeton d’accès JWT OAuth2 valide provenant d’Azure AD qui contient la revendication **ServiceHealth.Read** ; et l’identificateur client doit correspondre à l’identificateur client dans l’URL racine.
+Toutes les demandes API nécessitent un en-tête HTTP d’autorisation contenant un jeton d’accès JWT OAuth2 valide provenant d’Azure AD qui contient la revendication **ServiceHealth.Read**  ; et l’identificateur client doit correspondre à l’identificateur client dans l’URL racine.
 
 ```json
 Authorization: Bearer {OAuth2 token}

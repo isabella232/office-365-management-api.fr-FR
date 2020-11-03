@@ -7,22 +7,25 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 218c0517697f1d71b1557f3b55a4c184fb52ec54
-ms.sourcegitcommit: c9cb078e6c94bcf0bb28cb0fffef39302ec8c197
+ms.openlocfilehash: a5661cd1650ac6412bf6723a5ffc27c3a81c11b1
+ms.sourcegitcommit: e7f345710dc63003704399419f784c4a9b5fc529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "48425618"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "48830475"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>FAQ sur l'API de l'activité de gestion d'Office 365 et résolution des problèmes
 
-L'API de l'activité de gestion d'Office 365 (également connue sous le nom d'*API d'audit unifié*) fait partie des offres de sécurité et de conformité d'Office 365, qui :
+L'API de l'activité de gestion d'Office 365 (également connue sous le nom d' *API d'audit unifié* ) fait partie des offres de sécurité et de conformité d'Office 365, qui :
 
 - Elle autorise l’accès par programme à plusieurs charges de travail du pipeline d’audit (par exemple, SharePoint et Exchange).
 
 - Elle est l’interface principale utilisée par un large éventail de produits tiers pour agréger et indexer les données d’audit.
 
 L’API Activité de gestion ne doit pas être confondue avec l’API Communications de service Office 365. L’API Activité de gestion vous permet d’auditer les activités des utilisateurs finals dans différentes charges de travail. L’API Communications de service, quant à elle, sert à auditer l’état et les messages envoyés par les services disponibles dans Office 365 (par exemple, Dynamics CRM ou Identité du service).
+ 
+> [!NOTE]
+> Nous examinons actuellement un problème dans lequel les événements présentant le type de contenu Audit.AzureActiveDirectory n’est pas disponible lorsque vous utilisez l’API d’activité de gestion Office 365. Ce problème a commencé autour du 26 octobre 2020. Les événements de connexion Azure AD ne sont pas affectés par ce problème. Nous fournirons une mise à jour une fois le problème résolu.
 
 ## <a name="frequently-asked-questions-about-the-office-365-management-activity-api"></a>Questions fréquemment posées sur l'API de l'activité de gestion de l'Office 365
 
@@ -32,7 +35,7 @@ Pour commencer à utiliser l’API Activité de gestion Office 365, reportez-vo
 
 **Que se passe-t-il si je désactive l’audit pour mon organisation Office 365 ? Est-ce que je reçois encore des événements via l’API Activité de gestion ?**
 
-Non.L’audit unifié d’Office 365 doit être activé pour votre organisation pour que les enregistrements puissent être collectés via l’API Activité de gestion. Pour obtenir des instructions, voir [Activer ou désactiver la recherche dans le journal d'audit](https://docs.microsoft.com/microsoft-365/compliance/turn-audit-log-search-on-or-off).
+Non. L’audit unifié d’Office 365 doit être activé pour votre organisation pour que les enregistrements puissent être collectés via l’API Activité de gestion. Pour obtenir des instructions, voir [Activer ou désactiver la recherche dans le journal d'audit](https://docs.microsoft.com/microsoft-365/compliance/turn-audit-log-search-on-or-off).
 
 **Quels événements sont audités pour un service Office 365 spécifique ?**
 
@@ -266,7 +269,7 @@ Il sera difficile de tester ce code en boucle, sauf si votre locataire est très
 
 ### <a name="using-webhooks"></a>Utilisation des webhooks
 
-Deux approches vous permettent de recevoir une notification créée par les blobs de contenu. L’approche *push* est implémentée avec un point de terminaison de webhook, qui correspond à une application web que vous créez et hébergez vous-même ou sur une plateforme cloud. Inscrivez le webhook quand vous créez un abonnement à un type de contenu audité. Vous pouvez également ajouter une inscription de webhook à un abonnement existant à l’aide de l’approche illustrée ci-dessous. L’approche *pull*vous oblige à interroger pour une période particulière (pas plus de 24 heures) en utilisant l’opération /contenu. La réponse vous indique les blobs de contenu qui ont été créés pendant la période spécifiée.
+Deux approches vous permettent de recevoir une notification créée par les blobs de contenu. L’approche *push* est implémentée avec un point de terminaison de webhook, qui correspond à une application web que vous créez et hébergez vous-même ou sur une plateforme cloud. Inscrivez le webhook quand vous créez un abonnement à un type de contenu audité. Vous pouvez également ajouter une inscription de webhook à un abonnement existant à l’aide de l’approche illustrée ci-dessous. L’approche *pull* vous oblige à interroger pour une période particulière (pas plus de 24 heures) en utilisant l’opération /contenu. La réponse vous indique les blobs de contenu qui ont été créés pendant la période spécifiée.
 
 Avant d’ajouter un webhook, vous devez connaître les aspects suivants :
 
@@ -326,7 +329,7 @@ Si vous effectuez des appels d’API simples pour résoudre des problèmes (par 
 
 Si vous mettez en place un client pour le locataire de votre entreprise, le paramètre *PublisherIdentifier* est le GUID du locataire. Si vous créez une application ISV ou un complément tiers pour plusieurs clients, le paramètre *PublisherIdentifier* devrait être le GUID du locataire de l'ISV, et non le GUID du locataire de l'entreprise de l'utilisateur final.
 
-Si vous incluez le paramètre *PublisherIdentifier* valide, votre application sera dans un pool qui reçoit 60 000 requêtes par minute par locataire. Il s’agit d’un nombre incroyablement élevé de requêtes. Toutefois, si vous n’incluez pas le paramètre *PublisherIdentifier*, votre application sera dans le pool général qui reçoit 60 000 requêtes par minute pour tous les locataires. Dans ce cas, vous trouverez certainement que vos appels sont limités. Pour éviter cela, voici comment vous pouvez demander un blob de contenu à l’aide du paramètre *PublisherIdentifier* :
+Si vous incluez le paramètre *PublisherIdentifier* valide, votre application sera dans un pool qui reçoit 60 000 requêtes par minute par locataire. Il s’agit d’un nombre incroyablement élevé de requêtes. Toutefois, si vous n’incluez pas le paramètre *PublisherIdentifier* , votre application sera dans le pool général qui reçoit 60 000 requêtes par minute pour tous les locataires. Dans ce cas, vous trouverez certainement que vos appels sont limités. Pour éviter cela, voici comment vous pouvez demander un blob de contenu à l’aide du paramètre *PublisherIdentifier*  :
 
 ```json
 $contentUri = ($response.Content | ConvertFrom-Json).contentUri[0]
