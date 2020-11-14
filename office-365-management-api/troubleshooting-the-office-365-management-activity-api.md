@@ -7,12 +7,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: a5661cd1650ac6412bf6723a5ffc27c3a81c11b1
-ms.sourcegitcommit: e7f345710dc63003704399419f784c4a9b5fc529
+ms.openlocfilehash: a65c8dff39d80b57b1c885639be2e228e8119cb7
+ms.sourcegitcommit: 263cfbc04033ea8a1d765215e8777739587818e0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "48830475"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "49021008"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>FAQ sur l'API de l'activité de gestion d'Office 365 et résolution des problèmes
 
@@ -22,12 +22,12 @@ L'API de l'activité de gestion d'Office 365 (également connue sous le nom d' *
 
 - Elle est l’interface principale utilisée par un large éventail de produits tiers pour agréger et indexer les données d’audit.
 
-L’API Activité de gestion ne doit pas être confondue avec l’API Communications de service Office 365. L’API Activité de gestion vous permet d’auditer les activités des utilisateurs finals dans différentes charges de travail. L’API Communications de service, quant à elle, sert à auditer l’état et les messages envoyés par les services disponibles dans Office 365 (par exemple, Dynamics CRM ou Identité du service).
+L’API Activité de gestion ne doit pas être confondue avec l’API Communications de service Office 365. L’API Activité de gestion vous permet d’auditer les activités des utilisateurs finals dans différentes charges de travail. L’API Service Communications, quant à elle, sert à auditer l’état et les messages envoyés par les services disponibles dans Office 365 (par exemple, Dynamics CRM ou Identité du service).
  
 > [!NOTE]
-> Nous examinons actuellement un problème dans lequel les événements présentant le type de contenu Audit.AzureActiveDirectory n’est pas disponible lorsque vous utilisez l’API d’activité de gestion Office 365. Ce problème a commencé autour du 26 octobre 2020. Les événements de connexion Azure AD ne sont pas affectés par ce problème. Nous fournirons une mise à jour une fois le problème résolu.
+> Il y a eu un problème avec les événements appartenant à l’audit. Le type de contenu AzureActiveDirectory étant indisponible via l’API de l’activité de gestion de Microsoft 365 entre le 22 octobre 2020 et le 6 novembre 2020. Les événements de connexion Azure AD ne sont pas affectés par ce problème. Les événements manquants pour la période d’impact seront disponibles au cours des prochains jours, et devraient prendre fin au plus tard le 20 novembre 2020. Dans certains cas, il est possible que les clients remarquent des données d’événement en double pour les événements générés entre le 26 octobre 2020 et le 05 novembre 2020.
 
-## <a name="frequently-asked-questions-about-the-office-365-management-activity-api"></a>Questions fréquemment posées sur l'API de l'activité de gestion de l'Office 365
+## <a name="frequently-asked-questions-about-the-office-365-management-activity-api"></a>Questions fréquemment posées sur l'API de l'activité de gestion d'Office 365
 
 **Comment intégrer à l’API Activité de gestion ?**
 
