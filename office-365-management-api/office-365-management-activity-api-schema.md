@@ -7,23 +7,22 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c56a76a44972d2df4787aa4185300b2643db388a
-ms.sourcegitcommit: 263cfbc04033ea8a1d765215e8777739587818e0
+ms.openlocfilehash: 829af6eb582175c99239720c04bfe7d0ce286af9
+ms.sourcegitcommit: e74da95f449e4f8e04ee82e2d376c041f8403524
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "49021015"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "49086802"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
 Le schéma de l’API Activité de gestion Office 365 est fourni en tant que service de données en deux couches :
 
-- **Schéma commun**. L’interface permettant d’accéder aux principaux concepts d’audit d’Office 365, comme le type d’enregistrement, l’heure de création, le type d’utilisateur et l’action, ainsi que d’obtenir les dimensions principales (par exemple, l’ID utilisateur), les informations sur l’emplacement (par exemple, l’adresse IP du client) et les propriétés propres au produit (par exemple, l’ID d’objet). Elle présente des affichages uniformes et cohérents pour les utilisateurs afin d’extraire toutes les données d’audit d’Office 365 dans un nombre réduit d’affichages de niveau supérieur avec les paramètres appropriés. Elle fournit un schéma fixe pour toutes les sources de données, ce qui réduit considérablement le coût d’apprentissage. Le schéma commun est issu des données de produit appartenant à chaque équipe de produit, comme Exchange, SharePoint, Azure Active Directory, Yammer et OneDrive Entreprise. Le champ ID d’objet peut être étendu par les équipes de produit pour ajouter des propriétés propres au produit.
+- **Schéma courant**. Interface d’accès aux principaux concepts d’audit d’Office 365 tels que le Type d’enregistrement, l’Heure de création, le Type d’utilisateur et l’Action, ainsi que les dimensions principales (telles que l’ID utilisateur), les spécificités d’emplacement (telles que l’adresse IP du client) et les propriétés propres au produit (telles que l’ID objet). Elle établit des affichages cohérents et uniformes pour les utilisateurs afin d’extraire toutes les données d’audit Office 365 dans quelques affichages de niveau supérieur, avec les paramètres appropriés, et fournit un schéma fixe pour toutes les sources de données, réduisant considérablement les coûts d’apprentissage. Les schémas communs sont issus des données de produits appartenant à chaque équipe produit, par exemple, Exchange, SharePoint, Azure Active Directory, Yammer et OneDrive Entreprise. Le champ ID objet peut être étendu par les équipes produit pour ajouter des propriétés propres aux produits.
 
 - **Schéma propre au produit**. Conçu en complément du schéma commun pour fournir un ensemble d’attributs spécifiques du produit. Par exemple : schéma SharePoint, schéma OneDrive Entreprise et schéma d’administration Exchange.
 
-**Quelle couche devez-vous utiliser dans votre scénario ?**
-En général, si les données sont disponibles dans une couche supérieure, ne revenez pas à une couche inférieure. En d’autres termes, si l’exigence de données peut s’adapter au schéma propre au produit, vous n’avez pas besoin de revenir au schéma commun. 
+**Quelle couche devez-vous utiliser pour votre scénario ?** En règle générale, si les données sont disponibles dans une couche supérieure, ne revenez pas à une couche inférieure. En d’autres termes, si les données requises peuvent être contenues dans un schéma propre au produit, vous n’avez pas besoin de revenir au schéma commun. 
 
 ## <a name="office-365-management-api-schemas"></a>Schémas de l’API de gestion d’Office 365
 
@@ -51,7 +50,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma de cmdlet de sécurité du centre de données](#data-center-security-cmdlet-schema)|Étend le schéma de base de sécurité du centre de données avec les propriétés spécifiques de toutes les données d’audit de cmdlet de sécurité du centre de données.|
 |[Schéma Microsoft Teams](#microsoft-teams-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Teams.|
 |[Schéma Office 365 - Protection avancée contre les menaces et Threat Investigation and Response](#office-365-advanced-threat-protection-and-threat-investigation-and-response-schema)|Étend le schéma commun avec les propriétés spécifiques des données relatives à Office 365 – Protection avancée contre les menaces et Examen des menaces et données de réponse.|
-|[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365. Pour voir un exemple, consultez [Blog de la communauté technique : améliorer l’efficacité de votre SOC avec Office 365 – Protection avancée contre les menaces et l’API de gestion Office 365](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
+|[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés propres aux événements d’examen et de réponse automatisés d’Office 365. Pour consulter un exemple, voir [Blog de la communauté technique : améliorer l’efficacité de votre SOC avec Office 365 – Protection avancée contre les menaces et l’API de gestion O365](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
 |[Schéma des événements d’hygiène](#hygiene-events-schema)|Étend le Schéma commun avec les propriétés spécifiques aux événements dans Exchange Online Protection et Protection avancé contre les menaces..|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
 |[Schéma Dynamics 365](#dynamics-365-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Dynamics 365.|
@@ -64,26 +63,26 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 
 ## <a name="common-schema"></a>Schéma commun
 
-**Nom EntityType**  : AuditRecord
+**Nom EntityType** : AuditRecord
 
 |Paramètre|Type|Obligatoire ?|Description|
 |:-----|:-----|:-----|:-----|
 |ID|Combinaison GUIDEdm.Guid|Oui|Identificateur unique d’un enregistrement d’audit.|
 |RecordType|Self.[AuditLogRecordType](#auditlogrecordtype)|Oui|Type d’opération indiqué par l’enregistrement. Reportez-vous au tableau [AuditLogRecordType](#auditlogrecordtype) pour obtenir plus d’informations sur les types d’enregistrements du journal d’audit.|
 |CreationTime|Edm.Date|Oui|Date et heure à l’heure UTC (temps universel coordonné) au moment où l’utilisateur a effectué l’activité.|
-|Opération|Edm.String|Oui|Nom de l’activité de l’utilisateur ou de l’administrateur. Pour consulter la description des opérations/activités les plus courantes, reportez-vous à l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité d’Office 365](https://go.microsoft.com/fwlink/p/?LinkId=708432). Pour une activité d’administration Exchange, cette propriété identifie le nom de la cmdlet qui a été exécutée. Pour les événements DLP, les valeurs possibles, définies sous « Schéma DLP » ci-dessous, sont les suivantes : « DlpRuleMatch », « DlpRuleUndo » ou « DlpInfo ».|
+|Opération|Edm.String|Oui|Nom de l’activité de l’utilisateur ou de l’administrateur. Pour obtenir une description des opérations/activités les plus courantes, consultez [Rechercher le journal d’audit dans le Centre de protection Office 365](https://go.microsoft.com/fwlink/p/?LinkId=708432). Pour l’activité de l’administrateur Exchange, cette propriété identifie le nom de l’applet de commande exécutée. Pour les événements DLP, il peut s’agir de « DlpRuleMatch », « DlpRuleUndo » ou « DlpInfo », décrits sous « Schéma DLP » ci-dessous.|
 |OrganizationId|Edm.Guid|Oui|GUID pour le client Office 365 de votre organisation. Cette valeur sera toujours identique pour votre organisation, quel que soit le service Office 365 concerné.|
-|UserType|Self.[UserType](#user-type)|Oui|Type d’utilisateur ayant effectué l’opération. Reportez-vous au tableau [UserType](#user-type) pour obtenir plus d’informations sur les types d’utilisateur.|
-|UserKey|Edm.String|Oui|Autre ID pour l’utilisateur identifié dans la propriété UserId. Par exemple, cette propriété est renseignée avec l’ID unique Passport (PUID) pour les événements exécutés par des utilisateurs dans SharePoint, OneDrive Entreprise et Exchange. Cette propriété peut également spécifier la même valeur que la propriété UserID pour les événements se produisant dans d’autres services et les événements exécutés par des comptes système.|
+|UserType|Self.[UserType](#user-type)|Oui|Type d’utilisateur ayant effectué l’opération. Pour plus d’informations sur les types d’utilisateurs, consultez le tableau [UserType](#user-type).|
+|UserKey|Edm.String|Oui|Autre ID de l’utilisateur identifié dans la propriété UserId. Par exemple, cette propriété contient l’ID de passeport unique Microsoft .NET (PUID) pour les événements exécutés par des utilisateurs dans SharePoint, OneDrive Entreprise et Exchange. Cette propriété peut également spécifier la même valeur que la propriété UserId pour des événements se produisant dans d’autres services, et des événements déclenchés par des comptes système.|
 |Charge de travail|Edm.String|Non|Service Office 365 dans lequel l’activité s’est produite. 
-|ResultStatus|Edm.String|Non|Indique si l’action (indiquée dans la propriété Operation) a réussi ou non. Valeurs possibles : **Succeeded** , **PartiallySucceded** ou **Failed**. Pour une activité d’administration Exchange, la valeur peut être **True** ou **False**.<br/><br/>**Important**  : plusieurs charges de travail peuvent remplacer la valeur de la propriété ResultStatus. Par exemple, pour les événements d’ouverture de session STS d’Azure Active Directory, la valeur **Succedded** pour ResultStatus indique uniquement que l’opération HTTP a réussi. Cela ne signifie pas que la connexion a réussi. Pour déterminer si l’ouverture de session elle-même a réussi ou non, examinez la propriété LogonError dans le [schéma de connexion STS Azure Active Directory](#azure-active-directory-secure-token-service-sts-logon-schema). Si la connexion a échoué, la valeur de cette propriété indique la raison de l’échec de la tentative de connexion. |
-|ObjectId|Edm.string|Non|Pour l’activité SharePoint et OneDrive Entreprise, il s’agit du nom du chemin d’accès complet au fichier ou au dossier consulté par l’utilisateur. Pour la journalisation d’audit d’administration Exchange, il s’agit du nom de l’objet modifié par la cmdlet.|
-|UserId|Edm.string|Oui|L’UPN (nom d’utilisateur principal) de l’utilisateur ayant effectué l’action (indiquée dans la propriété Operation) qui a entraîné la journalisation de l’enregistrement. Par exemple, `my_name@my_domain_name`. L’enregistrement d’une activité exécutée par un compte système (comme SHAREPOINT\system ou NT AUTHORITY\SYSTEM) est également inclus. Un autre affichage de valeur dans la propriété Userld de SharePoint se nomme app@sharepoint. Ceci indique que l'«utilisateur » qui a effectué l'activité était une application ayant obtenu les autorisations nécessaires dans SharePoint pour effectuer des actions à l’échelle de l’organisation (par exemple, effectuer une recherche de site SharePoint ou de compte OneDrive) au nom d’un utilisateur, d’un administrateur ou d’un service. Pour obtenir plus d'informations, consultez l'[Utilisateur app@sharepoint dans les enregistrements d'audits](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
-|ClientIP|Edm.String|Oui|Adresse IP du périphérique utilisé lors de la journalisation de l’activité. L’adresse IP apparaît au format d’adresse IPv4 ou IPv6.<br/><br/>Pour certains services, la valeur affichée dans cette propriété peut être l'adresse IP d'une application sécurisée (par exemple, Office sur les applications Web) qui appelle le service au nom d'un utilisateur et non l'adresse IP de l'appareil utilisé par la personne ayant effectué l'activité. <br/><br/>Aussi, pour les événements relatifs à Azure Active Directory, l’adresse IP n’est pas enregistrée et la valeur de la propriété ClientIP est `null`.|
-|Portée|Self.[AuditLogScope](#auditlogscope)|Non|Cet événement a-t-il été créé par un service Office 365 hébergé ou un serveur local ? Valeurs possibles : **online** et **onprem**. SharePoint est la seule charge de travail qui envoie actuellement des événements d’un serveur local à Office 365.|
+|ResultStatus|Edm.String|Non|Indique si l’action (spécifiée dans la propriété Opération) a réussi ou non. Les valeurs possibles sont **Réussite**, **PartiallySucceeded** ou **Échec**. Pour l’activité d’administrateur Exchange, la valeur est **Vrai** ou **Faux**.<br/><br/>**Important** : plusieurs charges de travail peuvent remplacer la valeur de la propriété ResultStatus. Par exemple, pour les événements d’ouverture de session STS d’Azure Active Directory, la valeur **Réussite** pour ResultStatus indique uniquement que l’opération HTTP a réussi. Elle ne signifie pas que la connexion proprement dite a réussi. Pour déterminer si la connexion actuelle a réussi ou non, voir la propriété LogonError dans le [Schéma de connexion STS (Secure Token Service) dans Azure Active Directory](#azure-active-directory-secure-token-service-sts-logon-schema). Si la connexion a échoué, la valeur de cette propriété indique la raison de l’échec de la tentative de connexion. |
+|ObjectId|Edm.string|Non|Pour les activités SharePoint et OneDrive Entreprise, le nom du chemin d’accès complet du fichier ou dossier consulté par l’utilisateur. Pour la journalisation d’audit de l’administrateur Exchange, le nom de l’objet qui a été modifié par l’applet de commande.|
+|UserId|Edm.string|Oui|Nom d’utilisateur principal (UPN) de l’utilisateur ayant effectué l’action (spécifiée dans la propriété Opération) ayant entraîné la journalisation de l’enregistrement. par exemple, `my_name@my_domain_name`. Notez que les enregistrements pour l’activité effectuée par les comptes système (par exemple, SHAREPOINT\system or ou NT AUTHORITY\SYSTEM) sont également inclus. Dans SharePoint, une autre valeur s’affichant dans la propriété UserId est app@sharepoint. Elle indique que l’« utilisateur » qui a effectué l’activité était une application disposant des autorisations nécessaires dans SharePoint pour effectuer des actions à l’échelle de l’organisation (par exemple, effectuer une recherche sur un site SharePoint ou un compte OneDrive) au nom d’un utilisateur, d’un administrateur ou d’un service. Pour plus d’informations, voir [L’utilisateur app@sharepoint dans les enregistrements d’audit](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
+|ClientIP|Edm.String|Oui|Adresse IP de l’appareil utilisée lors de la journalisation de l’activité. L’adresse IP s’affiche au format d’adresse IPv4 ou IPv6.<br/><br/>Pour certains services, la valeur affichée dans cette propriété peut être l'adresse IP d'une application sécurisée (par exemple, Office sur les applications web) qui appelle le service au nom d'un utilisateur et non l'adresse IP de l'appareil utilisé par la personne ayant effectué l'activité. <br/><br/>Aussi, pour les événements relatifs à Azure Active Directory, l’adresse IP n’est pas enregistrée et la valeur de la propriété ClientIP est `null`.|
+|Portée|Self.[AuditLogScope](#auditlogscope)|Non|Cet événement a-t-il été créé par un service Office 365 hébergé ou un serveur local ? Les valeurs possibles sont **en ligne** et **local**. Notez que SharePoint est la seule charge de travail qui envoie actuellement des événements d’un environnement local vers O365.|
 |||||
 
-### <a name="enum-auditlogrecordtype---type-edmint32"></a>Énumération : AuditLogRecordType - Type : Edm.Int32
+### <a name="enum-auditlogrecordtype---type-edmint32"></a>Énumération : AuditLogRecordType – Type : Edm.Int32
 
 #### <a name="auditlogrecordtype"></a>AuditLogRecordType
 
@@ -99,7 +98,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |9|AzureActiveDirectoryAccountLogon|Événements de connexion OrgId Azure Active Directory (obsolètes).|
 |10|DataCenterSecurityCmdlet|Événements de cmdlet de sécurité du centre de données.|
 |11|ComplianceDLPSharePoint|Événements de protection contre la perte de données (DLP) dans SharePoint et OneDrive Entreprise.|
-|13|ComplianceDLPExchange|Événements de protection contre la perte de données (DLP) dans Exchange lorsqu’ils sont configurés via une stratégie DLP unifiée. Les événements DLP basés sur les règles de transport Exchange ne sont pas pris en charge.|
+|13|ComplianceDLPExchange|Événements de protection contre la perte de données (DLP) dans Exchange, lorsqu’ils sont configurés via une stratégie DLP unifiée. Les événements DLP basés sur les règles de transport Exchange ne sont pas pris en charge.|
 |14|SharePointSharingOperation|Événements de partage SharePoint.|
 |15|AzureActiveDirectoryStsLogon|Événements de connexion STS (Secure Token Service) dans Azure Active Directory.|
 |16|SkypeForBusinessPSTNUsage|Événements du réseau téléphonique public commuté (RTPC) à partir de Skype entreprise.|
@@ -174,10 +173,10 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |90|MSTIC|Événements de l’intelligence de menace dans Microsoft Defender pour Office 365.|
 |91|PhysicalBadgingSignal|Événements liés aux signaux de badging physiques qui prennent en charge la solution de gestion des risques Insider.|
 |93|AipDiscover|Évènements de l’analyse Azure Information Protection (AIP).|
-|94|AipSensitivityLabelAction||
-|95|AipProtectionAction||
-|96|AipFileDeleted||
-|97|AipHeartBeat||
+|94|AipSensitivityLabelAction|Événements d’étiquette de confidentialité AIP. |
+|95|AipProtectionAction|Événements liés à la protection des AIP.|
+|96|AipFileDeleted|Événements d’effacement d’un fichier AIP.|
+|97|AipHeartBeat|Événements de pulsation AIP.|
 |98|MCASAlerts|Événements correspondant aux alertes déclenchées par la sécurité de l’application Cloud Microsoft.|
 |99|OnPremisesFileShareScannerDlp|Événements liés à la recherche de données sensibles sur les partages de fichiers.|
 |100|OnPremisesSharePointScannerDlp|Événements liés à la recherche de données sensibles dans SharePoint.|
@@ -419,10 +418,10 @@ Les événements SharePoint relatifs aux fichiers répertoriés dans la section 
 |**Paramètre**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |SiteUrl|Edm.String|Oui|URL du site où se trouve le fichier ou le dossier consulté par l’utilisateur.|
-|SourceRelativeUrl|Edm.String|Non|URL du dossier contenant le fichier consulté par l’utilisateur. La combinaison des valeurs pour les paramètres _SiteURL_ , _SourceRelativeURL_ et _SourceFileName_ est identique à la valeur de la propriété **ObjectID** , qui est le nom du chemin d’accès complet au fichier consulté par l’utilisateur.|
+|SourceRelativeUrl|Edm.String|Non|URL du dossier contenant le fichier consulté par l’utilisateur. La combinaison des valeurs pour les paramètres _SiteURL_, _SourceRelativeURL_ et _SourceFileName_ est identique à la valeur de la propriété **ObjectID**, qui est le nom du chemin d’accès complet au fichier consulté par l’utilisateur.|
 |SourceFileName|Edm.String|Oui|Nom du fichier ou du dossier consulté par l’utilisateur.|
 |SourceFileExtension|Edm.String|Non|Extension du fichier consulté par l’utilisateur. Cette propriété est vide si l’objet consulté est un dossier.|
-|DestinationRelativeUrl|Edm.String|Non|URL du dossier de destination dans lequel un fichier est copié ou déplacé. La combinaison des valeurs pour les paramètres _SiteURL_ , _DestinationRelativeURL_ et _DestinationFileName_ est identique à la valeur de la propriété **ObjectID** , qui est le nom du chemin d’accès complet au fichier qui a été copié. Cette propriété s’affiche uniquement pour les événements FileCopied et FileMoved.|
+|DestinationRelativeUrl|Edm.String|Non|URL du dossier de destination dans lequel un fichier est copié ou déplacé. La combinaison des valeurs pour les paramètres _SiteURL_, _DestinationRelativeURL_ et _DestinationFileName_ est identique à la valeur de la propriété **ObjectID**, qui est le nom du chemin d’accès complet au fichier qui a été copié. Cette propriété s’affiche uniquement pour les événements FileCopied et FileMoved.|
 |DestinationFileName|Edm.String|Non|Nom du fichier qui est copié ou déplacé. Cette propriété s’affiche uniquement pour les événements FileCopied et FileMoved.|
 |DestinationFileExtension|Edm.String|Non|Extension du fichier qui est copié ou déplacé. Cette propriété s’affiche uniquement pour les événements FileCopied et FileMoved.|
 |UserSharedWith|Edm.String|Non|Utilisateur avec lequel une ressource a été partagée.|
@@ -1044,8 +1043,8 @@ Les événements [Office 365 – Protection avancée contre les menaces](http
 |NetworkMessageId|Edm.String|Oui|ID de message réseau Exchange Online.|
 |P1Sender|Edm.String|Oui|Chemin de retour de l’expéditeur du message électronique.|
 |P2Sender|Edm.String|Oui|Expéditeur du message électronique.|
-|Stratégie|Self.[Policy](#policy-type-and-action-type)|Oui|Type de stratégie de filtrage (par exemple, **anti-courrier indésirable** ou **anti-hameçonnage** ) et type d'action associé (par exemple, **courrier indésirable à niveau de confiance élevé** , **courrier indésirable** ou **hameçonnage** ) pertinents pour le message électronique.|
-|Stratégie|Self.[PolicyAction](#policy-action)|Oui|L’action configurée dans la stratégie de filtrage (par exemple, **Déplacer vers le dossier courrier indésirable** ou **Mise en quarantaine** ) pertinente pour le message électronique.|
+|Stratégie|Self.[Policy](#policy-type-and-action-type)|Oui|Type de stratégie de filtrage (par exemple, **anti-courrier indésirable** ou **anti-hameçonnage**) et type d'action associé (par exemple,**courrier indésirable à niveau de confiance élevé**, **courrier indésirable** ou **hameçonnage**) pertinents pour le message électronique.|
+|Stratégie|Self.[PolicyAction](#policy-action)|Oui|L’action configurée dans la stratégie de filtrage (par exemple, **Déplacer vers le dossier courrier indésirable** ou **Mise en quarantaine**) pertinente pour le message électronique.|
 |P2Sender|Edm.String|Oui|L’expéditeur **De :** du message électronique.|
 |Recipients|Collection(Edm.String)|Oui|Tableau des destinataires du message électronique.|
 |SenderIp|Edm.String|Oui|Adresse IP ayant envoyé le message électronique d’Office 365. L’adresse IP apparaît au format IPv4 ou IPv6.|
