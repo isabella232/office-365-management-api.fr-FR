@@ -16,13 +16,13 @@ ms.locfileid: "49021008"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>FAQ sur l'API de l'activité de gestion d'Office 365 et résolution des problèmes
 
-L'API de l'activité de gestion d'Office 365 (également connue sous le nom d' *API d'audit unifié* ) fait partie des offres de sécurité et de conformité d'Office 365, qui :
+L'API de l'activité de gestion d'Office 365 (également connue sous le nom d'*API d'audit unifié*) fait partie des offres de sécurité et de conformité d'Office 365, qui :
 
 - Elle autorise l’accès par programme à plusieurs charges de travail du pipeline d’audit (par exemple, SharePoint et Exchange).
 
 - Elle est l’interface principale utilisée par un large éventail de produits tiers pour agréger et indexer les données d’audit.
 
-L’API Activité de gestion ne doit pas être confondue avec l’API Communications de service Office 365. L’API Activité de gestion vous permet d’auditer les activités des utilisateurs finals dans différentes charges de travail. L’API Service Communications, quant à elle, sert à auditer l’état et les messages envoyés par les services disponibles dans Office 365 (par exemple, Dynamics CRM ou Identité du service).
+L’API Activité de gestion ne doit pas être confondue avec l’API Communications de service Office 365. L’API Activité de gestion vous permet d’auditer les activités des utilisateurs finals dans différentes charges de travail. L’API Communications de service, quant à elle, sert à auditer l’état et les messages envoyés par les services disponibles dans Office 365 (par exemple, Dynamics CRM ou Identité du service).
  
 > [!NOTE]
 > Il y a eu un problème avec les événements appartenant à l’audit. Le type de contenu AzureActiveDirectory étant indisponible via l’API de l’activité de gestion de Microsoft 365 entre le 22 octobre 2020 et le 6 novembre 2020. Les événements de connexion Azure AD ne sont pas affectés par ce problème. Les événements manquants pour la période d’impact seront disponibles au cours des prochains jours, et devraient prendre fin au plus tard le 20 novembre 2020. Dans certains cas, il est possible que les clients remarquent des données d’événement en double pour les événements générés entre le 26 octobre 2020 et le 05 novembre 2020.
@@ -137,9 +137,9 @@ Le script PowerShell suivant utilise l’ID de l’application et une clé secr
 
 - Offre pour le secteur public (Cloud de la communauté du secteur public) : `manage-gcc.office.com`
 
-- Offre pour le secteur public (Cloud de la communauté du secteur public à haute disponibilité, ou « GCC High  ») : `manage.office365.us`
+- Plan pour le secteur public GCC : `manage.office365.us`
 
-- Offre pour le secteur public (Département de la Défense) : `manage.protection.apps.mil`
+- Plan pour le secteur public DoD : `manage.protection.apps.mil`
 
 ```powershell
 # Create app of type Web app / API in Azure AD, generate a Client Secret, and update the client id and client secret here
@@ -209,7 +209,7 @@ Pour créer un abonnement, utilisez l’opération /start. Pour le point de term
 
 - Offre pour le secteur public (Cloud de la communauté du secteur public) : `manage-gcc.office.com`
 
-- Offre pour le secteur public (Cloud de la communauté du secteur public à haute disponibilité, ou « GCC High  ») : `manage.office365.us`
+- Plan pour le secteur public GCC : `manage.office365.us`
 
 - Plan pour le secteur public DoD : `manage.protection.apps.mil`
 
@@ -329,7 +329,7 @@ Si vous effectuez des appels d’API simples pour résoudre des problèmes (par 
 
 Si vous mettez en place un client pour le locataire de votre entreprise, le paramètre *PublisherIdentifier* est le GUID du locataire. Si vous créez une application ISV ou un complément tiers pour plusieurs clients, le paramètre *PublisherIdentifier* devrait être le GUID du locataire de l'ISV, et non le GUID du locataire de l'entreprise de l'utilisateur final.
 
-Si vous incluez le paramètre *PublisherIdentifier* valide, votre application sera dans un pool qui reçoit 60 000 requêtes par minute par locataire. Il s’agit d’un nombre incroyablement élevé de requêtes. Toutefois, si vous n’incluez pas le paramètre *PublisherIdentifier* , votre application sera dans le pool général qui reçoit 60 000 requêtes par minute pour tous les locataires. Dans ce cas, vous trouverez certainement que vos appels sont limités. Pour éviter cela, voici comment vous pouvez demander un blob de contenu à l’aide du paramètre *PublisherIdentifier*  :
+Si vous incluez le paramètre *PublisherIdentifier* valide, votre application sera dans un pool qui reçoit 60 000 requêtes par minute par locataire. Il s’agit d’un nombre incroyablement élevé de requêtes. Toutefois, si vous n’incluez pas le paramètre *PublisherIdentifier*, votre application sera dans le pool général qui reçoit 60 000 requêtes par minute pour tous les locataires. Dans ce cas, vous trouverez certainement que vos appels sont limités. Pour éviter cela, voici comment vous pouvez demander un blob de contenu à l’aide du paramètre *PublisherIdentifier* :
 
 ```json
 $contentUri = ($response.Content | ConvertFrom-Json).contentUri[0]
