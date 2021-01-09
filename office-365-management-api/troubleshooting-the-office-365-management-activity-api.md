@@ -7,12 +7,12 @@ ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: a65c8dff39d80b57b1c885639be2e228e8119cb7
-ms.sourcegitcommit: 263cfbc04033ea8a1d765215e8777739587818e0
+ms.openlocfilehash: 9c909220d660e0202c3ebda2777b2d8922da45a3
+ms.sourcegitcommit: c3bb30b86a4569e9f18891f1cdc30cbffc8c8db4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "49021008"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "49784206"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>FAQ sur l'API de l'activité de gestion d'Office 365 et résolution des problèmes
 
@@ -79,6 +79,10 @@ Ouvrez un ticket avec le Support Microsoft et demandez un nouveau seuil de limit
 **Pourquoi les propriétés TargetUpdatedProperties n’apparaissent plus dans ExtendedProperties dans les journaux d’audit associés aux activités d’Azure Active Directory ?**
 
 Les propriétés TargetUpdatedProperties figuraient dans ExtendedProperties. Toutefois, elles ont été supprimées de ExtendedProperties et apparaissent désormais dans ModifiedProperties.
+
+**Pourquoi les journaux d’audit relatifs aux erreurs UserAccountNotFound pour les activités de connexion Azure Active Directory (Azure AD) ne sont pas disponibles via l’API Activité de gestion ?**
+
+À partir de novembre 2020, les journaux d’audit pour les activités de connexion Azure AD sont ingérés dans le journal d'audit unifié à partir des hubs d’événements Azure AD. Étant donné que les erreurs d’ouverture de session UserAccountNotFound ne sont pas disponibles dans les hubs d’événements, les journaux d’audit pour les erreurs UserAccountNotFound ne sont plus renvoyés par l’API Activité de gestion.
 
 ## <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
