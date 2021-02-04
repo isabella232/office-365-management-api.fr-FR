@@ -7,12 +7,12 @@ ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 94879a2634396868248d3df6a6eb76b9931d9f65
-ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
+ms.openlocfilehash: 92eb7f2838e673992a778043075b6c0ef3f8d133
+ms.sourcegitcommit: e998d2175540269e94db529e74532efd4c43fab9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "48397425"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "50094982"
 ---
 # <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
 
@@ -368,8 +368,8 @@ Webhook-AuthID: o365activityapinotification
 
 [
     {
-        "tenantId": "{GUID}"
-        "clientId": "{GUID}"
+        "tenantId": "{GUID}",
+        "clientId": "{GUID}",
         "contentType": "Audit.SharePoint",
         "contentId": "492638008028$492638008028$f28ab78ad40140608012736e373933ebspo2015043022$4a81a7c326fc4aed89c62e6039ab833b$04",
         "contentUri": "https://manage.office.com/api/v1.0/f28ab78a-d401-4060-8012-736e373933eb/activity/feed/audit/492638008028$492638008028$f28ab78ad40140608012736e373933ebspo2015043022$4a81a7c326fc4aed89c62e6039ab833b$04",
