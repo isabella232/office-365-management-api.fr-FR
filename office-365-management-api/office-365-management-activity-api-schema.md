@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c39865d8b3aff5a11aaf113482982e1c407b9800
-ms.sourcegitcommit: 0f988a3c25a34491a6e80307cfcf097a85aa26fa
+ms.openlocfilehash: c71536ad05afe50e675661cebbfe1826cf6af3fa
+ms.sourcegitcommit: 3a6a64742924b9fbc1ffd6826b5651eb5583f70c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "49385168"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "50096954"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -332,7 +332,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |GroupUpdated|Le propriétaire ou l’administrateur de site modifie les paramètres d’un groupe pour un site SharePoint ou OneDrive Entreprise. Cela peut inclure la modification du nom du groupe, qui peut consulter ou modifier l’appartenance au groupe et la gestion des demandes d’appartenance.|
 |LanguageAddedToTermStore|Langue ajoutée au magasin de termes.|
 |LanguageRemovedFromTermStore|Langue supprimée du magasin de termes.|
-|LegacyWorkflowEnabledSet|Le propriétaire ou l’administrateur du site ajoute le type de contenu de tâche de flux de travail SharePoint au site. Les administrateurs généraux peuvent également activer les workflows pour l’ensemble de l’organisation dans le Centre d’administration SharePoint.|
+|LegacyWorkflowEnabledSet|L’administrateur ou le propriétaire du site ajoute le type de contenu de tâche de flux de travail SharePoint au site. Les administrateurs généraux peuvent également activer les workflows pour l’ensemble de l’organisation dans le Centre d’administration SharePoint.|
 |LookAndFeelModified|Un utilisateur modifie un menu de lancement rapide, les formats de diagramme de Gantt ou les formats de groupe.  Ou l’utilisateur crée, modifie ou supprime un affichage dans Project Web App.|
 |ManagedSyncClientAllowed|Un utilisateur a établi une relation de synchronisation avec un site SharePoint ou OneDrive Entreprise. La relation de synchronisation est établie, car l’ordinateur de l’utilisateur est membre d’un domaine qui a été ajouté à la liste de domaines (« liste des destinataires approuvés ») qui peuvent accéder aux bibliothèques de documents de votre organisation. Pour plus d’informations sur cette fonctionnalité, reportez-vous à l’article [Utiliser Online PowerShell](https://go.microsoft.com/fwlink/p/?LinkID=534609) pour activer la synchronisation de OneDrive pour les domaines figurant dans la liste des destinataires approuvés.|
 |MaxQuotaModified|Le quota maximal pour un site a été modifié.|
@@ -746,7 +746,8 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|Non|GUID représentant l’application qui demande la connexion. Le nom d’affichage peut être recherché via l’API Graph Azure Active Directory.|
 |Client|Edm.String|Non|Informations sur le périphérique client, fournies par le navigateur exécutant la connexion.|
-|LogonError|Edm.String|Non|En cas d’échec de connexion, la raison de l’échec est indiquée dans ce paramètre. Pour obtenir une description complète des erreurs LogonError, voir la liste des [codes d’erreur d’authentification et d’autorisation](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes).
+|ErrorCode|Edm.String|Non|Pour les échecs de connexion (où la valeur de la propriété de l’opération est UserLoginFailed), cette propriété contient le code d’erreur Azure Active Directory STS (AADSTS). Pour obtenir les descriptions de ces codes d’erreur, consultez [Codes d’erreur d’authentification et d’autorisation](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). Une valeur de `0` indique connexion réussie.|
+|LogonError|Edm.String|Non|Pour les échecs de connexion, cette propriété contient une description de la raison de l’échec de la connexion lisible par l’utilisateur.|
 |||||
 
 ## <a name="dlp-schema"></a>Schéma DLP
@@ -931,7 +932,7 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|DataCenterSecurityEventType|Self.[DataCenterSecurityEventType ](#datacentersecurityeventtype)|Oui|Type d’événement de cmdlet dans la zone de verrouillage.|
+|DataCenterSecurityEventType|Self.[DataCenterSecurityEventType ](#datacentersecurityeventtype)|Oui|Le type d’événement de cmdlet dans la zone de verrouillage.|
 |||||
 
 ### <a name="enum-datacentersecurityeventtype---type-edmint32"></a>Énumération : DataCenterSecurityEventType - Type : Edm.Int32
@@ -1376,7 +1377,7 @@ Les enregistrements d’audit pour les événements liés aux applications basé
 |CrmOrganizationUniqueName|Edm.String|Oui|Nom unique de l’organisation.|
 |InstanceUrl|Edm.String|Oui|URL vers l’instance.|
 |ItemUrl|Edm.String|Non|URL vers l’enregistrement qui émet le journal.|
-|ItemType|Edm.String|Non|Nom de l’entité.|
+|ItemType|Edm.String|Non|Le nom de l’entité.|
 |UserAgent|Edm.String|Non|Identificateur unique du GUID de l’utilisateur dans l’organisation.|
 |Champs|Collection(Common.NameValuePair)|Non|Objet JSON qui contient les paires clé-valeur de propriété qui ont été créées ou mises à jour.|
 |||||
@@ -1414,7 +1415,7 @@ Les événements de mise en quarantaine répertoriés dans l’article [Recherch
 |RequestType|Self.[RequestType](#enum-requesttype---type-edmint32)|Non|Type de demande de quarantaine exécutée par un utilisateur.|
 |RequestSource|Self.[RequestSource](#enum-requestsource---type-edmint32)|Non|La source d’une demande de mise en quarantaine peut provenir du centre de sécurité & conformité (SCC), d’une cmdlet ou d’un URLlink.|
 |NetworkMessageId|Edm.String|Non|L’ID de message réseau du message électronique mis en quarantaine.|
-|ReleaseTo|Edm.String|Non|Le destinataire du message électronique.|
+|ReleaseTo|Edm.String|Non|Le destinataire du message.|
 |||||
 
 ### <a name="enum-requesttype---type-edmint32"></a>Enum: RequestType - Type: Edm.Int32
@@ -1439,7 +1440,7 @@ Les événements de mise en quarantaine répertoriés dans l’article [Recherch
 
 ## <a name="microsoft-forms-schema"></a>Schéma Microsoft Forms
 
-Les événements Microsoft Forms répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) utilisent ce schéma.
+Les événements Microsoft Forms répertoriés dans l’article relatif à la [Recherche dans le journal d’audit du centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) utilisent ce schéma.
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1476,9 +1477,9 @@ Les événements Microsoft Forms répertoriés dans l’article relatif à la [r
 
 ## <a name="mip-label-schema"></a>Schéma d’étiquette Microsoft Information Protection
 
-Les événements figurant dans le schéma d’étiquette Microsoft Information Protection (MIP) sont déclenchés lorsque Microsoft 365 détecte un message électronique traité par des agents dans le pipeline de transport auquel une étiquette de confidentialité est appliquée. L’étiquette de confidentialité a peut-être été appliquée de façon manuelle ou automatique ou elle a peut-être été appliquée à l’intérieur ou à l’extérieur du pipeline de transport. Les étiquettes de confidentialité peuvent être automatiquement appliquées aux courriers électroniques via l’application automatique des stratégies d’étiquettes.
+Les événements figurant dans le schéma d’étiquette Microsoft Information Protection (MIP) sont déclenchés lorsque Microsoft 365 détecte un message électronique traité par des agents dans le pipeline de transport auquel une étiquette de confidentialité est appliquée. L’étiquette de confidentialité a peut-être été appliquée de façon manuelle ou automatique ou elle a peut-être été appliquée à l’intérieur ou à l’extérieur du pipeline de transport. Les étiquettes de confidentialité peuvent être automatiquement appliquées aux courriers via l’application automatique des stratégies d’étiquettes.
 
-L’objectif de ce schéma d’audit est de représenter toutes les activités de courrier électronique impliquant des étiquettes de confidentialité. En d’autres termes, une activité d’audit doit être redéfinie pour chaque message électronique, envoyé ou provenant des utilisateurs de l’organisation, sur lequel une étiquette de confidentialité est appliquée, quel que soit l’emplacement ou la façon dont l’étiquette de confidentialité a été appliquée. Pour plus d’informations sur les étiquettes de confidentialité, voir :
+L’objectif de ce schéma d’audit est de représenter toutes les activités de courrier électronique impliquant des étiquettes de confidentialité. En d’autres termes, une activité d’audit doit être enregistrée pour chaque message envoyé ou provenant des utilisateurs de l’organisation à laquelle une étiquette de confidentialité est appliquée, quel que soit le moment ou le mode d’application de l’étiquette de confidentialité. Pour plus d’informations sur les étiquettes de confidentialité, voir :
 
 - [En savoir plus sur les étiquettes de niveau de confidentialité](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
 
