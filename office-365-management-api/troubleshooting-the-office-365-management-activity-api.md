@@ -2,17 +2,17 @@
 ms.technology: o365-service-communications
 ms.TocTitle: Troubleshooting the Office 365 Management Activity API
 title: Résolution des problèmes de l’API Activité de gestion Office 365
-description: Cet article présente les questions les plus fréquemment posées au Support Microsoft concernant cette API.
+description: Cet article présente les questions les plus fréquemment posées au Support Microsoft concernant l’API Activité de gestion Office 365.
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9c909220d660e0202c3ebda2777b2d8922da45a3
-ms.sourcegitcommit: c3bb30b86a4569e9f18891f1cdc30cbffc8c8db4
+ms.openlocfilehash: d954cc97320953ed35d6e46cb118395469c93394
+ms.sourcegitcommit: 24ef06fd001f273d16be72733509b5ec202d3ebb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "49784206"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "50418187"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>FAQ sur l'API de l'activité de gestion d'Office 365 et résolution des problèmes
 
@@ -80,9 +80,9 @@ Ouvrez un ticket avec le Support Microsoft et demandez un nouveau seuil de limit
 
 Les propriétés TargetUpdatedProperties figuraient dans ExtendedProperties. Toutefois, elles ont été supprimées de ExtendedProperties et apparaissent désormais dans ModifiedProperties.
 
-**Pourquoi les journaux d’audit relatifs aux erreurs UserAccountNotFound pour les activités de connexion Azure Active Directory (Azure AD) ne sont pas disponibles via l’API Activité de gestion ?**
+**Pourquoi les journaux d’audit avec UserAccountNotFound « LogonError » pour Azure Active Directory (Azure AD) ne sont-ils pas disponibles via l’API d’activité de gestion ?**
 
-À partir de novembre 2020, les journaux d’audit pour les activités de connexion Azure AD sont ingérés dans le journal d'audit unifié à partir des hubs d’événements Azure AD. Étant donné que les erreurs d’ouverture de session UserAccountNotFound ne sont pas disponibles dans les hubs d’événements, les journaux d’audit pour les erreurs UserAccountNotFound ne sont plus renvoyés par l’API Activité de gestion.
+À partir de novembre 2020, les journaux d’audit pour les activités de connexion Azure AD sont ingérés dans le journal d'audit unifié à partir des hubs d’événements Azure AD. Suite à cette modification, il n'est plus possible de remplir la propriété « LogonError » avec la valeur UserAccountNotFound. Depuis la première semaine de février 2021, la [Propriété ErrorCode dans le schéma d'audit de connexion Azure AD](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) correspond désormais aux [codes d’erreur AADSTS](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Par ailleurs, le paramètre UserId ne sera pas rempli avec le nom d’utilisateur à partir de la tentative de connexion aux erreurs UserAccountNotFound, car ce nom d’utilisateur n’existe pas dans l’annuaire Azure AD de l’organisation.
 
 ## <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -219,15 +219,16 @@ Pour créer un abonnement, utilisez l’opération /start. Pour le point de term
 
 ```powershell
 Invoke-WebRequest -Method Post -Headers $headerParams -Uri "https://<YOUR_API_ENDPOINT>/api/v1.0/$tenantGUID/activity/feed/subscriptions/start?contentType=Audit.AzureActiveDirectory"
+```
 
 > [!NOTE]
-> Remember that `$headerParams` was populated in the first part of the script listed in the [Connecting to the API](#connecting-to-the-api) section in this article.
+> N’oubliez pas que la variable `$headerParams` a été remplie dans la première partie du script présentée à la section [Connexion à l’API](#connecting-to-the-api) de cet article.
 
-The previous code will create a new subscription to the Audit.AzureActiveDirectory content type, with a webhook that is null. You can then check your subscriptions using the code in the [Checking your subscriptions](#checking-your-subscriptions) section in this article.
+Le code précédent crée un abonnement au type de contenu Audit.AzureActiveDirectory, avec un webhook null. Vous pouvez ensuite vérifier vos abonnements en utilisant le code indiqué dans la section [Vérification de vos abonnements](#checking-your-subscriptions) de cet article.
 
-## Checking content availability
+## <a name="checking-content-availability"></a>Vérification de la disponibilité du contenu
 
-To check what content blobs were created during a certain period, you can add the following line to the script in the “Connecting to the API” section.
+Pour vérifier les blobs de contenu qui ont été créés à une période donnée, vous pouvez ajouter la ligne suivante au script de la section « Connexion à l’API ».
 
 ```powershell
 Invoke-WebRequest -Method GET -Headers $headerParams -Uri "$resource/api/v1.0/$tenantGUID/activity/feed/subscriptions/content?contentType=Audit.SharePoint"
