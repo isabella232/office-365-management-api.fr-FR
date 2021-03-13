@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c71536ad05afe50e675661cebbfe1826cf6af3fa
-ms.sourcegitcommit: 3a6a64742924b9fbc1ffd6826b5651eb5583f70c
+ms.openlocfilehash: c0e253532abd43779cb624d5b63b907600e0f5b5
+ms.sourcegitcommit: bd92bba316c564fd7c09d5202ce46c1f9276f5ee
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "50096954"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "50726897"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -837,10 +837,23 @@ Les événements DLP (prévention contre la perte de données) ont toujours User
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Confidence|Edm.Int|Oui|Probabilité de modèle qui correspond à la détection.|
-|Count|Edm.Int|Oui|Nombre d’instances sensibles détecté.|
+|Confidence|Edm.Int|Oui|L’indice de confiance agrégée de toutes les correspondances de motifs pour ce type d’informations sensibles.|
+|Count|Edm.Int|Oui|Total d’instances sensibles détectées.|
+|Emplacement|Edm.String|Non||
 |SensitiveType|Edm.Guid|Oui|GUID qui identifie le type de données sensibles détecté.|
 |SensitiveInformationDetections|Self.SensitiveInformationDetections|Non|Tableau d’objets contenant des informations sensibles avec les détails suivants : valeur de correspondance et contexte de la valeur de correspondance.|
+|SensitiveInformationDetailedClassificationAttributes|Collection(SensitiveInformationDetailedConfidenceLevelResult)|Oui|Informations sur le compte relatif au type d’informations sensibles détectées pour chacun des trois niveaux de confiance (élevé, moyen et bas), et s’il correspond à la règle de protection contre la perte de données ou non.|
+|SensitiveInformationTypeName|Edm.String|Non|Nom du type d’informations sensibles.|
+|UniqueCount|Edm.Int32|Oui|Compte unique d’instances sensibles détectées.|
+|||||
+
+### <a name="sensitiveinformationdetailedclassificationattributes-complex-type"></a>Type complexe SensitiveInformationDetailedClassificationAttributes
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Confidence|Edm.int32|Oui|Le niveau de confiance du motif détecté.|
+|Compte|Edm.Int32|Oui|Le nombre d’instances sensibles détectées pour un niveau de confiance en particulier.|
+|IsMatch|Edm.Boolean|Oui|Indique si le compte donné et le niveau de confiance du type d’informations sensibles détectées correspondent à une règle de protection contre la perte de données.|
 |||||
 
 ### <a name="sensitiveinformationdetections-complex-type"></a>Type complexe SensitiveInformationDetections
@@ -849,7 +862,7 @@ Les données sensibles DLP sont disponibles uniquement dans l’API de flux d’
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|Detections|Collection(Self.Detections)|Oui|Tableau d’informations sensibles détecté. Les informations contiennent des paires clé/valeur où la valeur = valeur de correspondance (ex. valeur de la carte de crédit de SSN) et où le contexte = un extrait de contenu source qui contient la valeur de correspondance. |
+|DetectedValues|Collection(Common.NameValuePair)|Oui|Tableau d’informations sensibles détecté. Les informations contiennent des paires clé/valeur où la valeur = valeur de correspondance (ex. valeur de la carte de crédit) et où le contexte est un extrait de contenu source qui contient la valeur de correspondance. |
 |ResultsTruncated|Edm.Boolean|Oui|Indique si les journaux ont été tronqués en raison du nombre élevé de résultats. |
 |||||
 
