@@ -2,28 +2,25 @@
 ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Management Activity API schema
 title: Schéma de l’API Activité de gestion Office 365
-description: 'Le schéma de l’API Activité de gestion Office 365 est fourni en tant que service de données en deux couches : le schéma commun et le schéma propre au produit.'
+description: 'Le schéma de l’API Activité de gestion Office 365 est fourni en tant que service de données en deux couches : le schéma commun et le schéma propre au service.'
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: c0e253532abd43779cb624d5b63b907600e0f5b5
-ms.sourcegitcommit: bd92bba316c564fd7c09d5202ce46c1f9276f5ee
+ms.openlocfilehash: 1d4fdfd920ae10331e789847ef76dc1a719ad2fc
+ms.sourcegitcommit: 1bd313b6add47b58e5aa1af53cd00d2872610556
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "50726897"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "50903354"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
 Le schéma de l’API Activité de gestion Office 365 est fourni en tant que service de données en deux couches :
 
-- **Schéma commun**. L’interface permettant d’accéder aux principaux concepts d’audit d’Office 365, comme le type d’enregistrement, l’heure de création, le type d’utilisateur et l’action, ainsi que d’obtenir les dimensions principales (par exemple, l’ID utilisateur), les informations sur l’emplacement (par exemple, l’adresse IP du client) et les propriétés propres au produit (par exemple, l’ID d’objet). Elle présente des affichages uniformes et cohérents pour les utilisateurs afin d’extraire toutes les données d’audit d’Office 365 dans un nombre réduit d’affichages de niveau supérieur avec les paramètres appropriés. Elle fournit un schéma fixe pour toutes les sources de données, ce qui réduit considérablement le coût d’apprentissage. Le schéma commun est issu des données de produit appartenant à chaque équipe de produit, comme Exchange, SharePoint, Azure Active Directory, Yammer et OneDrive Entreprise. Le champ ID d’objet peut être étendu par les équipes de produit pour ajouter des propriétés propres au produit.
+- **Schéma commun**. L’interface permettant d’accéder aux principaux concepts d’audit d’Office 365, comme le type d’enregistrement, l’heure de création, le type d’utilisateur et l’action, ainsi que d’obtenir les dimensions principales (par exemple, l’ID utilisateur), les informations sur l’emplacement (par exemple, l’adresse IP du client) et les propriétés propres au service (par exemple, l’ID d’objet). Elle présente des affichages uniformes et cohérents pour les utilisateurs afin d’extraire toutes les données d’audit d’Office 365 dans un nombre réduit d’affichages de niveau supérieur avec les paramètres appropriés. Elle fournit un schéma fixe pour toutes les sources de données, ce qui réduit considérablement le coût d’apprentissage. Le schéma commun est issu des données de produit appartenant à chaque équipe de produit, comme Exchange, SharePoint, Azure Active Directory, Yammer et OneDrive Entreprise. Le champ ID d’objet peut être étendu par les équipes de produit Microsoft 365 pour ajouter des propriétés propres au service.
 
-- **Schéma propre au produit**. Conçu en complément du schéma commun pour fournir un ensemble d’attributs spécifiques du produit. Par exemple : schéma SharePoint, schéma OneDrive Entreprise et schéma d’administration Exchange.
-
-**Quelle couche devez-vous utiliser dans votre scénario ?**
-En général, si les données sont disponibles dans une couche supérieure, ne revenez pas à une couche inférieure. En d’autres termes, si l’exigence de données peut s’adapter au schéma propre au produit, vous n’avez pas besoin de revenir au schéma commun. 
+- **Schéma spécifique au service**. Conçu en complément du schéma commun pour fournir un ensemble d’attributs spécifiques au service Microsoft 365. Par exemple : schéma SharePoint, schéma OneDrive Entreprise et schéma d’administration Exchange.
 
 ## <a name="office-365-management-api-schemas"></a>Schémas de l’API de gestion d’Office 365
 
@@ -31,7 +28,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 
 |Nom du schéma|Description|
 |:-----|:-----|
-|[Schéma commun](#common-schema)|Vue permettant d’extraire le type d’enregistrement, l’ID utilisateur, l’adresse IP du client, le type d’utilisateur et l’action, ainsi que les dimensions principales telles que les propriétés utilisateur (comme UserID), les propriétés d’emplacement (comme l’adresse IP du client) et les propriétés propres au produit (comme l’ID d’objet).|
+|[Schéma commun](#common-schema)|Vue permettant d’extraire le type d’enregistrement, l’ID utilisateur, l’adresse IP du client, le type d’utilisateur et l’action, ainsi que les dimensions principales telles que les propriétés utilisateur (comme UserID), les propriétés d’emplacement (comme l’adresse IP du client) et les propriétés propres au service (comme l’ID d’objet).|
 |[Schéma de base SharePoint](#sharepoint-base-schema)|Étend le schéma commun avec les propriétés spécifiques de toutes les données d’audit de SharePoint.|
 |[Opérations sur les fichiers SharePoint](#sharepoint-file-operations)|Étend le schéma de base SharePoint avec les propriétés spécifiques de la manipulation et de l’accès aux fichiers dans SharePoint.|
 |[Schéma de partage SharePoint](#sharepoint-sharing-schema)|Étend le schéma de base de SharePoint avec les propriétés spécifiques du partage de fichier.|
@@ -1067,7 +1064,40 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |Verdict|Edm.String|Oui|Verdict du message.|
 |MessageTime|Edm.Date|Oui|Date et l’heure en temps universel coordonné (UTC) de réception ou d’envoi du courrier électronique.|
 |EventDeepLink|Edm.String|Oui|Lien profond vers l’événement de courrier électronique dans l’Explorateur ou rapports en temps réel dans le centre de conformité et sécurité Office 365.|
+|Action de remise (champ à venir) |Edm.String|Oui|Action de remise d’origine sur le courrier électronique.|
+|Emplacement de la remise d’origine (champ à venir) |Edm.String|Oui|Emplacement de remise d’origine du courrier électronique.|
+|Dernier emplacement de remise (champ à venir) |Edm.String|Oui|Dernier emplacement de remise du courrier électronique au moment de l’événement.|
+|Orientation (champ à venir) |Edm.String|Oui|Identifie si un message électronique a été entrant, sortant ou intra-organisation.|
+|ThreatsAndDetectionTech (champ à venir) |Edm.String|Oui|Les menaces et les technologies de détection correspondantes. Ce champ expose toutes les menaces qui s’y rapportent sur un courrier électronique, notamment le dernier ajout de courrier indésirable.  Par exemple, ["Phish: [Spoof DMARC] »,"Spam: [URL de réputation malveillante]"]. Les différentes menaces et technologies de détection sont décrites ci-dessous.|
 |||||
+
+> [!NOTE]
+> Nous vous recommandons d'utiliser le nouveau champ ThreatsAndDetectionTech car il indique les verdicts multiples et les technologies de détection mises à jour. Cela s’aligne également sur les valeurs qui s’offrent à vous dans d’autres expériences telles que l’Explorateur de menaces et le Système d’équipement avancé. 
+
+### <a name="detection-technologies"></a>Technologies de détection
+
+|**Name**|**Description**|
+|:-----|:-----|
+|Filtre général |Signaux de hameçonnage basés sur des règles.|
+|Marque d’emprunt d’identité | Type de fichier de la pièce jointe.|
+|Usurpation d’un domaine externe |L’expéditeur tente d’usurper un autre domaine.|
+|Usurper une identité DMARC |Échec de l’authentification DMARC pour les messages.|
+|Domaine d’emprunt d’identité | Emprunt d’identité des domaines qui sont la propriété ou la définition du client.|
+|Détonation de fichier |Les fichiers joints se sont avérés mauvais pendant l'analyse des détonations.|
+|Réputation des fichiers |Fichiers joints marqués comme mauvais en raison de leur mauvaise réputation.|
+|Réputation de détonation de fichier |Fichier joint marqué comme mauvais en raison de la réputation de détonation précédente.|
+|Correspondance de l’empreinte |Le message a été marqué comme mauvais en raison de messages précédents.|
+|Emprunt d’identité sur la veille des boîtes aux lettre |Emprunt d’identité basé sur la veille des boîtes aux lettres.|
+|Réputation du domaine |Analyse basée sur la réputation du domaine.|
+|Usurpation d’organisation intra-organisation |  L’expéditeur tente d’usurper le domaine du destinataire. |
+|Filtre avancé |  Signaux de hameçonnage basés sur l’apprentissage automatique.|
+|Moteur anti-programme malveillant    | Détection à partir de moteurs anti-programme malveillant. |
+|Détection d’analyse mixte   | Plusieurs filtres ont été facteurs dans la recherche de ce message. |
+|Réputation d’URL malveillante   | Le message a été considéré comme mauvais en raison d’une URL malveillante. |
+|Détonation d’URL | Le message a été considéré comme mauvais en raison d’une détonation d’URL malveillante précédente. |
+|Réputation de détonation d’URL| Le message a été considéré comme mauvais en raison d’une détonation d’URL malveillante. |
+|Utilisateur emprunt d’identité|    Usurpation d'identité des utilisateurs définis par l'administrateur ou appris par la veille des boîtes aux lettres.|
+|Campagne   |Messages identifiés dans le cadre d’une campagne.|
 
 ### <a name="attachmentdata-complex-type"></a>Type complexe AttachmentData
 
@@ -1081,6 +1111,9 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |MalwareFamily|Edm.String|Non|Famille de programme malveillant de fichier.|
 |SHA256|Edm.String|Oui|Hachage SHA256 du fichier.|
 |||||
+
+> [!NOTE]
+> Au sein de la famille de programme malveillant, vous pourrez voir le nom exact de la famille de programme malveillant (par exemple, HTML/Phish.VS!MSR) ou la charge utile malveillante sous forme de chaîne statique. Une charge utile malveillante doit toujours être traitée comme un courriel malveillant lorsqu'un nom spécifique n'est pas identifié.
 
 ### <a name="enum-fileverdict---type-edmint32"></a>Énumération : FileVerdict - Type : Edm.Int32
 
