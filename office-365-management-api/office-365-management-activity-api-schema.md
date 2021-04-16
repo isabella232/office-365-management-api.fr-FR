@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 1d4fdfd920ae10331e789847ef76dc1a719ad2fc
-ms.sourcegitcommit: 1bd313b6add47b58e5aa1af53cd00d2872610556
+ms.openlocfilehash: 9ce20bd1fd8f0b6e706df46a5d8b63540962ffaf
+ms.sourcegitcommit: dfdacf2cdee3ad0f305167ba0c8a9bf9df8af356
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "50903354"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "51761996"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -1064,11 +1064,11 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |Verdict|Edm.String|Oui|Verdict du message.|
 |MessageTime|Edm.Date|Oui|Date et l’heure en temps universel coordonné (UTC) de réception ou d’envoi du courrier électronique.|
 |EventDeepLink|Edm.String|Oui|Lien profond vers l’événement de courrier électronique dans l’Explorateur ou rapports en temps réel dans le centre de conformité et sécurité Office 365.|
-|Action de remise (champ à venir) |Edm.String|Oui|Action de remise d’origine sur le courrier électronique.|
-|Emplacement de la remise d’origine (champ à venir) |Edm.String|Oui|Emplacement de remise d’origine du courrier électronique.|
-|Dernier emplacement de remise (champ à venir) |Edm.String|Oui|Dernier emplacement de remise du courrier électronique au moment de l’événement.|
-|Orientation (champ à venir) |Edm.String|Oui|Identifie si un message électronique a été entrant, sortant ou intra-organisation.|
-|ThreatsAndDetectionTech (champ à venir) |Edm.String|Oui|Les menaces et les technologies de détection correspondantes. Ce champ expose toutes les menaces qui s’y rapportent sur un courrier électronique, notamment le dernier ajout de courrier indésirable.  Par exemple, ["Phish: [Spoof DMARC] »,"Spam: [URL de réputation malveillante]"]. Les différentes menaces et technologies de détection sont décrites ci-dessous.|
+|Action de remise |Edm.String|Oui|Action de remise d’origine sur le courrier électronique.|
+|Emplacement de la remise d’origine |Edm.String|Oui|Emplacement de remise d’origine du courrier électronique.|
+|Dernier emplacement de remise |Edm.String|Oui|Dernier emplacement de remise du courrier électronique au moment de l’événement.|
+|Orientation |Edm.String|Oui|Identifie si un message électronique a été entrant, sortant ou intra-organisation.|
+|ThreatsAndDetectionTech |Edm.String|Oui|Les menaces et les technologies de détection correspondantes. Ce champ expose toutes les menaces qui s’y rapportent sur un courrier électronique, notamment le dernier ajout de courrier indésirable.  Par exemple, ["Phish: [Spoof DMARC] »,"Spam: [URL de réputation malveillante]"]. Les différentes menaces et technologies de détection sont décrites ci-dessous.|
 |||||
 
 > [!NOTE]
