@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 9ce20bd1fd8f0b6e706df46a5d8b63540962ffaf
-ms.sourcegitcommit: dfdacf2cdee3ad0f305167ba0c8a9bf9df8af356
+ms.openlocfilehash: 5e2274dd3d5050a0db433fd93aa8ea1514744549
+ms.sourcegitcommit: c3786c4bfacf3c1187f1269c162946288b45c967
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "51761996"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "52059940"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -279,7 +279,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |CustomFieldOrLookupTableCreated|L’utilisateur a créé un champ personnalisé, ou un élément ou une table de choix dans Project Web App.|
 |CustomFieldOrLookupTableDeleted|L’utilisateur a supprimé un champ personnalisé, ou un élément ou une table de choix dans Project Web App.|
 |CustomFieldOrLookupTableModified|L’utilisateur a modifié un champ personnalisé, ou un élément ou une table de choix dans Project Web App.|
-|CustomizeExemptUsers|L’administrateur général a personnalisé la liste des agents utilisateurs exemptés dans le Centre d’administration SharePoint. Vous pouvez spécifier les agents utilisateurs à exempter de la réception d’une page web entière à indexer. Cela signifie que lorsqu’un agent utilisateur que vous avez spécifié comme exempté rencontre un formulaire InfoPath, le formulaire est renvoyé sous la forme d’un fichier XML au lieu d’une page web entière. Cela permet d’accélérer l’indexation des formulaires InfoPath.|
+|CustomizeExemptUsers|Un administrateur général a personnalisé la liste des agents utilisateurs exemptés dans le Centre d’administration SharePoint. Vous pouvez spécifier les agents utilisateurs que vous souhaitez exempter de la réception d’une page web entière à indexer. Ainsi, lorsqu’un agent utilisateur que vous avez spécifié comme exempté rencontre un formulaire InfoPath, ce dernier est renvoyé sous forme de fichier XML, et non en tant que page web entière. Cela permet d’accélérer l’indexation des formulaires InfoPath.|
 |DefaultLanguageChangedInTermStore*|Paramètre de langue modifié dans le magasin de termes.|
 |DelegateModified|Un utilisateur a créé ou modifié un délégué de sécurité dans Project Web App.|
 |DelegateRemoved|Un utilisateur a supprimé un délégué de sécurité dans Project Web App.|
@@ -379,14 +379,14 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |SecondaryMySiteOwnerSet|Un utilisateur a ajouté un propriétaire secondaire à son site Mon site.|
 |SecurityCategoryModified|Un utilisateur crée, modifie ou supprime une catégorie de sécurité dans Project Web App.|
 |SecurityGroupModified|Un utilisateur crée, modifie ou supprime un groupe de sécurité dans Project Web App.|
-|SendToConnectionAdded|L’administrateur général crée une nouvelle connexion Envoyer à sur la page de gestion des enregistrements dans le Centre d’administration SharePoint. Une connexion Envoyer à spécifie les paramètres pour un référentiel de documents ou un centre des enregistrements. Lorsque vous créez une connexion Envoyé à, un organisateur de contenu peut soumettre des documents à l’emplacement spécifié.|
+|SendToConnectionAdded|L’administrateur global crée une connexion d’envoi sur la page de gestion des enregistrements dans le Centre d’administration SharePoint. Une connexion d’envoi spécifie des paramètres pour un référentiel de documents ou un centre d’enregistrements. Lorsque vous créez une connexion d’envoi, un organisateur de contenu peut soumettre des documents à l’emplacement spécifié.|
 |SendToConnectionRemoved|L’administrateur général supprime une connexion Envoyer à sur la page de gestion des enregistrements dans le Centre d’administration SharePoint.|
 |SharedLinkCreated|Un utilisateur crée un lien vers un fichier partagé sur un site SharePoint ou OneDrive Entreprise. Ce lien peut être envoyé à d’autres personnes pour leur donner accès au fichier. Un utilisateur peut créer deux types de liens : un lien qui permet à la personne d’afficher et de modifier le fichier partagé, ou un lien qui permet à la personne d’afficher le fichier uniquement.|
 |SharedLinkDisabled|Un utilisateur désactive (définitivement) un lien qui a été créé pour partager un fichier.|
 |SharingInvitationAccepted *|Un utilisateur accepte une invitation à partager un fichier ou un dossier. Cet événement est enregistré lorsqu’un utilisateur partage un fichier avec d’autres utilisateurs.|
 |SharingRevoked|L’utilisateur annule le partage d’un fichier ou d’un dossier qui a été précédemment partagé avec d’autres utilisateurs. Cet événement est enregistré lorsqu’un utilisateur arrête le partage d’un fichier avec d’autres utilisateurs.|
 |SharingSet|Un utilisateur partage un fichier ou un dossier situé dans SharePoint ou OneDrive Entreprise avec un autre utilisateur au sein de son organisation.|
-|SiteAdminChangeRequest|Un utilisateur demande à être ajouté en tant qu’administrateur de collection de sites pour une collection de sites SharePoint. Les administrateurs de collection de sites disposent du niveau d’autorisation Contrôle total sur la collection de sites et tous les sous-sites.|
+|SiteAdminChangeRequest|L’utilisateur demande à être ajouté en tant qu’administrateur de collection de sites pour une collection de sites SharePoint. Les administrateurs de collection de sites disposent d’autorisations de contrôle total pour la collection de sites et tous ses sous-sites.|
 |SiteCollectionAdminAdded*|Le propriétaire ou l’administrateur de collection de sites ajoute une personne en tant qu’administrateur de collection de sites pour un site SharePoint ou OneDrive Entreprise. Les administrateurs de collection de sites disposent du niveau d’autorisation Contrôle total sur la collection de sites et tous les sous-sites.|
 |SiteCollectionCreated| L’administrateur général crée une nouvelle collection de sites dans votre organisation SharePoint.|
 |SiteRenamed|Le propriétaire ou l’administrateur de site renomme un site SharePoint ou OneDrive Entreprise.|
@@ -743,6 +743,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |:-----|:-----|:-----|:-----|
 |ApplicationId|Edm.String|Non|GUID représentant l’application qui demande la connexion. Le nom d’affichage peut être recherché via l’API Graph Azure Active Directory.|
 |Client|Edm.String|Non|Informations sur le périphérique client, fournies par le navigateur exécutant la connexion.|
+|DeviceProperties|Collection(Common.NameValuePair)|Non|Cette propriété inclut plusieurs détails sur d’appareil, notamment l’id, le nom d'affichage, le système d’exploitation, le navigateur, IsCompliant, IsCompcompntAndManaged, SessionId, et DeviceTrustType. La propriété DeviceTrustType peut avoir ces valeurs :<br/><br/>**0** - Azure AD enregistré<br/> **1** - jointure Azure AD<br/> **2** - jointure Hybride Azure AD|
 |ErrorCode|Edm.String|Non|Pour les échecs de connexion (où la valeur de la propriété de l’opération est UserLoginFailed), cette propriété contient le code d’erreur Azure Active Directory STS (AADSTS). Pour obtenir les descriptions de ces codes d’erreur, consultez [Codes d’erreur d’authentification et d’autorisation](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). Une valeur de `0` indique connexion réussie.|
 |LogonError|Edm.String|Non|Pour les échecs de connexion, cette propriété contient une description de la raison de l’échec de la connexion lisible par l’utilisateur.|
 |||||
@@ -988,6 +989,7 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |Nom|Edm.String|Non|Uniquement présent pour les événements de paramètres. Nom du paramètre modifié.|
 |OldValue|Edm.String|Non|Uniquement présent pour les événements de paramètres. Ancienne valeur du paramètre.|
 |NewValue|Edm.String|Non|Uniquement présent pour les événements de paramètres. Nouvelle valeur du paramètre.|
+|MessageURLs|Edm.String|Non|Présenter pour les URLs envoyées dans les messages Teams.|
 ||||
 
 ### <a name="microsoftteamsmember-complex-type"></a>Type complexe MicrosoftTeamsMember
