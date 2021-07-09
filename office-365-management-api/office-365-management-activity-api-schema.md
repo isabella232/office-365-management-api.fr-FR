@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: fe70aa617829bcfc9709c32f6349798f0ceb27aa
-ms.sourcegitcommit: b112bebdb289e0be863009ac032b11107a12c1f8
+ms.openlocfilehash: 8ee293d2e82fc2a4cc5cce04289c7428f39339d5
+ms.sourcegitcommit: 1c2efaeeeb4942591cf37f16edb64b3b41b9e83c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "53242690"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "53326601"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -24,7 +24,7 @@ Le schéma de l’API Activité de gestion Office 365 est fourni en tant que ser
 
 ## <a name="office-365-management-api-schemas"></a>Schémas de l’API de gestion d’Office 365
 
-Cet article donne des détails sur le schéma commun, ainsi que sur tous les schémas propres aux produits. Le tableau suivant décrit les schémas disponibles.
+Cet article donne des détails sur le schéma commun, ainsi que sur tous les schémas spécifiques au service. Le tableau suivant décrit les schémas disponibles.
 
 |Nom du schéma|Description|
 |:-----|:-----|
@@ -48,6 +48,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |[Schéma de cmdlet de sécurité du centre de données](#data-center-security-cmdlet-schema)|Étend le schéma de base de sécurité du centre de données avec les propriétés spécifiques de toutes les données d’audit de cmdlet de sécurité du centre de données.|
 |[Schéma Microsoft Teams](#microsoft-teams-schema)|Étend le schéma commun avec les propriétés spécifiques de tous les événements Microsoft Teams.|
 |[Microsoft Defender pour Office 365 et le schéma d’investigation et de réponse aux menaces](#microsoft-defender-for-office-365-and-threat-investigation-and-response-schema)|Étend le schéma commun avec les propriétés spécifiques à Microsoft Defender pour Office 365 et le schéma d’investigation et de réponse aux menaces.|
+|[Schéma d’envoi](#submission-schema)|Étend le schéma Commun avec les propriétés spécifiques aux envois d’utilisateurs et d’administrateurs dans Microsoft Defender pour Office 365.|
 |[Événements d’investigation et de réponse automatisés](#automated-investigation-and-response-events-in-office-365)|Étend le schéma commun avec les propriétés spécifiques aux événements d’investigation et de réponse automatisés (AIR) d’Office 365. Pour consulter un exemple, voir [Blog de la communauté technique : améliorer l’efficacité de votre SOC avec Microsoft Defender pour Office 365 et l’API de gestion O365](https://techcommunity.microsoft.com/t5/microsoft-security-and/improve-the-effectiveness-of-your-soc-with-office-365-atp-and/ba-p/1525185).|
 |[Schéma des événements d’hygiène](#hygiene-events-schema)|Étend le Schéma commun avec les propriétés spécifiques aux événements dans Exchange Online Protection et Microsoft Defender pour Office 365.|
 |[Schéma Power BI](#power-bi-schema)|Étend le Schéma commun avec les propriétés spécifiques à tous les événements Power BI.|
@@ -75,7 +76,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |Charge de travail|Edm.String|Non|Service Office 365 dans lequel l’activité s’est produite. 
 |ResultStatus|Edm.String|Non|Indique si l’action (indiquée dans la propriété Operation) a réussi ou non. Valeurs possibles : **Succeeded**, **PartiallySucceded** ou **Failed**. Pour une activité d’administration Exchange, la valeur peut être **True** ou **False**.<br/><br/>**Important** : plusieurs charges de travail peuvent remplacer la valeur de la propriété ResultStatus. Par exemple, pour les événements d’ouverture de session STS d’Azure Active Directory, la valeur **Succedded** pour ResultStatus indique uniquement que l’opération HTTP a réussi. Cela ne signifie pas que la connexion a réussi. Pour déterminer si l’ouverture de session elle-même a réussi ou non, examinez la propriété LogonError dans le [schéma de connexion STS Azure Active Directory](#azure-active-directory-secure-token-service-sts-logon-schema). Si la connexion a échoué, la valeur de cette propriété indique la raison de l’échec de la tentative de connexion. |
 |ObjectId|Edm.string|Non|Pour l’activité SharePoint et OneDrive Entreprise, il s’agit du nom du chemin d’accès complet au fichier ou au dossier consulté par l’utilisateur. Pour la journalisation d’audit d’administration Exchange, il s’agit du nom de l’objet modifié par la cmdlet.|
-|UserId|Edm.string|Oui|L’UPN (nom d’utilisateur principal) de l’utilisateur ayant effectué l’action (indiquée dans la propriété Operation) qui a entraîné la journalisation de l’enregistrement. Par exemple, `my_name@my_domain_name`. L’enregistrement d’une activité exécutée par un compte système (comme SHAREPOINT\system ou NT AUTHORITY\SYSTEM) est également inclus. Un autre affichage de valeur dans la propriété Userld de SharePoint se nomme app@sharepoint. Ceci indique que l'«utilisateur » qui a effectué l'activité était une application ayant obtenu les autorisations nécessaires dans SharePoint pour effectuer des actions à l’échelle de l’organisation (par exemple, effectuer une recherche de site SharePoint ou de compte OneDrive) au nom d’un utilisateur, d’un administrateur ou d’un service. Pour obtenir plus d'informations, consultez l'[Utilisateur app@sharepoint dans les enregistrements d'audits](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
+|UserId|Edm.string|Oui|L’UPN (nom d’utilisateur principal) de l’utilisateur ayant effectué l’action (indiquée dans la propriété Operation) qui a entraîné la journalisation de l’enregistrement. Par exemple, `my_name@my_domain_name`. L’enregistrement d’une activité exécutée par un compte système (comme SHAREPOINT\system ou NT AUTHORITY\SYSTEM) est également inclus. Un autre affichage de valeur dans la propriété Userld de SharePoint se nomme app@sharepoint. Ceci indique que l'«utilisateur » qui a effectué l'activité était une application ayant obtenu les autorisations nécessaires dans SharePoint pour effectuer des actions à l’échelle de l’organisation (par exemple, effectuer une recherche de site SharePoint ou de compte OneDrive) au nom d’un utilisateur, d’un administrateur ou d’un service. Pour obtenir plus d'informations, consultez l'[Utilisateur app@sharepoint dans les enregistrements d'audits](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#the-appsharepoint-user-in-audit-records). |
 |ClientIP|Edm.String|Oui|Adresse IP du périphérique utilisé lors de la journalisation de l’activité. L’adresse IP apparaît au format d’adresse IPv4 ou IPv6.<br/><br/>Pour certains services, la valeur affichée dans cette propriété peut être l'adresse IP d'une application sécurisée (par exemple, Office sur les applications Web) qui appelle le service au nom d'un utilisateur et non l'adresse IP de l'appareil utilisé par la personne ayant effectué l'activité. <br/><br/>Aussi, pour les événements relatifs à Azure Active Directory, l’adresse IP n’est pas enregistrée et la valeur de la propriété ClientIP est `null`.|
 |Portée|Self.[AuditLogScope](#auditlogscope)|Non|Cet événement a-t-il été créé par un service Office 365 hébergé ou un serveur local ? Valeurs possibles : **online** et **onprem**. SharePoint est la seule charge de travail qui envoie actuellement des événements d’un serveur local à Office 365.|
 |||||
@@ -129,9 +130,9 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |45|PowerAppsApp|Événements Power Apps.|
 |46|PowerAppsPlan|Événements de plan d’abonnement pour les applications Power. |
 |47|ThreatIntelligenceAtpContent|Événements d’hameçonnage et programmes malveillants pour les fichiers dans SharePoint, OneDrive Entreprise et Microsoft Teams dans Microsoft Defender pour Office 365.|
-|48|LabelContentExplorer|Événements liés à l’[explorateur de contenu de la classification des données](https://docs.microsoft.com/microsoft-365/compliance/data-classification-content-explorer).|
-|49|TeamsHealthcare|Événements liés à l’[application patients](https://docs.microsoft.com/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) dans Microsoft Teams pour la santé.|
-|50|ExchangeItemAggregated|[Action d’audit de boîte aux lettres MailItemsAccessed](https://docs.microsoft.com/microsoft-365/compliance/mailitemsaccessed-forensics-investigations).|
+|48|LabelContentExplorer|Événements liés à l’[explorateur de contenu de la classification des données](/microsoft-365/compliance/data-classification-content-explorer).|
+|49|TeamsHealthcare|Événements liés à l’[application patients](/MicrosoftTeams/expand-teams-across-your-org/healthcare/patients-audit) dans Microsoft Teams pour la santé.|
+|50|ExchangeItemAggregated|[Action d’audit de boîte aux lettres MailItemsAccessed](/microsoft-365/compliance/mailitemsaccessed-forensics-investigations).|
 |51|HygieneEvent|Événements liés à la protection contre le courrier indésirable sortant. |
 |52|DataInsightsRestApiAudit|Informations données sur les événements de l’API REST.|
 |53|InformationBarrierPolicyApplication|Événements liés à l’application des stratégies de barrière des informations.|
@@ -402,7 +403,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |TimesheetRejected|Un utilisateur rejette une feuille de temps dans Project Web App.|
 |TimesheetSaved|Un utilisateur enregistre une feuille de temps dans Project Web App.|
 |TimesheetSubmitted|Un utilisateur soumet une feuille de temps de l’état dans Project Web App.|
-|UnmanagedSyncClientBlocked|Un utilisateur tente d’établir une relation de synchronisation avec un site SharePoint ou OneDrive Entreprise sur un ordinateur qui n’est pas membre du domaine de votre organisation ou qui est membre d’un domaine qui n’a pas été ajouté à la liste des domaines (appelée liste des destinataires approuvés) pouvant accéder aux bibliothèques de documents dans votre organisation. La relation de synchronisation n’est pas autorisée et l’ordinateur de l’utilisateur est bloqué en matière de synchronisation, de téléchargement ou de chargement de fichiers dans une bibliothèque de documents. Pour plus d’informations sur cette fonctionnalité, reportez-vous à l’article [Utilisation des cmdlet Windows PowerShell pour activer la synchronisation de OneDrive pour les domaines figurant dans la liste des destinataires approuvés](https://docs.microsoft.com/powershell/module/sharepoint-online/index).|
+|UnmanagedSyncClientBlocked|Un utilisateur tente d’établir une relation de synchronisation avec un site SharePoint ou OneDrive Entreprise sur un ordinateur qui n’est pas membre du domaine de votre organisation ou qui est membre d’un domaine qui n’a pas été ajouté à la liste des domaines (appelée liste des destinataires approuvés) pouvant accéder aux bibliothèques de documents dans votre organisation. La relation de synchronisation n’est pas autorisée et l’ordinateur de l’utilisateur est bloqué en matière de synchronisation, de téléchargement ou de chargement de fichiers dans une bibliothèque de documents. Pour plus d’informations sur cette fonctionnalité, reportez-vous à l’article [Utilisation des cmdlet Windows PowerShell pour activer la synchronisation de OneDrive pour les domaines figurant dans la liste des destinataires approuvés](/powershell/module/sharepoint-online/index).|
 |UpdateSSOApplication|Application cible mise à jour dans le service Banque d’informations sécurisé.|
 |UserAddedToGroup|L’administrateur ou le propriétaire du site ajoute une personne à un groupe sur un site SharePoint ou OneDrive Entreprise. L’ajout d’une personne à un groupe permet d’octroyer à l’utilisateur les autorisations qui ont été attribuées au groupe. |
 |UserRemovedFromGroup|L’administrateur ou le propriétaire du site supprime une personne d’un groupe sur un site SharePoint ou OneDrive Entreprise.Après la suppression de l’utilisateur, les autorisations attribuées au groupe ne lui sont plus accordées. |
@@ -411,7 +412,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 
 ## <a name="sharepoint-file-operations"></a>Opérations de fichier SharePoint
 
-Les événements SharePoint relatifs aux fichiers répertoriés dans la section « Activités de fichiers et de dossiers » dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) utilisent ce schéma.
+Les événements SharePoint relatifs aux fichiers répertoriés dans la section « Activités de fichiers et de dossiers » dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) utilisent ce schéma.
 
 |**Paramètre**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -428,7 +429,7 @@ Les événements SharePoint relatifs aux fichiers répertoriés dans la section 
 
 ## <a name="sharepoint-sharing-schema"></a>Schéma de partage SharePoint
 
- Événements SharePoint relatifs au partage de fichier. Il s’agit de différents événements relatifs aux fichiers et aux dossiers dans lesquels un utilisateur effectue une action qui a certains effets sur un autre utilisateur. Pour plus d’informations sur le schéma de partage SharePoint, reportez-vous à l’article relatif à l’[utilisation du partage de l’audit dans le journal d’audit Office 365](https://docs.microsoft.com/microsoft-365/compliance/use-sharing-auditing
+ Événements SharePoint relatifs au partage de fichier. Il s’agit de différents événements relatifs aux fichiers et aux dossiers dans lesquels un utilisateur effectue une action qui a certains effets sur un autre utilisateur. Pour plus d’informations sur le schéma de partage SharePoint, reportez-vous à l’article relatif à l’[utilisation du partage de l’audit dans le journal d’audit Office 365](/microsoft-365/compliance/use-sharing-auditing
 ).
 
 |**Paramètre**|**Type**|**Obligatoire ?**|**Description**|
@@ -440,7 +441,7 @@ Les événements SharePoint relatifs aux fichiers répertoriés dans la section 
 
 ## <a name="sharepoint-schema"></a>Schéma SharePoint
 
-Les événements SharePoint répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) (sans compter les événements de fichiers et de dossiers) utilisent ce schéma.
+Les événements SharePoint répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance) (sans compter les événements de fichiers et de dossiers) utilisent ce schéma.
 
 |**Paramètre**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -744,7 +745,7 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |ApplicationId|Edm.String|Non|GUID représentant l’application qui demande la connexion. Le nom d’affichage peut être recherché via l’API Graph Azure Active Directory.|
 |Client|Edm.String|Non|Informations sur le périphérique client, fournies par le navigateur exécutant la connexion.|
 |DeviceProperties|Collection(Common.NameValuePair)|Non|Cette propriété inclut plusieurs détails sur d’appareil, notamment l’id, le nom d'affichage, le système d’exploitation, le navigateur, IsCompliant, IsCompcompntAndManaged, SessionId, et DeviceTrustType. La propriété DeviceTrustType peut avoir ces valeurs :<br/><br/>**0** - Azure AD enregistré<br/> **1** - jointure Azure AD<br/> **2** - jointure Hybride Azure AD|
-|ErrorCode|Edm.String|Non|Pour les échecs de connexion (où la valeur de la propriété de l’opération est UserLoginFailed), cette propriété contient le code d’erreur Azure Active Directory STS (AADSTS). Pour obtenir les descriptions de ces codes d’erreur, consultez [Codes d’erreur d’authentification et d’autorisation](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). Une valeur de `0` indique connexion réussie.|
+|ErrorCode|Edm.String|Non|Pour les échecs de connexion (où la valeur de la propriété de l’opération est UserLoginFailed), cette propriété contient le code d’erreur Azure Active Directory STS (AADSTS). Pour obtenir les descriptions de ces codes d’erreur, consultez [Codes d’erreur d’authentification et d’autorisation](/azure/active-directory/develop/reference-aadsts-error-codes#aadsts-error-codes). Une valeur de `0` indique connexion réussie.|
 |LogonError|Edm.String|Non|Pour les échecs de connexion, cette propriété contient une description de la raison de l’échec de la connexion lisible par l’utilisateur.|
 |||||
 
@@ -893,8 +894,8 @@ Les données sensibles DLP sont disponibles uniquement dans l’API de flux d’
 
 Les signaux d’alerte sont les suivants :
 
-- toutes les alertes générées en fonction des [stratégies d’alerte dans le Centre de sécurité et de conformité](https://docs.microsoft.com/office365/securitycompliance/alert-policies#default-alert-policies) ;
-- les alertes liées à Office 365 générées dans [Sécurité des applications cloud Office 365](https://docs.microsoft.com/office365/securitycompliance/office-365-cas-overview) et [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security).
+- toutes les alertes générées en fonction des [stratégies d’alerte dans le Centre de sécurité et de conformité](/office365/securitycompliance/alert-policies#default-alert-policies) ;
+- les alertes liées à Office 365 générées dans [Sécurité des applications cloud Office 365](/office365/securitycompliance/office-365-cas-overview) et [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security).
 
 Les paramètres UserId et UserKey de ces événements sont toujours des alertes SecurityComplianceAlerts. Il existe trois types d’événements d’alerte qui sont stockés en tant que valeur de la propriété Operation du schéma commun :
 
@@ -922,7 +923,7 @@ Les paramètres UserId et UserKey de ces événements sont toujours des alertes 
 
 ## <a name="yammer-schema"></a>Schéma Yammer
 
-Les événements Yammer répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#yammer-activities) utilisent ce schéma.
+Les événements Yammer répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#yammer-activities) utilisent ce schéma.
 
 |**Paramètres**|**Type**|**Obligatoire**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1034,18 +1035,18 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 
 ## <a name="microsoft-defender-for-office-365-and-threat-investigation-and-response-schema"></a>Microsoft Defender pour Office 365 et le schéma d’investigation et de réponse aux menaces
 
-[Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) et des événements d’investigation et de réponse aux menaces sont disponibles pour les clients Office 365 disposant d’un abonnement pour Microsoft Defender pour Office 365 Plan 1, Microsoft Defender pour Office 365 Plan 2 ou E5. Chaque événement dans le flux Microsoft Defender pour Office 365 correspond aux informations suivantes qui ont été considérées comme présentant une menace :
+[Microsoft Defender pour Office 365](/office365/securitycompliance/office-365-atp) et des événements d’investigation et de réponse aux menaces sont disponibles pour les clients Office 365 disposant d’un abonnement pour Microsoft Defender pour Office 365 Plan 1, Microsoft Defender pour Office 365 Plan 2 ou E5. Chaque événement dans le flux Microsoft Defender pour Office 365 correspond aux informations suivantes qui ont été considérées comme présentant une menace :
 
 - Un message électronique envoyé ou reçu par un utilisateur dans l’organisation avec détections sur des messages au moment de la remise et à partir de la [purge automatique heure zéro](https://support.office.com/article/Zero-hour-auto-purge-protection-against-spam-and-malware-96deb75f-64e8-4c10-b570-84c99c674e15). 
 
-- Les URL sur lesquelles un utilisateur a cliqué dans l’organisation qui ont été détectées comme malveillantes au moment du clic conformément à la protection liée aux [Liens approuvés dans Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).  
+- Les URL sur lesquelles un utilisateur a cliqué dans l’organisation qui ont été détectées comme malveillantes au moment du clic conformément à la protection liée aux [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links).  
 
-- Un fichier dans SharePoint Online, OneDrive Entreprise ou Microsoft Teams qui a été détecté comme étant malveillant par la protection [Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-for-spo-odb-and-teams).
+- Un fichier dans SharePoint Online, OneDrive Entreprise ou Microsoft Teams qui a été détecté comme étant malveillant par la protection [Microsoft Defender pour Office 365](/office365/securitycompliance/atp-for-spo-odb-and-teams).
 
-- Alerte déclenchée qui a lancé une [investigation automatisée](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office).
+- Alerte déclenchée qui a lancé une [investigation automatisée](/office365/securitycompliance/automated-investigation-response-office).
 
 > [!NOTE]
-> Les fonctionnalités Microsoft Defender pour Office 365 et Investigation et réponse aux menaces Office 365 (anciennement appelées « Office 365 Threat Intelligence ») sont désormais incluses dans Microsoft Defender pour Office 365 Plan 2, avec des fonctionnalités supplémentaires de protection contre les menaces.  Pour plus d’informations, consultez les [Offres et tarifs Microsoft Defender pour Office 365](https://products.office.com/exchange/advance-threat-protection) et la [Description du service Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
+> Les fonctionnalités Microsoft Defender pour Office 365 et Investigation et réponse aux menaces Office 365 (anciennement appelées « Office 365 Threat Intelligence ») sont désormais incluses dans Microsoft Defender pour Office 365 Plan 2, avec des fonctionnalités supplémentaires de protection contre les menaces.  Pour plus d’informations, consultez les [Offres et tarifs Microsoft Defender pour Office 365](https://products.office.com/exchange/advance-threat-protection) et la [Description du service Microsoft Defender pour Office 365](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description).
 
 ### <a name="email-message-events"></a>Événements de message électronique
 
@@ -1072,6 +1073,11 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |Dernier emplacement de remise |Edm.String|Oui|Dernier emplacement de remise du courrier électronique au moment de l’événement.|
 |Orientation |Edm.String|Oui|Identifie si un message électronique a été entrant, sortant ou intra-organisation.|
 |ThreatsAndDetectionTech |Edm.String|Oui|Les menaces et les technologies de détection correspondantes. Ce champ expose toutes les menaces qui s’y rapportent sur un courrier électronique, notamment le dernier ajout de courrier indésirable.  Par exemple, ["Phish: [Spoof DMARC] »,"Spam: [URL de réputation malveillante]"]. Les différentes menaces et technologies de détection sont décrites ci-dessous.|
+|AdditionalActionsAndResults |Collection(Edm.String)|Non|Actions supplémentaires effectuées sur l’e-mail, telles que ZAP ou correction manuelle. Inclut également les résultats correspondants.|
+|Connecteurs |Edm.String|Non|Noms et GUID des connecteurs associés à l’e-mail.|
+|AuthDetails |Collection(Self.[AuthDetails](#authdetails))|Non|Vérifications d’authentification effectuées pour l’e-mail. Inclut également les valeurs pour SPF, DKIM, DMARC et CompAuth.|
+|SystemOverrides |Collection(Self.[SystemOverrides](#systemoverrides))|Non|Remplacements applicables à l’e-mail. Il peut s’agir de remplacements système ou utilisateur.|
+|Niveau de confiance des hameçonnages |Edm.String|Non|Indique le niveau de confiance associé au verdict d’hameçonnage. Il peut être normal ou élevé.|  
 |||||
 
 > [!NOTE]
@@ -1118,6 +1124,28 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 > [!NOTE]
 > Au sein de la famille de programme malveillant, vous pourrez voir le nom exact de la famille de programme malveillant (par exemple, HTML/Phish.VS!MSR) ou la charge utile malveillante sous forme de chaîne statique. Une charge utile malveillante doit toujours être traitée comme un courriel malveillant lorsqu'un nom spécifique n'est pas identifié.
 
+### <a name="systemoverrides-complex-type"></a>Type complexe SystemOverrides
+ 
+#### <a name="systemoverrides"></a>SystemOverrides
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Détails|Edm.String|Non|Détails sur le remplacement spécifique (tel que l’ETR ou l’expéditeur approuvé) qui a été appliqué.|
+|FinalOverride|Edm.String|Non|Indique le remplacement qui a impacté la remise dans le cas de plusieurs remplacements.|
+|Résultat|Edm.String|Non|Indique si l’e-mail a été défini sur autorisé ou bloqué en fonction du remplacement.|
+|Source|Edm.String|Non|Indique si le remplacement a été configuré par l’utilisateur ou configuré par le client.|
+|||||
+
+### <a name="authdetails-complex-type"></a>Type complexe AuthDetails
+ 
+#### <a name="authdetails"></a>AuthDetails
+ 
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|Nom|Edm.String|Non|Nom de la vérification d’authentification spécifique, telle que DKIM ou DMARC.|
+|Valeur|Edm.String|Non|Valeur associée à la vérification d’authentification spécifique, telle que True ou False.|
+|||||
+ 
 ### <a name="enum-fileverdict---type-edmint32"></a>Énumération : FileVerdict - Type : Edm.Int32
 
 #### <a name="fileverdict"></a>FileVerdict
@@ -1178,7 +1206,7 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |:-----|:-----|:-----|:-----|
 |UserId|Edm.String|Oui|Identificateur (par exemple, une adresse électronique) de l’utilisateur qui a cliqué sur l’URL.|
 |AppName|Edm.String|Oui|Service Office 365 à partir duquel un utilisateur a cliqué sur l’URL (par exemple, Courrier Outlook).|
-|URLClickAction|Self.[URLClickAction](#urlclickaction)|Oui|Cliquez sur action pour l’URL en fonction des stratégies de l’organisation pour les [Liens approuvés dans Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
+|URLClickAction|Self.[URLClickAction](#urlclickaction)|Oui|Cliquez sur action pour l’URL en fonction des stratégies de l’organisation pour les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links).|
 |SourceId|Edm.String|Oui|Identificateur du service Office 365 à partir duquel un utilisateur a cliqué sur l’URL (par exemple, pour la messagerie, il s’agit de l’ID de message réseau Exchange Online).|
 |TimeOfClick|Edm.Date|Oui|Date et heure à l’heure UTC (temps universel coordonné) au moment où l’utilisateur a cliqué sur l’URL.|
 |URL|Edm.String|Oui|URL sur laquelle l’utilisateur a cliqué.|
@@ -1191,10 +1219,10 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 
 |**Valeur**|**Nom du membre**|**Description**|
 |:-----|:-----|:-----|
-|2|Blockpage|Utilisateur est bloqué et ne peut pas accéder à l’URL par les [Liens approuvés dans Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
-|3|PendingDetonationPage|La page de détonation en attente est affichée pour l’utilisateur par les [Liens approuvés dans Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links).|
-|4|BlockPageOverride|L’utilisateur est bloqué et ne peut pas accéder à l’URL par les [Liens approuvés dans Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
-|5|PendingDetonationPageOverride|La page détonation a été affichée pour l’utilisateur par les [Liens approuvés dans Microsoft Defender pour Office 365](https://docs.microsoft.com/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
+|2|Blockpage|Utilisateur est bloqué et ne peut pas accéder à l’URL par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links).|
+|3|PendingDetonationPage|La page de détonation en attente est affichée pour l’utilisateur par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links).|
+|4|BlockPageOverride|L’utilisateur est bloqué et ne peut pas accéder à l’URL par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
+|5|PendingDetonationPageOverride|La page détonation a été affichée pour l’utilisateur par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
 |||||
 
 ### <a name="file-events"></a>Événements de fichier
@@ -1235,9 +1263,34 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |2|Microsoft Teams|
 |||||
 
+## <a name="submission-schema"></a>Schéma d’envoi
+
+Les événements d’[Envois](/microsoft-365/security/office-365-security/report-junk-email-messages-to-microsoft) sont disponibles pour chaque [clients Office 365, car ils sont fournis avec sécurité](/microsoft-365/security/office-365-security/overview). Cela inclut les organisations qui utilisent Exchange Online Protection et Microsoft Defender pour Office 365. Chaque événement dans le flux de soumission correspond à des faux positifs ou faux négatifs qui ont été envoyés en tant que :
+
+- **Envoi par l’administrateur**. Messages, fichiers ou URL envoyés à Microsoft pour analyse.
+- **Élément signalé par l’utilisateur**. Messages signalés par les utilisateurs finaux à l’administrateur ou à Microsoft pour révision.
+
+### <a name="submission-events"></a>Événements d’envoi
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AdminSubmissionRegistered|Edm.String|Non|L’envoi de l’administrateur est inscrite et en attente de traitement.|
+|AdminSubmissionDeliveryCheck|Edm.String|Non|Le système d’envoi de l’administrateur a vérifié la stratégie de l’e-mail.|
+|AdminSubmissionSubmitting|Edm.String|Non|Le système d’envoi de l’administrateur envoie l’e-mail.|
+|AdminSubmissionSubmitted|Edm.String|Non|Le système d’envoi de l’administrateur a envoyé l’e-mail.|
+|AdminSubmissionTriage|Edm.String|Non|L’envoi de l’administrateur est triée par classeur.|
+|AdminSubmissionTimeout|Edm.String|Non|L’envoi de l’administrateur expire sans résultat.|
+|UserSubmission|Edm.String|Non|L’envoi a d’abord été signalé par un utilisateur final.|
+|UserSubmissionTriage|Edm.String|Non|L’envoi de l’utilisateur est triée par classeur.|
+|CustomSubmission|Edm.String|Non|Le message signalé par un utilisateur a été envoyé à la boîte aux lettres personnalisée de l’organisation comme défini dans les paramètres des messages signalés par l’utilisateur.|
+|AttackSimUserSubmission|Edm.String|Non|Le message signalé par l’utilisateur était en fait un message d’entraînement de simulation d’hameçonnage.|
+|AdminSubmissionTablAllow|Edm.String|Non|Une autorisation a été créée au moment de l’envoi pour prendre immédiatement des mesures sur des messages similaires pendant qu’il est en cours de nouvelle analyse.|
+|SubmissionNotification|Edm.String|Non|Les commentaires de l’administrateur sont envoyés à l’utilisateur final.|
+|||||
+
 ## <a name="automated-investigation-and-response-events-in-office-365"></a>Événements d’investigation et de réponse automatisés dans Office 365
 
-Les événements [Investigation et réponse automatisées Office 365 (AIR)](https://docs.microsoft.com/office365/securitycompliance/automated-investigation-response-office) sont disponibles pour les clients Office 365 disposant d’un abonnement incluant Microsoft Defender pour Office 365 plan 2 ou Office 365 E5. Les événements d’investigation sont enregistrés sur la base d’un changement d’état d’investigation. Par exemple, lorsqu’un administrateur effectue une action qui fait passer l’état d’une investigation d’Actions en attente à Terminé, un événement est consigné.
+Les événements [Investigation et réponse automatisées Office 365 (AIR)](/office365/securitycompliance/automated-investigation-response-office) sont disponibles pour les clients Office 365 disposant d’un abonnement incluant Microsoft Defender pour Office 365 plan 2 ou Office 365 E5. Les événements d’investigation sont enregistrés sur la base d’un changement d’état d’investigation. Par exemple, lorsqu’un administrateur effectue une action qui fait passer l’état d’une investigation d’Actions en attente à Terminé, un événement est consigné.
 
 Pour l’instant, seules les investigations automatiques sont enregistrées. (Les événements pour les investigations générées manuellement seront disponibles prochainement). Les valeurs de statut suivantes sont consignées :
 
@@ -1367,9 +1420,9 @@ FileHashes |Collection (Edm.String)    |Fichiers à hacher associés au fichier 
 
 Les événements d’hygiène sont liés à la protection contre le courrier indésirable sortant. Ces événements sont liés aux utilisateurs qui ne sont pas autorisés à envoyer des messages électroniques. Pour plus d’informations, reportez-vous aux rubriques suivantes :
 
-- [Protection contre le courrier indésirable sortant](https://docs.microsoft.com/microsoft-365/security/office-365-security/outbound-spam-controls)
+- [Protection contre le courrier indésirable sortant](/microsoft-365/security/office-365-security/outbound-spam-controls)
 
-- [Retirer les utilisateurs bloqués du portail Utilisateurs restreints dans Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/removing-user-from-restricted-users-portal-after-spam)
+- [Retirer les utilisateurs bloqués du portail Utilisateurs restreints dans Office 365](/microsoft-365/security/office-365-security/removing-user-from-restricted-users-portal-after-spam)
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1417,7 +1470,7 @@ Les événements Power BI répertoriés dans l’article relatif à la [Recherch
 
 ## <a name="dynamics-365-schema"></a>Schéma Dynamics 365
 
-Les enregistrements d’audit pour les événements liés aux applications basées sur les modèles dans les événements Dynamics 365 utilisent un schéma d’opérations de base et d’entité. Pour plus d’informations, consultez [Activer et utiliser la journalisation des activités](https://docs.microsoft.com/power-platform/admin/enable-use-comprehensive-auditing#model-driven-apps-in-dynamics-365-schema).
+Les enregistrements d’audit pour les événements liés aux applications basées sur les modèles dans les événements Dynamics 365 utilisent un schéma d’opérations de base et d’entité. Pour plus d’informations, consultez [Activer et utiliser la journalisation des activités](/power-platform/admin/enable-use-comprehensive-auditing#model-driven-apps-in-dynamics-365-schema).
 
 ### <a name="dynamics-365-base-schema"></a>Schéma de base Dynamics 365
 
@@ -1446,7 +1499,7 @@ Les événements d’entité provenant d’applications basées sur un modèle d
 
 ## <a name="workplace-analytics-schema"></a>Schéma Analyse du temps de travail
 
-Les événements Analyse du temps de travail répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) utilisent ce schéma.
+Les événements Analyse du temps de travail répertoriés dans l’article relatif à la [recherche dans le journal d’audit dans le Centre de sécurité et conformité Office 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-workplace-analytics-activities) utilisent ce schéma.
 
 | **Paramètres**     | **Type**            | **Obligatoire ?** | **Description**|
 |:------------------ | :------------------ | :--------------|:--------------|
@@ -1457,7 +1510,7 @@ Les événements Analyse du temps de travail répertoriés dans l’article rela
 
 ## <a name="quarantine-schema"></a>Schéma de la mise en quarantaine
 
-Les événements de mise en quarantaine répertoriés dans l’article [Rechercher le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) utilisent ce schéma. Si vous souhaitez en savoir plus sur la mise en quarantaine, consultez l’article [Mettre les e-mails en quarantaine dans Office 365](https://docs.microsoft.com/microsoft-365/security/office-365-security/quarantine-email-messages).
+Les événements de mise en quarantaine répertoriés dans l’article [Rechercher le journal d’audit dans le Centre de sécurité et conformité Office 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#quarantine-activities) utilisent ce schéma. Si vous souhaitez en savoir plus sur la mise en quarantaine, consultez l’article [Mettre les e-mails en quarantaine dans Office 365](/microsoft-365/security/office-365-security/quarantine-email-messages).
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1489,7 +1542,7 @@ Les événements de mise en quarantaine répertoriés dans l’article [Recherch
 
 ## <a name="microsoft-forms-schema"></a>Schéma Microsoft Forms
 
-Les événements Microsoft Forms répertoriés dans l’article relatif à la [Recherche dans le journal d’audit du centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) utilisent ce schéma.
+Les événements Microsoft Forms répertoriés dans l’article relatif à la [Recherche dans le journal d’audit du centre de sécurité et conformité Office 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities) utilisent ce schéma.
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
@@ -1498,7 +1551,7 @@ Les événements Microsoft Forms répertoriés dans l’article relatif à la [R
 |FormName|Edm.String|Non|Nom du formulaire actuel.|
 |FormId |Edm.String|Non|ID du formulaire cible.|
 |FormTypes|Collection(Self.[FormTypes](#formtypes))|Non|Indique s’il s’agit d’un formulaire, d’un questionnaire ou d’une enquête.|
-|ActivityParameters|Edm.String|Non|Chaîne JSON contenant les paramètres d’activité. Pour plus d’informations, voir [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité Office 365](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities).|
+|ActivityParameters|Edm.String|Non|Chaîne JSON contenant les paramètres d’activité. Pour plus d’informations, voir [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité Office 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#microsoft-forms-activities).|
 ||||
 
 ### <a name="enum-formsusertypes---type-edmint32"></a>Enum : FormsUserTypes-type : EDM. Int32
@@ -1530,9 +1583,9 @@ Les événements figurant dans le schéma d’étiquette Microsoft Information P
 
 L’objectif de ce schéma d’audit est de représenter toutes les activités de courrier électronique impliquant des étiquettes de confidentialité. En d’autres termes, une activité d’audit doit être enregistrée pour chaque message envoyé ou provenant des utilisateurs de l’organisation à laquelle une étiquette de confidentialité est appliquée, quel que soit le moment ou le mode d’application de l’étiquette de confidentialité. Pour plus d’informations sur les étiquettes de confidentialité, voir :
 
-- [En savoir plus sur les étiquettes de niveau de confidentialité](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels)
+- [En savoir plus sur les étiquettes de niveau de confidentialité](/microsoft-365/compliance/sensitivity-labels)
 
-- [Appliquer automatiquement une étiquette de confidentialité à du contenu](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically)
+- [Appliquer automatiquement une étiquette de confidentialité à du contenu](/microsoft-365/compliance/apply-sensitivity-label-automatically)
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
