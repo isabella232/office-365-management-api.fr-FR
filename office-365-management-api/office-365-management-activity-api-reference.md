@@ -1,36 +1,36 @@
 ---
 ms.technology: o365-service-communications
 ms.TocTitle: Office 365 Management Activity API reference
-title: Référence de l’API Activité de gestion Office 365
-description: Cet article explique comment utiliser l’API Activité de gestion Office 365 pour récupérer des informations sur les actions et les événements des utilisateurs, des administrateurs, du système et des stratégies à partir des journaux d’activité Office 365 et Azure AD.
+title: Référence de l’API Activité de gestion Office 365
+description: Cet article explique comment utiliser l’API Activité de gestion Office 365 pour récupérer des informations sur les actions et les événements des utilisateurs, des administrateurs, du système et des stratégies à partir des journaux d’activité Office 365 et Azure AD.
 ms.ContentId: 52749845-37f8-6076-7ea5-49d9a4055445
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 92eb7f2838e673992a778043075b6c0ef3f8d133
-ms.sourcegitcommit: e998d2175540269e94db529e74532efd4c43fab9
+ms.openlocfilehash: c8eb59433b49c9735ddfefea0d1e6804e8937439
+ms.sourcegitcommit: f08ff7cfd17aedd9d2ca85b5df0666ca986c9aed
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "50094982"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "53447897"
 ---
-# <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
+# <a name="office-365-management-activity-api-reference"></a>Référence de l’API Activité de gestion Office 365
 
-Cet article explique comment utiliser l’API Activité de gestion Office 365 pour récupérer des informations sur les actions et les événements des utilisateurs, des administrateurs, du système et des stratégies à partir des journaux d’activité Office 365 et Azure AD. 
+Cet article explique comment utiliser l’API Activité de gestion Office 365 pour récupérer des informations sur les actions et les événements des utilisateurs, des administrateurs, du système et des stratégies à partir des journaux d’activité Office 365 et Azure AD. 
 
-Vous pouvez utiliser les actions et les événements à partir des journaux d’audit et d’activité Office 365 et Microsoft Azure Active Directory pour créer des solutions de supervision, d’analyse et de visualisation des données. Ces solutions offrent aux organisations une meilleure visibilité sur les actions effectuées sur leur contenu. Ces actions et ces événements sont également disponibles dans les rapports d’activité Office 365. Pour en savoir plus, reportez-vous à l’article [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et de conformité Office 365](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c).
+Vous pouvez utiliser les actions et les événements à partir des journaux d’audit et d’activité Office 365 et Microsoft Azure Active Directory pour créer des solutions de supervision, d’analyse et de visualisation des données. Ces solutions offrent aux organisations une meilleure visibilité sur les actions effectuées sur leur contenu. Ces actions et ces événements sont également disponibles dans les rapports d’activité Office 365. Pour en savoir plus, reportez-vous à l’article [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et de conformité Office 365](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c).
 
-L’API Activité de gestion Office 365 est un service web REST qui vous permet de développer des solutions à l’aide de n’importe quel langage et environnement d’hébergement qui prend en charge les certificats X.509 et HTTPS. L’API s’appuie sur Azure AD et le protocole OAuth2 pour l’authentification et l’autorisation. Pour accéder à l’API depuis votre application, inscrivez-la d’abord dans Azure AD et configurez-la avec les autorisations appropriées. Ainsi, votre application pourra demander les jetons d’accès OAuth2 dont elle a besoin pour appeler l’API. Pour en savoir plus, consultez l’article relatif à la [prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md).
+L’API Activité de gestion Office 365 est un service web REST qui vous permet de développer des solutions à l’aide de n’importe quel langage et environnement d’hébergement qui prend en charge les certificats X.509 et HTTPS. L’API s’appuie sur Azure AD et le protocole OAuth2 pour l’authentification et l’autorisation. Pour accéder à l’API depuis votre application, inscrivez-la d’abord dans Azure AD et configurez-la avec les autorisations appropriées. Ainsi, votre application pourra demander les jetons d’accès OAuth2 dont elle a besoin pour appeler l’API. Pour en savoir plus, consultez l’article relatif à la [prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md).
 
-Pour obtenir des informations sur les données renvoyées par l’API Activité de gestion Office 365 ainsi que sur les problèmes connus et les modifications à venir risquant d’affecter votre implémentation, consultez l’article relatif au [schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md).
+Pour obtenir des informations sur les données renvoyées par l’API Activité de gestion Office 365 ainsi que sur les problèmes connus et les modifications à venir risquant d’affecter votre implémentation, consultez l’article relatif au [schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md).
 
 > [!IMPORTANT]
-> Avant de pouvoir accéder aux données via l’API Activité de gestion Office 365, vous devez activer la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+> Avant de pouvoir accéder aux données via l’API Activité de gestion Office 365, vous devez activer la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
 
 
-## <a name="working-with-the-office-365-management-activity-api"></a>Utilisation de l’API Activité de gestion Office 365
+## <a name="working-with-the-office-365-management-activity-api"></a>Utilisation de l’API Activité de gestion Office 365
 
-L’API Activité de gestion Office 365 agrège des actions et des événements dans des blobs de contenu propres au locataire, classés selon le type et la source du contenu qu’ils contiennent. Actuellement, les types de contenu suivants sont pris en charge :
+L’API Activité de gestion Office 365 agrège des actions et des événements dans des blobs de contenu propres au locataire, classés selon le type et la source du contenu qu’ils contiennent. Actuellement, les types de contenu suivants sont pris en charge :
 
 - Audit.AzureActiveDirectory
     
@@ -42,7 +42,7 @@ L’API Activité de gestion Office 365 agrège des actions et des événements
 
 - DLP.All (événements DLP liés à toutes les charges de travail)
     
-Pour en savoir plus sur les événements et les propriétés associés à ces types de contenu, consultez l’article relatif au [schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md).
+Pour en savoir plus sur les événements et les propriétés associés à ces types de contenu, consultez l’article relatif au [schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md).
 
 Pour commencer à récupérer des blobs de contenu associés à un locataire, créez d’abord un abonnement aux types de contenu souhaités. Si vous récupérez des blobs de contenu associés à plusieurs locataires, créez un abonnement à chacun des types de contenu souhaités pour chaque client.
 
@@ -50,19 +50,19 @@ Une fois qu’un abonnement est créé, vous pouvez régulièrement l’interrog
 
 
 > [!NOTE] 
-> Quand un abonnement est créé, il faut attendre jusqu’à 12 heures avant que les premiers blobs de contenu associés à cet abonnement deviennent disponibles. Les blobs de contenu sont créés en collectant et en agrégeant des actions et des événements sur plusieurs serveurs et centres de données. À la suite de ce processus distribué, les actions et les événements contenus dans les blobs de contenu n’apparaissent pas nécessairement dans l’ordre dans lequel ils ont eu lieu. Un blob de contenu peut contenir des actions et des événements qui ont eu lieu avant les actions et les événements contenus dans un blob de contenu antérieur. Nous mettons tout en œuvre pour réduire la latence entre l’occurrence des actions et des événements et leur disponibilité au sein d’un blob de contenu, mais nous ne pouvons pas garantir qu’elles apparaissent de manière séquentielle.
+> Quand un abonnement est créé, il faut attendre jusqu’à 12 heures avant que les premiers blobs de contenu associés à cet abonnement deviennent disponibles. Les blobs de contenu sont créés en collectant et en agrégeant des actions et des événements sur plusieurs serveurs et centres de données. À la suite de ce processus distribué, les actions et les événements contenus dans les blobs de contenu n’apparaissent pas nécessairement dans l’ordre dans lequel ils ont eu lieu. Un blob de contenu peut contenir des actions et des événements qui ont eu lieu avant les actions et les événements contenus dans un blob de contenu antérieur. Nous mettons tout en œuvre pour réduire la latence entre l’occurrence des actions et des événements et leur disponibilité au sein d’un blob de contenu, mais nous ne pouvons pas garantir qu’elles apparaissent de manière séquentielle.
 
 
 > [!NOTE] 
-> Les données sensibles régies par les stratégies de protection contre la perte de données (DLP) sont disponibles dans l’API Flux d’activités uniquement pour les utilisateurs auxquels les autorisations « Lire les données sensibles DLP » ont été accordées. Pour en savoir plus, reportez-vous à l’article [Vue d’ensemble des stratégies de protection contre la perte de données](https://support.office.com/article/Overview-of-data-loss-prevention-policies-1966b2a7-d1e2-4d92-ab61-42efbb137f5e).
+> Les données sensibles régies par les stratégies de protection contre la perte de données (DLP) sont disponibles dans l’API Flux d’activités uniquement pour les utilisateurs auxquels les autorisations « Lire les données sensibles DLP » ont été accordées. Pour en savoir plus, reportez-vous à l’article [Vue d’ensemble des stratégies de protection contre la perte de données](https://support.office.com/article/Overview-of-data-loss-prevention-policies-1966b2a7-d1e2-4d92-ab61-42efbb137f5e).
 
-## <a name="activity-api-operations"></a>Opérations de l’API Activité
+## <a name="activity-api-operations"></a>Opérations de l’API Activité
 
-Toutes les opérations de l’API sont limitées à un seul locataire et l’URL racine de l’API inclut un ID de locataire qui spécifie le contexte du locataire. L’ID de locataire est un GUID. Pour savoir comment obtenir le GUID, consultez l’article relatif à la [prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md). 
+Toutes les opérations de l’API sont limitées à un seul locataire et l’URL racine de l’API inclut un ID de locataire qui spécifie le contexte du locataire. L’ID de locataire est un GUID. Pour savoir comment obtenir le GUID, consultez l’article relatif à la [prise en main des API de gestion Office 365](get-started-with-office-365-management-apis.md). 
 
 Étant donné que les notifications que nous envoyons à votre webhook incluent l’ID de locataire, vous pouvez utiliser le même webhook pour recevoir des notifications pour tous les locataires.
 
-L’URL du point de terminaison de l’API que vous utilisez est basée sur le type d’abonnement Microsoft 365 ou Office 365 pour votre organisation.
+L’URL du point de terminaison de l’API que vous utilisez est basée sur le type d’abonnement Microsoft 365 ou Office 365 pour votre organisation.
 
 **Plan Entreprise**
 
@@ -88,13 +88,13 @@ https://manage.office365.us/api/v1.0/{tenant_id}/activity/feed/{operation}
 https://manage.protection.apps.mil/api/v1.0/{tenant_id}/activity/feed/{operation}
 ```
 
-Toutes les opérations de l’API nécessitent un en-tête HTTP d’autorisation avec un jeton d’accès provenant d’Azure AD. L’ID de locataire présent dans le jeton d’accès doit correspondre à l’ID de locataire indiqué dans l’URL racine de l’API. De plus, le jeton d’accès doit contenir la revendication ActivityFeed.Read (qui correspond à l’autorisation [Lire les données d’activité d’une organisation] configurée pour votre application dans Azure AD).
+Toutes les opérations de l’API nécessitent un en-tête HTTP d’autorisation avec un jeton d’accès provenant d’Azure AD. L’ID de locataire présent dans le jeton d’accès doit correspondre à l’ID de locataire indiqué dans l’URL racine de l’API. De plus, le jeton d’accès doit contenir la revendication ActivityFeed.Read (qui correspond à l’autorisation [Lire les données d’activité d’une organisation] configurée pour votre application dans Azure AD).
 
 ```json
 Authorization: Bearer eyJ0e...Qa6wg
 ```
 
-L’API Activité prend en charge les opérations suivantes :
+L’API Activité prend en charge les opérations suivantes :
 
 - **Démarrer un abonnement** pour commencer à recevoir des notifications et récupérer les données d’activité d’un locataire.
     
@@ -115,7 +115,7 @@ L’API Activité prend en charge les opérations suivantes :
 
 ## <a name="start-a-subscription"></a>Démarrer un abonnement
 
-Cette opération démarre l’abonnement souscrit pour le type de contenu spécifié. Si un abonnement pour le type de contenu spécifié existe déjà, cette opération sert à :
+Cette opération démarre l’abonnement souscrit pour le type de contenu spécifié. Si un abonnement pour le type de contenu spécifié existe déjà, cette opération sert à :
 
 - mettre à jour les propriétés d’un webhook actif.
     
@@ -130,9 +130,9 @@ Cette opération démarre l’abonnement souscrit pour le type de contenu spéci
 |**Chemin**| `/subscriptions/start?contentType={ContentType}`||
 |**Paramètres**|contentType|Doit être un type de contenu valide.|
 ||PublisherIdentifier|GUID de locataire de l’éditeur qui code l’API. Il ne s’agit **pas** du GUID de l’application ou du GUID du client qui utilise l’application, mais bien du GUID de l’entreprise qui écrit le code. Ce paramètre permet de limiter le taux de requêtes émises. Vérifiez que ce paramètre est spécifié dans toutes les requêtes émises pour obtenir un quota dédié. Toutes les requêtes reçues sans ce paramètre auront le même quota.|
-|**Corps**|webhook|Cet objet JSON facultatif comprend trois propriétés :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>address</b> : point de terminaison HTTPS obligatoire qui peut recevoir des notifications.  Un message test est envoyé au webhook pour valider le webhook avant de créer l’abonnement.</p></li><li><p><b>authId</b> : chaîne facultative incluse comme en-tête WebHook-AuthID dans les notifications envoyées au webhook pour identifier et autoriser la source de la requête envoyée au webhook.</p></li><li><p><b>expiration</b> : date/heure (valeur facultative) après laquelle les notifications ne doivent plus être envoyées au webhook.</p></li></ul>|
+|**Corps**|webhook|Cet objet JSON facultatif comprend trois propriétés :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>address</b> : point de terminaison HTTPS obligatoire qui peut recevoir des notifications.  Un message test est envoyé au webhook pour valider le webhook avant de créer l’abonnement.</p></li><li><p><b>authId</b> : chaîne facultative incluse comme en-tête WebHook-AuthID dans les notifications envoyées au webhook pour identifier et autoriser la source de la requête envoyée au webhook.</p></li><li><p><b>expiration</b> : date/heure (valeur facultative) après laquelle les notifications ne doivent plus être envoyées au webhook.</p></li></ul>|
 |**Réponse**|contentType|Type de contenu spécifié dans l’appel.|
-||statut|Statut de l’abonnement. Si un abonnement est désactivé, vous ne pouvez pas répertorier ou récupérer du contenu.|
+||statut|État de l’abonnement. Si un abonnement est désactivé, vous ne pourrez pas répertorier ou récupérer du contenu.|
 ||webhook|Propriétés du webhook spécifiées dans l’appel avec l’état du webhook. Si le webhook est désactivé, vous ne recevez pas de notification, mais vous pouvez toujours répertorier et récupérer du contenu, à condition que l’abonnement soit activé.|
 
 #### <a name="sample-request"></a>Exemple de demande
@@ -175,7 +175,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="webhook-validation"></a>Validation du webhook
 
-Quand l’opération /start est appelée et un webhook est spécifié, nous vous envoyons une notification de validation à l’adresse de webhook indiquée pour confirmer qu’un détecteur actif peut accepter et traiter les notifications. Si nous ne recevons pas une réponse HTTP 200 OK, l’abonnement n’est pas créé. Sinon, si l’opération /start est appelée pour ajouter un webhook à un abonnement existant et si nous ne recevons pas une réponse HTTP 200 OK, le webhook n’est pas ajouté et l’abonnement reste inchangé.
+Quand l’opération /start est appelée et un webhook est spécifié, nous vous envoyons une notification de validation à l’adresse de webhook indiquée pour confirmer qu’un détecteur actif peut accepter et traiter les notifications. Si nous ne recevons pas une réponse HTTP 200 OK, l’abonnement n’est pas créé. Sinon, si l’opération /start est appelée pour ajouter un webhook à un abonnement existant et si nous ne recevons pas une réponse HTTP 200 OK, le webhook n’est pas ajouté et l’abonnement reste inchangé.
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -240,7 +240,7 @@ Cette opération renvoie une collection d’abonnements actifs avec les webhooks
 |**Chemin**| `/subscriptions/list`||
 |**Paramètres**|PublisherIdentifier|GUID de locataire de l’éditeur qui code l’API. Il ne s’agit **pas** du GUID de l’application ou du GUID du client qui utilise l’application, mais bien du GUID de l’entreprise qui écrit le code. Ce paramètre permet de limiter le taux de requêtes émises. Vérifiez que ce paramètre est spécifié dans toutes les requêtes émises pour obtenir un quota dédié. Toutes les requêtes reçues sans ce paramètre auront le même quota.|
 |**Corps**|(vide)||
-|**Réponse**|Tableau JSON|Chaque abonnement est représenté par un objet JSON comprenant trois propriétés :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b> : indique le type de contenu.</p></li><li><p><b>status</b> : indique le statut de l’abonnement.</p></li><li><p><b>webhook</b> : indique le webhook configuré avec l’état (activé, désactivé, expiré) du webhook.  Si un abonnement n’a pas de webhook, la propriété du webhook est indiquée avec une valeur Null.</p></li></ul>|
+|**Réponse**|Tableau JSON|Chaque abonnement est représenté par un objet JSON comprenant trois propriétés :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b> : indique le type de contenu.</p></li><li><p><b>status</b> : indique le statut de l’abonnement.</p></li><li><p><b>webhook</b> : indique le webhook configuré avec l’état (activé, désactivé, expiré) du webhook.  Si un abonnement n’a pas de webhook, la propriété du webhook est indiquée avec une valeur Null.</p></li></ul>|
 
 
 #### <a name="sample-request"></a>Exemple de demande
@@ -290,8 +290,8 @@ Cette opération répertorie le contenu actuellement disponible que vous pouvez 
 |**Chemin**| `/subscriptions/content?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**Paramètres**|contentType|Doit être un type de contenu valide.|
 ||PublisherIdentifier|GUID de locataire de l’éditeur qui code l’API. Il ne s’agit **pas** du GUID de l’application ou du GUID du client qui utilise l’application, mais bien du GUID de l’entreprise qui écrit le code. Ce paramètre permet de limiter le taux de requêtes émises. Vérifiez que ce paramètre est spécifié dans toutes les requêtes émises pour obtenir un quota dédié. Toutes les requêtes reçues sans ce paramètre auront le même quota.|
-||startTime endTime|Date/Heure (UTC) facultative indiquant l’intervalle de temps à prendre en compte pour renvoyer le contenu, selon le moment à partir duquel le contenu est devenu disponible. L’intervalle de temps est compris entre l’heure de début (startTime <= contentCreated) et l’heure de fin (contentCreated < endTime). Ainsi, les intervalles de temps sont incrémentés sans se chevaucher pour permettre de parcourir le contenu disponible.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>L’heure de début et l’heure de fin doivent être toutes les deux renseignées (ou omises), doivent être espacées d’un intervalle de moins de 24 heures, et l’heure de début ne doit pas dater de plus de 7 jours. Par défaut, si l’heure de début et l’heure de fin ne sont pas renseignées, le contenu disponible au cours des dernières 24 heures est renvoyé.<p>**REMARQUE** : même si l’heure de début et l’heure de fin peuvent être espacées de plus de 24 heures, nous vous déconseillons de le faire. Par ailleurs, si vous obtenez des résultats en réponse à une requête portant sur un intervalle de plus de 24 heures, ces résultats peuvent être partiels et ne doivent pas être pris en compte. L’intervalle de la requête émise entre l’heure de début et l’heure de fin doit couvrir une plage horaire de moins de 24 heures.</p>|
-|**Réponse**|Tableau JSON|Le contenu disponible est représenté par des objets JSON comprenant les propriétés suivantes :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b> : indique le type de contenu.</p></li><li><p><b>contentId</b> : chaîne opaque qui identifie le contenu.</p></li><li><p><b>contentUri</b> : URL à utiliser pour récupérer le contenu.</p></li><li><p><b>contentCreated</b> : date/heure à laquelle le contenu est disponible.</p></li><li><p><b>contentExpiration</b> : date/heure après laquelle vous ne pouvez plus récupérer le contenu.</p></li></ul>|
+||startTime endTime|Date/Heure (UTC) facultative indiquant l’intervalle de temps à prendre en compte pour renvoyer le contenu, selon le moment à partir duquel le contenu est devenu disponible. L’intervalle de temps est compris entre l’heure de début (startTime <= contentCreated) et l’heure de fin (contentCreated < endTime). Ainsi, les intervalles de temps sont incrémentés sans se chevaucher pour permettre de parcourir le contenu disponible.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>L’heure de début et l’heure de fin doivent être toutes les deux renseignées (ou omises), doivent être espacées d’un intervalle de moins de 24 heures, et l’heure de début ne doit pas dater de plus de 7 jours. Par défaut, si l’heure de début et l’heure de fin ne sont pas renseignées, le contenu disponible au cours des dernières 24 heures est renvoyé.<p>**REMARQUE** : même si l’heure de début et l’heure de fin peuvent être espacées de plus de 24 heures, nous vous déconseillons de le faire. Par ailleurs, si vous obtenez des résultats en réponse à une requête portant sur un intervalle de plus de 24 heures, ces résultats peuvent être partiels et ne doivent pas être pris en compte. L’intervalle de la requête émise entre l’heure de début et l’heure de fin doit couvrir une plage horaire de moins de 24 heures.</p>|
+|**Réponse**|Tableau JSON|Le contenu disponible est représenté par des objets JSON comprenant les propriétés suivantes :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>contentType</b> : indique le type de contenu.</p></li><li><p><b>contentId</b> : chaîne opaque qui identifie le contenu.</p></li><li><p><b>contentUri</b> : URL à utiliser pour récupérer le contenu.</p></li><li><p><b>contentCreated</b> : date/heure à laquelle le contenu est disponible.</p></li><li><p><b>contentExpiration</b> : date/heure après laquelle vous ne pouvez plus récupérer le contenu.</p></li></ul>|
 
 
 #### <a name="sample-request"></a>Exemple de demande
@@ -324,7 +324,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="pagination"></a>Pagination
 
-Quand vous répertoriez le contenu disponible au cours d’un intervalle de temps donné, le nombre de résultats renvoyés est limité pour éviter de dépasser le délai de réponse. Si d’autres résultats correspondent à l’intervalle de temps spécifié mais ne peuvent pas être renvoyés dans une seule réponse, les résultats sont tronqués et un en-tête est ajouté à la réponse indiquant l’URL à utiliser pour accéder à la page de résultats suivante. L’URL contient les mêmes paramètres _startTime_ et _endTime_ qui ont été spécifiés dans la requête d’origine, ainsi qu’un paramètre indiquant l’ID interne de la page suivante. Si les paramètres _startTime_ et _endTime_ ne sont pas spécifiés dans la requête d’origine, ils indiquent l’intervalle de 24 heures qui précède la requête d’origine.
+Quand vous répertoriez le contenu disponible au cours d’un intervalle de temps donné, le nombre de résultats renvoyés est limité pour éviter de dépasser le délai de réponse. Si d’autres résultats correspondent à l’intervalle de temps spécifié mais ne peuvent pas être renvoyés dans une seule réponse, les résultats sont tronqués et un en-tête est ajouté à la réponse indiquant l’URL à utiliser pour accéder à la page de résultats suivante. L’URL contient les mêmes paramètres _startTime_ et _endTime_ qui ont été spécifiés dans la requête d’origine, ainsi qu’un paramètre indiquant l’ID interne de la page suivante. Si les paramètres _startTime_ et _endTime_ ne sont pas spécifiés dans la requête d’origine, ils indiquent l’intervalle de 24 heures qui précède la requête d’origine.
 
 
 ```json
@@ -341,23 +341,23 @@ Pour répertorier tout le contenu disponible dans un intervalle de temps spécif
 
 Les notifications sont envoyées au webhook configuré pour un abonnement au fur et à mesure que le nouveau contenu devient disponible. Étant donné que les notifications incluent l’ID de locataire, vous pouvez utiliser le même webhook pour recevoir des notifications pour tous les locataires auxquels vous êtes abonné.
 
-La notification est envoyée sous la forme d’une requête HTTP POST sur TLS (TLS 1.0 et versions ultérieures) à l’adresse de webhook spécifiée. Si la configuration du webhook inclut un ID d’authentification, nous l’envoyons comme en-tête HTTP : Webhook-AuthID. Les réponses qui n’incluent pas HTTP 200 OK seront considérées comme ayant échoué et la notification sera renvoyée. Vous pouvez également configurer votre webhook pour exiger une authentification basée sur les certificats clients ; nous nous authentifierons alors à l’aide du certificat manage.office.com.
+La notification est envoyée sous la forme d’une requête HTTP POST sur TLS (TLS 1.0 et versions ultérieures) à l’adresse de webhook spécifiée. Si la configuration du webhook inclut un ID d’authentification, nous l’envoyons comme en-tête HTTP : Webhook-AuthID. Les réponses qui n’incluent pas HTTP 200 OK seront considérées comme ayant échoué et la notification sera renvoyée. Vous pouvez également configurer votre webhook pour exiger une authentification basée sur les certificats clients ; nous nous authentifierons alors à l’aide du certificat manage.office.com.
 
-Le corps de la requête contiendra une matrice comprenant un ou plusieurs objets JSON qui représentent les blobs de contenu disponibles. Le nombre de blobs de contenu compris dans chaque notification est limité pour réduire au maximum la taille de la notification. Dans la mesure où cette limite peut être modifiée, votre implémentation doit interroger la longueur de la matrice au lieu de prévoir une taille fixe. Chaque objet inclura les mêmes propriétés renvoyées par l’opération /content ainsi que le GUID du locataire auquel appartiennent les données et le GUID de l’application ayant créé les abonnements. Ainsi, le webhook peut établir le contexte dans lequel il est utilisé avec plusieurs locataires et applications.
+Le corps de la requête contiendra une matrice comprenant un ou plusieurs objets JSON qui représentent les blobs de contenu disponibles. Le nombre de blobs de contenu compris dans chaque notification est limité pour réduire au maximum la taille de la notification. Dans la mesure où cette limite peut être modifiée, votre implémentation doit interroger la longueur de la matrice au lieu de prévoir une taille fixe. Chaque objet inclura les mêmes propriétés renvoyées par l’opération /content ainsi que le GUID du locataire auquel appartiennent les données et le GUID de l’application ayant créé les abonnements. Ainsi, le webhook peut établir le contexte dans lequel il est utilisé avec plusieurs locataires et applications.
 
-- **tenantId** : GUID du locataire auquel appartient le contenu.
+- **tenantId** : GUID du locataire auquel appartient le contenu.
     
-- **clientId** : GUID de votre application qui a créé l’abonnement.
+- **clientId** : GUID de votre application qui a créé l’abonnement.
     
-- **contentType** : indique le type de contenu.
+- **contentType** : indique le type de contenu.
     
-- **contentId** : chaîne opaque qui identifie le contenu.
+- **contentId** : chaîne opaque qui identifie le contenu.
     
-- **contentUri** : URL à utiliser pour récupérer le contenu.
+- **contentUri** : URL à utiliser pour récupérer le contenu.
     
-- **contentCreated** : date/heure à laquelle le contenu est disponible.
+- **contentCreated** : date/heure à laquelle le contenu est disponible.
     
-- **contentExpiration** : date/heure après laquelle vous ne pouvez plus récupérer le contenu.
+- **contentExpiration** : date/heure après laquelle vous ne pouvez plus récupérer le contenu.
     
 Vous trouverez ci-dessous un exemple de notification.
 
@@ -389,7 +389,7 @@ Le système de notification envoie des notifications dès que du nouveau contenu
 
 ## <a name="retrieving-content"></a>Récupérer du contenu
 
-Pour récupérer un blob de contenu, envoyez une requête GET à l’URI de contenu correspondante qui figure dans la liste du contenu disponible et dans les notifications envoyées au webhook. Le contenu renvoyé correspondra à une collection d’un ou de plusieurs événements ou actions au format JSON.
+Pour récupérer un blob de contenu, envoyez une requête GET à l’URI de contenu correspondante qui figure dans la liste du contenu disponible et dans les notifications envoyées au webhook. Le contenu renvoyé correspondra à une collection d’un ou de plusieurs événements ou actions au format JSON.
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -506,8 +506,8 @@ Vous pouvez utiliser cette opération pour vous aider à résoudre les problème
 |**Chemin**| `/subscriptions/notifications?contentType={ContentType}&amp;startTime={0}&amp;endTime={1}`||
 |**Paramètres**|contentType|Doit être un type de contenu valide.|
 ||PublisherIdentifier|GUID de locataire de l’éditeur qui code l’API. Il ne s’agit **pas** du GUID de l’application ou du GUID du client qui utilise l’application, mais bien du GUID de l’entreprise qui écrit le code. Ce paramètre permet de limiter le taux de requêtes émises. Vérifiez que ce paramètre est spécifié dans toutes les requêtes émises pour obtenir un quota dédié. Toutes les requêtes reçues sans ce paramètre auront le même quota.|
-||startTime endTime|Date/Heure (UTC) facultative indiquant l’intervalle de temps à prendre en compte pour renvoyer le contenu, selon le moment à partir duquel le contenu est devenu disponible. L’intervalle de temps est délimité par les paramètres _startTime_ (_startTime_ <= contentCreated) et _endTime_ (_contentCreated_ < endTime). Ainsi, les intervalles de temps sont incrémentés sans se chevaucher pour permettre de parcourir le contenu disponible.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>L’heure de début et l’heure de fin doivent être toutes les deux renseignées (ou omises), doivent être espacées d’un intervalle de moins de 24 heures, et l’heure de début ne doit pas dater de plus de 7 jours. Par défaut, si les paramètres _startTime_ et _endTime_ ne sont pas renseignés, le contenu disponible au cours des dernières 24 heures est renvoyé.|
-|**Réponse**|Tableau JSON|Les notifications sont représentées par des objets JSON comprenant les propriétés suivantes : <ul><li>**contentType** : indique le type de contenu.</li><li>**contentId** : chaîne opaque qui identifie le contenu.</li><li>**contentUri** : URL à utiliser pour récupérer le contenu. </li><li>**contentCreated** : date/heure à laquelle le contenu est disponible.</li><li>**contentExpiration** : date/heure après laquelle vous ne pouvez plus récupérer le contenu.</li><li>**notificationSent** : date/heure d’envoi de la notification.</li><li>**notificationStatus** : indique la réussite ou l’échec de la tentative de notification.</li></ul>|
+||startTime endTime|Date/Heure (UTC) facultative indiquant l’intervalle de temps à prendre en compte pour renvoyer le contenu, selon le moment à partir duquel le contenu est devenu disponible. L’intervalle de temps est délimité par les paramètres _startTime_ (_startTime_ <= contentCreated) et _endTime_ (_contentCreated_ < endTime). Ainsi, les intervalles de temps sont incrémentés sans se chevaucher pour permettre de parcourir le contenu disponible.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>YYYY-MM-DD</p></li><li><p>YYYY-MM-DDTHH:MM</p></li><li><p>YYYY-MM-DDTHH:MM:SS</p></li></ul>L’heure de début et l’heure de fin doivent être toutes les deux renseignées (ou omises), doivent être espacées d’un intervalle de moins de 24 heures, et l’heure de début ne doit pas dater de plus de 7 jours. Par défaut, si les paramètres _startTime_ et _endTime_ ne sont pas renseignés, le contenu disponible au cours des dernières 24 heures est renvoyé.|
+|**Réponse**|Tableau JSON|Les notifications sont représentées par des objets JSON comprenant les propriétés suivantes : <ul><li>**contentType** : indique le type de contenu.</li><li>**contentId** : chaîne opaque qui identifie le contenu.</li><li>**contentUri** : URL à utiliser pour récupérer le contenu. </li><li>**contentCreated** : date/heure à laquelle le contenu est disponible.</li><li>**contentExpiration** : date/heure après laquelle vous ne pouvez plus récupérer le contenu.</li><li>**notificationSent** : date/heure d’envoi de la notification.</li><li>**notificationStatus** : indique la réussite ou l’échec de la tentative de notification.</li></ul>|
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -542,29 +542,29 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="pagination"></a>Pagination
 
-Quand vous répertoriez l’historique de notification au cours d’un intervalle de temps donné, le nombre de résultats renvoyés est limité pour éviter de dépasser le délai de réponse. Si d’autres résultats correspondent à l’intervalle de temps spécifié mais ne peuvent pas être renvoyés dans une seule réponse, les résultats sont tronqués et un en-tête est ajouté à la réponse indiquant l’URL à utiliser pour accéder à la page de résultats suivante. L’URL contient les mêmes paramètres _startTime_ et _endTime_ qui ont été spécifiés dans la requête d’origine, ainsi qu’un paramètre indiquant l’ID interne de la page suivante. Si les paramètres _startTime_ et _endTime_ ne sont pas spécifiés dans la requête d’origine, ils indiquent l’intervalle de 24 heures qui précède la requête d’origine.
+Quand vous répertoriez l’historique de notification au cours d’un intervalle de temps donné, le nombre de résultats renvoyés est limité pour éviter de dépasser le délai de réponse. Si d’autres résultats correspondent à l’intervalle de temps spécifié mais ne peuvent pas être renvoyés dans une seule réponse, les résultats sont tronqués et un en-tête est ajouté à la réponse indiquant l’URL à utiliser pour accéder à la page de résultats suivante. L’URL contient les mêmes paramètres _startTime_ et _endTime_ qui ont été spécifiés dans la requête d’origine, ainsi qu’un paramètre indiquant l’ID interne de la page suivante. Si les paramètres _startTime_ et _endTime_ ne sont pas spécifiés dans la requête d’origine, ils indiquent l’intervalle de 24 heures qui précède la requête d’origine.
 
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
-NextPageUrl: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&amp;startTime=2015-10-01&amp;endTime=2015-10-02&amp;nextPage=2015101900R022885001761
+NextPageUri: https://manage.office.com/api/v1/{tenant_id}/activity/feed/subscriptions/content?contentType=Audit.SharePoint&amp;startTime=2015-10-01&amp;endTime=2015-10-02&amp;nextPage=2015101900R022885001761
 
 ```
 
-Pour répertorier tout le contenu disponible dans un intervalle de temps spécifié, vous devrez peut-être récupérer plusieurs pages jusqu’à ce que vous receviez une réponse qui ne contient pas l’en-tête **NextPageUrl**.
+Pour répertorier tout le contenu disponible dans un intervalle de temps spécifié, vous devrez peut-être récupérer plusieurs pages jusqu’à ce que vous receviez une réponse qui ne contient pas l’en-tête **NextPageUri**.
 
 ## <a name="retrieve-resource-friendly-names"></a>Récupération des noms conviviaux des ressources
 
-Cette opération récupère les noms conviviaux des ressources pour les objets du flux de données identifiés par un GUID. « DlpSensitiveType » est actuellement le seul objet pris en charge. 
+Cette opération récupère les noms conviviaux des ressources pour les objets du flux de données identifiés par un GUID. « DlpSensitiveType » est actuellement le seul objet pris en charge. 
 
 
 ||Abonnement|Description|
 |:-----|:-----|:-----|
 |**Chemin**| `/resources/dlpSensitiveTypes`||
 |**Paramètres**|PublisherIdentifier|GUID de locataire de l’éditeur qui code l’API. Il ne s’agit **pas** du GUID de l’application ou du GUID du client qui utilise l’application, mais bien du GUID de l’entreprise qui écrit le code. Ce paramètre permet de limiter le taux de requêtes émises. Vérifiez que ce paramètre est spécifié dans toutes les requêtes émises pour obtenir un quota dédié. Toutes les requêtes reçues sans ce paramètre auront le même quota.|
-|**En-têtes**|Accept-Language|En-tête pour spécifier la langue dans laquelle les noms doivent être localisés. Par exemple, utilisez « en-US » pour l’anglais ou « es » pour l’espagnol. La langue par défaut (en-US) est renvoyée si cet en-tête n’est pas présent.|
+|**En-têtes**|Accept-Language|En-tête pour spécifier la langue dans laquelle les noms doivent être localisés. Par exemple, utilisez « en-US » pour l’anglais ou « es » pour l’espagnol. La langue par défaut (en-US) est renvoyée si cet en-tête n’est pas présent.|
 |**Corps**|(vide)||
-|**Réponse**|Tableau JSON|Le contenu disponible est représenté par des objets JSON comprenant les propriétés suivantes :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>id</b> : indique le GUID du type d’informations sensibles.</p></li><li><p><b>name</b> : nom convivial du type d’informations sensibles.</p></li></ul>|
+|**Réponse**|Tableau JSON|Le contenu disponible est représenté par des objets JSON comprenant les propriétés suivantes :<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p><b>id</b> : indique le GUID du type d’informations sensibles.</p></li><li><p><b>name</b> : nom convivial du type d’informations sensibles.</p></li></ul>|
 
 #### <a name="sample-request"></a>Exemple de demande
 
@@ -598,18 +598,18 @@ HTTP/1.1 200 OK
 
 ## <a name="api-throttling"></a>Limitation des requêtes de l’API
 
-Les organisations accédant à des journaux d’audit via l’API Activité de gestion d’Office 365 étaient restreintes par des seuils de limitation au niveau de l’éditeur. Cela signifie que pour un éditeur faisant une extraction de données pour le compte de plusieurs clients, la limite était partagée par tous les clients.
+Les organisations accédant à des journaux d’audit via l’API Activité de gestion d’Office 365 étaient restreintes par des seuils de limitation au niveau de l’éditeur. Cela signifie que pour un éditeur faisant une extraction de données pour le compte de plusieurs clients, la limite était partagée par tous les clients.
 
-Nous allons passer d’une limite au niveau éditeur à une limite au niveau du client. Chaque organisation obtient ainsi son propre quota de bande passante entièrement allouée pour accéder à leurs données d’audit. Les organisations reçoivent une ligne de base de 2 000 demandes par minute. Il ne s’agit pas d’une limite statique prédéfinie, mais elle est modelée sur la combinaison de facteurs, tels que le nombre de sièges au sein de l’organisation, et les organisations Office 365 et Microsoft 365 E5 obtiennent une bande passante à peu près deux fois plus importante que les organisations non E5. La bande passante aura également un plafond maximal pour protéger l’état d’intégrité du service.
+Nous allons passer d’une limite au niveau éditeur à une limite au niveau du client. Chaque organisation obtient ainsi son propre quota de bande passante entièrement allouée pour accéder à leurs données d’audit. Les organisations reçoivent une ligne de base de 2 000 demandes par minute. Il ne s’agit pas d’une limite statique prédéfinie, mais elle est modelée sur la combinaison de facteurs, tels que le nombre de sièges au sein de l’organisation, et les organisations Office 365 et Microsoft 365 E5 obtiennent une bande passante à peu près deux fois plus importante que les organisations non E5. La bande passante aura également un plafond maximal pour protéger l’état d’intégrité du service.
 
-Pour plus d’informations, voir la section « Accès à large bande passante à l'API Activité de gestionOffice 365 » dans l'[Audit avancé de Microsoft 365](https://docs.microsoft.com/microsoft-365/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api).
+Pour plus d’informations, voir la section « Accès à large bande passante à l'API Activité de gestionOffice 365 » dans l'[Audit avancé de Microsoft 365](https://docs.microsoft.com/microsoft-365/compliance/advanced-audit#high-bandwidth-access-to-the-office-365-management-activity-api).
 
 > [!NOTE] 
-> Même si chaque client peut initialement envoyer 2 000 requêtes par minute, Microsoft ne peut garantir le taux de réponse. Le taux de réponse dépend de différents facteurs, tels que les performances du système client, la capacité et la vitesse du réseau. 
+> Même si chaque client peut initialement envoyer 2 000 requêtes par minute, Microsoft ne peut garantir le taux de réponse. Le taux de réponse dépend de différents facteurs, tels que les performances du système client, la capacité et la vitesse du réseau. 
 
 ## <a name="errors"></a>Errors
 
-Quand le service rencontre une erreur, il signale le code de la réponse d’erreur à l’appelant en utilisant la syntaxe du code d’erreur HTTP standard. . Des informations complémentaires sont incluses dans le corps de l’appel ayant échoué en tant qu’objet JSON unique. Voici un exemple du corps complet de l’erreur JSON : 
+Quand le service rencontre une erreur, il signale le code de la réponse d’erreur à l’appelant en utilisant la syntaxe du code d’erreur HTTP standard. . Des informations complémentaires sont incluses dans le corps de l’appel ayant échoué en tant qu’objet JSON unique. Voici un exemple du corps complet de l’erreur JSON : 
 
 ```json
 
@@ -627,23 +627,23 @@ Quand le service rencontre une erreur, il signale le code de la réponse d’err
 |:-----|:-----|
 |Code|Message|
 |AF10001|Le jeu d’autorisations ({0}) envoyé dans la requête n’inclut pas l’autorisation **ActivityFeed.Read** attendue.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = jeu d’autorisations défini dans le jeton d’accès.</p></li></ul>|
-|AF20001|Paramètre manquant : {0}. <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = nom du paramètre manquant.</p></li></ul>|
-|AF20002|Type de paramètre non valide : {0}. Type attendu : {1}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = nom du paramètre non valide.</p></li><li><p>{1} = type attendu (int, datetime, guid).</p></li></ul>|
+|AF20001|Paramètre manquant : {0}. <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = nom du paramètre manquant.</p></li></ul>|
+|AF20002|Type de paramètre non valide : {0}. Type attendu : {1}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = nom du paramètre non valide.</p></li><li><p>{1} = type attendu (int, datetime, guid).</p></li></ul>|
 |AF20003|L’expiration {0} fournie indique une date et une heure passées.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = expiration transmise dans l’appel de l’API.</p></li></ul>|
 |AF20010|L’ID de locataire transmis dans l’URL ({0}) ne correspond pas à l’ID de locataire transmis dans le jeton d’accès ({1}).<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = ID de locataire transmis dans l’URL</p></li><li><p>{1} = ID de locataire transmis dans le jeton d’accès</p></li></ul>|
 |AF20011|L’ID de locataire spécifié ({0}) n’existe pas dans le système ou a été supprimé. <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>   {0} = ID de locataire transmis dans l’URL</p></li></ul>|
 |AF20012|L’ID de locataire spécifié ({0}) est configuré de façon incorrecte dans le système. <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>    {0} = ID de locataire transmis dans l’URL</p></li></ul>|
 |AF20013|L’ID de locataire transmis dans l’URL ({0}) n’est pas un GUID valide.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p> {0} = ID de locataire transmis dans l’URL</p></li></ul>|
 |AF20020|Le type de contenu spécifié n’est pas valide.|
-|AF20021|Le point de terminaison de webhook {{0}) n’a pas été validé. {1}<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = adresse de webhook.</p></li><li><p>{1} = « Le point de terminaison n’a pas renvoyé HTTP 200. » ou « L’adresse doit commencer par HTTPS. ».</p></li></ul>|
+|AF20021|Le point de terminaison de webhook {{0}) n’a pas été validé. {1}<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = adresse de webhook.</p></li><li><p>{1} = « Le point de terminaison n’a pas renvoyé HTTP 200. » ou « L’adresse doit commencer par HTTPS. ».</p></li></ul>|
 |AF20022|Aucun abonnement trouvé pour le type de contenu spécifié.|
-|AF20023|L’abonnement a été désactivé par {0}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = « un administrateur du locataire » ou « administrateur du service »</p></li></ul>|
-|AF20030|L’heure de début et l’heure de fin doivent être toutes les deux renseignées (ou omises), doivent être espacées d’un intervalle de moins de 24 heures, et l’heure de début ne doit pas dater de plus de 7 jours.|
-|AF20031|Saisie nextPage non valide : {0}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = indicateur de la page suivante transmis dans l’URL</p></li></ul>|
+|AF20023|L’abonnement a été désactivé par {0}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = « un administrateur du locataire » ou « administrateur du service »</p></li></ul>|
+|AF20030|L’heure de début et l’heure de fin doivent être toutes les deux renseignées (ou omises), doivent être espacées d’un intervalle de moins de 24 heures, et l’heure de début ne doit pas dater de plus de 7 jours.|
+|AF20031|Saisie nextPage non valide : {0}.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = indicateur de la page suivante transmis dans l’URL</p></li></ul>|
 |AF20050|Le contenu spécifié ({0}) n’existe pas.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = ID ou URL de la ressource</p></li></ul>|
-|AF20051|Le contenu demandé avec la touche {0} a déjà expiré. Le contenu datant de plus de 7 jours ne peut pas être récupéré.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>•    {0} = ID ou URL de la ressource</p></li></ul>|
+|AF20051|Le contenu demandé avec la touche {0} a déjà expiré. Le contenu datant de plus de 7 jours ne peut pas être récupéré.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>•    {0} = ID ou URL de la ressource</p></li></ul>|
 |AF20052|L’ID de contenu {0} dans l’URL n’est pas valide.<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = ID ou URL de la ressource</p></li></ul>|
 |AF20053|Une seule langue peut être indiquée dans l’en-tête Accept-Language.|
 |AF20054|Syntaxe non valide dans l’en-tête Accept-Language.|
-|AF429|Trop de demandes. Method={0}, PublisherId={1}<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = méthode HTTP</p></li><li><p>{1} = GUID de locataire utilisé en tant que PublisherIdentifier</p></li></ul>|
+|AF429|Trop de demandes. Method={0}, PublisherId={1}<ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>{0} = méthode HTTP</p></li><li><p>{1} = GUID de locataire utilisé en tant que PublisherIdentifier</p></li></ul>|
 |AF50000|Une erreur interne s’est produite. Retentez la requête.|
