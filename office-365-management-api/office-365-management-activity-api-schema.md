@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 localization_priority: Priority
-ms.openlocfilehash: 8ee293d2e82fc2a4cc5cce04289c7428f39339d5
-ms.sourcegitcommit: 1c2efaeeeb4942591cf37f16edb64b3b41b9e83c
+ms.openlocfilehash: 6bb8d836281ebb4e98ef90957ab98d24e0c1342d
+ms.sourcegitcommit: f08ff7cfd17aedd9d2ca85b5df0666ca986c9aed
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "53326601"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "53447904"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -976,22 +976,26 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 
 |**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
-|MessageId|Edm.String|Non|Identificateur pour un message de conversation ou de canal.|
-|Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|Non|Liste des utilisateurs dans une équipe.|
-|TeamName|Edm.String|Non|Nom de l’équipe auditée.|
-|TeamGuid|Edm.Guid|Non|Identificateur unique de l’équipe auditée.|
-|ChannelType|Edm.String|Non|Type de canal audité (standard/privé).|
-|ChannelName|Edm.String|Non|Nom du canal audité.|
-|ChannelGuid|Edm.Guid|Non|Identificateur unique pour le canal audité.|
-|ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|Non|Liste de propriétés supplémentaires.|
-|AddOnType|Self.[AddOnType](#addontype)|Non|Type de complément ayant généré cet événement.|
-|AddonName|Edm.String|Non|Nom du complément ayant généré l’événement.|
 |AddOnGuid|Edm.Guid|Non|Identificateur unique du complément ayant généré l’événement.|
-|TabType|Edm.String|Non|Uniquement présent pour les événements de tabulation. Type de l’onglet ayant généré l’événement.|
-|Nom|Edm.String|Non|Uniquement présent pour les événements de paramètres. Nom du paramètre modifié.|
-|OldValue|Edm.String|Non|Uniquement présent pour les événements de paramètres. Ancienne valeur du paramètre.|
-|NewValue|Edm.String|Non|Uniquement présent pour les événements de paramètres. Nouvelle valeur du paramètre.|
+|AddOnName|Edm.String|Non|Nom du complément ayant généré l’événement.|
+|AddOnType|Self.[AddOnType](#addontype)|Non|Type de complément ayant généré cet événement.|
+|ChannelGuid|Edm.Guid|Non|Identificateur unique pour le canal audité.|
+|ChannelName|Edm.String|Non|Nom du canal audité.|
+|ChannelType|Edm.String|Non|Type de canal audité (standard/privé).|
+|ExtraProperties|Collection(Self.[KeyValuePair](#keyvaluepair-complex-type))|Non|Liste de propriétés supplémentaires.|
+|HostedContents|Collection(Self.[HostedContent](#hostedcontent-complex-type))|Non|Une collection de contenus hébergés de messages de conversation ou de canaux.|
+|Members|Collection(Self.[MicrosoftTeamsMember](#microsoftteamsmember-complex-type))|Non|Liste des utilisateurs dans une équipe.|
+|MessageId|Edm.String|Non|Identificateur pour un message de conversation ou de canal.|
 |MessageURLs|Edm.String|Non|Présenter pour les URLs envoyées dans les messages Teams.|
+|Messages|Collection(Self.[Message](#message-complex-type))|Non|Une collection de messages de conversation ou de canaux.|
+|MessageSizeInBytes|Edm.Int64|Non|Taille d’un message de conversation ou de canal en octets avec encodage UTF-16.|
+|Nom|Edm.String|Non|Uniquement présent pour les événements de paramètres. Nom du paramètre modifié.|
+|NewValue|Edm.String|Non|Uniquement présent pour les événements de paramètres. Nouvelle valeur du paramètre.|
+|OldValue|Edm.String|Non|Uniquement présent pour les événements de paramètres. Ancienne valeur du paramètre.|
+|SubscriptionId|Edm.String|Non|Identificateur unique d’un abonnement aux notifications de modification Microsoft Graph.|
+|TabType|Edm.String|Non|Uniquement présent pour les événements de tabulation. Type de l’onglet ayant généré l’événement.|
+|TeamGuid|Edm.Guid|Non|Identificateur unique de l’équipe auditée.|
+|TeamName|Edm.String|Non|Nom de l’équipe auditée.|
 ||||
 
 ### <a name="microsoftteamsmember-complex-type"></a>Type complexe MicrosoftTeamsMember
@@ -1033,6 +1037,32 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |3|Tab|Onglet Microsoft Teams.|
 ||||
 
+### <a name="hostedcontent-complex-type"></a>Type complexe HostedContent
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|ID|Edm.String|Oui|Identificateur unique du contenu hébergé du message.|
+|SizeInBytes|Edm.Int64|Non|Taille du contenu hébergé du message en octets.|
+|||||
+
+### <a name="message-complex-type"></a>Type complexe de message
+
+|**Paramètres**|**Type**|**Obligatoire ?**|**Description**|
+|:-----|:-----|:-----|:-----|
+|AADGroupId|Edm.String|Non|Identificateur unique du groupe dans Azure Active Directory auquel appartient le message.|
+|ID|Edm.String|Oui|Identificateur unique du message de conversation ou de canal.|
+|ChannelGuid|Edm.String|Non|Identificateur unique du canal auquel appartient le message.|
+|ChannelName|Edm.String|Non|Nom du canal auquel appartient le message.|
+|ChannelType|Edm.String|Non|Type du canal auquel appartient le message.|
+|ChatName|Edm.String|Non|Nom de la conversation à laquelle appartient le message.|
+|ChatThreadId|Edm.String|Non|Identificateur unique de la conversation à laquelle appartient le message.|
+|ParentMessageId|Edm.String|Non|Identificateur unique du message de conversation ou de canal parent.|
+|SizeInBytes|Edm.Int64|Non|Taille du message en octets avec encodage UTF-16.|
+|TeamGuid|Edm.String|Non|Identificateur unique de l’équipe à laquelle appartient le message.|
+|TeamName|Edm.String|Non|Nom de l’équipe à laquelle appartient le message.|
+|Version|Edm.String|Non|Version du message de conversation ou de canal.|
+|||||
+ 
 ## <a name="microsoft-defender-for-office-365-and-threat-investigation-and-response-schema"></a>Microsoft Defender pour Office 365 et le schéma d’investigation et de réponse aux menaces
 
 [Microsoft Defender pour Office 365](/office365/securitycompliance/office-365-atp) et des événements d’investigation et de réponse aux menaces sont disponibles pour les clients Office 365 disposant d’un abonnement pour Microsoft Defender pour Office 365 Plan 1, Microsoft Defender pour Office 365 Plan 2 ou E5. Chaque événement dans le flux Microsoft Defender pour Office 365 correspond aux informations suivantes qui ont été considérées comme présentant une menace :
