@@ -7,12 +7,12 @@ ms.ContentId: 4fca85f9-efa6-3b4b-b10d-a07cb31f803f
 ms.topic: reference (API)
 ms.date: 09/28/2016
 localization_priority: Priority
-ms.openlocfilehash: 4f0e9414b1f2691f43a8b79e92e39bc589beeb89
-ms.sourcegitcommit: ec60dbd5990cfc61b8c000b423e7ade25fa613a8
+ms.openlocfilehash: 21c252bcd0fe422536dd8dc5a81b7a7c79fd2d04215a8f4c125af3116947b982
+ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "48397460"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "54274209"
 ---
 # <a name="office-365-management-apis-overview"></a>Vue d’ensemble des API de gestion d’Office 365
 
@@ -31,14 +31,14 @@ Pour la référence des opérations, consultez [Référence de l’API Office 36
 
 ## <a name="office-365-management-activity-api"></a>API Activité de gestion Office 365
 
-L’API Activité de gestion Office 365 fournit des informations sur diverses actions et événements d’utilisateur, d’administrateur, de système et de stratégie à partir des journaux d’activité Office 365 et Azure Active Directory. Les clients et les partenaires peuvent utiliser ces informations pour créer des opérations ou améliorer les opérations existantes, la sécurité et les solutions de surveillance de la conformité pour l’entreprise. 
+L’API Activité de gestion Office 365 fournit des informations sur diverses actions et événements d’utilisateur, d’administrateur, de système et de stratégie à partir des journaux d’activité Office 365 et Azure Active Directory. Les clients et les partenaires peuvent utiliser ces informations pour créer des opérations ou améliorer les opérations existantes, la sécurité et les solutions de surveillance de la conformité pour l’entreprise. 
 
 Pour la référence des opérations, consultez la rubrique [Référence de l’API Activité de gestion Office 365](office-365-management-activity-api-reference.md).
 
 ## <a name="see-also"></a>Voir aussi
 
 - [Prise en main des API de gestion d’Office 365](get-started-with-office-365-management-apis.md)
-- [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md)
+- [Schéma de l’API Activité de gestion Office 365](office-365-management-activity-api-schema.md)
 - [Résolution des problèmes d’API d’activités de gestion d’Office 365](troubleshooting-the-office-365-management-activity-api.md)
-- [API REST Office 365](https://docs.microsoft.com/previous-versions/office/office-365-api/how-to/platform-development-overview)
+- [API REST Office 365](https://docs.microsoft.com/previous-versions/office/office-365-api/how-to/platform-development-overview)
 
