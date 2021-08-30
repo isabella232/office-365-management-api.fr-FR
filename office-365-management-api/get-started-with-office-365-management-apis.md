@@ -6,13 +6,13 @@ description: Les API utilisent Azure AD pour fournir des services d’authentifi
 ms.ContentId: 74137c9a-29e0-b588-6122-26f4d2c5e3fc
 ms.topic: reference (API)
 ms.date: ''
-localization_priority: Priority
-ms.openlocfilehash: 64406bc52070f89223142fbf06313c9357d97a79311a2f00c95bfa4c829147e1
-ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.localizationpriority: high
+ms.openlocfilehash: 96a0cd71c55251160117d1ae598c8935479b6780
+ms.sourcegitcommit: 13b50617b1a73f5890414087d8eabe6b2240cfb4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "54274241"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "58510145"
 ---
 # <a name="get-started-with-office-365-management-apis"></a>Prise en main des API de gestion d’Office 365
 
@@ -33,7 +33,7 @@ Le diagramme suivant illustre la séquence des demandes de consentement et de je
 ![Flux d’autorisation de mise en route des API de gestion](images/authorization-flow.png)
 
 > [!IMPORTANT]
-> Avant de pouvoir accéder aux données via l’API Activité de gestion Office 365, vous devez activer la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off). <br/><br/>L’activation de la journalisation d’audit unifié n’est pas requise si vous utilisez uniquement l’API de communications de service Office 365.
+> Avant de pouvoir accéder aux données via l’API Activité de gestion Office 365, vous devez activer la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](/office365/securitycompliance/turn-audit-log-search-on-or-off). <br/><br/>L’activation de la journalisation d’audit unifié n’est pas requise si vous utilisez uniquement l’API de communications de service Office 365.
 
 ## <a name="register-your-application-in-azure-ad"></a>Inscrire votre application dans Azure AD
 
@@ -42,7 +42,7 @@ Les API de gestion d’Office 365 utilisent Azure AD pour fournir une authentifi
 
 ### <a name="prerequisites"></a>Conditions préalables
 
-Pour inscrire votre application dans Azure AD, vous devez avoir un abonnement à Office 365 et un abonnement à Azure qui a été associé à votre abonnement Office 365. Vous pouvez utiliser des abonnements à la version d’évaluation d’Office 365 et Azure pour commencer. Pour plus d’informations, consultez [Bienvenue dans le programme pour les développeurs Office 365](https://docs.microsoft.com/office/developer-program/office-365-developer-program).
+Pour inscrire votre application dans Azure AD, vous devez avoir un abonnement à Office 365 et un abonnement à Azure qui a été associé à votre abonnement Office 365. Vous pouvez utiliser des abonnements à la version d’évaluation d’Office 365 et Azure pour commencer. Pour plus d’informations, consultez [Bienvenue dans le programme pour les développeurs Office 365](/office/developer-program/office-365-developer-program).
 
 
 ### <a name="use-the-azure-management-portal-to-register-your-application-in-azure-ad"></a>Inscrire votre application dans Azure AD à l’aide du portail de gestion Azure
@@ -80,7 +80,7 @@ Une fois que vous disposez d’un client Microsoft avec les abonnements appropri
 
 Maintenant que votre application est inscrite, vous devez spécifier plusieurs propriétés importantes qui déterminent comment fonctionne votre application dans Azure AD et comment les administrateurs clients donnent leur consentement pour permettre à votre application d’accéder à leurs données à l’aide des API de gestion d’Office 365.
 
-Pour plus d’informations sur la configuration de l’application Azure AD en général, reportez-vous à [Objets application et principal du service dans Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects).
+Pour plus d’informations sur la configuration de l’application Azure AD en général, reportez-vous à [Objets application et principal du service dans Azure Active Directory](/azure/active-directory/develop/active-directory-application-objects).
 
 
 1. **ID CLIENT**. Cette valeur est générée automatiquement par Azure AD. Votre application utilisera cette valeur lors de la demande de consentement aux administrateurs clients et de la demande de jetons d’application uniquement à Azure AD.
@@ -223,7 +223,7 @@ https://login.windows.net/common/oauth2/authorize?response_type=code&resource=ht
 
 L’URL de redirection doit correspondre à l’une des URL de réponse configurées pour votre application dans Azure AD ou être un chemin d’accès secondaire sous l’une d’elles.
 
-Par exemple :
+Par exemple :
 
 ```http
 https://login.windows.net/common/oauth2/authorize?response_type=code&resource=https%3A%2F%2Fmanage.office.com&client_id=2d4d11a2-f814-46a7-890a-274a72a7309e&redirect_uri=http%3A%2F%2Fwww.mycompany.com%2Fmyapp%2F
@@ -236,7 +236,7 @@ Vous pouvez tester l’URL de consentement en la collant dans un navigateur et e
 
 Après avoir sélectionné **Accepter**, vous êtes redirigé vers la page spécifiée où se trouve un code dans la chaîne de requête. 
 
-Par exemple :
+Par exemple :
 
 ```http
 http://www.mycompany.com/myapp/?code=AAABAAAAvPM1KaPlrEqdFSB...
@@ -334,7 +334,7 @@ Le jeton d’accès renvoyé est un jeton JWT qui inclut des informations sur l�
 
 Une fois que l’ID client est connu, votre application peut effectuer des appels de service à service à Azure AD pour demander d’autres jetons d’accès lorsqu’ils expirent. Ces jetons incluent des informations sur l’application qui demande l’accès uniquement et non sur l’administrateur qui a donné son consentement à l’origine. Les appels de service à service exigent que votre application utilise un certificat X.509 pour créer une assertion client sous la forme d’un jeton de porteur JWT signé SHA256 et codé en base 64.
 
-Lorsque vous développez votre application dans .NET, vous pouvez utiliser la [bibliothèque d’authentification Azure AD (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) pour créer des assertions client. Les autres plateformes de développement doivent avoir des bibliothèques similaires.
+Lorsque vous développez votre application dans .NET, vous pouvez utiliser la [bibliothèque d’authentification Azure AD (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) pour créer des assertions client. Les autres plateformes de développement doivent avoir des bibliothèques similaires.
 
 Un jeton JWT non codé se compose d’un en-tête et d’une charge utile ayant les propriétés suivantes.
 

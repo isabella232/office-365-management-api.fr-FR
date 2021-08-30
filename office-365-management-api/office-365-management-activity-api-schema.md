@@ -6,13 +6,13 @@ description: 'Le schéma de l’API Activité de gestion Office 365 est fourni e
 ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
-localization_priority: Priority
-ms.openlocfilehash: 696b624beaff188d51313ce248ffabbbad421a1b5014e5b61da1cb86c8e18dbd
-ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.localizationpriority: high
+ms.openlocfilehash: 57c9fb5adcb92d2fd04c6377b7f9a320bbcc8a83
+ms.sourcegitcommit: 13b50617b1a73f5890414087d8eabe6b2240cfb4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "54274337"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "58510159"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -908,17 +908,17 @@ Les paramètres UserId et UserKey de ces événements sont toujours des alertes 
 |**Paramètres**|**Type**|**Obligatoire**|**Description**|
 |:-----|:-----|:-----|:-----|
 |AlertId|Edm.Guid|Oui|GUID de l’alerte.|
-|AlertType|Self.String|Oui|Type de l’alerte. Les types d’alertes sont les suivants : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Système</p></li><li><p>Personnalisé</p></li>|
+|AlertType|Self.String|Oui|Type de l’alerte. Les types d’alertes sont les suivants : <ul><li>Système</li><li>Personnalisé|
 |Name|Edm.String|Oui|Nom de l’alerte.|
 |PolicyId|Edm.Guid|Non|GUID de la stratégie qui a déclenché l’alerte.|
-|Status|Edm.String|Non|Statut de l’alerte. Les statuts sont les suivants : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Actif</p></li><li><p>Examen en cours</p></li><li><p>Résolu</p></li><li><p>Fermé</p></li></ul>|
-|Severity|Edm.String|Non|Gravité de l’alerte. Les niveaux de gravité sont les suivants : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Faible</p></li><li><p>Moyen</p></li><li><p>Élevé</p></li></ul>|
-|Catégorie|Edm.String|Non|Catégorie de l’alerte. Les catégories sont les suivantes : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>AccessGovernance</p></li><li><p>DataGovernance</p></li><li><p>DataLossPrevention</p></li><li><p>InsiderRiskManagement</p></li><li><p>MailFlow</p></li><li><p>ThreatManagement</p></li><li><p>Autre</p></li></ul>|
-|Source|Edm.String|Non|Source de l’alerte. Les sources sont les suivantes : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Conformité et sécurité dans Office 365</p></li><li><p>Cloud App Security</p></li></ul>|
+|Status|Edm.String|Non|Statut de l’alerte. Les statuts sont les suivants : <ul><li><p>Actif</li><li>Examen en cours</li><li>Résolu</li><li>Fermé|
+|Severity|Edm.String|Non|Gravité de l’alerte. Les niveaux de gravité sont les suivants : <ul><li>Faible</li><li>Moyen</li><li>Élevé</li></ul>|
+|Catégorie|Edm.String|Non|Catégorie de l’alerte. Les catégories sont les suivantes : <ul><li>AccessGovernance</li><li>DataGovernance</li><li>DataLossPrevention</li><li>InsiderRiskManagement</li><li>MailFlow</li><li>ThreatManagement</li><li>Autre|
+|Source|Edm.String|Non|Source de l’alerte. Les sources sont les suivantes : <ul><li>Conformité et sécurité dans Office 365</li><li>Cloud App Security|
 |Comments|Edm.String|Non|Commentaires laissés par les utilisateurs qui ont vu l’alerte. Il s’agit d’une « nouvelle alerte » par défaut.|
 |Data|Edm.String|Non|BLOB des données de détail de l’alerte ou de l’entité de l’alerte.|
 |AlertEntityId|Edm.String|Non|Identificateur pour l’entité de l’alerte. Ce paramètre s’applique uniquement aux événements AlertEntityGenerated.|
-|EntityType|Edm.String|Non|Type de l’alerte ou de l’entité de l’alerte. Les types d’entité incluent : <ul xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mtps="http://msdn2.microsoft.com/mtps" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:msxsl="urn:schemas-microsoft-com:xslt"><li><p>Utilisateur</p></li><li><p>Destinataires</p></li><li><p>Expéditeur</p></li><li><p>MalwareFamily</p></li></ul>Ce paramètre s’applique uniquement aux événements AlertEntityGenerated.|
+|EntityType|Edm.String|Non|Type de l’alerte ou de l’entité de l’alerte. Les types d’entité incluent : <ul><li>Utilisateur</li><li>Destinataires</li><li>Expéditeur</li><li>MalwareFamily</li></ul>Ce paramètre s’applique uniquement aux événements AlertEntityGenerated.|
 |||||
 
 ## <a name="yammer-schema"></a>Schéma Yammer

@@ -6,13 +6,13 @@ description: Cet article présente les questions les plus fréquemment posées a
 ms.ContentId: 50822603-a1ec-a754-e7dc-67afe36bb1b0
 ms.topic: reference (API)
 ms.date: ''
-localization_priority: Priority
-ms.openlocfilehash: 086b40d0207fba761db66d918d74dc872ae66c9471ceced91d2b4b6dfe73ac1e
-ms.sourcegitcommit: 88ef5f75a9e2a25760a2caa2cef1f51f9afba90c
+ms.localizationpriority: high
+ms.openlocfilehash: a5bceab7d18553824b604609d71c50a05f4d65d6
+ms.sourcegitcommit: 13b50617b1a73f5890414087d8eabe6b2240cfb4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "54274349"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "58510152"
 ---
 # <a name="office-365-management-activity-api-faqs-and-troubleshooting"></a>FAQ sur l'API de l'activité de gestion d'Office 365 et résolution des problèmes
 
@@ -35,11 +35,11 @@ Pour commencer à utiliser l’API Activité de gestion Office 365, reportez-vou
 
 **Que se passe-t-il si je désactive l’audit pour mon organisation Office 365 ? Est-ce que je reçois encore des événements via l’API Activité de gestion ?**
 
-Non. L’audit unifié d’Office 365 doit être activé pour votre organisation pour que les enregistrements puissent être collectés via l’API Activité de gestion. Pour obtenir des instructions, voir [Activer ou désactiver la recherche dans le journal d'audit](https://docs.microsoft.com/microsoft-365/compliance/turn-audit-log-search-on-or-off).
+Non. L’audit unifié d’Office 365 doit être activé pour votre organisation pour que les enregistrements puissent être collectés via l’API Activité de gestion. Pour obtenir des instructions, voir [Activer ou désactiver la recherche dans le journal d'audit](/microsoft-365/compliance/turn-audit-log-search-on-or-off).
 
 **Quels événements sont audités pour un service Office 365 spécifique ?**
 
-La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, voir le Schéma de l’API Activité de gestion Office 365. Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](https://docs.microsoft.com/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
+La documentation du schéma de l’API Activité de gestion Office 365 comprend la liste complète des événements. Pour plus d’informations, voir le Schéma de l’API Activité de gestion Office 365. Consultez également la section « Activités auditées » dans [Effectuer des recherches dans le journal d’audit dans le Centre de sécurité et conformité](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#audited-activities) pour obtenir la liste des événements de la plupart des services Office 365 audités.
 
 **Existe-t-il des différences entre les enregistrements récupérés par l’API Activité de gestion et les enregistrements renvoyés à l’aide de l’outil de recherche de journal d’audit dans le Centre de sécurité et conformité Microsoft 365 ?**
 
@@ -82,7 +82,7 @@ TargetUpdatedProperties apparaissaient dans les ExtendedProperties. Toutefois, e
 
 **Pourquoi les journaux d’audit avec UserAccountNotFound « LogonError » pour Azure Active Directory (Azure AD) ne sont-ils pas disponibles via l’API d’activité de gestion ?**
 
-À partir de novembre 2020, les journaux d’audit pour les activités de connexion Azure AD sont ingérés dans le journal d'audit unifié à partir des hubs d’événements Azure AD. Suite à cette modification, il n'est plus possible de remplir la propriété « LogonError » avec la valeur UserAccountNotFound. Depuis la première semaine de février 2021, la [Propriété ErrorCode dans le schéma d'audit de connexion Azure AD](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) correspond désormais aux [codes d’erreur AADSTS](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Par ailleurs, le paramètre UserId ne sera pas rempli avec le nom d’utilisateur à partir de la tentative de connexion aux erreurs UserAccountNotFound, car ce nom d’utilisateur n’existe pas dans l’annuaire Azure AD de l’organisation.
+À partir de novembre 2020, les journaux d’audit pour les activités de connexion Azure AD sont ingérés dans le journal d'audit unifié à partir des hubs d’événements Azure AD. Suite à cette modification, il n'est plus possible de remplir la propriété « LogonError » avec la valeur UserAccountNotFound. Depuis la première semaine de février 2021, la [Propriété ErrorCode dans le schéma d'audit de connexion Azure AD](/office/office-365-management-api/office-365-management-activity-api-schema#azure-active-directory-secure-token-service-sts-logon-schema) correspond désormais aux [codes d’erreur AADSTS](/azure/active-directory/develop/reference-aadsts-error-codes#lookup-current-error-code-information). Par ailleurs, le paramètre UserId ne sera pas rempli avec le nom d’utilisateur à partir de la tentative de connexion aux erreurs UserAccountNotFound, car ce nom d’utilisateur n’existe pas dans l’annuaire Azure AD de l’organisation.
 
 ## <a name="troubleshooting-the-office-365-management-activity-api"></a>Résolution des problèmes de l’API Activité de gestion Office 365
 
@@ -112,13 +112,13 @@ Les questions les plus courantes auxquelles nous répondons sont posées par des
 
 ### <a name="enabling-unified-audit-logging-in-office-365"></a>Activation de la journalisation d’audit unifié dans Office 365
 
-Si vous venez de configurer une application qui tente sans succès d’utiliser l’API d’activités de gestion, vérifiez que vous avez activé la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+Si vous venez de configurer une application qui tente sans succès d’utiliser l’API d’activités de gestion, vérifiez que vous avez activé la journalisation d’audit unifié pour votre organisation Office 365. Pour ce faire, vous devez activer le journal d’audit d’Office 365. Pour obtenir des instructions, consultez la rubrique [Activer ou désactiver la recherche dans un journal d’audit Office 365](/microsoft-365/compliance/turn-audit-log-search-on-or-off).
 
 Si l’audit unifié n’est pas activé, un message d’erreur contenant la chaîne suivante s’affiche généralement : `Microsoft.Office.Compliance.Audit``.DataServiceException: Tenant <tenantID> does not exist.`
 
 ### <a name="connecting-to-the-api"></a>Connexion à l’API
 
-La plupart des applications se connectent à l’API à l’aide d’un simple flux OAuth2 d’informations d’identification du client. Par conséquent, la première étape consiste à créer une application Azure AD ayant les autorisations nécessaires pour accéder aux données de l’API Activité de gestion. Nous ne pouvons pas vous expliquer dans cet article comment créer une inscription d’application Azure AD. Pour en savoir plus, consultez l’article relatif à l’[inscription d’une application avec le locataire Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
+La plupart des applications se connectent à l’API à l’aide d’un simple flux OAuth2 d’informations d’identification du client. Par conséquent, la première étape consiste à créer une application Azure AD ayant les autorisations nécessaires pour accéder aux données de l’API Activité de gestion. Nous ne pouvons pas vous expliquer dans cet article comment créer une inscription d’application Azure AD. Pour en savoir plus, consultez l’article relatif à l’[inscription d’une application avec le locataire Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
 #### <a name="azure-application-permissions"></a>Autorisations de l’application Azure
 
