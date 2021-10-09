@@ -7,12 +7,12 @@ ms.ContentId: 1c2bf08c-4f3b-26c0-e1b2-90b190f641f5
 ms.topic: reference (API)
 ms.date: ''
 ms.localizationpriority: high
-ms.openlocfilehash: 57c9fb5adcb92d2fd04c6377b7f9a320bbcc8a83
-ms.sourcegitcommit: 13b50617b1a73f5890414087d8eabe6b2240cfb4
+ms.openlocfilehash: 98d84204c71e6efbbe9d94381b9c0d0a048aece0
+ms.sourcegitcommit: 74965766776177e0b75c9099652798dee9bd1998
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "58510159"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "60224829"
 ---
 # <a name="office-365-management-activity-api-schema"></a>Schéma de l’API Activité de gestion Office 365
 
@@ -90,22 +90,22 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |1|ExchangeAdmin|Événements du journal d’audit de d’administration Exchange.|
 |2|ExchangeItem|Événements d’un enregistrement d’audit de boîte aux lettres Exchange pour les actions effectuées sur un seul élément, comme la création ou la réception d’un message électronique.|
 |3|ExchangeItemGroup|Événements d’un événement d’audit de boîte aux lettres Exchange pour les actions qui peuvent être effectuées sur plusieurs éléments, comme le déplacement ou la suppression d’un ou de plusieurs messages électroniques.|
-|4|SharePoint|Événements SharePoint.|
-|6|SharePointFileOperation|Événements d’opération de fichier SharePoint.|
-|7|OneDrive|OneDrive pour les évènements d’Entreprise.|
-|8|AzureActiveDirectory|Événements Azure Active Directory.|
-|9|AzureActiveDirectoryAccountLogon|Événements de connexion OrgId Azure Active Directory (obsolètes).|
+|4 |SharePoint|Événements SharePoint.|
+|6 |SharePointFileOperation|Événements d’opération de fichier SharePoint.|
+|7 |OneDrive|OneDrive pour les évènements d’Entreprise.|
+|8 |AzureActiveDirectory|Événements Azure Active Directory.|
+|9 |AzureActiveDirectoryAccountLogon|Événements de connexion OrgId Azure Active Directory (obsolètes).|
 |10|DataCenterSecurityCmdlet|Événements de cmdlet de sécurité du centre de données.|
 |11|ComplianceDLPSharePoint|Événements de protection contre la perte de données (DLP) dans SharePoint et OneDrive Entreprise.|
 |13|ComplianceDLPExchange|Événements de protection contre la perte de données (DLP) dans Exchange lorsqu’ils sont configurés via une stratégie DLP unifiée. Les événements DLP basés sur les règles de transport Exchange ne sont pas pris en charge.|
-|14|SharePointSharingOperation|Événements de partage SharePoint.|
-|15|AzureActiveDirectoryStsLogon|Événements de connexion STS (Secure Token Service) dans Azure Active Directory.|
+|14 |SharePointSharingOperation|Événements de partage SharePoint.|
+|15 |AzureActiveDirectoryStsLogon|Événements de connexion STS (Secure Token Service) dans Azure Active Directory.|
 |16|SkypeForBusinessPSTNUsage|Événements du réseau téléphonique public commuté (RTPC) à partir de Skype entreprise.|
-|17|SkypeForBusinessUsersBlocked|Événements utilisateur bloqués à partir de Skype entreprise.|
-|18|SecurityComplianceCenterEOPCmdlet|Actions d’administration à partir du Centre de sécurité et conformité.|
+|17 |SkypeForBusinessUsersBlocked|Événements utilisateur bloqués à partir de Skype entreprise.|
+|18 |SecurityComplianceCenterEOPCmdlet|Actions d’administration à partir du Centre de sécurité et conformité.|
 |19|ExchangeAggregatedOperation|Événements d’audit des boîtes aux lettres Exchange agrégées.|
 |20|PowerBIAudit|Événements Power BI.|
-|21|CRM|Événements Dynamics 365.|
+| 21|CRM|Événements Dynamics 365.|
 |22|Yammer|Événements Yammer.|
 |23|SkypeForBusinessCmdlets|Événements Skype Entreprise.|
 |24|Discovery|Événements pour les activités eDiscovery effectuées en exécutant des recherches de contenu et en gérant les cas d’eDiscovery dans le Centre de sécurité et conformité.|
@@ -160,7 +160,6 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |76|CortanaBriefing|Évènements de courrier électronique de briefing.|
 |77|Recherche|Événements liés à l’exécution de requêtes de recherche dans SharePoint et Exchange.|
 |78|WDATPAlerts|Événements liés aux alertes générées par Windows Defender pour les points de terminaison.|
-|81|MDATPAudit|Événements Microsoft Defender pour point de terminaison.|
 |82|SensitivityLabelPolicyMatch|Événements générés lorsque le nom du fichier avec une étiquette de confidentialité est ouvert ou renommé.|
 |83|SensitivityLabelAction|Événement généré lorsque des étiquettes de sensibilité sont appliquées, mises à jour ou supprimées d’un fichier.|
 |84|SensitivityLabeledFileAction|Événements générés lorsqu’un fichier est étiquetté avec une étiquette de confidentialité est ouvert ou renommé.|
@@ -186,6 +185,11 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |106|SecurityComplianceUserChange|Événements liés à la modification ou la suppression d’un utilisateur.|
 |107|ComplianceDLPExchangeClassification|Événements de classification Exchange DLP.|
 |109|MipExactDataMatch|Évènements de classification exacte des correspondances de données (EDM).|
+|110|MSDEResponseActions|Événements liés aux actions de réponse dans Microsoft Defender pour le point de terminaison.|
+|111|MSDEGeneralSettings|Événements liés aux actions de paramètres généraux dans Microsoft Defender pour le point de terminaison.|
+|112|MSDEIndicatorsSettings|Événements liés aux actions d’indicateur dans Microsoft Defender pour le point de terminaison.|
+|113|MS365DCustomDetection|Événements liés aux actions de détection personnalisées dans Microsoft 365 Defender.|
+|114|MSDERolesSettings|Événements liés aux actions de rôles dans Microsoft Defender pour point de terminaison.|
 ||||
 
 ### <a name="enum-user-type---type-edmint32"></a>Énumération : User Type - Type : Edm.Int32
@@ -198,11 +202,11 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |1|Reserved|Utilisateur réservé.|
 |2|Admin|Administrateur.|
 |3|DcAdmin|Opérateur du centre de données Microsoft.|
-|4|System|Compte système.|
+|4 |System|Compte système.|
 |5|Application|Application.|
-|6|ServicePrincipal|Principal de service.|
-|7|CustomPolicy|Une stratégie personnalisée.|
-|8|SystemPolicy|Une stratégie système.|
+|6 |ServicePrincipal|Principal de service.|
+|7 |CustomPolicy|Une stratégie personnalisée.|
+|8 |SystemPolicy|Une stratégie système.|
 ||||
 
 ### <a name="enum-auditlogscope---type-edmint32"></a>Énumération : AuditLogScope - Type : Edm.Int32
@@ -237,10 +241,10 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |0|Invalid|L’élément n’est d’aucun des autres types d’éléments (qui sont répertoriés dans ce tableau).|
 |1|File|L’élément est un fichier.|
 |5|Folder|L’élément est un dossier.|
-|6|Web|L’élément est de type web.|
-|7|Site|L’élément est un site.|
-|8|Tenant|L’élément est un client.|
-|9|DocumentLibrary|L’élément est une bibliothèque de documents.|
+|6 |Web|L’élément est de type web.|
+|7 |Site|L’élément est un site.|
+|8 |Tenant|L’élément est un client.|
+|9 |DocumentLibrary|L’élément est une bibliothèque de documents.|
 |11|Page|L’élément est une page.|
 ||||
 
@@ -403,7 +407,7 @@ Cet article donne des détails sur le schéma commun, ainsi que sur tous les sch
 |TimesheetRejected|Un utilisateur rejette une feuille de temps dans Project Web App.|
 |TimesheetSaved|Un utilisateur enregistre une feuille de temps dans Project Web App.|
 |TimesheetSubmitted|Un utilisateur soumet une feuille de temps de l’état dans Project Web App.|
-|UnmanagedSyncClientBlocked|Un utilisateur tente d’établir une relation de synchronisation avec un site SharePoint ou OneDrive Entreprise sur un ordinateur qui n’est pas membre du domaine de votre organisation ou qui est membre d’un domaine qui n’a pas été ajouté à la liste des domaines (appelée liste des destinataires approuvés) pouvant accéder aux bibliothèques de documents dans votre organisation. La relation de synchronisation n’est pas autorisée et l’ordinateur de l’utilisateur est bloqué en matière de synchronisation, de téléchargement ou de chargement de fichiers dans une bibliothèque de documents. Pour plus d’informations sur cette fonctionnalité, reportez-vous à l’article [Utilisation des cmdlet Windows PowerShell pour activer la synchronisation de OneDrive pour les domaines figurant dans la liste des destinataires approuvés](/powershell/module/sharepoint-online/index).|
+|UnmanagedSyncClientBlocked|L'utilisateur essaie d'établir une relation de synchronisation avec un site SharePoint ou OneDrive Entreprise à partir d'un ordinateur qui n'est pas membre du domaine de votre organisation ou qui est membre d'un domaine qui n'a pas été ajouté à la liste des domaines (appelée liste des destinataires approuvés) qui peuvent accéder aux bibliothèques de documents de votre organisation. La relation de synchronisation n'est pas autorisée et l'ordinateur de l'utilisateur ne peut pas synchroniser, télécharger ou charger des fichiers sur une bibliothèque de documents. Pour obtenir des informations sur cette fonctionnalités, consultez [Utiliser les applets de commande Windows PowerShell pour activer la synchronisation OneDrive des domaines se trouvant sur la liste des destinataires approuvés](/powershell/module/sharepoint-online/index).|
 |UpdateSSOApplication|Application cible mise à jour dans le service Banque d’informations sécurisé.|
 |UserAddedToGroup|L’administrateur ou le propriétaire du site ajoute une personne à un groupe sur un site SharePoint ou OneDrive Entreprise. L’ajout d’une personne à un groupe permet d’octroyer à l’utilisateur les autorisations qui ont été attribuées au groupe. |
 |UserRemovedFromGroup|L’administrateur ou le propriétaire du site supprime une personne d’un groupe sur un site SharePoint ou OneDrive Entreprise.Après la suppression de l’utilisateur, les autorisations attribuées au groupe ne lui sont plus accordées. |
@@ -417,7 +421,7 @@ Les événements SharePoint relatifs aux fichiers répertoriés dans la section 
 |**Paramètre**|**Type**|**Obligatoire ?**|**Description**|
 |:-----|:-----|:-----|:-----|
 |SiteUrl|Edm.String|Oui|URL du site où se trouve le fichier ou le dossier consulté par l’utilisateur.|
-|SourceRelativeUrl|Edm.String|Non|URL du dossier contenant le fichier consulté par l’utilisateur. La combinaison des valeurs pour les paramètres _SiteURL_, _SourceRelativeURL_ et _SourceFileName_ est identique à la valeur de la propriété **ObjectID**, qui est le nom du chemin d’accès complet au fichier consulté par l’utilisateur.|
+|SourceRelativeUrl|Edm.String|Non|L’URL du dossier contenant le fichier auquel l’utilisateur a eu accès. La combinaison des valeurs pour les paramètres _SiteURL_, _SourceRelativeURL_ et _SourceFileName_ est identique à la valeur de la propriété **ObjectID**, qui est le nom du chemin d’accès complet au fichier consulté par l’utilisateur.|
 |SourceFileName|Edm.String|Oui|Nom du fichier ou du dossier consulté par l’utilisateur.|
 |SourceFileExtension|Edm.String|Non|Extension du fichier consulté par l’utilisateur. Cette propriété est vide si l’objet consulté est un dossier.|
 |DestinationRelativeUrl|Edm.String|Non|URL du dossier de destination dans lequel un fichier est copié ou déplacé. La combinaison des valeurs pour les paramètres _SiteURL_, _DestinationRelativeURL_ et _DestinationFileName_ est identique à la valeur de la propriété **ObjectID**, qui est le nom du chemin d’accès complet au fichier qui a été copié. Cette propriété s’affiche uniquement pour les événements FileCopied et FileMoved.|
@@ -571,9 +575,9 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |1|Admin|Personne disposant des privilèges d’administration pour la boîte aux lettres d’un utilisateur.|
 |2|Delegated|Personne disposant des privilèges de délégué pour la boîte aux lettres d’un utilisateur.|
 |3|Transport|Service de transport dans le centre de données Microsoft.|
-|4|SystemService|Compte de service dans le centre de données Microsoft|
+|4 |SystemService|Compte de service dans le centre de données Microsoft|
 |5|BestAccess|Réservé à une utilisation interne.|
-|6|DelegatedAdmin|Administrateur délégué.|
+|6 |DelegatedAdmin|Administrateur délégué.|
 |||||
 
 ### <a name="exchangemailboxauditgrouprecord-schema"></a>Schéma ExchangeMailboxAuditGroupRecord
@@ -659,11 +663,11 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |1|MobilePhone|Les informations d’identification utilisateur correspondent à un téléphone mobile.|
 |2|SecretQuestion|Les informations d’identification utilisateur correspondent à une question secrète.|
 |3|SecurePin|Les informations d’identification utilisateur correspondent à un code confidentiel sécurisé.|
-|4|SecurePinReset|Les informations d’identification utilisateur correspondent à une réinitialisation du code confidentiel sécurisé.|
+|4 |SecurePinReset|Les informations d’identification utilisateur correspondent à une réinitialisation du code confidentiel sécurisé.|
 |11|EasyID|Les informations d’identification utilisateur correspondent à EasyID.|
-|14|PasswordIndexCredentialType|Les informations d’identification utilisateur correspondent à PasswordIndexCredentialType.|
+|14 |PasswordIndexCredentialType|Les informations d’identification utilisateur correspondent à PasswordIndexCredentialType.|
 |16|Device|Les informations d’identification utilisateur correspondent à un périphérique.|
-|17|ForeignRealmIndex|Les informations d’identification utilisateur correspondent à ForeignRealmIndex.|
+|17 |ForeignRealmIndex|Les informations d’identification utilisateur correspondent à ForeignRealmIndex.|
 |||||
 
 ### <a name="enum-logintype---type-edmint32"></a>Énumération : LoginType - Type : Edm.Int32
@@ -684,21 +688,21 @@ Les événements SharePoint répertoriés dans l’article relatif à la [recher
 |1|Password|La méthode d’authentification est un mot de passe.|
 |2|Digest|La méthode d’authentification est Digest.|
 |3|ProxyAuth|La méthode d’authentification ProxyAuth.|
-|4|InfoCard|La méthode d’authentification est InfoCard.|
+|4 |InfoCard|La méthode d’authentification est InfoCard.|
 |5|DAToken|La méthode d’authentification est DAToken.|
-|6|Sha1RememberMyPassword|La méthode d’authentification est Sha1RememberMyPassword.|
-|7|LMPasswordHash|La méthode d’authentification est LMPasswordHash.|
-|8|ADFSFederatedToken|La méthode d’authentification est ADFSFederatedToken.|
-|9|EID|La méthode d’authentification est EID.|
+|6 |Sha1RememberMyPassword|La méthode d’authentification est Sha1RememberMyPassword.|
+|7 |LMPasswordHash|La méthode d’authentification est LMPasswordHash.|
+|8 |ADFSFederatedToken|La méthode d’authentification est ADFSFederatedToken.|
+|9 |EID|La méthode d’authentification est EID.|
 |10|DeviceID|La méthode d’authentification est DeviceID. |
 |11|MD5|La méthode d’authentification est MD5.|
-|12|EncProxyPasswordHash|La méthode d’authentification est EncProxyPasswordHash.|
+|12 |EncProxyPasswordHash|La méthode d’authentification est EncProxyPasswordHash.|
 |13|LWAFederation|La méthode d’authentification est LWAFederation.|
-|14|Sha1HashedPassword|La méthode d’authentification est Sha1HashedPassword.|
-|15|SecurePin|La méthode d’authentification est un code confidentiel sécurisé.|
+|14 |Sha1HashedPassword|La méthode d’authentification est Sha1HashedPassword.|
+|15 |SecurePin|La méthode d’authentification est un code confidentiel sécurisé.|
 |16|SecurePinReset|La méthode d’authentification est une réinitialisation de code confidentiel sécurisé.|
-|17|SAML20PostSimpleSign|La méthode d’authentification est SAML20PostSimpleSign.|
-|18|SAML20Post|La méthode d’authentification est SAML20Post.|
+|17 |SAML20PostSimpleSign|La méthode d’authentification est SAML20PostSimpleSign.|
+|18 |SAML20Post|La méthode d’authentification est SAML20Post.|
 |19|OneTimeCode|La méthode d’authentification est un code à usage unique.|
 |||||
 
@@ -1198,19 +1202,19 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |1|Anti-courrier indésirable, HSPM|Action contre le courrier indésirable à niveau de confiance élevé (HSPM) dans la stratégie anti-courrier indésirable.|
 |2|Anti-courrier indésirable, SPM|Action contre le courrier indésirable (SPM) dans la stratégie anti-courrier indésirable.|
 |3|Anti-courrier indésirable, Bloc|Action en bloc dans la stratégie anti-courrier indésirable.|
-|4|Anti-courrier indésirable, PHSH|Action contre l’hameçonnage dans la stratégie anti-courrier indésirable.|
+|4 |Anti-courrier indésirable, PHSH|Action contre l’hameçonnage dans la stratégie anti-courrier indésirable.|
 |5|Anti-hameçonnage, DIMP|Action contre l’emprunt d’identité de domaine (DIMP) dans la stratégie anti-hameçonnage.|
-|6|Anti-hameçonnage, UIMP|Action contre l’emprunt d’identité de l’utilisateur (UIMP) dans la stratégie anti-hameçonnage.|
-|7|Anti-hameçonnage, SPOOF|Action contre l’usurpation dans la stratégie anti-hameçonnage.|
-|8|Anti-hameçonnage, GIMP|Action de veille sur les boîtes aux lettres dans le cadre de la stratégie anti-hameçonnage.|
-|9|Anti-programme malveillant, AMP| Action de stratégie de anti-programme malveillant dans la stratégie anti-programme malveillant.|
+|6 |Anti-hameçonnage, UIMP|Action contre l’emprunt d’identité de l’utilisateur (UIMP) dans la stratégie anti-hameçonnage.|
+|7 |Anti-hameçonnage, SPOOF|Action contre l’usurpation dans la stratégie anti-hameçonnage.|
+|8 |Anti-hameçonnage, GIMP|Action de veille sur les boîtes aux lettres dans le cadre de la stratégie anti-hameçonnage.|
+|9 |Anti-programme malveillant, AMP| Action de stratégie de anti-programme malveillant dans la stratégie anti-programme malveillant.|
 |10|Pièce jointe fiable, SAP| Action de stratégie dans la stratégie des Pièces jointes approuvées Microsoft Defender pour Office 365.|
 |11|Règle de transport Exchange, ETR| Action de stratégie dans la règle de transport Exchange.|
-|12|Anti-programme malveillant, ZAPM| Action de stratégie anti-programme malveillant dans la stratégie anti-programme malveillant appliquée à la purge automatique zéro heure (ZAP).|
+|12 |Anti-programme malveillant, ZAPM| Action de stratégie anti-programme malveillant dans la stratégie anti-programme malveillant appliquée à la purge automatique zéro heure (ZAP).|
 |13|Anti-hameçonnage, PAZH| Action de stratégie anti-hameçonnage dans la stratégie anti-hameçonnage appliquée à la PAZH.|
-|14|Anti-hameçonnage, PAZH| Action de stratégie anti-courrier indésirable dans la stratégie anti-courrier indésirable appliquée à la PAZH.|
-|15|Anti-courrier indésirable, e-mail de hameçonnage haute confiance (HPHISH)|Action de stratégie HPHISH dans le cadre de la stratégie anti-courrier indésirable.|
-|17|Anti-courrier indésirable, courrier indésirable sortant (OSPM)|Action de stratégie de filtrage du courrier indésirable sortant dans le cadre de la stratégie anti-courrier indésirable.|
+|14 |Anti-hameçonnage, PAZH| Action de stratégie anti-courrier indésirable dans la stratégie anti-courrier indésirable appliquée à la PAZH.|
+|15 |Anti-courrier indésirable, e-mail de hameçonnage haute confiance (HPHISH)|Action de stratégie HPHISH dans le cadre de la stratégie anti-courrier indésirable.|
+|17 |Anti-courrier indésirable, courrier indésirable sortant (OSPM)|Action de stratégie de filtrage du courrier indésirable sortant dans le cadre de la stratégie anti-courrier indésirable.|
 ||||
 
 ### <a name="enum-policyaction---type-edmint32"></a>Énumération : PolicyAction – Type : Edm.Int32
@@ -1223,11 +1227,11 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |1|AddXHeader|L’action de stratégie consiste à ajouter un en-tête X au message électronique.|
 |2|ModifySubject|L’action de stratégie consiste à modifier l’objet du message électronique avec les informations spécifiées par la stratégie de filtrage.|
 |3|Rediriger|L’action de stratégie consiste à rediriger le courrier électronique vers une adresse de messagerie spécifique de la stratégie de filtrage.|
-|4|Supprimer|L’action de stratégie consiste à supprimer (abandonner) le message électronique.|
+|4 |Supprimer|L’action de stratégie consiste à supprimer (abandonner) le message électronique.|
 |5|Quarantaine|L’action de stratégie consiste à mettre en quarantaine le message électronique.|
-|6|NoAction| La stratégie est configurée de manière à ne prendre aucune mesure sur le message électronique.|
-|7|BccMessage|L’action de stratégie consiste à mettre le message électronique en copie carbone invisible à l'adresse électronique spécifiée par la politique de filtrage.|
-|8|ReplaceAttachment|L’action de stratégie consiste à remplacer la pièce jointe à l’e-mail comme spécifié par la stratégie de filtrage.|
+|6 |NoAction| La stratégie est configurée de manière à ne prendre aucune mesure sur le message électronique.|
+|7 |BccMessage|L’action de stratégie consiste à mettre le message électronique en copie carbone invisible à l'adresse électronique spécifiée par la politique de filtrage.|
+|8 |ReplaceAttachment|L’action de stratégie consiste à remplacer la pièce jointe à l’e-mail comme spécifié par la stratégie de filtrage.|
 ||||
 
 ### <a name="url-time-of-click-events"></a>Événements d’heure de clic d’URL
@@ -1251,7 +1255,7 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 |:-----|:-----|:-----|
 |2|Blockpage|Utilisateur est bloqué et ne peut pas accéder à l’URL par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links).|
 |3|PendingDetonationPage|La page de détonation en attente est affichée pour l’utilisateur par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links).|
-|4|BlockPageOverride|L’utilisateur est bloqué et ne peut pas accéder à l’URL par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
+|4 |BlockPageOverride|L’utilisateur est bloqué et ne peut pas accéder à l’URL par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
 |5|PendingDetonationPageOverride|La page détonation a été affichée pour l’utilisateur par les [Liens approuvés dans Microsoft Defender pour Office 365](/office365/securitycompliance/atp-safe-links) ; cependant, l'utilisateur a ignoré le blocage pour accéder à l’URL.|
 |||||
 
@@ -1297,8 +1301,8 @@ Les événements Yammer répertoriés dans l’article relatif à la [recherche 
 
 Les événements d’[Envois](/microsoft-365/security/office-365-security/report-junk-email-messages-to-microsoft) sont disponibles pour chaque [clients Office 365, car ils sont fournis avec sécurité](/microsoft-365/security/office-365-security/overview). Cela inclut les organisations qui utilisent Exchange Online Protection et Microsoft Defender pour Office 365. Chaque événement dans le flux de soumission correspond à des faux positifs ou faux négatifs qui ont été envoyés en tant que :
 
-- **Envoi par l’administrateur**. Messages, fichiers ou URL envoyés à Microsoft pour analyse.
-- **Élément signalé par l’utilisateur**. Messages signalés par les utilisateurs finaux à l’administrateur ou à Microsoft pour révision.
+- **Envoi Administrateur**. Messages, fichiers ou URL envoyés à Microsoft pour analyse.
+- **Elément signalé par l’utilisateur**. Messages signalés par les utilisateurs finaux à l’administrateur ou à Microsoft pour révision.
 
 ### <a name="submission-events"></a>Événements d’envoi
 
@@ -1558,7 +1562,8 @@ Les événements de mise en quarantaine répertoriés dans l’article [Recherch
 |1|Supprimer|Il s’agit de la demande d’un utilisateur qui permet de supprimer l’e-mail considéré comme dangereux.|
 |2|Débloquer|Il s’agit de la demande d’un utilisateur qui permet de débloquer l’e-mail considéré comme dangereux.|
 |3|Exporter|Il s’agit de la demande d’un utilisateur qui permet d’exporter l’e-mail considéré comme dangereux.|
-|4|ViewHeader|Il s’agit de la demande d’un utilisateur qui permet d’afficher l’en-tête de l’e-mail considéré comme dangereux.|
+|4 |ViewHeader|Il s’agit de la demande d’un utilisateur qui permet d’afficher l’en-tête de l’e-mail considéré comme dangereux.|
+|5|Demande de publication|Il s’agit de la demande d’un utilisateur qui permet de débloquer l’e-mail considéré comme dangereux.|
 ||||
 
 ### <a name="enum-requestsource---type-edmint32"></a>Enum: RequestSource - Type: Edm.Int32
